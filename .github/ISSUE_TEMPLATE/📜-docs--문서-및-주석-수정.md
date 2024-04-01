@@ -1,7 +1,7 @@
 ---
-name: 이 템플릿은 코드 스타일 변경 또는 포맷 수정할 때 사용됩니다.
+name: "\U0001F4DC[Docs] 문서 및 주석 수정"
 about: 이 템플릿은 문서와 주석을 수정할 때 사용됩니다.
-title: 이 템플릿은 코드 스타일 변경 또는 포맷 수정할 때 사용됩니다.
+title: "\U0001F4DC[Docs] 문서 및 주석 수정"
 labels: documentation
 assignees: ''
 
