@@ -399,7 +399,6 @@
 </script>
 
 <style scoped>
-@import url(@/assets/blog.css);
 
 .bd-placeholder-img {
     font-size: 1.125rem;

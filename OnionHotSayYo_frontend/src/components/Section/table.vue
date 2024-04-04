@@ -135,6 +135,8 @@
 
 <style scoped>
 #section-container {
+    display: block;
+    unicode-bidi: isolate;
     width: 100%;
     height: 100%;
 }

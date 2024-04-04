@@ -1,5 +1,8 @@
 <template>
-    <p data-v-1d6c2acb="">OnionHotSayYo created by <a href="https://github.com/OmokNoonE" data-v-1d6c2acb="">Team Omoknoone</a>.</p>
+    <div id="footer-container">
+        <p id="footer-text">OnionHotSayYo created by <a href="https://github.com/OmokNoonE" data-v-1d6c2acb=""> Team
+                Omoknoone</a>.</p>
+    </div>
 </template>
 
 <script setup>
@@ -7,7 +10,14 @@
 </script>
 
 <style scoped>
-p[data-v-1d6c2acb] {
+#footer-container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: lightgray;
+}
+#footer-text {
     margin-top: 0;
     margin-bottom: 1rem;
 }

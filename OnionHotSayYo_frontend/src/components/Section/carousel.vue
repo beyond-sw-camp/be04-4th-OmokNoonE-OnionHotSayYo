@@ -1,6 +1,7 @@
 <template>
     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
         <div class="carousel-indicators">
+
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class=""
                 aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active"
@@ -10,7 +11,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item">
-                <img src="../assets/banner/sample_img.png" width="100%" height="100%">
+                <img src="@/assets/banner/sample_img.png" width="100%" height="100%">
 
                 <div class="container">
                     <div class="carousel-caption text-start">
@@ -64,5 +65,5 @@
 </script>
 
 <style scoped>
-@import url(../assets/carousel.css);
+@import url(@/assets/carousel.css);
 </style>
