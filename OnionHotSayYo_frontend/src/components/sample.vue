@@ -461,14 +461,11 @@
 </template>
 
 <script setup>
-import * as ColorModes from "../assets/js/color-modes.js";
-import * as BundleMin from "../assets/dist/js/bootstrap.bundle.min.js";
 
 
 </script>
 
 <style scoped>
-@import url(../assets/dist/css/bootstrap.min.css);
 @import url(../assets/blog.css);
 
 
