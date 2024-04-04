@@ -1,5 +1,5 @@
 <script setup>
-import Sample from "./components/sample.vue";
+import Sample from "./components/Section/sample.vue";
 import HeaderUpper from "./components/Header/HeaderUpper/HeaderUpper.vue";
 import HeaderNavigation from "./components/Header/HeaderNavigationBar/HeaderNavigationBar.vue";
 import HeaderAll from "./components/Header/HeaderAll.vue";
