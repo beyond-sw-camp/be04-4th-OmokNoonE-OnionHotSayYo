@@ -11,7 +11,7 @@
             <path
                 d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
             <path
-                d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+                d="M10.794 3.148a.217.217 0 0r 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
         </symbol>
         <symbol id="sun-fill" viewBox="0 0 16 16">
             <path
@@ -85,120 +85,60 @@
         </symbol>
     </svg>
 
-    <div class="container">
-        <header class="border-bottom lh-1 py-3">
-            <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-4 pt-1">
-                    <a class="link-secondary" href="#">Subscribe</a>
-                </div>
-                <div class="col-4 text-center">
-                    <a class="blog-header-logo text-body-emphasis text-decoration-none" href="#">Large</a>
-                </div>
-                <div class="col-4 d-flex justify-content-end align-items-center">
-                    <a class="link-secondary" href="#" aria-label="Search">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-                            viewBox="0 0 24 24">
-                            <title>Search</title>
-                            <circle cx="10.5" cy="10.5" r="7.5" />
-                            <path d="M21 21l-5.2-5.2" />
-                        </svg>
-                    </a>
-                    <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-                </div>
-            </div>
-        </header>
 
-        <div class="nav-scroller py-1 mb-3 border-bottom">
-            <nav class="nav nav-underline justify-content-between">
-                <a class="nav-item nav-link link-body-emphasis active" href="#">World</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">U.S.</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Technology</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Design</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Culture</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Business</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Politics</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Opinion</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Science</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Health</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Style</a>
-                <a class="nav-item nav-link link-body-emphasis" href="#">Travel</a>
-            </nav>
-        </div>
-    </div>
 
     <main class="container">
         <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
             <div class="col-lg-6 px-0">
-                <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
-                    efficiently about what’s most interesting in this post’s contents.</p>
-                <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>
-            </div>
-        </div>
-
-        <div class="row mb-2">
-            <div class="col-md-6">
-                <div
-                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
-                        <h3 class="mb-0">Featured post</h3>
-                        <div class="mb-1 text-body-secondary">Nov 12</div>
-                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
-                            lead-in to additional content.</p>
-                        <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                            Continue reading
-                            <svg class="bi">
-                                <use xlink:href="#chevron-right" />
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div
-                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
-                        <h3 class="mb-0">Post title</h3>
-                        <div class="mb-1 text-body-secondary">Nov 11</div>
-                        <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                        <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                            Continue reading
-                            <svg class="bi">
-                                <use xlink:href="#chevron-right" />
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
-                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                            focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                dy=".3em">Thumbnail</text>
-                        </svg>
-                    </div>
-                </div>
+                <h1 class="display-4">많은 사람들과 다양한 정보를 공유하세요</h1>
+                <p class="lead my-3">저희 사이트는...</p>
+                <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">자세히 알아보기</a></p>
             </div>
         </div>
 
         <div class="row g-5">
             <div class="col-md-8">
-                <h3 class="pb-4 mb-4 fst-italic border-bottom">
-                    From the Firehose
-                </h3>
+
+                <div class="best_mq1">
+
+                    <div class="gpe_wgPopularT2">
+                        <h3 class="wgP_title naF_sq"><i class="xi-heart"></i>조회수 Best</h3>
+                        <div>
+                            <ul class="wgP_contents relative">
+                                <li class="popu_li">
+                                    <span class="de_num num01">1</span>
+                                    <a href=""> 추천글1</a>
+                                    <span class="reNum"></span>
+                                    <span class="wgPdate">2024-01-19</span>
+                                </li>
+                                <li class="popu_li">
+                                    <span class="de_num num02">2</span>
+                                    <a href=""> 추천글2</a>
+                                    <span class="reNum"></span>
+                                    <span class="wgPdate">2023-10-31</span>
+                                </li>
+                                <li class="popu_li">
+                                    <span class="de_num num03">3</span>
+                                    <a href=""> 추천글3</a>
+                                    <span class="reNum">+<span class="cnt_cmt">3</span></span>
+                                    <span class="wgPdate">2023-10-23</span>
+                                </li>
+                                <li class="popu_li">
+                                    <span class="de_num ">4</span>
+                                    <a href=""> 추천글4</a>
+                                    <span class="reNum"></span>
+                                    <span class="wgPdate">2023-12-09</span>
+                                </li>
+                                <li class="popu_li">
+                                    <span class="de_num ">5</span>
+                                    <a href=""> 추천글5</a>
+                                    <span class="reNum"></span>
+                                    <span class="wgPdate">2023-12-19</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
                 <article class="blog-post">
                     <h2 class="display-5 link-body-emphasis mb-1">Sample blog post</h2>
@@ -451,13 +391,6 @@
 
     </main>
 
-    <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
-        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a
-                href="https://twitter.com/mdo">@mdo</a>.</p>
-        <p class="mb-0">
-            <a href="#">Back to top</a>
-        </p>
-    </footer>
 </template>
 
 <script setup>
@@ -466,7 +399,11 @@
 </script>
 
 <style scoped>
+<<<<<<< HEAD:OnionHotSayYo_frontend/src/components/sample.vue
 @import url(../assets/blog.css);
+=======
+@import url(@/assets/blog.css);
+>>>>>>> feature/home:OnionHotSayYo_frontend/src/components/Section/sample.vue
 
 
 .bd-placeholder-img {
@@ -538,6 +475,9 @@
     --bs-btn-active-border-color: #5a23c8;
 }
 
+.best_mq1 {
+    background-color: yellow;
+  }
 .bd-mode-toggle {
     z-index: 1500;
 }
@@ -545,4 +485,18 @@
 .bd-mode-toggle .dropdown-menu .active .bi {
     display: block !important;
 }
+.popu_li {
+    margin-bottom: 10px;
+  }
+  
+  .de_num {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    margin-right: 10px;
+  }
+  
+  a {
+    color: blue; /* 링크 색상 설정 */
+  }
 </style>
