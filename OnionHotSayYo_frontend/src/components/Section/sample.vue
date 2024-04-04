@@ -399,12 +399,7 @@
 </script>
 
 <style scoped>
-<<<<<<< HEAD:OnionHotSayYo_frontend/src/components/sample.vue
-@import url(../assets/blog.css);
-=======
 @import url(@/assets/blog.css);
->>>>>>> feature/home:OnionHotSayYo_frontend/src/components/Section/sample.vue
-
 
 .bd-placeholder-img {
     font-size: 1.125rem;

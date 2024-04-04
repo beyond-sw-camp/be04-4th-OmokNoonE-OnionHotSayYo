@@ -1,5 +1,4 @@
 <script setup>
-import Sample from "./components/sample.vue";
 
 import Banner from "./components/carousel.vue";
 
