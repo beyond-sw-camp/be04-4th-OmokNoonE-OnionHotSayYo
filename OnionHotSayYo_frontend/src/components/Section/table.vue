@@ -6,105 +6,24 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col" style="width: 5%; text-align: center">번호</th>
-                        <th scope="col" style="width: 20%; text-align: center">제목</th>
-                        <th scope="col" style="width: 10%; text-align: center">글쓴이</th>
-                        <th scope="col" style="width: 10%; text-align: center">조회</th>
-                        <th scope="col" style="width: 10%; text-align: center">좋아요</th>
-                        <th scope="col" style="width: 10%; text-align: center">싫어요</th>
-                        <th scope="col" style="width: 15%; text-align: center">날짜</th>
+                        <th class="col-number" scope="col">번호</th>
+                        <th class="col-title" scope="col">제목</th>
+                        <th class="col-writer" scope="col">글쓴이</th>
+                        <th class="col-hits" scope="col">조회</th>
+                        <th class="col-like" scope="col">좋아요</th>
+                        <th class="col-dislike" scope="col">싫어요</th>
+                        <th class="col-date" scope="col">날짜</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
                     <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" style="width: 10%; text-align: center">1</td>
-                        <td style="width: 40%; text-align: center">단기 알바 구해요</td>
-                        <td style="width: 10%; text-align: center">고로상</td>
-                        <td style="width: 5%; text-align: center">55</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 5%; text-align: center">0</td>
-                        <td style="width: 10%; text-align: center">23-01-22</td>
+                        <td class="col-number" scope="row">1</td>
+                        <td class="col-title">단기 알바 구해요</td>
+                        <td class="col-writer">고로상</td>
+                        <td class="col-hits">55</td>
+                        <td class="col-like">0</td>
+                        <td class="col-dislike">0</td>
+                        <td class="col-date">23-01-22</td>
                     </tr>
                 </tbody>
             </table>
@@ -146,12 +65,49 @@
     font-weight: bold;
     margin-left: 15px;
 }
+
 #table-container {
     display: flex;
     justify-content: center;
 }
+
 #pagenation-container {
     display: flex;
     justify-content: center;
+}
+
+.col-number {
+    width: 5%;
+    text-align: center;
+}
+
+.col-title {
+    width: 20%;
+    text-align: center;
+}
+
+.col-writer {
+    width: 10%;
+    text-align: center;
+}
+
+.col-hits {
+    width: 10%;
+    text-align: center;
+}
+
+.col-like {
+    width: 10%;
+    text-align: center;
+}
+
+.col-dislike {
+    width: 10%;
+    text-align: center;
+}
+
+.col-date {
+    width: 15%;
+    text-align: center;
 }
 </style>
