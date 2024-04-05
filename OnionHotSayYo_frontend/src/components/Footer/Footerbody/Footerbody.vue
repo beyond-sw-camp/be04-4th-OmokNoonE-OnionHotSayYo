@@ -1,5 +1,5 @@
 <template>
-    <div id="footer-container">
+    <div class="footer-container">
         <p id="footer-text">OnionHotSayYo created by <a href="https://github.com/OmokNoonE" data-v-1d6c2acb=""> Team
                 Omoknoone</a>.</p>
     </div>
@@ -10,13 +10,14 @@
 </script>
 
 <style scoped>
-#footer-container{
+.footer-container {
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
-    background-color: lightgray;
 }
+
+
 #footer-text {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -29,17 +30,5 @@ p {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     unicode-bidi: isolate;
-}
-
-.bg-body-tertiary[data-v-1d6c2acb] {
-    --bs-bg-opacity: 1;
-}
-
-.text-body-secondary[data-v-1d6c2acb] {
-    --bs-text-opacity: 1;
-}
-
-.text-center[data-v-1d6c2acb] {
-    text-align: center !important;
 }
 </style>
