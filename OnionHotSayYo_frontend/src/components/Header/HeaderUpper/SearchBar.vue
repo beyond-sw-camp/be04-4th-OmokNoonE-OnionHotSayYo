@@ -118,20 +118,22 @@
 }
 
 .rectangle-2 {
-    width: 221px;
-    height: 37px;
-    left: 99px;
-    background-color: #F3F7FB;
+    width: 200px;
+    height: 40px;
+    left: 70px;
+    background-color: white;
     border-radius: 0px 8px 8px 0px;
     position: absolute;
     top: 0;
+    border: 1px solid;
+
 }
 
 .rectangle-category {
-    width: 99px;
-    height: 37px;
+    width: 70px;
+    height: 40px;
     left: 0;
-    background-color: #bad7e9;
+    background-color: rgb(180, 180, 180);
     border-radius: 8px 0px 0px 8px;
     position: absolute;
     top: 0;
@@ -222,6 +224,6 @@ ul {
 
 input {
     border-width: 0;
-    background-color: #F3F7FB;
+    background-color: white;
 }
 </style>
