@@ -8,17 +8,8 @@
                 </a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
-                <!-- <a class="link-secondary" href="#" aria-label="Search">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-                        viewBox="0 0 24 24">
-                        <title>Search</title>
-                        <circle cx="10.5" cy="10.5" r="7.5"></circle>
-                        <path d="M21 21l-5.2-5.2"></path>
-                    </svg>
-                </a> -->
                 <SearchBar />
-                <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+                <a class="btn btn-sm btn-outline-secondary sign-up" href="#"><span id="sign-up">Sign up</span></a>
             </div>
         </div>
     </header>
@@ -31,7 +22,7 @@ import SearchBar from "./SearchBar.vue";
 
 <style scoped>
 * {
-  font-family: 'NanumBarunGothic' !important;
+    font-family: 'NanumBarunGothic' !important;
 
 }
 
@@ -48,10 +39,35 @@ import SearchBar from "./SearchBar.vue";
     font-size: 35px;
     font-weight: 600;
     text-align: center;
-    color: #000000;
+    color: black;
     text-decoration: none;
-    
+}
 
+[data-bs-theme=dark] .title {
+    color: white;
+}
+
+.sign-up {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+    width: 65.5px !important;
+    height: 37.6px;
+}
+
+#sign-up {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+    width: 65.5px !important;
+    height: 37.6px;
+}
+
+[data-bs-theme=dark] .sign-up {
+    background-color: rgb(54, 56, 59) !important;
+    color: white !important;
 }
 
 * {
