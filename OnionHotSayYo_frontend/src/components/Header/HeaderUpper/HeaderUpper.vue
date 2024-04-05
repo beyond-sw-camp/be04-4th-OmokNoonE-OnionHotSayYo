@@ -1,5 +1,6 @@
 <template>
     <header class="border-bottom lh-1 py-3">
+        <img class="mb-4" src="C:\OnionHotSayYo-frontend\OnionHotSayYo_frontend\image\OnionHotSayYo.png" alt="" width="60" height="50" align="left">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 text-center">
                 <a class="title" href="#">OnionHotSayYo</a>
@@ -33,7 +34,7 @@ import SearchBar from "./SearchBar.vue";
 }
 
 .title{
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 600;
     color: #000000;
     text-decoration: none;

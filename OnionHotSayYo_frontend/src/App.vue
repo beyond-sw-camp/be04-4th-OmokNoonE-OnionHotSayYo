@@ -5,10 +5,13 @@ import SectionAll from "./components/Section/SectionAll.vue";
 
 import FooterAll from "./components/Footer/FooterAll.vue";
 
+import Login from "@/components/Login/Login.vue";
+
 </script>
 
 <template>
   <div class="container">
+    <!-- <Login /> -->
     <HeaderAll />
     <SectionAll />
     <FooterAll />
