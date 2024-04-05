@@ -1,8 +1,11 @@
 <template>
     <header class="border-bottom lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4 text-center">
-                <a class="title" href="#">OnionHotSayYo</a>
+            <div class="col-4">
+                <a class="title" href="https://www.naver.com">
+                    <img class="title-image" src="@/assets/image/OnionHotSayYo.png" width="60" height="50">
+                    <span class="text">OnionHotSayYo</span>
+                </a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <!-- <a class="link-secondary" href="#" aria-label="Search">
@@ -14,7 +17,7 @@
                         <path d="M21 21l-5.2-5.2"></path>
                     </svg>
                 </a> -->
-                <SearchBar/>
+                <SearchBar />
                 <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
             </div>
         </div>
@@ -37,15 +40,26 @@ import SearchBar from "./SearchBar.vue";
     --bs-gutter-y: 0;
 }
 
-.title{
-    font-size: 30px;
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
     font-weight: 600;
+    text-align: center;
     color: #000000;
     text-decoration: none;
+    
+
 }
 
 * {
     box-sizing: border-box;
+}
+
+.title-image {
+    left: 20px;
 }
 
 .border-bottom {
