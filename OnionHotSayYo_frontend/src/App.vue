@@ -7,15 +7,17 @@ import FooterAll from "./components/Footer/FooterAll.vue";
 
 import Login from "@/components/Login/Login.vue";
 
+import detailUnion from "@/components/Section/post/detail/detailUnion.vue";
 </script>
 
 <template>
   <div class="container">
     <!-- <Login /> -->
     <HeaderAll />
-    <SectionAll />
+    <!-- <SectionAll /> -->
+    <detailUnion />
     <FooterAll />
-  </div>
+    </div>
 </template>
 
 
