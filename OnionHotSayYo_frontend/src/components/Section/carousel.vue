@@ -66,4 +66,9 @@
 
 <style scoped>
 @import url(@/assets/carousel.css);
+
+* {
+  font-family: 'NanumBarunGothic' !important;
+
+}
 </style>

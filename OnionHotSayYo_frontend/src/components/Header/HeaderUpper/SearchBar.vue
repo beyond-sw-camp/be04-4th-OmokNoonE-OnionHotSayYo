@@ -79,6 +79,10 @@
 </script>
 
 <style scoped>
+* {
+  font-family: 'NanumBarunGothic' !important;
+
+}
 @media screen and (max-width: 660px) {
 .view-wrapper{
     margin-right: 10%;

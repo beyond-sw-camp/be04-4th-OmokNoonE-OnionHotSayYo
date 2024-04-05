@@ -15,6 +15,10 @@ import Sample from "@/components/Section/sample.vue";
 </template>
 
 <style scoped>
+* {
+  font-family: 'NanumBarunGothic' !important;
+
+}
 .container {
     max-width: 1000px !important;
 }

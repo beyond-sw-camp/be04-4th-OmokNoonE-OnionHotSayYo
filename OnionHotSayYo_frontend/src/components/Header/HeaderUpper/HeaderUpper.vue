@@ -27,6 +27,11 @@ import SearchBar from "./SearchBar.vue";
 </script>
 
 <style scoped>
+* {
+  font-family: 'NanumBarunGothic' !important;
+
+}
+
 .container {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
