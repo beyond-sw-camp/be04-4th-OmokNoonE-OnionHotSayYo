@@ -25,6 +25,9 @@ dependencies {
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+
+    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
+    implementation 'org.modelmapper:modelmapper:3.1.1'
 }
 
 tasks.named('test') {
