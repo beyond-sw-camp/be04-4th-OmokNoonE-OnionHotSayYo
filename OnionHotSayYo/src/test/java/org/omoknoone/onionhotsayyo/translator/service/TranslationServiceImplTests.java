@@ -7,6 +7,9 @@ import org.omoknoone.onionhotsayyo.translator.dto.TranslationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -18,18 +21,31 @@ class TranslationServiceImplTests {
     @Test
     void testTranslate() {
 
-        String originalText = "Hello, world!";
-        String sourceLang = "EN";
-//        String sourceLang = null;
-        String targetLang = "KO";
+        String originalText1 = "Hello, world!";
+        String sourceLang1 = "EN";
+        String targetLang1 = "KO";
 
-        TranslationDTO translationDTO = new TranslationDTO(sourceLang, targetLang, originalText);
+        String originalText2 = "What's your name?";
+        String sourceLang2 = null;
+        String targetLang2 = "KO";
 
-        TranslationDTO translatedResult = null;
-        translatedResult = translationService.translate(translationDTO);
+        List<TranslationDTO> translationDTOList = new ArrayList<>();
+        TranslationDTO translationDTO1 = new TranslationDTO();
+        translationDTO1.setOriginalText(originalText1);
+        translationDTO1.setSourceLang(sourceLang1);
+        translationDTO1.setTargetLang(targetLang1);
+        translationDTOList.add(translationDTO1);
+
+        TranslationDTO translationDTO2 = new TranslationDTO();
+        translationDTO2.setOriginalText(originalText2);
+        translationDTO2.setSourceLang(sourceLang2);
+        translationDTO2.setTargetLang(targetLang2);
+        translationDTOList.add(translationDTO2);
+
+        List<TranslationDTO> translatedResult  = null;
+        translatedResult = translationService.translate(translationDTOList);
 
         // 테스트 결과 확인
-        // TODO. 테스트 코드 수정해야 함
-//        System.out.println("Translated Text: " + translatedResult);
+        System.out.println("Translated Text: " + translatedResult);
     }
 }

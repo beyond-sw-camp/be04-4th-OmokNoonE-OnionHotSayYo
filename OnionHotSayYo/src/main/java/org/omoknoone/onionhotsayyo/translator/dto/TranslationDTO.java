@@ -9,10 +9,10 @@ public class TranslationDTO {
     public TranslationDTO() {
     }
 
-    public TranslationDTO(String sourceLang, String targetLang, String originalText) {
+    public TranslationDTO(String sourceLang, String targetLang, String translatedText) {
         this.sourceLang = sourceLang;
         this.targetLang = targetLang;
-        this.originalText = originalText;
+        this.translatedText = translatedText;
     }
 
     public TranslationDTO(String sourceLang, String targetLang, String originalText, String translatedText) {

@@ -14,6 +14,9 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class TranslationServiceImpl implements TranslationService {
 
@@ -28,7 +31,7 @@ public class TranslationServiceImpl implements TranslationService {
     }
 
     @Override
-    public TranslationDTO translate(TranslationDTO translationDTO){
+    public List<TranslationDTO> translate(List<TranslationDTO> translationDTOList){
 
         /* API 통신 객체 */
         RestTemplate restTemplate = new RestTemplate();
@@ -41,14 +44,17 @@ public class TranslationServiceImpl implements TranslationService {
         httpHeaders.set("Authorization", auth);
 
         /* body set */
-        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
-        String sourceLang = translationDTO.getSourceLang();
-        String targetLang = translationDTO.getTargetLang();
-        String originalText = translationDTO.getOriginalText();
+        String targetLang = translationDTOList.get(0).getTargetLang();
 
-        body.add("source_lang", sourceLang);
-        body.add("target_lang", targetLang);
-        body.add("text", originalText);
+        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+        for (TranslationDTO translationDTO : translationDTOList) {
+            String sourceLang = translationDTO.getSourceLang();
+            String originalText = translationDTO.getOriginalText();
+
+            body.add("source_lang", sourceLang);
+            body.add("target_lang", targetLang);
+            body.add("text", originalText);
+        }
 
         /* message */
         HttpEntity<?> requestMessage = new HttpEntity<>(body, httpHeaders);
@@ -56,22 +62,26 @@ public class TranslationServiceImpl implements TranslationService {
         /* Request */
         HttpEntity<String> response = restTemplate.postForEntity(BASE_URL + "/translate", requestMessage, String.class);
 
+        System.out.println("[serviceImpl] responseDTO = " + response.getBody());
+
         /* 응답 결과 저장 */
         JsonNode rootNode = null;
-        TranslationDTO responseDTO = null;
+        List<TranslationDTO> responseList = new ArrayList<>();
         try {
             rootNode = objectMapper.readTree(response.getBody());
             JsonNode translationsNode = rootNode.get("translations");
             if(translationsNode.isArray()) {
                 for (JsonNode node : translationsNode) {
-                    responseDTO = new TranslationDTO(sourceLang, targetLang, originalText, node.get("text").asText());
+                    responseList.add(new TranslationDTO(node.get("detected_source_language").asText(),
+                                                        targetLang,
+                                                        node.get("text").asText()));
                 }
             }
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
 
-        return responseDTO;
+        return responseList;
     }
 
 }
