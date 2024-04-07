@@ -28,6 +28,9 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
     implementation 'org.modelmapper:modelmapper:3.1.1'
+
+    // H2 Database 테스트를 위해 사용되는 임시 내부 db
+    testImplementation 'com.h2database:h2'
 }
 
 tasks.named('test') {
