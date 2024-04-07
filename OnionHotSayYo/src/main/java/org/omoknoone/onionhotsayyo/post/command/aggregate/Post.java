@@ -1,6 +1,8 @@
 package org.omoknoone.onionhotsayyo.post.command.aggregate;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -15,9 +17,13 @@ public class Post {
     @Column(name = "posting_id")
     private Integer postingId;
 
+    @NotNull(message = "제목은 필수입니다.")
+    @Size(min = 1, max = 30, message = "제목은 1자 이상, 30자 이하이어야 합니다.")
     @Column(name = "title")
     private String title;
 
+    @NotNull(message = "내용은 필수입니다.")
+    @Size(min = 1, message = "내용은 최소 1자 이상이어야 합니다.")
     @Column(name = "content")
     private String content;
 
@@ -26,23 +32,24 @@ public class Post {
     private LocalDateTime postedDate;
 
     @Column(name = "hits")
-    private int hits;
+    private int hits = 0;   // 초기 조회수는 0으로 설정됨
 
     @UpdateTimestamp
     @Column(name = "last_modified_date")
     private LocalDateTime lastModifiedDate;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @Column(name = "is_deleted")
-    private boolean isDeleted;
+    private boolean isDeleted = false;  // 초기 삭제 상태는 false 삭제 되지 않음으로 설정
 
 //    @ManyToOne
-//    @Column(name = "category_id")
-//    private Category categoryId;
+    @Column(name = "category_id")
+    private String categoryId;
 
 //    @ManyToOne
 //    @JoinColumn(name = "member_id")
-//    private Member memberId;
+    @Column(name = "member_id")
+    private String memberId;
 
     @Column(name = "image")
     private String image;
@@ -51,15 +58,21 @@ public class Post {
     @JoinColumn(name = "location_id")
     private Location location;
 
+    // 조회수 증가
     public void increaseHits() {
         this.hits += 1;
+    }
+
+    public void markAsDeleted() {
+        this.isDeleted = true;
     }
 
     public Post() {
     }
 
-    public Post(int postingId, String title, String content, LocalDateTime postedDate,
-                int hits, LocalDateTime lastModifiedDate, boolean isDeleted, String image, Location location) {
+    public Post(Integer postingId, String title, String content, LocalDateTime postedDate, int hits,
+                LocalDateTime lastModifiedDate, boolean isDeleted,
+                String categoryId, String memberId, String image, Location location) {
         this.postingId = postingId;
         this.title = title;
         this.content = content;
@@ -67,15 +80,17 @@ public class Post {
         this.hits = hits;
         this.lastModifiedDate = lastModifiedDate;
         this.isDeleted = isDeleted;
+        this.categoryId = categoryId;
+        this.memberId = memberId;
         this.image = image;
         this.location = location;
     }
 
-    public int getPostingId() {
+    public Integer getPostingId() {
         return postingId;
     }
 
-    public void setPostingId(int postingId) {
+    public void setPostingId(Integer postingId) {
         this.postingId = postingId;
     }
 
@@ -119,12 +134,28 @@ public class Post {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public boolean getIsDeleted() {
+    public boolean isDeleted() {
         return isDeleted;
     }
 
-    public void setIsDeleted(boolean isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 
     public String getImage() {
@@ -153,6 +184,8 @@ public class Post {
                 ", hits=" + hits +
                 ", lastModifiedDate=" + lastModifiedDate +
                 ", isDeleted=" + isDeleted +
+                ", categoryId='" + categoryId + '\'' +
+                ", memberId='" + memberId + '\'' +
                 ", image='" + image + '\'' +
                 ", location=" + location +
                 '}';
