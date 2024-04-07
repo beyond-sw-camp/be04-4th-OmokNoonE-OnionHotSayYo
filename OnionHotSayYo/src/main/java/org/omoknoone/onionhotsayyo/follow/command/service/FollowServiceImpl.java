@@ -24,10 +24,10 @@ public class FollowServiceImpl implements FollowService {
 	@Override
 	// 사용자가 다른 사용자를 팔로우하는 메소드 followMember
 	public void followMember(FollowDTO followDTO) {
-		// if(!existsByFromMemberIdAndToMemberId(followDTO)) {
+		if(!existsByFromMemberIdAndToMemberId(followDTO)) {
 		Follow follow = modelMapper.map(followDTO, Follow.class);
 		followRepository.save(follow);
-		// }
+		}
 	}
 
 	@Transactional
@@ -56,10 +56,18 @@ public class FollowServiceImpl implements FollowService {
 		return followList.stream().map(follow -> modelMapper.map(followList, FollowDTO.class)).toList();
 	}
 
-	// @Override
-	// public boolean existsByFromMemberIdAndToMemberId(FollowDTO followDTO) {
-	//
-	// 	return false;
-	// }
+	// 팔로우 중인지 확인하는 메소드
+	@Override
+	public boolean existsByFromMemberIdAndToMemberId(FollowDTO followDTO) {
+		List<Follow> followList = followRepository.findAll();
+
+		for (Follow follow : followList) {
+			if(follow.getFromMemberId().equals(followDTO.getFromMemberId()) &&
+				follow.getToMemberId().equals(followDTO.getToMemberId())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
