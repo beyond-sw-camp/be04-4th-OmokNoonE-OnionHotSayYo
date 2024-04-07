@@ -1,4 +1,4 @@
-package org.omoknoone.onionhotsayyo.post.vo;
+package org.omoknoone.onionhotsayyo.post.command.vo;
 
 import org.omoknoone.onionhotsayyo.post.command.aggregate.Location;
 

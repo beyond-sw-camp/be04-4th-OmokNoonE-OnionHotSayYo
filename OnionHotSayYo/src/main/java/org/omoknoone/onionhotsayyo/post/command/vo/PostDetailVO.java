@@ -1,4 +1,4 @@
-package org.omoknoone.onionhotsayyo.post.vo;
+package org.omoknoone.onionhotsayyo.post.command.vo;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
