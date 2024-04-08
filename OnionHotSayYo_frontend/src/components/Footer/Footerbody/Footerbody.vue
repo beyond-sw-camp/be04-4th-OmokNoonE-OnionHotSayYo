@@ -49,6 +49,11 @@
 </script>
 
 <style>
+
+.mb-3{
+    font-weight: bold;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
