@@ -3,12 +3,16 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
     {
         path: '/',
-        alias: ['/main', '/index'],
+        alias: ['/main', '/index', '/home'],
         component: () => import("../views/MainPageView.vue")
     },
     {
         path: '/mypage/:memberid',
         component: () => import("../views/PersonalPageView.vue")
+    },
+    {
+        path: '/list/my/:memberid',
+        component: () => import("../views/PersonalListView.vue")
     },
     {
         path: '/view/:postid',
