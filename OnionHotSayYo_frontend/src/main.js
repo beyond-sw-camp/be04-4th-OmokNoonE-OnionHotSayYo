@@ -13,6 +13,6 @@ import * as BundleMin from "./assets/dist/js/bootstrap.bundle.min.js";
 
 const app = createApp(App);
 app.use(router);
-createApp(App).mount('#app');
+app.mount('#app');
 
 

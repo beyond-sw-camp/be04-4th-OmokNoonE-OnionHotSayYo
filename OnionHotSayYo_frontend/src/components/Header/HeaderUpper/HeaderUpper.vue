@@ -2,9 +2,9 @@
     <header class="border-bottom lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4">
-                <a class="title" href="https://www.naver.com">
+                <a class="title">
                     <img class="title-image" src="@/assets/image/OnionHotSayYo.png" width="60" height="50">
-                    <span class="text">OnionHotSayYo</span>
+                    <span @click="goMainPageMain" class="text">OnionHotSayYo</span>
                 </a>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
@@ -21,6 +21,14 @@
 import SearchBar from "./SearchBar.vue";
 import Profile from "./HeaderProfile.vue";
 import HeaderLogin from "./HeaderLogin.vue";
+
+import { useRouter } from "vue-router";
+    
+    const router = useRouter();
+
+    function goMainPageMain(){
+        router.push(`/`);
+    }
 </script>
 
 <style scoped>
