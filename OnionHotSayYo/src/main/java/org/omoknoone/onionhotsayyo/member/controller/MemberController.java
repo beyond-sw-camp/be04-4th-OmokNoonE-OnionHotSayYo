@@ -62,4 +62,9 @@ public class MemberController {
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    @GetMapping("/health_check")
+    public String healthCheck() {
+        return "Good";
+    }
 }
