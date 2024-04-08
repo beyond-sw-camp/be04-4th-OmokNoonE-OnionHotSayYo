@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 @ToString
 @Entity
 @Table(name = "post")
@@ -47,8 +46,8 @@ public class Post {
     @Column(name = "is_deleted")
     private boolean isDeleted = false;  // 초기 삭제 상태는 false 삭제 되지 않음으로 설정
 
-    @Column(name = "category_Name")
-    private String categoryName;
+    @Column(name = "category_id")
+    private String categoryId;
 
     @Column(name = "member_id")
     private String memberId;

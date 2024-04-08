@@ -1,14 +1,16 @@
 package org.omoknoone.onionhotsayyo.post.command.vo;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.omoknoone.onionhotsayyo.post.command.aggregate.Location;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@ToString
 public class PostDetailVO {
 
     private Integer postingId;
@@ -23,83 +25,4 @@ public class PostDetailVO {
     private String image;
     private String location;
 
-    public PostDetailVO() {
-    }
-
-    public PostDetailVO(Integer postingId, String title, String content,
-                        LocalDateTime postedDate, int hits, LocalDateTime lastModifiedDate,
-                        boolean isDeleted, String categoryId, String memberId, String image, String location) {
-        this.postingId = postingId;
-        this.title = title;
-        this.content = content;
-        this.postedDate = postedDate;
-        this.hits = hits;
-        this.lastModifiedDate = lastModifiedDate;
-        this.isDeleted = isDeleted;
-        this.categoryId = categoryId;
-        this.memberId = memberId;
-        this.image = image;
-        this.location = location;
-    }
-
-    public Integer getPostingId() {
-        return postingId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public LocalDateTime getPostedDate() {
-        return postedDate;
-    }
-
-    public int getHits() {
-        return hits;
-    }
-
-    public LocalDateTime getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public String getMemberId() {
-        return memberId;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    @Override
-    public String toString() {
-        return "PostDetailVO{" +
-                "postingId=" + postingId +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", postedDate=" + postedDate +
-                ", hits=" + hits +
-                ", lastModifiedDate=" + lastModifiedDate +
-                ", isDeleted=" + isDeleted +
-                ", categoryId='" + categoryId + '\'' +
-                ", memberId='" + memberId + '\'' +
-                ", image='" + image + '\'' +
-                ", location=" + location +
-                '}';
-    }
 }
