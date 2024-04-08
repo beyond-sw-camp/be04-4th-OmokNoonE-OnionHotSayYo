@@ -87,6 +87,7 @@
         </svg>
     </div>
     <div class="container">
+        <Carousel/>
         <div class="row">
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
@@ -259,6 +260,7 @@
 </template>
 
 <script setup>
+import Carousel from "./Carousel.vue";
 </script>
 
 <style scoped>

@@ -26,23 +26,25 @@
                 <h2>회원 가입</h2>
                 <p class="lead">OnionHotSayYo 이용을 위한 회원가입 페이지입니다.</p>
             </div>
-            
 
-            <div class="row g-5 row justify-content-center" >
+
+            <div class="row g-5 row justify-content-center">
                 <div class="col-md-7 col-lg-8" style="">
                     <form class="needs-validation" novalidate>
                         <div class="row g-3">
-                          
+
 
                             <div class="col-12">
                                 <label for="id" class="form-label">아이디</label>
-                                <input type="text" class="form-control" id="id" placeholder=" 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.">
+                                <input type="text" class="form-control" id="id"
+                                    placeholder=" 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.">
                                 <div class="invalid-feedback"></div>
                             </div>
 
                             <div class="col-12">
                                 <label for="password" class="form-label">비밀번호</label>
-                                <input type="text" class="form-control" id="password" placeholder="영어 소문자, 숫자, 특수기호 포함 10글자 이상이어야 합니다.">
+                                <input type="text" class="form-control" id="password"
+                                    placeholder="영어 소문자, 숫자, 특수기호 포함 10글자 이상이어야 합니다.">
                                 <div class="invalid-feedback"></div>
                             </div>
 
@@ -97,7 +99,7 @@
                 </div>
             </div>
         </main>
-        </div>
+    </div>
 </template>
 
 <script setup>
@@ -159,5 +161,4 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
 }
-
 </style>
