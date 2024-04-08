@@ -260,7 +260,7 @@
 </template>
 
 <script setup>
-import Carousel from "./Carousel.vue";
+import Carousel from "@/components/Section/Main/Carousel.vue";
 </script>
 
 <style scoped>

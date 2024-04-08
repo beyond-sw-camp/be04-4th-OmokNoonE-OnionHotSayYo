@@ -1,22 +1,17 @@
 <script setup>
 import HeaderView from "./views/HeaderView.vue";
 
-import SectionView from "./views/SectionView.vue";
+import { RouterView } from 'vue-router';
 
 import FooterView from "./views/FooterView.vue";
-
-import SignUp from "./views/SignUpView.vue";
-
 
 </script>
 
 <template>
   <div class="container">
-    <!-- <HeaderView />
-    <SectionView />
-    <FooterView /> -->
-
-    <SignUp />
+    <HeaderView />
+    <RouterView/>
+    <FooterView />
     </div>
 </template>
 

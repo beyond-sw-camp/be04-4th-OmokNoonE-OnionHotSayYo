@@ -4,19 +4,23 @@ const routes = [
     {
         path: '/',
         alias: ['/main', '/index'],
-        component: () => import("../views/GuestMainView.vue")
+        component: () => import("../views/MainPageView.vue")
     },
     {
-        path: '/seekingpost',
-        component: () => import("../views/SeekingPostListView.vue")
+        path: '/mypage/:memberid',
+        component: () => import("../views/PersonalPageView.vue")
     },
     {
-        path: '/seekingpost/:id',
-        component: () => import("../views/SeekingPostDetailView.vue")
+        path: '/view/:postid',
+        component: () => import("../views/PostDetailView.vue")
     },
     {
-        path: '/seekingpost/addseekingpost',
-        component: () => import("../views/AddSeekingPostView.vue")
+        path: '/list/:categoryid',
+        component: () => import("../views/PostListView.vue")
+    },
+    {
+        path: '/signup',
+        component: () => import("../views/SignUpView.vue")
     }
     // 추가 라우트를 여기에 정의할 수 있습니다.
 ];
