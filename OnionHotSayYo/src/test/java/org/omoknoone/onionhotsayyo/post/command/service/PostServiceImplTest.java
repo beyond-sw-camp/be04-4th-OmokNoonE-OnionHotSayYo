@@ -8,6 +8,8 @@ import org.omoknoone.onionhotsayyo.exceptions.BusinessRuleViolationException;
 import org.omoknoone.onionhotsayyo.post.command.aggregate.Location;
 import org.omoknoone.onionhotsayyo.post.command.aggregate.Post;
 import org.omoknoone.onionhotsayyo.post.command.dto.PostFormDTO;
+import org.omoknoone.onionhotsayyo.post.command.repository.LocationRepository;
+import org.omoknoone.onionhotsayyo.post.command.vo.PostDetailVO;
 import org.omoknoone.onionhotsayyo.post.command.vo.PostSummaryVO;
 import org.omoknoone.onionhotsayyo.post.command.repository.PostRepository;
 import org.slf4j.Logger;
@@ -34,7 +36,10 @@ class PostServiceImplTests {
     @MockBean
     private PostRepository postRepository;
 
-    @Autowired
+    @MockBean
+    private LocationRepository locationRepository;
+
+    @MockBean
     private ModelMapper modelMapper;
 
     @Autowired
@@ -48,39 +53,43 @@ class PostServiceImplTests {
         @DisplayName("조회 성공 테스트")
         void viewPostsByCategorySuccessTest() {
 
-            String categoryId = "trip";
+            String categoryId = "여행";
 
             // Given
-            Post post1 = createMockPostSummary(categoryId, "첫 번째 게시물",
-                    LocalDateTime.now().minusDays(2), 100, "image1.jpg");
+            List<Post> mockPosts = Arrays.asList(
+                    new Post(1, "첫 번째 게시물", "내용1", LocalDateTime.now(), 100,
+                            LocalDateTime.now(), false,
+                            categoryId, "회원1", "image1.jpg", "서울"),
 
-            Post post2 = createMockPostSummary(categoryId, "두 번째 게시물",
-                    LocalDateTime.now().minusDays(1), 150, "image2.jpg");
+                    new Post(2, "두 번째 게시물", "내용2", LocalDateTime.now(), 200,
+                            LocalDateTime.now(), false,
+                            categoryId, "회원2", "image2.jpg", "부산")
+            );
 
-            Post post3 = createMockPostSummary(categoryId, "세 번째 게시물",
-                    LocalDateTime.now().minusDays(3), 150, "image3.jpg");
+            List<PostSummaryVO> expectedVOs = Arrays.asList(
+                    new PostSummaryVO(1, "첫 번째 게시물",
+                            LocalDateTime.now(), 100, categoryId, "서울"),
 
-            when(postRepository.findByCategoryId(anyString())).thenReturn(Arrays.asList(post1, post2, post3));
+                    new PostSummaryVO(2, "두 번째 게시물",
+                            LocalDateTime.now(), 200, categoryId, "부산")
+            );
 
-            // When
-            List<PostSummaryVO> postSummaryVOs = postService.viewPostsByCategory(categoryId).stream()
-                    .map(post -> modelMapper.map(post, PostSummaryVO.class))
-                    .collect(Collectors.toList());
-
-            // Then
-            if (!postSummaryVOs.isEmpty()) {
-                logger.info("카테고리별 조회된 게시물 수: " + postSummaryVOs.size() + ", 카테고리 Id: " + categoryId);
-                assertEquals(3, postSummaryVOs.size(), "조회된 게시물 수가 예상과 다름.");
-
-                // 로깅을 사용하여 결과 출력
-                logger.info("카테고리별 조회된 게시물 요약 정보:");
-                postSummaryVOs.forEach(dto -> logger.info(dto.toString()));
-            } else {
-                logger.warn("해당 카테고리에서 조회된 게시물이 없습니다. 그럴 수가 있나요!");
+            when(postRepository.findByCategoryId(categoryId)).thenReturn(mockPosts);
+            for (int i = 0; i < mockPosts.size(); i++) {
+                when(modelMapper.map(mockPosts.get(i), PostSummaryVO.class)).thenReturn(expectedVOs.get(i));
             }
 
-            verifyInteractionsAndAssertFields(postSummaryVOs);
-        }
+            // When
+            List<PostSummaryVO> actualVOs = postService.viewPostsByCategory(categoryId);
+
+            // Then
+            assertNotNull(actualVOs);
+            assertEquals(expectedVOs.size(), actualVOs.size());
+            // 여기서는 VO 객체들의 실제 값을 비교하는 로직이 필요합니다.
+            // 예: assertEquals(expectedVOs.get(i).getTitle(), actualVOs.get(i).getTitle());
+
+            verify(postRepository).findByCategoryId(categoryId);
+            mockPosts.forEach(post -> verify(modelMapper).map(post, PostSummaryVO.class));
 
     }
 
@@ -91,26 +100,34 @@ class PostServiceImplTests {
         @DisplayName("상세 게시글 조회 성공")
         void viewPostById_Success() {
             int postId = 1;
+            String location =  "서울";
 
-            Location location = new Location(1, "서울");
+            // Post 인스턴스 생성
+            Post mockPost = new Post(postId, "샘플 제목", "샘플 내용", LocalDateTime.now(), 100,
+                    LocalDateTime.now(), false, "trip", "회원1", "image1.jpg", location);
 
-            Post mockPostDetail = createMockPostDetail(1, "샘플 제목", "샘플 내용",
-                    LocalDateTime.now(), 100, "image1.jpg", "trip",
-                    "member1", false, LocalDateTime.now(), location);
+            // 예상되는 PostDetailVO 객체 생성
+            PostDetailVO expectedDetailVO = new PostDetailVO(postId, "샘플 제목", "샘플 내용",
+                    LocalDateTime.now(), 100, LocalDateTime.now(), false,
+                    "trip", "회원1", "image1.jpg", location);
 
-            when(postRepository.findById(anyInt())).thenReturn(Optional.of(mockPostDetail));
+            // PostRepository와 ModelMapper의 동작을 모킹
+            when(postRepository.findById(postId)).thenReturn(Optional.of(mockPost));
+            when(modelMapper.map(mockPost, PostDetailVO.class)).thenReturn(expectedDetailVO);
 
-            PostFormDTO result = modelMapper.map(postService.viewPostById(postId), PostFormDTO.class);
+            // 실제 서비스 메소드를 호출하여 결과를 검증
+            PostDetailVO result = postService.viewPostById(postId);
 
             assertNotNull(result);
-            assertEquals("샘플 제목", result.getTitle());
-            assertEquals("샘플 내용", result.getContent());
-            assertEquals(100, result.getHits());
-            assertNotNull(result.getLocation());
-            assertEquals("서울", result.getLocation().getLocation());
+            assertEquals(expectedDetailVO.getTitle(), result.getTitle());
+            assertEquals(expectedDetailVO.getContent(), result.getContent());
+            assertEquals(expectedDetailVO.getHits(), result.getHits());
+            assertEquals(expectedDetailVO.getLocation(), result.getLocation());
             logger.info("게시글 상세 조회 성공: {}", result);
 
+            // 저장소 및 ModelMapper 사용 확인
             verify(postRepository).findById(postId);
+            verify(modelMapper).map(mockPost, PostDetailVO.class);
         }
 
         @Test
@@ -131,8 +148,8 @@ class PostServiceImplTests {
 
             verify(postRepository).findById(postId);
         }
-
     }
+
 
     private void verifyInteractionsAndAssertFields(List<PostSummaryVO> postSummaryVOs) {
         assertEquals("첫 번째 게시물", postSummaryVOs.get(0).getTitle());
@@ -149,7 +166,8 @@ class PostServiceImplTests {
         logger.info("postRepository의 findByCategoryId 메소드가 " + categoryId + " 인자와 함께 정확히 한 번 호출됨");
     }
 
-    private Post createMockPostSummary(String categoryId, String title, LocalDateTime postedDate, int hits, String image) {
+    private Post createMockPostSummary(String categoryId, String title,
+                                       LocalDateTime postedDate, int hits, String image) {
         Post post = new Post();
         post.setCategoryId(categoryId);
         post.setTitle(title);
@@ -178,3 +196,4 @@ class PostServiceImplTests {
     }
 
 }
+

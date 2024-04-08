@@ -102,7 +102,7 @@ public class PostServiceImpl implements PostService {
                 .orElseThrow(() ->
                         new BusinessRuleViolationException("게시글 ID " + postId + "은 이미 삭제된 게시글입니다."));
 
-        // 게시물을 논리적으로 삭제 처리
+        // 게시물을 소프트 삭제 처리
         post.setDeleted(true);
         postRepository.save(post);
     }
