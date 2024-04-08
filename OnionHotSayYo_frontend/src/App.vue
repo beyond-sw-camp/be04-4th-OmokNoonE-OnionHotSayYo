@@ -5,6 +5,8 @@ import SectionAll from "./components/Section/SectionAll.vue";
 
 import FooterAll from "./components/Footer/FooterAll.vue";
 
+import signup from "./components/SignUp/signup.vue";
+
 import Login from "@/components/Login/Login.vue";
 
 import detailUnion from "@/components/Section/post/detail/detailUnion.vue";
@@ -12,6 +14,7 @@ import detailUnion from "@/components/Section/post/detail/detailUnion.vue";
 
 <template>
   <div class="container">
+    <signup />
     <!-- <Login /> -->
     <HeaderAll />
     <!-- <SectionAll /> -->
