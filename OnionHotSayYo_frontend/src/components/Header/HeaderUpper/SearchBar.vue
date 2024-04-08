@@ -1,233 +1,74 @@
 <template>
-    <div class="view-wrapper">
-        <div class="view">
-            <div class="overlap-2">
-                <div class="overlap-group-wrapper">
-                    <div class="overlap-group-2">
-                        <!-- <img class="image-2" src="@/assets/img/search.svg" /> -->
-                        
-                        <select class="rectangle-category" v-model="selectedCategory" @click="categoryDataSearch" >
-                            <option v-for="category in categories" :value="category" :key="category.id">{{ category }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="rectangle-2">
-                    <div id="search" class="group-3">
-                        <div class="text-wrapper-5">
-                            <input @input="autoComplete" @blur="resetSearchResults" type="text" placeholder="내용을 입력하세요" v-model.trim="context">
-                            <div class="rectangle-search-result" v-for="searchResult in searchResults" :value="searchResult" :key="searchResult.id">
-                                <div class="text-wrapper-auto" >
-                                    <!-- {{ searchResult }} -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    <form class="d-flex" role="search">
+        <input type="checkbox" class="btn-check" id="btncheck-header" autocomplete="off">
+        <label class="btn btn-outline-primary" for="btncheck-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-translate"
+                viewBox="0 0 16 16">
+                <path
+                    d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
+                <path
+                    d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
+            </svg>
+        </label>
+        <select class="form-select" id="country" required="">
+            <option value="">한국어</option>
+            <option>English</option>
+            <option>中文</option>
+        </select>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-secondary" type="submit">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+        </button>
+    </form>
 </template>
 
 <script setup>
-// import {ref} from 'vue';
-// import axios from 'axios';
-
-// const categories = ref(['카테고리', '모집글', '프로젝트', '공지사항', '게시글']);
-// const selectedCategory = ref('카테고리');
-// const context = ref('');
-// const contentResult = ref('');
-// const searchResults = ref([]);
-
-// async function categoryDataSearch() {
-//     switch (selectedCategory.value) {
-//         case '모집글':
-//             /* JSON SERVER에서는 LIKE 조회가 되지 않아 추후에 서버 연결 후 적용 */
-//             let responsePostDetail = await axios.get(`http://localhost:8080/seekingPostDetail`);
-//             contentResult.value = responsePostDetail.data;
-//             break;
-//         case '프로젝트':
-
-//             break;
-//         case '공지사항':
-//             let responseNotice = await axios.get(`http://localhost:8083/notice`);
-//             contentResult.value = responseNotice.data;
-//             break;
-//         case '게시글':
-//             const responsePost = await axios.get(`http://localhost:8082/post`);
-//             contentResult.value = responsePost.data;
-//             break;
-//         default:
-//             break;
-//     }
-// }
-
-// function autoComplete() {
-//     searchResults.value = [];
-//     for (let i = 0; i < contentResult.value.length; i++) {
-//         if(contentResult.value[i].TITLE.includes(context.value)){
-//             if(searchResults.value.length > 4) break;
-//             searchResults.value.push(contentResult.value[i].TITLE);
-//         }
-//     }
-//     console.log(searchResults.value);
-// }
-
-// function resetSearchResults() {
-//     searchResults.value = [];
-// }
-
 </script>
 
 <style scoped>
 * {
-  font-family: 'NanumBarunGothic' !important;
-
-}
-@media screen and (max-width: 660px) {
-.view-wrapper{
-    margin-right: 10%;
-    margin-left: 5%;
-}
-}
-.view-wrapper {
-    position: inline-flex;
-    align-items: flex-start;
-    width: 298px;
-    height: 37px;
-    top: 10px;
-    left: 810px;
-}
-
-.view {
-    height: 37px;
-}
-
-.overlap-2 {
-    position: relative;
-    width: 320px;
-    height: 37px;
-}
-
-.overlap-group-wrapper {
-    position: absolute;
-    width: 320px;
-    height: 37px;
-    top: 0;
-    left: 0;
-}
-
-.overlap-group-2 {
-    position: relative;
-    height: 37px;
-}
-
-.rectangle-2 {
-    width: 200px;
-    height: 40px;
-    left: 70px;
-    background-color: white;
-    border-radius: 0px 8px 8px 0px;
-    position: absolute;
-    top: 0;
-    border: 1px solid;
+    font-family: 'NanumBarunGothic' !important;
 
 }
 
-.rectangle-category {
-    width: 70px;
-    height: 40px;
-    left: 0;
-    background-color: rgb(180, 180, 180);
-    border-radius: 8px 0px 0px 8px;
-    position: absolute;
-    top: 0;
-    cursor: pointer;
-    text-align: center;
-}
-
-.rectangle-search-result {
-    width: 221px;
-    top: 9px;
-    left: -15px;
-    background-color: #F3F7FB;
-    /* border-radius: 0px 0px 8px 8px; */
-    position: relative;
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
-
-.image-2 {
-    justify-content: flex-end;
-    /* 요소들을 컨테이너의 오른쪽에 정렬 */
-    position: relative;
-    left: 90%;
-    width: 20px;
-    height: 20px;
-    top: 8px;
-    color: black;
-}
-
-.group-3 {
-    position: absolute;
-    width: 173px;
-    height: 18px;
-    top: 10px;
-    left: 15px;
-}
-
-.text-wrapper-5 {
-    position: absolute;
-    width: 150px;
-    top: 0;
-    font-family: "Outfit", Helvetica;
-    font-weight: 400;
-    color: #1e1e1e;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: normal;
-}
-
-.text-wrapper-6 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-family: "Outfit", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: normal;
-    cursor: pointer;
-}
-
-.polygon-2 {
-    position: absolute;
-    width: 7px;
-    height: 4px;
-    top: 9px;
-    left: 68px;
-    cursor: pointer;
-}
-
-.text-wrapper-auto {
-    margin: 0px 10px 5px 10px;
-    color: dimgrey;
-}
-
-ul {
-    position: relative;
-    right: 23px;
-    font-family: "Outfit", Helvetica;
-    font-weight: 400;
-    color: #000000;
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: normal;
-    text-align: left;
+.dropdown {
+    margin-right: 5px;
 }
 
 input {
-    border-width: 0;
+    border-width: 1;
     background-color: white;
+    min-width: 100px;
+    color: gray;
+}
+
+.d-flex {
+    margin-right: 10px;
+    gap: 5px;
+}
+
+.form-select {
+    min-width: 110px;
+}
+
+.form-control {
+    min-width: 200px;
+}
+
+[data-bs-theme=dark] .form-control,
+[data-bs-theme=dark] .form-select,
+[data-bs-theme=dark] .btn {
+    background-color: rgb(54, 56, 59) !important;
+    color: white !important;
+}
+
+
+[data-bs-theme=dark] .search-svg {
+    fill: rgb(255, 255, 255);
 }
 </style>

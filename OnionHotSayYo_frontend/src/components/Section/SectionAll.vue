@@ -5,12 +5,15 @@ import Table from "@/components/Section/table.vue";
 
 import Sample from "@/components/Section/sample.vue";
 
+import PersonalPage from "./PersonalPage/PersonalPage.vue";
+
 </script>
 <template>
     <div class="container">
-        <Banner />
+        <!-- <Banner /> -->
         <!-- <Table /> -->
-        <Sample />
+        <!-- <Sample /> -->
+        <PersonalPage />
     </div>
 </template>
 

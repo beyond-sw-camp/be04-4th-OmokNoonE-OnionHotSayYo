@@ -394,6 +394,10 @@ a {
     border-radius: 15px;
 }
 
+[data-bs-theme=dark] .card-link {
+    color: white !important;
+}
+
 
 
 .col-number {
@@ -409,6 +413,10 @@ a {
 .col-link{
     text-decoration: none;
     color: black;
+}
+
+[data-bs-theme=dark] .col-link{
+    color: white;
 }
 
 .col-date {
