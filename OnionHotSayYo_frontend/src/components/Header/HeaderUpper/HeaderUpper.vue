@@ -10,7 +10,8 @@
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <SearchBar />
                 <!-- <a class="btn btn-sm btn-outline-secondary sign-up" href="#"><span id="sign-up">Sign up</span></a> -->
-                <Profile/>
+                <!-- <Profile/> -->
+                <HeaderLogin/>
             </div>
         </div>
     </header>
@@ -18,7 +19,8 @@
 
 <script setup>
 import SearchBar from "./SearchBar.vue";
-import Profile from "./HeaderProfile.vue"
+import Profile from "./HeaderProfile.vue";
+import HeaderLogin from "./HeaderLogin.vue";
 </script>
 
 <style scoped>
