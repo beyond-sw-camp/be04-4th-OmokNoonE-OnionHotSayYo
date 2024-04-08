@@ -28,13 +28,56 @@
             </div>
         </div>
         <div class="report">
-            <button @click="commentPost" class="btn_comment">신고하기</button>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">신고하기</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">신고하기</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">신고 제목</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">신고 내용:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-primary">제출</button>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
     </div>
     <div class="comment">
         <span class="text">댓글</span>
         <hr>
         <p>{{ message }}</p>
+        <div class="comment-list">
+            <div class="comment-item">
+              <div class="comment-content">
+                <span class="nickname">이순신</span>
+                <span class="timestamp">2 hours ago</span>
+                <p class="content">좋은 정보 공유 감사합니다!!</p>
+              </div>
+              <div class="comment-actions">
+                <button @click="likePost" class="btn-like"><i class="fas fa-thumbs-up"></i></button>
+                  <button @click="dislikePost" class="btn-dislike"><i class="fas fa-thumbs-down"></i></button>
+                  <button class="btn-report">
+                    <i class="fas fa-exclamation-triangle" style="color: red;"></i>
+                  </button>
+              </div>
+            </div>
+            </div>
         <br>
         <br>
         <br>
@@ -56,6 +99,7 @@
 </template>
 
 <script setup>
+import '@fortawesome/fontawesome-free/css/all.css';
 import { ref } from 'vue';
 
 const message = ref('');
@@ -72,6 +116,84 @@ function dislikePost() {
 </script>
 
 <style scoped>
+
+.comment {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .comment-input textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+  }
+  
+  .comment-input .btn-submit {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .comment-list .comment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .comment-content {
+    flex: 1;
+  }
+  
+  .nickname {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .timestamp {
+    color: #777;
+    font-size: 0.8rem;
+  }
+  
+  .content {
+    margin-top: 5px;
+  }
+  
+  .comment-actions {
+    display: flex;
+  }
+  
+  .comment-actions button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-report {
+    background-color: #ffd4d4;
+    border: 2px solid red; /* 2px 두께의 빨간색 테두리 추가 */
+    border-radius: 5px; /* 테두리의 모서리를 둥글게 만듦 */
+    padding: 5px 10px; 
+  }
+
+  .btn-like{
+    background-color: #007bff;
+  }
+
+  .btn-dislike{
+
+  }
+ 
+
 .container {
     display: flex;
     justify-content: center;

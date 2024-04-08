@@ -3,15 +3,16 @@ import HeaderView from "./views/HeaderView.vue";
 import FooterView from "./views/FooterView.vue";
 
 import { RouterView } from 'vue-router';
-
+import PostDetailView from "./views/PostDetailView.vue";
 
 </script>
 
 <template>
   <div class="container">
-    <HeaderView />
+    <!-- <HeaderView />
     <RouterView/>
-    <FooterView />
+    <FooterView /> -->
+    <PostDetailView />
     </div>
 </template>
 
