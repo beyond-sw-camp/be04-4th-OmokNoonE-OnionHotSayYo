@@ -21,14 +21,14 @@ public class PostDetailVO {
     private String categoryId;
     private String memberId;
     private String image;
-    private Location location;
+    private String location;
 
     public PostDetailVO() {
     }
 
     public PostDetailVO(Integer postingId, String title, String content,
                         LocalDateTime postedDate, int hits, LocalDateTime lastModifiedDate,
-                        boolean isDeleted, String categoryId, String memberId, String image, Location location) {
+                        boolean isDeleted, String categoryId, String memberId, String image, String location) {
         this.postingId = postingId;
         this.title = title;
         this.content = content;
@@ -82,7 +82,7 @@ public class PostDetailVO {
         return image;
     }
 
-    public Location getLocation() {
+    public String getLocation() {
         return location;
     }
 

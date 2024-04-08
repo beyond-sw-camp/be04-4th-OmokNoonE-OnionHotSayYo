@@ -1,0 +1,18 @@
+package org.omoknoone.onionhotsayyo.post.command.aggregate;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@Entity
+@Table(name = "language")
+public class Language {
+
+    @Id
+    @Column(name = "language")
+    private String language;
+}

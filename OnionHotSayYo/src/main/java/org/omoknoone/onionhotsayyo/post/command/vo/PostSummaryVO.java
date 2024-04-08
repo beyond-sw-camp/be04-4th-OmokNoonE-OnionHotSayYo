@@ -12,12 +12,13 @@ public class PostSummaryVO {
     private LocalDateTime postedDate;
     private int hits;
     private String categoryId;
-    private Location location;
+    private String location;
 
     public PostSummaryVO() {
     }
 
-    public PostSummaryVO(int postingId, String title, LocalDateTime postedDate, int hits, String categoryId, Location location) {
+    public PostSummaryVO(int postingId, String title, LocalDateTime postedDate,
+                         int hits, String categoryId, String location) {
         this.postingId = postingId;
         this.title = title;
         this.postedDate = postedDate;
@@ -46,7 +47,7 @@ public class PostSummaryVO {
         return categoryId;
     }
 
-    public Location getLocation() {
+    public String getLocation() {
         return location;
     }
 
