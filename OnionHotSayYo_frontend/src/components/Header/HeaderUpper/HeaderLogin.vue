@@ -2,7 +2,8 @@
     <div>
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight">
-            Sign In
+            <img src="@/assets/image/OnionHotSayYo.png" width="17" height="17">
+            LOGIN
         </button>
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -66,7 +67,7 @@
 }
 
 .btn {
-    background-color: rgb(176, 176, 176);
+    background-color: rgb(234, 234, 234);
     border: 1px solid;
     color: black;
     padding: 6px 10px;
