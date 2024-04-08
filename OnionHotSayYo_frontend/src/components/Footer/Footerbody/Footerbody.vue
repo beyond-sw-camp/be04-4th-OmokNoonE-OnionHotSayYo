@@ -33,12 +33,12 @@
                 <li class="ms-3"><a class="text-body-secondary" href="https://github.com/OmokNoonE">
                     <img src="@/assets/image/github.png"  width="24" height="24">
                 </a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
-                            <use xlink:href="#instagram" />
-                        </svg></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
+                <li class="ms-3"><a class="text-body-secondary" href="/">
+                            <img src="@/assets/image/notion.png" width="24" height="24" />
+                        </a></li>
+                <!-- <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
                             <use xlink:href="#facebook" />
-                        </svg></a></li>
+                        </svg></a></li> -->
             </ul>
         </footer>
     </div>
