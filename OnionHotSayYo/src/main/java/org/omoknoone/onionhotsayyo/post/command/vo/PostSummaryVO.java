@@ -17,7 +17,7 @@ public class PostSummaryVO {
 
     private int postingId;
     private String title;
-    private LocalDateTime postedDate;
+    private String postedDate;
     private int hits;
     private String categoryId;
     private String location;

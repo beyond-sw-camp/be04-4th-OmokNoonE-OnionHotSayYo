@@ -6,8 +6,6 @@ import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "post")
 public class Post {
@@ -29,14 +27,14 @@ public class Post {
 
     @CreationTimestamp
     @Column(name = "posted_date", updatable = false)
-    private LocalDateTime postedDate;
+    private String postedDate;
 
     @Column(name = "hits")
     private int hits = 0;   // 초기 조회수는 0으로 설정됨
 
     @UpdateTimestamp
     @Column(name = "last_modified_date")
-    private LocalDateTime lastModifiedDate;
+    private String lastModifiedDate;
 
     @Column(name = "is_deleted")
     private boolean isDeleted = false;  // 초기 삭제 상태는 false 삭제 되지 않음으로 설정
@@ -66,9 +64,9 @@ public class Post {
     public Post() {
     }
 
-    public Post(Integer postId, String title, String content,
-                LocalDateTime postedDate, int hits, LocalDateTime lastModifiedDate,
-                boolean isDeleted, String categoryId, String memberId, String image, String location) {
+    public Post(Integer postId, String title, String content, String postedDate, int hits,
+                String lastModifiedDate, boolean isDeleted,
+                String categoryId, String memberId, String image, String location) {
         this.postId = postId;
         this.title = title;
         this.content = content;
@@ -80,10 +78,6 @@ public class Post {
         this.memberId = memberId;
         this.image = image;
         this.location = location;
-    }
-
-    public Post(String testTitle) {
-        this.title = testTitle;
     }
 
     public Integer getPostId() {
@@ -98,7 +92,7 @@ public class Post {
         return content;
     }
 
-    public LocalDateTime getPostedDate() {
+    public String getPostedDate() {
         return postedDate;
     }
 
@@ -106,7 +100,7 @@ public class Post {
         return hits;
     }
 
-    public LocalDateTime getLastModifiedDate() {
+    public String getLastModifiedDate() {
         return lastModifiedDate;
     }
 
@@ -133,12 +127,12 @@ public class Post {
     @Override
     public String toString() {
         return "Post{" +
-                "postingId=" + postId +
+                "postId=" + postId +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", postedDate=" + postedDate +
+                ", postedDate='" + postedDate + '\'' +
                 ", hits=" + hits +
-                ", lastModifiedDate=" + lastModifiedDate +
+                ", lastModifiedDate='" + lastModifiedDate + '\'' +
                 ", isDeleted=" + isDeleted +
                 ", categoryId='" + categoryId + '\'' +
                 ", memberId='" + memberId + '\'' +
