@@ -8,10 +8,10 @@ const routes = [
     },
     {
         path: '/mypage/:memberid',
-        component: () => import("../views/PersonalPageView.vue")
+        component: () => import("../views/MyPageView.vue")
     },
     {
-        path: '/list/my/:memberid',
+        path: '/list/:type/:memberid',
         component: () => import("../views/PersonalListView.vue")
     },
     {
@@ -25,6 +25,10 @@ const routes = [
     {
         path: '/signup',
         component: () => import("../views/SignUpView.vue")
+    },
+    {
+        path: '/notfound',
+        component: () => import("../views/NotFound.vue")
     }
     // 추가 라우트를 여기에 정의할 수 있습니다.
 ];
