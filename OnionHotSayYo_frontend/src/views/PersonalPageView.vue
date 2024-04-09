@@ -30,25 +30,11 @@
                             <tr>
                                 <td class="col-number" scope="row">1</td>
                                 <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
                                 </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
-                                </td>
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-x-circle" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                        <path
-                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                    </svg>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-number" scope="row">1</td>
-                                <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
-                                </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
                                 </td>
                                 <td>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -62,25 +48,11 @@
                             <tr>
                                 <td class="col-number" scope="row">1</td>
                                 <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
                                 </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
-                                </td>
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-x-circle" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                        <path
-                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                    </svg>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-number" scope="row">1</td>
-                                <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
-                                </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
                                 </td>
                                 <td>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -94,9 +66,47 @@
                             <tr>
                                 <td class="col-number" scope="row">1</td>
                                 <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
                                 </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
                                 </td>
                                 <td>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -250,7 +260,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col">    
+            <div class="col">
                 <div class="card card-body">
                     <h3 class="category-title">내 팔로워</h3>
                     <a href="#" class="card-link">더보기</a>
@@ -259,25 +269,11 @@
                             <tr>
                                 <td class="col-number" scope="row">1</td>
                                 <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
                                 </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
-                                </td>
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-x-circle" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                        <path
-                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                    </svg>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-number" scope="row">1</td>
-                                <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
-                                </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
                                 </td>
                                 <td>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -291,25 +287,11 @@
                             <tr>
                                 <td class="col-number" scope="row">1</td>
                                 <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
                                 </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
-                                </td>
-                                <td>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-x-circle" viewBox="0 0 16 16">
-                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                        <path
-                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                    </svg>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-number" scope="row">1</td>
-                                <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
-                                </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
                                 </td>
                                 <td>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -323,9 +305,47 @@
                             <tr>
                                 <td class="col-number" scope="row">1</td>
                                 <td class="col">
-                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25" class="rounded-circle">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
                                 </td>
-                                <td class="col-title"><a class="col-link" href="https://www.naver.com">profile-user-name</a>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
                                 </td>
                                 <td>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -517,6 +537,41 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const memberIdProps = defineProps({
+    memberid: String
+});
+
+const memberProps = ref({});
+
+onMounted(async () => {
+    try {
+        const response = await axios.get("http://localhost:8080/mypage/" + memberIdProps['memberid']);
+        // posts.value = response.data;
+        // for (let i = 0; i < posts.value.length; i++) {
+        //     if(posts.value[i].ID == postIdProps['postId']) {
+        //         const memberId = posts.value[i].TITLE;
+        //         const postTechStack = posts.value[i].TECH_STACK;
+        //         const postNickname = posts.value[i].NICKNAME;
+        //         const postLastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
+        //         const postIsSeeking = posts.value[i].IS_SEEKING;
+        //         content.value = posts.value[i].CONTENT;
+        memberProps.value = {
+            memberId: response.data.MEMBER_ID,
+            password: response.data.PASSWORD,
+            nickname: response.data.NICKNAME,
+            profile: response.data.PROFILE,
+            email: response.data.EMAIL,
+            signUpDate: response.data.SIGN_UP_DATE,
+            isWithdraw: response.data.IS_WITHDRAW,
+            nationalityId: response.data.NATIONALITY_ID
+        };
+    } catch (error) {
+        console.error("Error fetching posts:", error);
+    }
+});
 
 </script>
 
