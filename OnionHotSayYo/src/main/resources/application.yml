@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: onion-hot-say-yo
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://192.168.0.138/onionhotsayyo
+    #    username: master
+    #    password: master
+    username: root
+    password: mariadb
+
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    database: mysql
+    properties:
+      hibernate:
+        '[format_sql]': true
+
+token:
+  access-expiration-time: 43200000          # 12H
+  refresh-expiration-time: 604800000        # 7D
+  secret: iW50hkbOkPd92kEi4Z+hdBtNlGoaUwI0Aa9UY+Fb5jZyQK7Sm1dbEIaRauzhHyu6NVOT6bUZwXk3tOhiBuggnA==  # ??? ?
+
+deepl:
+  api-key: 5de79c27-6426-4a36-8c08-f06e9f425d08:fx
+
+
+#logging:
+#  level:
+#    root: debug
