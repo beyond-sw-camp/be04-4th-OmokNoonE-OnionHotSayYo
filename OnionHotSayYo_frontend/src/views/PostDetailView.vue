@@ -93,15 +93,19 @@
     </div>
 
     <div style="display: flex; justify-content: center;">
+
         <button @click="goPostListPage" type="change" id="btn_change" class="btn_change">목록으로</button>
+
     </div>
     <br>
 </template>
 
 <script setup>
+
 import '@fortawesome/fontawesome-free/css/all.css';
 import { ref } from 'vue';
 import { useRouter } from "vue-router";
+
 
 const message = ref('');
 const likeCount = ref(0);
@@ -190,10 +194,9 @@ function dislikePost() {
     background-color: #007bff;
   }
 
-  .btn-disli ke{
+  .btn-dislike{
 
   }
- 
 
 .container {
     display: flex;

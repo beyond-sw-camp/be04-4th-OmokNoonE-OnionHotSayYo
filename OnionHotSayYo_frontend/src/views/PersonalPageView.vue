@@ -1,6 +1,5 @@
 <template>
-    <div class="container card text-left profile-header">
-
+    <div class="container text-left profile-header">
         <div class="row container-fluid">
             <div class="col-sm-4 text-center profile-img-container">
                 <img src="@/assets/image/OmokProfile.png" alt="mdo" width="140" height="140"
@@ -11,14 +10,16 @@
                 <p>
                     user-id-001의 자기소개 글
 
-                    <br>br로 개행처리
-                    <br>p태그로 작성되었음. 최대 글자수는 어떻게 선정할지?
+
+                    <br> br로 개행처리
+                    <br> p태그로 작성되었음. 최대 글자수는 어떻게 선정할지?
 
                     <li>목록 넣어보기?</li>
                     <li>더보기를 넣을지, 페이지네이션을 넣을지?</li>
                 </p>
             </div>
             <a class="btn-profile-edit" href="#">개인정보수정 »</a>
+
             <a class="btn-profile-edit" href="#" style="top: 63px">내 신고내역 »</a>
 
         </div>
@@ -127,6 +128,7 @@
                 </div>
                 <div class="card card-body">
                     <h3 class="category-title">내 북마크</h3>
+                    <h3 class="category-title">북마크 목록</h3>
                     <a href="#" class="card-link">더보기</a>
                     <table class="table table-hover">
                         <tbody class="table-group-divider">
@@ -282,7 +284,10 @@
                             </tr>
                         </tbody>
                     </table>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f3e67cd ([feat] 충돌사항 해결)
                     <div id="pagenation-container">
                         <ul class="pagination">
                             <li class="page-item">
@@ -300,8 +305,11 @@
                             </li>
                         </ul>
                     </div>
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f3e67cd ([feat] 충돌사항 해결)
                 </div>
             </div>
             <div class="col">
@@ -489,7 +497,10 @@
                             </tr>
                         </tbody>
                     </table>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f3e67cd ([feat] 충돌사항 해결)
                     <div id="pagenation-container">
                         <ul class="pagination">
                             <li class="page-item">
@@ -507,7 +518,10 @@
                             </li>
                         </ul>
                     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f3e67cd ([feat] 충돌사항 해결)
                 </div>
                 <div class="card card-body">
                     <h3 class="category-title">내 댓글</h3>
@@ -594,7 +608,10 @@
                             </tr>
                         </tbody>
                     </table>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f3e67cd ([feat] 충돌사항 해결)
                     <div id="pagenation-container">
                         <ul class="pagination">
                             <li class="page-item">
@@ -619,6 +636,41 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const memberIdProps = defineProps({
+    memberid: String
+});
+
+const memberProps = ref({});
+
+onMounted(async () => {
+    try {
+        const response = await axios.get("http://localhost:8080/mypage/" + memberIdProps['memberid']);
+        // posts.value = response.data;
+        // for (let i = 0; i < posts.value.length; i++) {
+        //     if(posts.value[i].ID == postIdProps['postId']) {
+        //         const memberId = posts.value[i].TITLE;
+        //         const postTechStack = posts.value[i].TECH_STACK;
+        //         const postNickname = posts.value[i].NICKNAME;
+        //         const postLastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
+        //         const postIsSeeking = posts.value[i].IS_SEEKING;
+        //         content.value = posts.value[i].CONTENT;
+        memberProps.value = {
+            memberId: response.data.MEMBER_ID,
+            password: response.data.PASSWORD,
+            nickname: response.data.NICKNAME,
+            profile: response.data.PROFILE,
+            email: response.data.EMAIL,
+            signUpDate: response.data.SIGN_UP_DATE,
+            isWithdraw: response.data.IS_WITHDRAW,
+            nationalityId: response.data.NATIONALITY_ID
+        };
+    } catch (error) { 
+        console.error("Error fetching posts:", error);
+    }
+});
 
 </script>
 
@@ -683,7 +735,8 @@
     position: absolute;
     display: block;
     right: 15px;
-    top: 20px;
+
+    top: 23px;
     padding: 2px 8px;
     border: 1px solid #e0e0e0;
     line-height: 22px;
@@ -698,7 +751,7 @@
     justify-content: center;
     margin: 10px;
     gap: 10px;
-    padding: 0px 0px;
+
 }
 
 

@@ -1,10 +1,9 @@
 <script setup>
 import HeaderView from "./views/HeaderView.vue";
-import FooterView from "./views/FooterView.vue";
 
 import { RouterView } from 'vue-router';
-import PostDetailView from "./views/PostDetailView.vue";
-import PostListView from "./views/PostListView.vue";
+
+import FooterView from "./views/FooterView.vue";
 
 </script>
 
