@@ -3,24 +3,19 @@ package org.omoknoone.onionhotsayyo.post.command.aggregate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@ToString
 @Entity
 @Table(name = "post")
 public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "posting_id")
-    private Integer postingId;
+    @Column(name = "post_id")
+    private Integer postId;
 
     @NotNull(message = "제목은 필수입니다.")
     @Size(min = 1, max = 30, message = "제목은 1자 이상, 30자 이하이어야 합니다.")
@@ -63,8 +58,92 @@ public class Post {
         this.hits += 1;
     }
 
+    // 소프트 삭제
     public void markAsDeleted() {
         this.isDeleted = true;
     }
 
+    public Post() {
+    }
+
+    public Post(Integer postId, String title, String content,
+                LocalDateTime postedDate, int hits, LocalDateTime lastModifiedDate,
+                boolean isDeleted, String categoryId, String memberId, String image, String location) {
+        this.postId = postId;
+        this.title = title;
+        this.content = content;
+        this.postedDate = postedDate;
+        this.hits = hits;
+        this.lastModifiedDate = lastModifiedDate;
+        this.isDeleted = isDeleted;
+        this.categoryId = categoryId;
+        this.memberId = memberId;
+        this.image = image;
+        this.location = location;
+    }
+
+    public Post(String testTitle) {
+        this.title = testTitle;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public LocalDateTime getPostedDate() {
+        return postedDate;
+    }
+
+    public int getHits() {
+        return hits;
+    }
+
+    public LocalDateTime getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public String getMemberId() {
+        return memberId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postingId=" + postId +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", postedDate=" + postedDate +
+                ", hits=" + hits +
+                ", lastModifiedDate=" + lastModifiedDate +
+                ", isDeleted=" + isDeleted +
+                ", categoryId='" + categoryId + '\'' +
+                ", memberId='" + memberId + '\'' +
+                ", image='" + image + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
 }
