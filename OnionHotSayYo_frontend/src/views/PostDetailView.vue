@@ -93,7 +93,7 @@
     </div>
 
     <div style="display: flex; justify-content: center;">
-        <button type="change" id="btn_change" class="btn_change">목록으로</button>
+        <button @click="goPostListPage" type="change" id="btn_change" class="btn_change">목록으로</button>
     </div>
     <br>
 </template>
@@ -101,6 +101,7 @@
 <script setup>
 import '@fortawesome/fontawesome-free/css/all.css';
 import { ref } from 'vue';
+import { useRouter } from "vue-router";
 
 const message = ref('');
 const likeCount = ref(0);
@@ -113,16 +114,16 @@ function likePost() {
 function dislikePost() {
     dislikeCount.value++;
 }
+
+    const router = useRouter();
+
+    function goPostListPage(){
+        router.push(`/`);
+    }
 </script>
 
 <style scoped>
 
-.comment {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-  }
-  
   .comment-input textarea {
     width: 100%;
     margin-bottom: 10px;
@@ -189,7 +190,7 @@ function dislikePost() {
     background-color: #007bff;
   }
 
-  .btn-dislike{
+  .btn-disli ke{
 
   }
  

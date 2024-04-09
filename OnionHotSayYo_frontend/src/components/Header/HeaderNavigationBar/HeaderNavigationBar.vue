@@ -1,15 +1,15 @@
 <template>
     <div class="nav-scroller py-1 mb-3 border-bottom">
         <nav class="nav nav-underline justify-content-between">
-            <a class="nav-item nav-link link-body-emphasis" href="#">질문글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">정보글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">여행글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">맛집글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">동호회글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">일상글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">직장글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">구인구직글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">중고거래글</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/list/1">질문글</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/list/2">정보글</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/list/3">여행글</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/list/4">맛집글</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/list/5">동호회글</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/list/6">일상글</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/list/7">직장글</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/list/8">구인구직글</a>
+            <a class="nav-item nav-link link-body-emphasis" href="/list/9">중고거래글</a>
         </nav>
     </div>
 </template>

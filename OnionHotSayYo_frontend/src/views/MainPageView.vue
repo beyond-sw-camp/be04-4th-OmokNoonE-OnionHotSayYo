@@ -91,7 +91,7 @@
         <div class="row">
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/1" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
@@ -124,7 +124,7 @@
             </div>
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/2" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
@@ -157,7 +157,7 @@
             </div>
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/3" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
@@ -190,7 +190,7 @@
             </div>
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/4" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
@@ -223,7 +223,7 @@
             </div>
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/5" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
