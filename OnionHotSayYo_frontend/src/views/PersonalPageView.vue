@@ -568,7 +568,8 @@ onMounted(async () => {
             isWithdraw: response.data.IS_WITHDRAW,
             nationalityId: response.data.NATIONALITY_ID
         };
-    } catch (error) {
+
+    } catch (error) { 
         console.error("Error fetching posts:", error);
     }
 });
