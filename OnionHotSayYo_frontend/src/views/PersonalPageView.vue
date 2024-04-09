@@ -1,5 +1,6 @@
 <template>
-    <div class="container text-left profile-header">
+    <div class="container card text-left profile-header">
+
         <div class="row container-fluid">
             <div class="col-sm-4 text-center profile-img-container">
                 <img src="@/assets/image/OmokProfile.png" alt="mdo" width="140" height="140"
@@ -9,20 +10,123 @@
                 <h2 class="fw-normal">user-id-001</h2>
                 <p>
                     user-id-001의 자기소개 글
-                    <br> br로 개행처리
-                    <br> p태그로 작성되었음. 최대 글자수는 어떻게 선정할지?
+
+                    <br>br로 개행처리
+                    <br>p태그로 작성되었음. 최대 글자수는 어떻게 선정할지?
+
                     <li>목록 넣어보기?</li>
                     <li>더보기를 넣을지, 페이지네이션을 넣을지?</li>
                 </p>
             </div>
             <a class="btn-profile-edit" href="#">개인정보수정 »</a>
+            <a class="btn-profile-edit" href="#" style="top: 63px">내 신고내역 »</a>
+
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="container text-center profile-details">
             <div class="col">
                 <div class="card card-body">
-                    <h3 class="category-title">북마크 목록</h3>
+
+                    <h3 class="category-title">내 팔로우</h3>
+                    <a href="#" class="card-link">더보기</a>
+                    <table class="table table-hover">
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card card-body">
+                    <h3 class="category-title">내 북마크</h3>
                     <a href="#" class="card-link">더보기</a>
                     <table class="table table-hover">
                         <tbody class="table-group-divider">
@@ -106,6 +210,7 @@
                             </tr>
                         </tbody>
                     </table>
+
                     <div id="pagenation-container">
                         <ul class="pagination">
                             <li class="page-item">
@@ -123,6 +228,7 @@
                             </li>
                         </ul>
                     </div>
+
                 </div>
                 <div class="card card-body">
                     <h3 class="category-title">내 작성글</h3>
@@ -176,6 +282,7 @@
                             </tr>
                         </tbody>
                     </table>
+
                     <div id="pagenation-container">
                         <ul class="pagination">
                             <li class="page-item">
@@ -193,11 +300,112 @@
                             </li>
                         </ul>
                     </div>
+
+
                 </div>
             </div>
             <div class="col">
                 <div class="card card-body">
-                    <h3 class="category-title">좋아요 목록</h3>
+
+                    <h3 class="category-title">내 팔로워</h3>
+                    <a href="#" class="card-link">더보기</a>
+                    <table class="table table-hover">
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-number" scope="row">1</td>
+                                <td class="col">
+                                    <img src="@/assets/image/OmokProfile.png" width="25" height="25"
+                                        class="rounded-circle">
+                                </td>
+                                <td class="col-title"><a class="col-link"
+                                        href="https://www.naver.com">profile-user-name</a>
+                                </td>
+                                <td>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                        <path
+                                            d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                    </svg>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card card-body">
+                    <h3 class="category-title">내 좋아요</h3>
                     <a href="#" class="card-link">더보기</a>
                     <table class="table table-hover">
                         <tbody class="table-group-divider">
@@ -281,6 +489,7 @@
                             </tr>
                         </tbody>
                     </table>
+
                     <div id="pagenation-container">
                         <ul class="pagination">
                             <li class="page-item">
@@ -298,6 +507,7 @@
                             </li>
                         </ul>
                     </div>
+
                 </div>
                 <div class="card card-body">
                     <h3 class="category-title">내 댓글</h3>
@@ -384,6 +594,7 @@
                             </tr>
                         </tbody>
                     </table>
+
                     <div id="pagenation-container">
                         <ul class="pagination">
                             <li class="page-item">
@@ -472,7 +683,7 @@
     position: absolute;
     display: block;
     right: 15px;
-    top: 23px;
+    top: 20px;
     padding: 2px 8px;
     border: 1px solid #e0e0e0;
     line-height: 22px;
@@ -487,6 +698,7 @@
     justify-content: center;
     margin: 10px;
     gap: 10px;
+    padding: 0px 0px;
 }
 
 
