@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!loadingState" class="loading-container">
+    <div class="loading-container">
         <div class="spinner-grow" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
@@ -13,13 +13,13 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+// import { ref, watch } from 'vue';
 
-const loadingState = defineProps({
-    loadingState: Boolean
-});
+// const loadingState = defineProps({
+//     loadingState: Boolean
+// });
 
-watch(loadingState);
+// watch(loadingState); 
 </script>
 
 <style scoped>
