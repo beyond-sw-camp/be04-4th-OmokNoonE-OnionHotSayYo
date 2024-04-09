@@ -1,7 +1,7 @@
 package org.omoknoone.onionhotsayyo.translator.service;
 
 import org.junit.jupiter.api.Test;
-import org.omoknoone.onionhotsayyo.translator.dto.TranslateTextDTO;
+import org.omoknoone.onionhotsayyo.translator.dto.TranslationDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,51 +17,66 @@ class TranslationServiceImplTests {
     @Test
     void testTranslate() {
 
-        int postingId1 = 1;
-        String originalText1 = "Hello, world!";
-        String targetLang1 = "KO";
+        String targetLang = "KO";
 
-        int postingId2 = 2;
-        String originalText2 = "What's your name?";
+        int postId1 = 1;
+        String originalTitle1 = "greeting";
+        String originalContent1 = "Hello, world!";
 
-        int postingId3 = 3;
-        String originalText3 = "私は開発者です";
+        int postId2 = 2;
+        String originalTitle2 = "name";
+        String originalContent2 = "What's your name?";
 
-        int postingId4 = 4;
-        String originalText4 = "Je suis développeur";
+        int postId3 = 3;
+        String originalTitle3 = "自己紹介";
+        String originalContent3 = "私は開発者です";
 
-        int postingId5 = 5;
-        String originalText5 = "What are you having for lunch?";
+        int postId4 = 4;
+        String originalTitle4 = "présentation";
+        String originalContent4 = "Je suis développeur";
 
-        List<TranslateTextDTO> translateTextDTOList = new ArrayList<>();
-        TranslateTextDTO translateTextDTO1 = new TranslateTextDTO();
-        translateTextDTO1.setPostingId(postingId1);
-        translateTextDTO1.setOriginalText(originalText1);
-        translateTextDTO1.setTargetLang(targetLang1);
-        translateTextDTOList.add(translateTextDTO1);
+        int postId5 = 5;
+        String originalTitle5 = "lunch menu";
+        String originalContent5 = "What are you having for lunch?";
 
-        TranslateTextDTO translateTextDTO2 = new TranslateTextDTO();
-        translateTextDTO2.setPostingId(postingId2);
-        translateTextDTO2.setOriginalText(originalText2);
-        translateTextDTOList.add(translateTextDTO2);
+        List<TranslationDTO> translationDTOList = new ArrayList<>();
+        TranslationDTO translationDTO1 = new TranslationDTO();
+        translationDTO1.setPostId(postId1);
+        translationDTO1.setLanguage(targetLang);
+        translationDTO1.setTitle(originalTitle1);
+        translationDTO1.setContent(originalContent1);
+        translationDTOList.add(translationDTO1);
 
-        TranslateTextDTO translateTextDTO3 = new TranslateTextDTO();
-        translateTextDTO3.setPostingId(postingId3);
-        translateTextDTO3.setOriginalText(originalText3);
-        translateTextDTOList.add(translateTextDTO3);
+        TranslationDTO translationDTO2 = new TranslationDTO();
+        translationDTO2.setPostId(postId2);
+        translationDTO2.setLanguage(targetLang);
+        translationDTO2.setTitle(originalTitle2);
+        translationDTO2.setContent(originalContent2);
+        translationDTOList.add(translationDTO2);
 
-        TranslateTextDTO translateTextDTO4 = new TranslateTextDTO();
-        translateTextDTO4.setPostingId(postingId4);
-        translateTextDTO4.setOriginalText(originalText4);
-        translateTextDTOList.add(translateTextDTO4);
+        TranslationDTO translationDTO3 = new TranslationDTO();
+        translationDTO3.setPostId(postId3);
+        translationDTO3.setLanguage(targetLang);
+        translationDTO3.setTitle(originalTitle3);
+        translationDTO3.setContent(originalContent3);
+        translationDTOList.add(translationDTO3);
 
-        TranslateTextDTO translateTextDTO5 = new TranslateTextDTO();
-        translateTextDTO5.setPostingId(postingId5);
-        translateTextDTO5.setOriginalText(originalText5);
-        translateTextDTOList.add(translateTextDTO5);
+        TranslationDTO translationDTO4 = new TranslationDTO();
+        translationDTO4.setPostId(postId4);
+        translationDTO4.setLanguage(targetLang);
+        translationDTO4.setTitle(originalTitle4);
+        translationDTO4.setContent(originalContent4);
+        translationDTOList.add(translationDTO4);
 
-        List<TranslateTextDTO> translatedResult  = null;
-        translatedResult = translationService.translate(translateTextDTOList);
+        TranslationDTO translationDTO5 = new TranslationDTO();
+        translationDTO5.setPostId(postId5);
+        translationDTO5.setLanguage(targetLang);
+        translationDTO5.setTitle(originalTitle5);
+        translationDTO5.setContent(originalContent5);
+        translationDTOList.add(translationDTO5);
+
+        List<TranslationDTO> translatedResult  = null;
+        translatedResult = translationService.translate(translationDTOList);
 
         // 테스트 결과 확인
         System.out.println("Translated Text: " + translatedResult);

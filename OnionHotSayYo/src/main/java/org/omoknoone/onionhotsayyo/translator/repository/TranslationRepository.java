@@ -12,7 +12,7 @@ public interface TranslationRepository extends JpaRepository<Translation, String
         select a
         from Translation a
         where a.language = :targetLang
-        and a.postingId in :excludePostIds
+        and a.postId in :excludePostIds
     """)
-    List<Translation> findAllByPostingIdAndLanguage(List<Integer> excludePostIds, String targetLang);
+    List<Translation> findAllByPostIdAndLanguage(List<Integer> excludePostIds, String targetLang);
 }

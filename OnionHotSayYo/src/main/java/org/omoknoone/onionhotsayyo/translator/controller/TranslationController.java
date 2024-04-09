@@ -1,7 +1,7 @@
 package org.omoknoone.onionhotsayyo.translator.controller;
 
 import org.omoknoone.onionhotsayyo.responseEntity.ResponseMessage;
-import org.omoknoone.onionhotsayyo.translator.dto.TranslateTextDTO;
+import org.omoknoone.onionhotsayyo.translator.dto.TranslationDTO;
 import org.omoknoone.onionhotsayyo.translator.service.TranslationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -27,13 +27,15 @@ public class TranslationController {
 
     /* 번역 요청 */
     @PostMapping("/translate")
-    public ResponseEntity<ResponseMessage> translateText(@RequestBody List<TranslateTextDTO> translateTextDTOList) {
+    public ResponseEntity<ResponseMessage> translateText(@RequestBody List<TranslationDTO> translationDTOList) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
 
+        List<TranslationDTO> translatedDTO = translationService.translate(translationDTOList);
+
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("result", translationService.translate(translateTextDTOList));
+        responseMap.put("result", translatedDTO);
 
         return ResponseEntity
                 .ok()

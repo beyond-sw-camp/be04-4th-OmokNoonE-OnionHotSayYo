@@ -1,11 +1,14 @@
 package org.omoknoone.onionhotsayyo.translator.aggregate;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @Table(name = "translation")
-@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter @Setter
+@ToString @EqualsAndHashCode
 public class Translation {
 
     @Id
@@ -13,11 +16,17 @@ public class Translation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int translationId;
     @Column
-    private String content;
+    private int postId;
     @Column
     private String title;
     @Column
-    private String language;
+    private String content;
     @Column
-    private int postingId;
+    private String language;
+
+    public Translation(int postId, String content, String language) {
+        this.postId = postId;
+        this.content = content;
+        this.language = language;
+    }
 }
