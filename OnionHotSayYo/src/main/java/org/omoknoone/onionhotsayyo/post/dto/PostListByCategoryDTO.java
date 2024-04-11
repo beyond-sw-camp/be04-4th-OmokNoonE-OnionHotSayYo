@@ -1,4 +1,4 @@
-package org.omoknoone.onionhotsayyo.post.command.dto;
+package org.omoknoone.onionhotsayyo.post.dto;
 
 import lombok.*;
 
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @ToString
 public class PostListByCategoryDTO {
 
-    private String categoryName;
+    private String categoryId;
     private String title;
     private LocalDateTime postedDate;
     private int hits;

@@ -1,4 +1,4 @@
-package org.omoknoone.onionhotsayyo.post.command.vo;
+package org.omoknoone.onionhotsayyo.post.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,13 +7,14 @@ import lombok.ToString;
 
 import java.time.LocalDateTime;
 
+// 게시물 작성, 수정 시 응답
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @ToString
-public class PostDetailVO {
+public class ResponsePostDetail {
 
-    private Integer postingId;
+    private Integer postId;
     private String title;
     private String content;
     private LocalDateTime postedDate;

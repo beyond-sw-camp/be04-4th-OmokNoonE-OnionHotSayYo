@@ -1,4 +1,4 @@
-package org.omoknoone.onionhotsayyo.post.command.aggregate;
+package org.omoknoone.onionhotsayyo.post.aggregate;
 
 import jakarta.persistence.*;
 import lombok.*;

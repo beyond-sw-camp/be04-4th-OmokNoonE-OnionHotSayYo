@@ -1,4 +1,4 @@
-package org.omoknoone.onionhotsayyo.post.command.aggregate;
+package org.omoknoone.onionhotsayyo.post.aggregate;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -56,7 +56,7 @@ public class Post {
     @Column(name = "image")
     private String image;
 
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "location")
     private String location;
 
     // 조회수 증가
