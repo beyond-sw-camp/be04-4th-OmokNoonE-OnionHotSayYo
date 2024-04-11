@@ -1,7 +1,7 @@
 <template>
     <div class="section">
         <PostListHeader />
-        <PostListBody :posts="posts"/>
+        <PostListBody :posts="posts" :categoryId="categoryId"/>
     </div>
     </template>
     
@@ -10,8 +10,11 @@
     import PostListBody from '@/components/Section/Post/List/PostListBody.vue'
 
     import { ref, onMounted } from 'vue';
+    import { useRoute } from 'vue-router';
     import axios from 'axios';
     
+    const categoryId = useRoute().params.categoryid;
+
     const posts = ref([]);
     const loadingstate = ref(true);
 

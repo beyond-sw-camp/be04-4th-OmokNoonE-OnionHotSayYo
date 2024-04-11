@@ -1,15 +1,15 @@
 <template>
     <div class="nav-scroller py-1 mb-3 border-bottom">
         <nav class="nav nav-underline justify-content-between">
-            <div @click="questionPost" class="question-post">질문글</div>
-            <div @click="informationPost" class="information-post">정보글</div>
-            <div @click="tripPost" class="trip-post">여행글</div>
-            <div @click="restaurantPost" class="restaurant-post">맛집글</div>
-            <div @click="hobbyPost" class="hobby-post">동호회글</div>
-            <div @click="lifePost" class="life-post">일상글</div>
-            <div @click="companyPost" class="company-post">직장글</div>
-            <div @click="recruitmentPost" class="recruitment-post">구인구직글</div>
-            <div @click="secondhandtradingPost" class="secondhandtrading-post">중고거래글</div>
+            <div @click="questionPost" class="question-post" style="cursor: pointer;">질문글</div>
+            <div @click="informationPost" class="information-post" style="cursor: pointer;">정보글</div>
+            <div @click="tripPost" class="trip-post" style="cursor: pointer;">여행글</div>
+            <div @click="restaurantPost" class="restaurant-post" style="cursor: pointer;">맛집글</div>
+            <div @click="hobbyPost" class="hobby-post" style="cursor: pointer;">동호회글</div>
+            <div @click="lifePost" class="life-post" style="cursor: pointer;">일상글</div>
+            <div @click="companyPost" class="company-post" style="cursor: pointer;">직장글</div>
+            <div @click="recruitmentPost" class="recruitment-post" style="cursor: pointer;">구인구직글</div>
+            <div @click="secondhandtradingPost" class="secondhandtrading-post" style="cursor: pointer;">중고거래글</div>
         </nav>
     </div>
 </template>
@@ -62,10 +62,11 @@
     z-index: 2;
     height: 2.75rem;
     overflow-y: hidden;
+    margin-top: 10px;
 }
 
 .nav {
-    margin: 0% 10%;
+    margin: 2% 10%;
 }
 
 .py-1 {
@@ -103,5 +104,6 @@
     /* width: fit-content; */
     /* margin: 2px 2px; */
     font-weight: 600;
+    cursor: pointer;
 }
 </style>

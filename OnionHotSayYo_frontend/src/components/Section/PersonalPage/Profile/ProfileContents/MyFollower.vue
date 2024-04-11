@@ -44,7 +44,7 @@ const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8081/members");
+        const response = await axios.get("http://localhost:8080/members");
         loadingState.value = false;
         members.value = response.data;
         for (let i = 0; i < members.value.length; i++) {

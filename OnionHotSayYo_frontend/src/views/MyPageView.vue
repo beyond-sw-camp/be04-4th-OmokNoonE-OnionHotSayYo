@@ -9,7 +9,7 @@
 
 <script setup>
 import { provide, ref, readonly, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 import Loading from '@/components/Section/Loading/Loading.vue';
 import ProfileHeader from '@/components/Section/PersonalPage/Profile/ProfileHeader.vue';
@@ -23,11 +23,17 @@ const memberProps = ref({});
 
 const loadingState = ref(true);
 
+const router = useRouter();
+
+router.afterEach(() => {
+  window.location.reload();
+});
+
 provide('memberId', routeMemberId);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8081/members");
+        const response = await axios.get("http://localhost:8080/members");
         // const response = await axios.get(`http://localhost:8081/mypage?member_id=${routeMemberId}`);
         loadingState.value = false;
         members.value = response.data;

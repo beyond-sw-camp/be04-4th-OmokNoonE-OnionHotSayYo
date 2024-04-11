@@ -36,7 +36,7 @@ const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8080/post?_start=1&_limit=5");
+        const response = await axios.get("http://localhost:8081/post?_start=1&_limit=5");
         loadingState.value = false;
         posts.value = response.data;
         for (let i = 0; i < posts.value.length; i++) {

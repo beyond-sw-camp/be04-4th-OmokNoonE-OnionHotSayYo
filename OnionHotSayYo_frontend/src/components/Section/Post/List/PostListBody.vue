@@ -1,51 +1,74 @@
 <template>
     <div class="list-container">
         <div class="list-header">
-          <h5 id="category-name">카테고리 이름</h5>
-          <button type="button" class="btn btn-light" @click="goToWrite">글 작성</button>
+            <h5 id="category-name">{{ categoryName }}</h5>
+            <button type="button" class="btn btn-light" @click="goToWrite">글 작성</button>
         </div>
         <div id="table-container">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th class="POSTING_ID" scope="col">번호</th>
-                <th class="TITLE" scope="col">제목</th>
-                <th class="MEMBER_ID" scope="col">글쓴이</th>
-                <th class="HITS" scope="col">조회</th>
-                <th class="LANGUAGE" scope="col">좋아요</th>
-                <th class="LOCATION_ID" scope="col">싫어요</th>
-                <th class="LAST_MODIFIED_DATE" scope="col">날짜</th>
-              </tr>
-            </thead>
-            <tbody class="table-group-divider" v-if="props.posts">
-              <tr v-for="post in pagePost" :key="posts.CATEGORY_ID">
-                <td class="POSTING_ID">{{ post.POSTING_ID }}</td>
-                <td class="TITLE" @click="goDetailPage(post.POSTING_ID)">{{ post.TITLE }}</td>
-                <td class="MEMBER_ID">{{ post.MEMBER_ID }}</td>
-                <td class="HITS">{{ post.HITS }}</td>
-                <td class="LANGUAGE">{{ post.LANGUAGE }}</td>
-                <td class="LOCATION_ID">{{ post.LOCATION_ID }}</td>
-                <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE }}</td>
-              </tr>
-            </tbody>
-          </table>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th class="POSTING_ID" scope="col">번호</th>
+                        <th class="TITLE" scope="col">제목</th>
+                        <th class="MEMBER_ID" scope="col">글쓴이</th>
+                        <th class="HITS" scope="col">조회</th>
+                        <th class="LANGUAGE" scope="col">좋아요</th>
+                        <th class="LOCATION_ID" scope="col">싫어요</th>
+                        <th class="LAST_MODIFIED_DATE" scope="col">날짜</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider" v-if="props.posts">
+                    <tr v-for="post in pagePost" :key="posts.CATEGORY_ID">
+                        <td class="POSTING_ID">{{ post.POSTING_ID }}</td>
+                        <td class="TITLE" @click="goDetailPage(post.POSTING_ID)">{{ post.TITLE }}</td>
+                        <td class="MEMBER_ID">{{ post.MEMBER_ID }}</td>
+                        <td class="HITS">{{ post.HITS }}</td>
+                        <td class="LANGUAGE">{{ post.LANGUAGE }}</td>
+                        <td class="LOCATION_ID">{{ post.LOCATION_ID }}</td>
+                        <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-      </div>
+    </div>
 </template>
 
 <script setup>
-    import { ref, watch } from 'vue';
-    import {useRouter } from 'vue-router';
-    const router = useRouter();
+import { ref, watch, defineProps, computed } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
-    const props = defineProps({
-        posts: [{}]
-    })
-    console.log(props.posts);
+const props = defineProps({
+    posts: [{}],
+    categoryId: String
+})
 
-    const pagePost = ref([]);
-    const index = ref(0);
-    const next = ref(10);
+const categoryName = computed(() => {
+    if (props.categoryId === '1') {
+        return '질문글';
+    } else if (props.categoryId === '2') {
+        return '정보글';
+    } else if (props.categoryId === '3') {
+        return '여행글';
+    } else if (props.categoryId === '4') {
+        return '맛집글';
+    } else if (props.categoryId === '5') {
+        return '동호회글';
+    } else if (props.categoryId === '6') {
+        return '일상글';
+    } else if (props.categoryId === '7') {
+        return '직장글';
+    } else if (props.categoryId === '8') {
+        return '구인구직글';
+    } else {
+        return '중고거래글';
+    }
+});
+console.log(props.posts);
+
+const pagePost = ref([]);
+const index = ref(0);
+const next = ref(10);
 
 watch(props, (newValue, oldValue) => {
     console.log("총 모집글 수:", props.posts.length);
@@ -78,9 +101,14 @@ async function updatePagePost(index, next) {
     pagePost.value = props.posts.slice(index, next);
 }
 
-function goDetailPage(postId){
+function goDetailPage(postId) {
     router.push(`/view/${postId}`)
 }
+
+router.afterEach(() => {
+  window.location.reload();
+});
+
 
 </script>
 
@@ -123,7 +151,7 @@ function goDetailPage(postId){
     margin-top: 40px;
 }
 
-.list-header{
+.list-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,7 +159,7 @@ function goDetailPage(postId){
     border-bottom: 1px solid #ccc;
 }
 
-.btn-light{
+.btn-light {
     border: 1px solid #ccc;
     margin-right: 10px;
 }

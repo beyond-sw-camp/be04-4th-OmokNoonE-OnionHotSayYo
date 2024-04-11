@@ -11,7 +11,7 @@
                         aria-label="Close">
                     </button>
                 </div>
-                <button class="MyPage">MyPage</button>    
+                <button class="MyPage" @click="goMyPage(memberId)">MyPage</button>    
                 <button class="LogOut">Log Out</button>   
                 <hr>
                 <span class="Notification">Notification</span>
@@ -46,7 +46,15 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
+
+const memberId = 'mem2';
+
+function goMyPage(memberId){
+  router.push(`/mypage/${memberId}`);
+}
 </script>
 
 <style scoped>
