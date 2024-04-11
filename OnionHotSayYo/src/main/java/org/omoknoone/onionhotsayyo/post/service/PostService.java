@@ -1,25 +1,25 @@
-package org.omoknoone.onionhotsayyo.post.command.service;
+package org.omoknoone.onionhotsayyo.post.service;
 
-import org.omoknoone.onionhotsayyo.post.command.dto.MyPostListDTO;
-import org.omoknoone.onionhotsayyo.post.command.dto.PostFormDTO;
-import org.omoknoone.onionhotsayyo.post.command.vo.PostDetailVO;
-import org.omoknoone.onionhotsayyo.post.command.vo.PostSummaryVO;
+import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
+import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
+import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
+import org.omoknoone.onionhotsayyo.post.vo.ResponsePostListByCategory;
 
 import java.util.List;
 
 public interface PostService {
 
     // 카테고리별 게시글 목록 조회
-    List<PostSummaryVO> viewPostsByCategory(String categoryId);
+    List<ResponsePostListByCategory> viewPostsByCategory(String categoryId);
 
     // 게시글 상세 조회
-    PostDetailVO viewPostById(Integer postId);
+    ResponsePostDetail viewPostById(Integer postId);
 
     // 게시글 작성
-    PostFormDTO createPost(PostFormDTO postFormDTO);
+    ResponsePostDetail createPost(WritePostDetailDTO writePostDetailDTO);
 
     // 게시글 수정
-    PostFormDTO modifyPost(Integer postId, PostFormDTO postFormDTO);
+    ResponsePostDetail modifyPost(Integer postId, WritePostDetailDTO writePostDetailDTO);
 
     // 게시글 삭제
     void removePost(Integer postId);
