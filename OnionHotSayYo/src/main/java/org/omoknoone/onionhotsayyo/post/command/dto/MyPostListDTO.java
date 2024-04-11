@@ -1,26 +1,26 @@
-package org.omoknoone.onionhotsayyo.post.command.vo;
+package org.omoknoone.onionhotsayyo.post.command.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
-import org.omoknoone.onionhotsayyo.post.command.aggregate.Location;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-
-// 게시물의 목록에 포함되어야 하는 데이터
-@NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @ToString
-public class PostSummaryVO {
+public class MyPostListDTO implements Serializable {
 
-    private int postingId;
+    private Integer postId;
     private String title;
     private LocalDateTime postedDate;
     private int hits;
     private String categoryId;
     private String location;
 
+    public MyPostListDTO() {
+    }
 }

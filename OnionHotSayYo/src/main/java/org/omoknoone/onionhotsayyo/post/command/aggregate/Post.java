@@ -3,10 +3,20 @@ package org.omoknoone.onionhotsayyo.post.command.aggregate;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
+
 @Entity
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 @Table(name = "post")
 public class Post {
 
@@ -27,28 +37,28 @@ public class Post {
 
     @CreationTimestamp
     @Column(name = "posted_date", updatable = false)
-    private String postedDate;
+    private LocalDateTime postedDate;
 
     @Column(name = "hits")
     private int hits = 0;   // 초기 조회수는 0으로 설정됨
 
     @UpdateTimestamp
     @Column(name = "last_modified_date")
-    private String lastModifiedDate;
+    private LocalDateTime lastModifiedDate;
 
     @Column(name = "is_deleted")
     private boolean isDeleted = false;  // 초기 삭제 상태는 false 삭제 되지 않음으로 설정
 
-    @Column(name = "category_id")
+    @JoinColumn(name = "category_id")
     private String categoryId;
 
-    @Column(name = "member_id")
+    @JoinColumn(name = "member_id")
     private String memberId;
 
     @Column(name = "image")
     private String image;
 
-    @Column(name = "location")
+    @JoinColumn(name = "location_id")
     private String location;
 
     // 조회수 증가
@@ -64,80 +74,4 @@ public class Post {
     public Post() {
     }
 
-    public Post(Integer postId, String title, String content, String postedDate, int hits,
-                String lastModifiedDate, boolean isDeleted,
-                String categoryId, String memberId, String image, String location) {
-        this.postId = postId;
-        this.title = title;
-        this.content = content;
-        this.postedDate = postedDate;
-        this.hits = hits;
-        this.lastModifiedDate = lastModifiedDate;
-        this.isDeleted = isDeleted;
-        this.categoryId = categoryId;
-        this.memberId = memberId;
-        this.image = image;
-        this.location = location;
-    }
-
-    public Integer getPostId() {
-        return postId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getPostedDate() {
-        return postedDate;
-    }
-
-    public int getHits() {
-        return hits;
-    }
-
-    public String getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public String getMemberId() {
-        return memberId;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    @Override
-    public String toString() {
-        return "Post{" +
-                "postId=" + postId +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", postedDate='" + postedDate + '\'' +
-                ", hits=" + hits +
-                ", lastModifiedDate='" + lastModifiedDate + '\'' +
-                ", isDeleted=" + isDeleted +
-                ", categoryId='" + categoryId + '\'' +
-                ", memberId='" + memberId + '\'' +
-                ", image='" + image + '\'' +
-                ", location='" + location + '\'' +
-                '}';
-    }
 }
