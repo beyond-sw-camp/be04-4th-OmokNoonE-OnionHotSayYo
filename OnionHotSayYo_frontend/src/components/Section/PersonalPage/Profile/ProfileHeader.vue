@@ -23,13 +23,38 @@
                         </div>
                         <div class="modal-body">
                             <form>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">신고 제목</label>
-                                    <input type="text" class="form-control" id="recipient-name">
+                                <div class="col-12">
+                                    <label for="password" class="form-label">비밀번호</label>
+                                    <input type="text" class="form-control" id="before_password"
+                                        placeholder="영어 소문자, 숫자, 특수기호 포함 10글자 이상이어야 합니다.">
+                                    <div class="invalid-feedback"></div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">신고 내용:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                <div class="col-12">
+                                    <label for="password" class="form-label">변경 비밀번호</label>
+                                    <input type="text" class="form-control" id="change_password"
+                                        placeholder="영어 소문자, 숫자, 특수기호 포함 10글자 이상이어야 합니다.">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="password" class="form-label">변경 이메일</label>
+                                    <input type="text" class="form-control" id="change_email"
+                                        placeholder="변경할 이메일을 입력하세요.">
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="col-md-5">
+                                    <label for="country" class="form-label">관심항목</label>
+                                    <select class="form-select" id="favorite_category" required>
+                                        <option value="">선택하세요.</option>
+                                        <option>질문글</option>
+                                        <option>정보글</option>
+                                        <option>여행글</option>
+                                        <option>맛집글</option>
+                                        <option>동호회글</option>
+                                        <option>일상글</option>
+                                        <option>직장글</option>
+                                        <option>구인구직글</option>
+                                        <option>중거거래글</option>
+                                    </select>
                                 </div>
                             </form>
                         </div>
@@ -41,14 +66,14 @@
                 </div>
             </div>
 
-            <button class="btn-profile-edit" type="button" data-bs-toggle="modal" data-bs-target="#myReports"
-            style="top: 63px"> 내 신고내역 »</button>
+            <button class="btn-profile-edit" type="button" data-bs-target="#myReports"
+            style="top: 63px"> 나의 신고목록 »</button>
             
-            <div class="modal fade" id="myReports" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="myReports" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">내 신고하기</h1>
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">신고목록</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -69,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="btn-profile-edit" @click="goMyLetter(memberId)" style="top: 95px">쪽지함 »</div>
         </div>
