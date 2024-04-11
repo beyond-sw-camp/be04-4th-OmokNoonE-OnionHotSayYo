@@ -29,6 +29,10 @@ const routes = [
     {
         path: '/notfound',
         component: () => import("../views/NotFound.vue")
+    },
+    {
+        path: '/reportsView',
+        component: () => import("../views/ReportsView.vue")
     }
     // 추가 라우트를 여기에 정의할 수 있습니다.
 ];

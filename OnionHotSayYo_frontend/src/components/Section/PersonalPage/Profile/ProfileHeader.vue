@@ -66,8 +66,7 @@
                 </div>
             </div>
 
-            <button class="btn-profile-edit" type="button" data-bs-target="#myReports"
-            style="top: 63px"> 나의 신고목록 »</button>
+            <div class="btn-profile-edit" @click="goMyReports(memberId)" style="top: 62px">나의 신고목록 »</div>
             
             <!-- <div class="modal fade" id="myReports" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -126,8 +125,14 @@ const router = useRouter();
 
 function goMyLetter(memberId) {
     router.push(`/notfound`);
+    // router.push(`/letters/${memberId}`)
+}
+
+function goMyReports(memberId) {
+    router.push(`/ReportsView`);
     // router.push(`/reports/${memberId}`)
 }
+
 
 </script>
 
