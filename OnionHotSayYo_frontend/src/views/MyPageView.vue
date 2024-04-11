@@ -23,7 +23,7 @@ const memberProps = ref({});
 
 const loadingState = ref(true);
 
-provide( 'memberId', readonly(memberProps.memberId) );
+provide('memberId', routeMemberId);
 
 onMounted(async () => {
     try {
