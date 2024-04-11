@@ -1,87 +1,145 @@
 <template>
-  <!-- frame-wrapper -->
-  <div class="frame-wrapper">
-      <PostDetailUnion />
-  </div>
+    <div class="AddWrap">
+        <form>
+            <tr>
+                <th>제목</th>
+                <td style="padding: 10px;">{{ topProps.PostDetailTopProps.title }}</td>
+                <td style="padding: 10px; text-align: right;"> 작성일자 : {{ topProps.PostDetailTopProps.postedDate }}</td>
+                <td style="padding: 10px; text-align: right;"> 조회수 : {{ topProps.PostDetailTopProps.hits }}</td>
+                <td style="padding: 10px; text-align: right;"> 작성자 : {{ topProps.PostDetailTopProps.memberId }}</td>
+            </tr>
+            <table class="tbAdd">
+                <tr>
+                    <td class="td1" style="height: 500px">
+                        <img :src="topProps.PostDetailTopProps.image" alt="Post Image" style="width: 800px; height: 400px" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ topProps.PostDetailTopProps.content }}</td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
 </template>
 
 <script setup>
-  import PostDetailUnion from '@/components/Section/Post/Detail/PostDetailUnion.vue';
+import { useRouter } from "vue-router";
 
+const router = useRouter();
+
+const topProps = defineProps({
+    PostDetailTopProps: [{}]
+})
 
 </script>
 
 <style scoped>
-
-  .comment-input textarea {
+/* 이미지가 테이블 셀 안에 꽉 차도록 하는 클래스 */
+.full-width {
     width: 100%;
+    height: auto;
+}
+
+/* 테이블 스타일링 */
+.tbAdd {
+    border-collapse: collapse;
+    margin: 0 auto;
+    /* 가운데 정렬을 위해 margin을 auto로 설정 */
+}
+
+.tbAdd th,
+.tbAdd td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: center;
+}
+
+.tbAdd th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.tbAdd td {
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.tbAdd td.txt_cont {
+    height: 300px;
+    vertical-align: top;
+}
+
+
+.comment-input textarea {
+    width: 50%;
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     resize: none;
-  }
-  
-  .comment-input .btn-submit {
+}
+
+.comment-input .btn-submit {
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .comment-list .comment-item {
+}
+
+.comment-list .comment-item {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 15px;
-  }
-  
-  .comment-content {
+}
+
+.comment-content {
     flex: 1;
-  }
-  
-  .nickname {
+}
+
+.nickname {
     font-weight: bold;
     margin-right: 5px;
-  }
-  
-  .timestamp {
+}
+
+.timestamp {
     color: #777;
     font-size: 0.8rem;
-  }
-  
-  .content {
+}
+
+.content {
     margin-top: 5px;
-  }
-  
-  .comment-actions {
+}
+
+.comment-actions {
     display: flex;
-  }
-  
-  .comment-actions button {
+}
+
+.comment-actions button {
     margin-right: 10px;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .btn-report {
+}
+
+.btn-report {
     background-color: #ffd4d4;
-    border: 2px solid red; /* 2px 두께의 빨간색 테두리 추가 */
-    border-radius: 5px; /* 테두리의 모서리를 둥글게 만듦 */
-    padding: 5px 10px; 
-  }
+    border: 2px solid red;
+    /* 2px 두께의 빨간색 테두리 추가 */
+    border-radius: 5px;
+    /* 테두리의 모서리를 둥글게 만듦 */
+    padding: 5px 10px;
+}
 
-  .btn-like{
+.btn-like {
     background-color: #007bff;
-  }
+}
 
-  .btn-dislike{
-
-  }
+.btn-dislike {}
 
 .container {
     display: flex;

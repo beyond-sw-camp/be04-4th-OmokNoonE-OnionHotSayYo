@@ -16,34 +16,31 @@
                 <hr>
                 <span class="Notification">Notification</span>
                 <hr>
-                <div class="card text-center">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                      <span class="text-center">맛집글</span>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="toast-container position-static" autohide="false">
+                  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                      <img src="@/assets/image/github.png" class="rounded me-2" alt="...">
+                      <strong class="me-auto">Bootstrap</strong>
+                      <small class="text-body-secondary">just now</small>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
-                    <div class="card-body">
-                      <h5 class="card-title">신대방삼거리역 맛집 공유합니다!</h5>
-                      <p class="card-text">이순신님이 회원님의 게시물에 좋아요를 눌렀습니다.</p>
-                      <a href="#" class="btn">자세히 보기</a>
-                    </div>
-                    <div class="card-footer text-body-secondary">
-                      2 hours ago
+                    <div class="toast-body">
+                      See? Just like this.
                     </div>
                   </div>
-                  <div class="card text-center">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                      <span class="text-center">구인구직글</span>
-                      <button type="button" class="btn-close"></button>
+                
+                  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" autohide="false">
+                    <div class="toast-header">
+                      <img src="@/assets/image/github.png" class="rounded me-2" alt="...">
+                      <strong class="me-auto">Bootstrap</strong>
+                      <small class="text-body-secondary">2 seconds ago</small>
+                      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
-                    <div class="card-body">
-                      <h5 class="card-title">신대방삼거리역 식당 알바 급구합니다!</h5>
-                      <p class="card-text">유관순님이 회원님의 게시글에 댓글을 남겼습니다.</p>
-                      <a href="#" class="btn">자세히 보기</a>
-                    </div>
-                    <div class="card-footer text-body-secondary">
-                      3 hours ago
+                    <div class="toast-body">
+                      Heads up, toasts will stack automatically
                     </div>
                   </div>
+                </div>
             </div>
     </div>
 </template>

@@ -1,0 +1,189 @@
+<template>
+    <div class="list-container">
+        <div class="list-header">
+          <h5 id="category-name">카테고리 이름</h5>
+          <button type="button" class="btn btn-light" @click="goToWrite">글 작성</button>
+        </div>
+        <div id="table-container">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="POSTING_ID" scope="col">번호</th>
+                <th class="TITLE" scope="col">제목</th>
+                <th class="MEMBER_ID" scope="col">글쓴이</th>
+                <th class="HITS" scope="col">조회</th>
+                <th class="LANGUAGE" scope="col">좋아요</th>
+                <th class="LOCATION_ID" scope="col">싫어요</th>
+                <th class="LAST_MODIFIED_DATE" scope="col">날짜</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider" v-if="props.posts">
+              <tr v-for="post in pagePost" :key="posts.CATEGORY_ID">
+                <td class="POSTING_ID">{{ post.POSTING_ID }}</td>
+                <td class="TITLE" @click="goDetailPage(post.POSTING_ID)">{{ post.TITLE }}</td>
+                <td class="MEMBER_ID">{{ post.MEMBER_ID }}</td>
+                <td class="HITS">{{ post.HITS }}</td>
+                <td class="LANGUAGE">{{ post.LANGUAGE }}</td>
+                <td class="LOCATION_ID">{{ post.LOCATION_ID }}</td>
+                <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+</template>
+
+<script setup>
+    import { ref, watch } from 'vue';
+    import {useRouter } from 'vue-router';
+    const router = useRouter();
+
+    const props = defineProps({
+        posts: [{}]
+    })
+    console.log(props.posts);
+
+    const pagePost = ref([]);
+    const index = ref(0);
+    const next = ref(10);
+
+watch(props, (newValue, oldValue) => {
+    console.log("총 모집글 수:", props.posts.length);
+
+    pagePost.value = props.posts.slice(index.value, next.value);
+    console.log(pagePost.value);
+});
+
+async function goBack() {
+    if (!(index.value <= 0)) {
+        index.value -= 10;
+        next.value -= 10;
+        await updatePagePost(index.value, next.value);
+        console.log("goBack():", index.value, next.value);
+    }
+}
+
+async function nextPage() {
+    const total = props.posts.length;
+    if (!(next.value >= total)) {
+        index.value += 10;
+        next.value += 10;
+        await updatePagePost(index.value, next.value);
+        console.log("nextPage():", index.value, next.value);
+    }
+}
+
+async function updatePagePost(index, next) {
+    console.log("pagePost.value.slice(index, next):", props.posts.slice(index, next));
+    pagePost.value = props.posts.slice(index, next);
+}
+
+function goDetailPage(postId){
+    router.push(`/view/${postId}`)
+}
+
+</script>
+
+<style scoped>
+.tooltip {
+    position: absolute;
+    /* 부모 요소(container)를 기준으로 위치 지정 */
+    bottom: 0;
+    /* 하단에 표시 */
+    left: 50%;
+    /* 가운데 정렬을 위해 왼쪽 여백을 50%로 설정 */
+    transform: translateX(-50%);
+    /* 가운데 정렬 */
+    padding: 5px 10px;
+    /* 내부 여백 설정 */
+    background-color: #333;
+    /* 배경색 지정 */
+    color: #fff;
+    /* 글자색 지정 */
+    border-radius: 5px;
+    /* 테두리를 둥글게 만듦 */
+    display: none;
+    /* 초기에는 툴팁 숨김 */
+}
+
+* {
+    font-family: 'NanumBarunGothic' !important;
+
+}
+
+.d-flex {
+    gap: 10px;
+}
+
+.list-container {
+    display: block;
+    unicode-bidi: isolate;
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+}
+
+.list-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.btn-light{
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+#category-name {
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+#table-container {
+    display: flex;
+    justify-content: center;
+}
+
+#pagenation-container {
+    display: flex;
+    justify-content: center;
+}
+
+.col-number {
+    width: 5%;
+    text-align: center;
+}
+
+.col-title {
+    width: 20%;
+    text-align: center;
+}
+
+.col-writer {
+    width: 10%;
+    text-align: center;
+}
+
+.col-hits {
+    width: 10%;
+    text-align: center;
+}
+
+.col-like {
+    width: 10%;
+    text-align: center;
+}
+
+.col-dislike {
+    width: 10%;
+    text-align: center;
+}
+
+.col-date {
+    width: 15%;
+    text-align: center;
+}
+</style>

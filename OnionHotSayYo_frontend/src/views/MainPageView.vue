@@ -87,7 +87,7 @@
         </svg>
     </div>
     <div class="container">
-        <Carousel/>
+        <Carousel :banners="banners"/>
         <div class="row">
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
@@ -261,6 +261,21 @@
 
 <script setup>
 import Carousel from "@/components/Section/Main/Carousel.vue";
+
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const banners = ref([]);
+
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:8082/bannerImage?_sort=BANNER_ID');
+        banners.value = response.data; // posts 반응형 참조에 데이터 할당
+        console.log(banners.value); // 데이터 확인
+    } catch (error) {
+        console.error("Error fetching posts:", error);
+    }
+});
 </script>
 
 <style scoped>
