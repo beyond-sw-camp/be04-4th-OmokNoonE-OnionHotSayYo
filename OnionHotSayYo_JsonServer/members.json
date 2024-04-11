@@ -1,7 +1,7 @@
 {
 	"members": [
 		{
-			"MEMBER_ID": "mem01",
+			"MEMBER_ID": "mem1",
 			"PASSWORD": "mem01password",
 			"NICKNAME": "omoknoone1",
 			"IMAGE": "https://picsum.photos/100",
@@ -12,7 +12,7 @@
 			"NATIONALITY_ID": 1
 		},
 		{
-			"MEMBER_ID": "mem02",
+			"MEMBER_ID": "mem2",
 			"PASSWORD": "mem01password",
 			"NICKNAME": "omoknoone2",
 			"IMAGE": "https://picsum.photos/100",
@@ -23,7 +23,7 @@
 			"NATIONALITY_ID": 1
 		},
 		{
-			"MEMBER_ID": "mem03",
+			"MEMBER_ID": "mem3",
 			"PASSWORD": "mem01password",
 			"NICKNAME": "omoknoone3",
 			"IMAGE": "https://picsum.photos/100",
@@ -34,7 +34,7 @@
 			"NATIONALITY_ID": 1
 		},
 		{
-			"MEMBER_ID": "mem04",
+			"MEMBER_ID": "mem4",
 			"PASSWORD": "mem01password",
 			"NICKNAME": "omoknoone4",
 			"IMAGE": "https://picsum.photos/100",
@@ -45,7 +45,7 @@
 			"NATIONALITY_ID": 1
 		},
 		{
-			"MEMBER_ID": "mem05",
+			"MEMBER_ID": "mem5",
 			"PASSWORD": "mem01password",
 			"NICKNAME": "omoknoone5",
 			"IMAGE": "https://picsum.photos/100",
