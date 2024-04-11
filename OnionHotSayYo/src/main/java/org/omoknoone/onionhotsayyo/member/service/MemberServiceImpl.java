@@ -3,10 +3,10 @@ package org.omoknoone.onionhotsayyo.member.service;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.omoknoone.onionhotsayyo.member.aggregate.Member;
-import org.omoknoone.onionhotsayyo.member.aggregate.Nationality;
 import org.omoknoone.onionhotsayyo.member.dto.MemberDTO;
 import org.omoknoone.onionhotsayyo.member.repository.MemberRepository;
-import org.omoknoone.onionhotsayyo.member.repository.NationalityRepository;
+import org.omoknoone.onionhotsayyo.nationality.aggregate.Nationality;
+import org.omoknoone.onionhotsayyo.nationality.repository.NationalityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +69,7 @@ public class MemberServiceImpl implements MemberService {
         member.setEmail(memberDTO.getEmail());
 
         Nationality nationality = nationalityRepository.findById(memberDTO.getNationalityId()).orElseThrow(IllegalArgumentException::new);
-        member.setNationalityId(nationality);
+        member.setNationalityId(nationality.getNationalityId());
 
         memberRepository.flush();
 
