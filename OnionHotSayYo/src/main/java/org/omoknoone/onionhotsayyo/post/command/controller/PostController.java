@@ -1,9 +1,11 @@
 package org.omoknoone.onionhotsayyo.post.command.controller;
 
+import org.omoknoone.onionhotsayyo.post.command.dto.MyPostListDTO;
 import org.omoknoone.onionhotsayyo.post.command.dto.PostFormDTO;
 import org.omoknoone.onionhotsayyo.post.command.service.PostService;
 import org.omoknoone.onionhotsayyo.post.command.vo.PostDetailVO;
 import org.omoknoone.onionhotsayyo.post.command.vo.PostSummaryVO;
+import org.omoknoone.onionhotsayyo.post.command.vo.ResponseMyPostList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,7 @@ public class PostController {
         logger.info("카테고리별 게시글 목록 조회 요청: 카테고리 ID {}", categoryId);
         List<PostSummaryVO> posts = postService.viewPostsByCategory(categoryId);
         logger.info("카테고리 ID {}에 대한 게시글 {}개 발견", categoryId, posts.size());
+
         return ResponseEntity.ok(posts);
     }
 
@@ -44,6 +47,7 @@ public class PostController {
             logger.error("게시글 ID {}에 해당하는 게시글을 찾을 수 없음", postId);
             return ResponseEntity.notFound().build();
         }
+
         logger.info("게시글 ID {}에 해당하는 게시글 찾음", postId);
         return ResponseEntity.ok(postDetail);
     }
@@ -54,6 +58,7 @@ public class PostController {
         logger.info("새 게시글 작성 요청: 제목 {}", postFormDTO.getTitle());
         PostFormDTO createdPost = postService.createPost(postFormDTO);
         logger.info("게시글 생성 완료: 게시글 ID {}", createdPost.getTitle());
+
         return new ResponseEntity<>(createdPost, HttpStatus.CREATED);
     }
 
@@ -77,5 +82,16 @@ public class PostController {
         postService.removePost(postId);
         logger.info("게시글 ID {} 삭제 완료", postId);
         return ResponseEntity.noContent().build();
+    }
+
+    // 내가 작성한 게시글 목록 조회
+    @GetMapping("/list/mypost/{memberId}")
+    public ResponseEntity<ResponseMyPostList> viewMyPosts(@PathVariable String memberId) {
+        logger.info("나의 게시글 리스트 요청: 맴버 ID {}", memberId);
+        List<MyPostListDTO> myPosts = postService.viewMyPosts(memberId);
+        logger.info("나의 게시물 리스트 조회 완료 {}", memberId);
+        ResponseMyPostList myPostList = new ResponseMyPostList(myPosts);
+
+        return ResponseEntity.ok(myPostList);
     }
 }

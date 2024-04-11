@@ -13,6 +13,8 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     List<Post> findByCategoryId(String categoryId);
 
     // JPQL
-    @Query("SELECT p FROM Post p WHERE p.categoryId = :categoryId AND p.isDeleted = false")
-    List<Post> findActivePostsByCategoryId(@Param("categoryId") String categoryId);
+//    @Query("SELECT p FROM Post p WHERE p.categoryId = :categoryId AND p.isDeleted = false")
+//    List<Post> findActivePostsByCategoryId(@Param("categoryId") String categoryId);
+
+    List<Post> findByMemberId(String memberId);
 }

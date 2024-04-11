@@ -1,5 +1,6 @@
 package org.omoknoone.onionhotsayyo.post.command.service;
 
+import org.omoknoone.onionhotsayyo.post.command.dto.MyPostListDTO;
 import org.omoknoone.onionhotsayyo.post.command.dto.PostFormDTO;
 import org.omoknoone.onionhotsayyo.post.command.vo.PostDetailVO;
 import org.omoknoone.onionhotsayyo.post.command.vo.PostSummaryVO;
@@ -23,9 +24,9 @@ public interface PostService {
     // 게시글 삭제
     void removePost(Integer postId);
 
-//    // 내가 작성한 게시글 목록 조회
-//    List<Post> viewMyPosts(Integer authorId);
-//
+    // 내가 작성한 게시글 목록 조회
+    List<MyPostListDTO> viewMyPosts(String memberId);
+
 //    // 내가 북마크한 게시글 목록 조회
 //    List<Post> viewBookmarkedPosts(Integer userId);
 //

@@ -2,7 +2,10 @@ package org.omoknoone.onionhotsayyo.post.command.service;
 
 import org.modelmapper.ModelMapper;
 import org.omoknoone.onionhotsayyo.exceptions.PostNotFoundException;
+import org.omoknoone.onionhotsayyo.member.dto.MemberDTO;
+import org.omoknoone.onionhotsayyo.member.service.MemberService;
 import org.omoknoone.onionhotsayyo.post.command.aggregate.Post;
+import org.omoknoone.onionhotsayyo.post.command.dto.MyPostListDTO;
 import org.omoknoone.onionhotsayyo.post.command.dto.PostFormDTO;
 import org.omoknoone.onionhotsayyo.post.command.repository.PostRepository;
 import org.omoknoone.onionhotsayyo.post.command.vo.PostDetailVO;
@@ -10,6 +13,7 @@ import org.omoknoone.onionhotsayyo.post.command.vo.PostSummaryVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,11 +26,13 @@ public class PostServiceImpl implements PostService {
     private static final Logger log = LoggerFactory.getLogger(PostServiceImpl.class);
     private final PostRepository postRepository;
     private final ModelMapper modelMapper;
+    private final MemberService memberService;
 
     @Autowired
-    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper) {
+    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper, MemberService memberService) {
         this.postRepository = postRepository;
         this.modelMapper = modelMapper;
+        this.memberService = memberService;
     }
 
     @Transactional(readOnly = true)
@@ -57,7 +63,7 @@ public class PostServiceImpl implements PostService {
         log.info("새 게시물 생성을 시작합니다. 제목: {}", postFormDTO.getTitle());
         Post post = modelMapper.map(postFormDTO, Post.class);
         Post savedPost = postRepository.save(post);
-        log.info("새 게시물이 성공적으로 생성되었습니다. 게시물 ID: {}", savedPost.getTitle());
+        log.info("새 게시물이 성공적으로 생성되었습니다. 게시물 ID: {}", savedPost.getPostId());
         return modelMapper.map(savedPost, PostFormDTO.class);
     }
 
@@ -82,5 +88,21 @@ public class PostServiceImpl implements PostService {
         log.info("게시물 ID {} (소프트)삭제를 시작합니다.", postId);
         postRepository.deleteById(postId);
         log.info("게시물 ID {}이(가) 성공적으로 삭제되었습니다.", postId);
+    }
+
+    @Transactional
+    @Override
+    public List<MyPostListDTO> viewMyPosts(String memberId) {
+        MemberDTO member = memberService.getMemberDetailsByMemberId(memberId);
+        if (member == null) {
+            log.error("맴버 ID {} 를 찾을 수 없습니다.", memberId);
+            throw new UsernameNotFoundException("맴버 ID " + memberId + " 를 찾을 수 없습니다.");
+        }
+
+        List<Post> posts = postRepository.findByMemberId(memberId);
+        log.info("맴버 ID {} 확인 되었습니다.", memberId);
+        return posts.stream()
+                .map(post -> modelMapper.map(post, MyPostListDTO.class))
+                .collect(Collectors.toList());
     }
 }
