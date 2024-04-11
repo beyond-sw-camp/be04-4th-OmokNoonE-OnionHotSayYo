@@ -2,10 +2,10 @@
     <header class="border-bottom lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4">
-                <a class="title" style="cursor: pointer;">
+                <div class="title" @click="goMainPageMain" style="cursor: pointer;">
                     <img class="title-image" src="@/assets/image/OnionHotSayYo.png" width="60" height="50">
-                    <span @click="goMainPageMain" class="text">OnionHotSayYo</span>
-                </a>
+                    <span  class="text">OnionHotSayYo</span>
+                </div>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <SearchBar />
