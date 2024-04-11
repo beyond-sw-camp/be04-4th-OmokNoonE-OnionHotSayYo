@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 @RequestMapping("/notifications")
 public class NotificationController {
 	private final NotificationService notificationService;
-
+	public static Map<Long, SseEmitter> sseEmitters = new ConcurrentHashMap<>();
 	@Autowired
 	public NotificationController(NotificationService notificationService) {
 		this.notificationService = notificationService;

@@ -24,6 +24,5 @@ public class CommentDTO {
 
 	private String memberId;
 
-	private String nickname;	// 필요없으면 지움
 
 }

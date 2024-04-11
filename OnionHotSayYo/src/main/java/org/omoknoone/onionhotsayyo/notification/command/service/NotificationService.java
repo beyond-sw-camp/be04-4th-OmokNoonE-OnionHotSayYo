@@ -2,16 +2,22 @@ package org.omoknoone.onionhotsayyo.notification.command.service;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.modelmapper.ModelMapper;
+import org.omoknoone.onionhotsayyo.comment.command.aggregate.Comment;
+import org.omoknoone.onionhotsayyo.comment.command.repository.CommentRepository;
 import org.omoknoone.onionhotsayyo.member.aggregate.Member;
 import org.omoknoone.onionhotsayyo.member.repository.MemberRepository;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;
 import org.omoknoone.onionhotsayyo.notification.command.aggregate.Notification;
+import org.omoknoone.onionhotsayyo.notification.command.controller.NotificationController;
 import org.omoknoone.onionhotsayyo.notification.command.dto.NotificationDTO;
 import org.omoknoone.onionhotsayyo.notification.command.repository.EmitterRepository;
 import org.omoknoone.onionhotsayyo.notification.command.repository.NotificationRepository;
+import org.omoknoone.onionhotsayyo.post.command.aggregate.Post;
+import org.omoknoone.onionhotsayyo.post.command.repository.PostRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -23,6 +29,8 @@ public class NotificationService {
 	private final NotificationRepository notificationRepository;
 	private final EmitterRepository emitterRepository;
 	private final ModelMapper modelMapper;
+
+
 
 	public NotificationService(MemberRepository memberRepository, NotificationRepository notificationRepository,
 		EmitterRepository emitterRepository, ModelMapper modelMapper) {
@@ -78,6 +86,8 @@ public class NotificationService {
 		System.out.println("[send] receiverName = " + receiverName);
 		Member receiver = memberRepository.findByMemberId(receiverName);
 		System.out.println("receiver = " + receiver);
+
+		// DB에 notification 추가
 		Notification notification = notificationRepository.save(createNotification(receiver, content));
 		System.out.println("notification = " + notification);
 
@@ -121,8 +131,4 @@ public class NotificationService {
 		notification.setChecked(true);
 		notificationRepository.save(notification);
 	}
-
-
-
-
 }
