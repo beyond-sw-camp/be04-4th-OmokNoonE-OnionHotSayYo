@@ -89,7 +89,7 @@ public class PostController {
     public ResponseEntity<ResponseMyPostList> viewMyPosts(@PathVariable String memberId) {
         logger.info("나의 게시글 리스트 요청: 맴버 ID {}", memberId);
         List<MyPostListDTO> myPosts = postService.viewMyPosts(memberId);
-        logger.info("나의 게시물 리스트 조회 완료 {}", memberId);
+        logger.info("나의 게시물 리스트 조회 완료 {}", myPosts);
         ResponseMyPostList myPostList = new ResponseMyPostList(myPosts);
 
         return ResponseEntity.ok(myPostList);

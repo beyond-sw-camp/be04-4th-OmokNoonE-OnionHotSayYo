@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 public class PostServiceImpl implements PostService {
 
     private static final Logger log = LoggerFactory.getLogger(PostServiceImpl.class);
-    private final PostRepository postRepository;
     private final ModelMapper modelMapper;
+    private final PostRepository postRepository;
     private final MemberService memberService;
 
     @Autowired

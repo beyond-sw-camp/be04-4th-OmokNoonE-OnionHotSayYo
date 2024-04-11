@@ -2,7 +2,6 @@ package org.omoknoone.onionhotsayyo.post.command.dto;
 
 import lombok.*;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -10,12 +9,10 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class MyPostListDTO implements Serializable {
+public class PostListByCategoryDTO {
 
-    private Integer postId;
+    private String categoryName;
     private String title;
     private LocalDateTime postedDate;
     private int hits;
-    private String categoryId;
-    private String location;
 }
