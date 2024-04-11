@@ -5,29 +5,28 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 import org.modelmapper.ModelMapper;
-import org.omoknoone.onionhotsayyo.follow.command.aggregate.Follow;
 import org.omoknoone.onionhotsayyo.member.aggregate.Member;
+import org.omoknoone.onionhotsayyo.member.repository.MemberRepository;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;
 import org.omoknoone.onionhotsayyo.notification.command.aggregate.Notification;
 import org.omoknoone.onionhotsayyo.notification.command.dto.NotificationDTO;
 import org.omoknoone.onionhotsayyo.notification.command.repository.EmitterRepository;
 import org.omoknoone.onionhotsayyo.notification.command.repository.NotificationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @Service
 public class NotificationService {
 
-	private final MemberService memberService;
+	private final MemberRepository memberRepository;
 	private static final Long DEFAULT_TIMEOUT = 60L * 1000 * 60;
 	private final NotificationRepository notificationRepository;
 	private final EmitterRepository emitterRepository;
 	private final ModelMapper modelMapper;
 
-	public NotificationService(MemberService memberService, NotificationRepository notificationRepository,
+	public NotificationService(MemberRepository memberRepository, NotificationRepository notificationRepository,
 		EmitterRepository emitterRepository, ModelMapper modelMapper) {
-		this.memberService = memberService;
+		this.memberRepository = memberRepository;
 		this.notificationRepository = notificationRepository;
 		this.emitterRepository = emitterRepository;
 		this.modelMapper = modelMapper;
@@ -77,7 +76,7 @@ public class NotificationService {
 
 	public void send(String receiverName, String content) {
 		System.out.println("[send] receiverName = " + receiverName);
-		Member receiver = memberService.findByMemberId(receiverName);
+		Member receiver = memberRepository.findByMemberId(receiverName);
 		System.out.println("receiver = " + receiver);
 		Notification notification = notificationRepository.save(createNotification(receiver, content));
 		System.out.println("notification = " + notification);

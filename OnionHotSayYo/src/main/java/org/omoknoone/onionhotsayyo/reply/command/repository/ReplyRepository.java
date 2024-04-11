@@ -9,4 +9,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ReplyRepository extends JpaRepository<Reply, Integer> {
 
+    List<Reply> findAllByMemberId(String memberId);
 }

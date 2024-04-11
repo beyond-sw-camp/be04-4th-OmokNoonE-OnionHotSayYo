@@ -63,6 +63,7 @@ public class CommentController {
 	/* 내가 작성한 댓글(+대댓글) 목록 조회 */
 	@GetMapping("/list/mycomments/{memberId}")
 	public ResponseEntity<List<CommentReplyDTO>> viewCommentListByMe(@PathVariable("memberId") String memberId) {
+		System.out.println("[controller] memberId = " + memberId);
 		List<CommentReplyDTO> comments = commentService.viewCommentListByMe(memberId);
 		return new ResponseEntity<>(comments, HttpStatus.OK);
 	}

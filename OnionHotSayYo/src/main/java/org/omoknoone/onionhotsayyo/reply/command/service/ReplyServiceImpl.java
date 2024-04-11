@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.modelmapper.convention.MatchingStrategies;
 import org.omoknoone.onionhotsayyo.comment.command.aggregate.Comment;
 import org.omoknoone.onionhotsayyo.reply.command.aggregate.Reply;
@@ -53,7 +54,12 @@ public class ReplyServiceImpl implements ReplyService{
 		findreply.setDeleted(true);
 	}
 
-
+	@Override
+	public List<ReplyDTO> viewReplyListByMemberId(String memberId) {
+		List<Reply> replyList = replyRepository.findAllByMemberId(memberId);
+		
+		return modelMapper.map(replyList, new TypeToken<List<ReplyDTO>>() {}.getType());
+	}
 
 
 }
