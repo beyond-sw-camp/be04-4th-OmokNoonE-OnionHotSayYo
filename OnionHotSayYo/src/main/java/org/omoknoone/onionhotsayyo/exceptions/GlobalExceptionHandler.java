@@ -16,13 +16,13 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handlePostNotFoundException(PostNotFoundException ex) {
         logger.error("게시물을 찾을 수 없음: {}", ex.getMessage());
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND).body("요청하신 게시물을 찾을 수 없습니다(유감).");
+                .status(HttpStatus.NOT_FOUND).body("요청하신 게시물을 찾을 수 없네요(ㅇㅅㅇ).");
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneralException(Exception ex) {
         logger.error("에러 발생: {}", ex.getMessage());
         return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 내부에서 예상치 못한 에러가 발생했습니다(ㅠ.ㅠ).");
+                .status(HttpStatus.INTERNAL_SERVER_ERROR).body("저런ㅋ 서버 내부에서 예상치 못한 에러가 발생했네요(ㅠ.ㅠ).");
     }
 }
