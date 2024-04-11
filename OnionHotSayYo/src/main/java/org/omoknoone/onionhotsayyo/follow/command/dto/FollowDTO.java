@@ -14,6 +14,11 @@ public class FollowDTO {
 		this.toMemberId = toMemberId;
 	}
 
+	public FollowDTO(String fromMemberId, String toMemberId) {
+		this.fromMemberId = fromMemberId;
+		this.toMemberId = toMemberId;
+	}
+
 	public int getFollowId() {
 		return followId;
 	}
