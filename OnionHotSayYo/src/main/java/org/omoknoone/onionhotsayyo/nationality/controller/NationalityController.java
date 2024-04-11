@@ -1,15 +1,20 @@
 package org.omoknoone.onionhotsayyo.nationality.controller;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.omoknoone.onionhotsayyo.nationality.dto.NationalityDTO;
 import org.omoknoone.onionhotsayyo.nationality.service.NationalityService;
+import org.omoknoone.onionhotsayyo.nationality.vo.ResponseNationality;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
-@RequestMapping("/Nationalities")
+@RequestMapping("/nationalities")
 public class NationalityController {
 
     private final NationalityService nationalityService;
@@ -23,12 +28,16 @@ public class NationalityController {
         this.modelMapper = modelMapper;
     }
 
+    /* 회원가입 시 국적 조회 */
     @GetMapping("/view")
-    public String viewNationality() {
+    public List<NationalityDTO> viewNationality() {
 
-        return null;
+        List<NationalityDTO> nationalityDTOList = nationalityService.viewNationality();
+
+        return nationalityDTOList;
     }
 
+    /* 웹 페이지 언어 설정 (언어에 대한 정보는 cookie에 저장) */
     @GetMapping("/set/language/{language}")
     public String setLanguage(@PathVariable String language) {
 
