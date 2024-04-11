@@ -25,7 +25,7 @@
                         <td class="HITS">{{ post.HITS }}</td>
                         <td class="LANGUAGE">{{ post.LANGUAGE }}</td>
                         <td class="LOCATION_ID">{{ post.LOCATION_ID }}</td>
-                        <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE }}</td>
+                        <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE.slice(2, 10) }}</td>
                     </tr>
                 </tbody>
             </table>

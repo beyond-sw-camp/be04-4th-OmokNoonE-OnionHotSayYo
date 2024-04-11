@@ -9,7 +9,7 @@
                     <td @click="goPostDetailPage(like.postingId)" class="col-title">
                         {{ like.title }}
                     </td>
-                    <td class="col-date">{{ like.lastModifiedDate }}</td>
+                    <td class="col-date">{{ like.lastModifiedDate.slice(2, 10) }}</td>
                     <td>
                         &nbsp;
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

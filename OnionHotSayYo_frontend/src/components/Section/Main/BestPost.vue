@@ -1,7 +1,7 @@
 <template>
     <div class="card card-body">
-        <h3 class="category-title">{{ type }}</h3>
-        <div @click="goDetailList(injectMemberId, type)" class="card-link">더보기</div>
+        <h3 class="category-title">{{ categoryName }} Best</h3>
+        <div @click="goCategoryList(props.categoryId)" class="card-link">더보기</div>
         <table class="table table-hover">
             <tbody v-if="!loadingState" class="table-group-divider">
                 <tr v-for="post in copyPosts" :key="post">
@@ -20,19 +20,42 @@
 </template>
 
 <script setup>
-import { inject, ref, readonly, onMounted } from 'vue';
+import { inject, ref, defineProps, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
-const injectMemberId = inject("memberId");
-
-const type = "작성글";
 
 const posts = [];
 
 const copyPosts = ref([{}]);
 
 const loadingState = ref(true);
+
+const props = defineProps({
+    categoryId: String
+})
+
+const categoryName = computed(() => {
+    if (props.categoryId === '1') {
+        return '질문글';
+    } else if (props.categoryId === '2') {
+        return '정보글';
+    } else if (props.categoryId === '3') {
+        return '여행글';
+    } else if (props.categoryId === '4') {
+        return '맛집글';
+    } else if (props.categoryId === '5') {
+        return '동호회글';
+    } else if (props.categoryId === '6') {
+        return '일상글';
+    } else if (props.categoryId === '7') {
+        return '직장글';
+    } else if (props.categoryId === '8') {
+        return '구인구직글';
+    } else {
+        return '중고거래글';
+    }
+});
 
 onMounted(async () => {
     try {
@@ -76,8 +99,8 @@ onMounted(async () => {
 
 const router = useRouter();
 
-function goDetailList(injectMemberId, type) {
-    router.push(`/list/${type}/${injectMemberId}`);
+function goCategoryList(categoryId) {
+    router.push(`/list/${categoryId}`);
 }
 
 function goPostDetailPage(postid) {
