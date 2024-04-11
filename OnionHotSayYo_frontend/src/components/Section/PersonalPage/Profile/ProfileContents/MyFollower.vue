@@ -4,12 +4,12 @@
         <div @click="goDetailList(injectMemberId, type)" class="card-link">더보기</div>
         <table class="table table-hover">
             <tbody v-if="!loadingState" class="table-group-divider">
-                <tr v-for="follow in follows" :key="follow">
+                <tr v-for="follower in followers" :key="follower">
                     <td class="col-number" scope="row">1</td>
-                    <td @click="goMemberPage(follow.memberId)" class="col-title">
-                        <img :src="follow.image" width="25" height="25" class="col-img rounded-circle">
-                        <div>&nbsp; {{ follow.nickname }}</div>
-                        <div>&nbsp; {{ follow.memberId }}</div>
+                    <td @click="goFollowerPage(follower.memberId)" class="col-title">
+                        <img :src="follower.image" width="25" height="25" class="col-img rounded-circle">
+                        <div>&nbsp; {{ follower.nickname }}</div>
+                        <div>&nbsp; {{ follower.memberId }}</div>
                     </td>
                     <td>
                         &nbsp;
@@ -34,11 +34,11 @@ import axios from 'axios';
 
 const injectMemberId = inject("memberId");
 
-const type = "팔로우";
+const type = "팔로워";
 
 const members = [];
 
-const follows = ref([{}]);
+const followers = ref([{}]);
 
 const loadingState = ref(true);
 
@@ -58,7 +58,7 @@ onMounted(async () => {
             const isWithdraw = members.value[i].IS_WITHDRAW;
             const nationalityId = members.value[i].NATIONALITY_ID;
 
-            follows.value[i] = {
+            followers.value[i] = {
                 memberId: memberId,
                 password: password,
                 nickname: nickname,
@@ -84,7 +84,7 @@ function goDetailList(injectMemberId, type) {
     router.push(`/list/${type}/${injectMemberId}`);
 }
 
-function goMemberPage(memberid) {
+function goFollowerPage(memberid) {
     router.push(`/mypage/${memberid}`);
 }
 </script>

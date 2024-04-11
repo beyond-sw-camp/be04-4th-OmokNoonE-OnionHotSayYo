@@ -4,20 +4,19 @@
         <div @click="goDetailList(injectMemberId, type)" class="card-link">더보기</div>
         <table class="table table-hover">
             <tbody v-if="!loadingState" class="table-group-divider">
-                <tr v-for="follow in follows" :key="follow">
+                <tr v-for="bookmark in bookmarks" :key="bookmark">
                     <td class="col-number" scope="row">1</td>
-                    <td @click="goMemberPage(follow.memberId)" class="col-title">
-                        <img :src="follow.image" width="25" height="25" class="col-img rounded-circle">
-                        <div>&nbsp; {{ follow.nickname }}</div>
-                        <div>&nbsp; {{ follow.memberId }}</div>
+                    <td @click="goPostDetailPage(bookmark.postingId)" class="col-title">
+                        {{ bookmark.title }}
                     </td>
+                    <td class="col-date">{{ bookmark.lastModifiedDate }}</td>
                     <td>
                         &nbsp;
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-x-circle col-close" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                            class="bi bi-bookmark-dash col-close" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M5.5 6.5A.5.5 0 0 1 6 6h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5" />
                             <path
-                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
                         </svg>
                         &nbsp;
                     </td>
@@ -34,45 +33,47 @@ import axios from 'axios';
 
 const injectMemberId = inject("memberId");
 
-const type = "팔로우";
+const type = "북마크";
 
-const members = [];
+const posts = [];
 
-const follows = ref([{}]);
+const bookmarks = ref([{}]);
 
 const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8081/members");
+        const response = await axios.get("http://localhost:8080/post?_start=1&_limit=5");
         loadingState.value = false;
-        members.value = response.data;
-        for (let i = 0; i < members.value.length; i++) {
-            const memberId = members.value[i].MEMBER_ID;
-            const password = members.value[i].PASSWORD;
-            const nickname = members.value[i].NICKNAME;
-            const image = members.value[i].IMAGE;
-            const profile = members.value[i].PROFILE;
-            const email = members.value[i].EMAIL;
-            const signUpDate = members.value[i].SIGN_UP_DATE;
-            const isWithdraw = members.value[i].IS_WITHDRAW;
-            const nationalityId = members.value[i].NATIONALITY_ID;
+        posts.value = response.data;
+        for (let i = 0; i < posts.value.length; i++) {
+            const postingId = posts.value[i].POSTING_ID;
+            const title = posts.value[i].TITLE;
+            const content = posts.value[i].CONTENT;
+            const image = posts.value[i].IMAGE;
+            const isDeleted = posts.value[i].IS_DELETED;
+            const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
+            const categoryId = posts.value[i].CATEGORY_ID;
+            const memberId = posts.value[i].MEMBER_ID;
+            const language = posts.value[i].LANGUAGE;
+            const locationId = posts.value[i].LOCATION_ID;
 
-            follows.value[i] = {
-                memberId: memberId,
-                password: password,
-                nickname: nickname,
+            bookmarks.value[i] = {
+                postingId: postingId,
+                title: title,
+                content: content,
                 image: image,
-                profile: profile,
-                email: email,
-                signUpDate: signUpDate,
-                isWithdraw: isWithdraw,
-                nationalityId: nationalityId
+                isDeleted: isDeleted,
+                lastModifiedDate: lastModifiedDate,
+                categoryId: categoryId,
+                memberId: memberId,
+                language: language,
+                locationId: locationId
             };
 
         }
     } catch (error) {
-        console.error("Error fetching members:", error);
+        console.error("Error fetching posts:", error);
     }
 });
 
@@ -84,8 +85,8 @@ function goDetailList(injectMemberId, type) {
     router.push(`/list/${type}/${injectMemberId}`);
 }
 
-function goMemberPage(memberid) {
-    router.push(`/mypage/${memberid}`);
+function goPostDetailPage(postid) {
+    router.push(`/view/${postid}`);
 }
 </script>
 

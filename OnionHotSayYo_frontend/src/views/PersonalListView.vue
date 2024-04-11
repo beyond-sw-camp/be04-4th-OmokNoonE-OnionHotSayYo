@@ -1,25 +1,15 @@
 <template>
     <form class="d-flex" role="search">
-        <!-- <input type="checkbox" class="btn-check" id="btncheck-list" autocomplete="off">
-        <label class="btn btn-outline-primary" for="btncheck-list">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-translate"
-                viewBox="0 0 16 16">
-                <path
-                    d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022z" />
-                <path
-                    d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31" />
-            </svg>
-        </label> -->
-        <select class="form-select" id="category" required="">
-            <option value="">작성글</option>
-            <option>댓글</option>
-            <option>북마크</option>
-            <option>좋아요</option>
-            <option>팔로우</option>
-            <option>팔로워</option>
+        <select class="form-select" id="category" required="" v-model="routeType">
+            <option value="작성글">작성글</option>
+            <option value="댓글">댓글</option>
+            <option value="북마크">북마크</option>
+            <option value="좋아요">좋아요</option>
+            <option value="팔로우">팔로우</option>
+            <option value="팔로워">팔로워</option>
         </select>
         <select class="form-select" id="search-type" required="">
-            <option value="">제목</option>
+            <option value="title">제목</option>
             <option>내용</option>
             <option>제목+내용</option>
         </select>
@@ -35,101 +25,63 @@
 
     <div class="list-container">
         <div class="list-header">
-            <h5 id="category-name">카테고리 이름</h5>
-            <button type="button" class="btn btn-light">글 작성</button>
+            <h5 id="category-name">{{ routeType }}</h5>
         </div>
         <div id="table-container">
             <table class="table table-hover">
                 <thead>
-                    <tr>
+                    <tr v-if="['북마크', '좋아요', '작성글', '댓글'].includes(routeType)">
                         <th class="col-number" scope="col">번호</th>
-                        <th class="col-title" scope="col">제목</th>
+                        <th class="col-title" scope="col">
+                            제목
+                            <p class="comment" v-if="routeType == '댓글'">(댓글 내용)</p>
+                        </th>
                         <th class="col-hits" scope="col">조회</th>
                         <th class="col-like" scope="col">좋아요</th>
                         <th class="col-dislike" scope="col">싫어요</th>
                         <th class="col-date" scope="col">날짜</th>
                     </tr>
+                    <tr v-if="['팔로우', '팔로워'].includes(routeType)">
+                        <th class="col-number" scope="col">번호</th>
+                        <th class="col-title" scope="col">
+                            ID
+                            <p class="comment">(닉네임)</p>
+                        </th>
+                        <th class="col-like" scope="col">팔로우</th>
+                        <th class="col-dislike" scope="col">팔로워</th>
+                        <th class="col-date" scope="col">삭제</th>
+                    </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    <tr>
+                    <tr v-if="['북마크', '좋아요', '작성글', '댓글'].includes(routeType)">
                         <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
+                        <td class="col-title">
+                            단기 알바 구해요
+                            <p class="comment" v-if="routeType == '댓글'">(정말 유익)</p>
+                        </td>
                         <td class="col-hits">55</td>
                         <td class="col-like">0</td>
                         <td class="col-dislike">0</td>
                         <td class="col-date">23-01-22</td>
                     </tr>
-                    <tr>
-                        <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
-                        <td class="col-hits">55</td>
-                        <td class="col-like">0</td>
-                        <td class="col-dislike">0</td>
-                        <td class="col-date">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
-                        <td class="col-hits">55</td>
-                        <td class="col-like">0</td>
-                        <td class="col-dislike">0</td>
-                        <td class="col-date">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
-                        <td class="col-hits">55</td>
-                        <td class="col-like">0</td>
-                        <td class="col-dislike">0</td>
-                        <td class="col-date">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
-                        <td class="col-hits">55</td>
-                        <td class="col-like">0</td>
-                        <td class="col-dislike">0</td>
-                        <td class="col-date">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
-                        <td class="col-hits">55</td>
-                        <td class="col-like">0</td>
-                        <td class="col-dislike">0</td>
-                        <td class="col-date">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
-                        <td class="col-hits">55</td>
-                        <td class="col-like">0</td>
-                        <td class="col-dislike">0</td>
-                        <td class="col-date">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
-                        <td class="col-hits">55</td>
-                        <td class="col-like">0</td>
-                        <td class="col-dislike">0</td>
-                        <td class="col-date">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
-                        <td class="col-hits">55</td>
-                        <td class="col-like">0</td>
-                        <td class="col-dislike">0</td>
-                        <td class="col-date">23-01-22</td>
-                    </tr>
-                    <tr>
-                        <td class="col-number" scope="row">1</td>
-                        <td class="col-title">단기 알바 구해요</td>
-                        <td class="col-hits">55</td>
-                        <td class="col-like">0</td>
-                        <td class="col-dislike">0</td>
-                        <td class="col-date">23-01-22</td>
+                    <tr v-if="['팔로우', '팔로워'].includes(routeType)">
+                        <td class="col-number" scope="col">1</td>
+                        <td class="col-title" scope="col">
+                            mem01
+                            <p class="comment">omoknoone1</p>
+                        </td>
+                        <td class="col-like" scope="col">100</td>
+                        <td class="col-dislike" scope="col">25</td>
+                        <td class="col-close" scope="col">
+                            &nbsp;
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-x-circle col-close" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                            &nbsp;
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -155,6 +107,12 @@
 </template>
 
 <script setup>
+import { provide, ref, readonly, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
+const routeMemberId = useRoute().params.memberid;
+const routeType = useRoute().params.type;
+
 </script>
 
 <style scoped>
@@ -196,7 +154,7 @@
     margin-top: 40px;
 }
 
-.list-header{
+.list-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -204,7 +162,7 @@
     border-bottom: 1px solid #ccc;
 }
 
-.btn-light{
+.btn-light {
     border: 1px solid #ccc;
     margin-right: 10px;
 }
@@ -235,6 +193,12 @@
     text-align: center;
 }
 
+.comment {
+    display: inline;
+    color: #777;
+}
+
+
 .col-writer {
     width: 10%;
     text-align: center;
@@ -259,4 +223,19 @@
     width: 15%;
     text-align: center;
 }
+
+
+.col-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bebebe;
+    cursor: pointer;
+}
+
+.col-close:hover {
+    color: #202020;
+    cursor: pointer;
+}
+
 </style>
