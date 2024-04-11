@@ -38,11 +38,14 @@
                                     Remember me
                                 </label>
                             </div>
-                            <button class="btn btn-primary w-100 py-2" type="submit">Sign In</button>
+                            <button class="btn btn-primary w-100 py-2" type="submit">
+                                <div @click="goMainPageLogined">Sign In</div></button>
                             <div class="col-md-3 text-end">
                                 <div>
                                     <span style="font-size: 12px;">계정이 없으신가요?</span>
-                                    <button class="sign-up-btn" type="button">회원가입</button>
+                                    <button class="sign-up-btn" type="button">
+                                        <div @click="goSignUp" class="sign-up-page">회원가입</div>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +57,17 @@
 </template>
 
 <script setup>
+    import { useRouter } from "vue-router";
+    
+    const router = useRouter();
 
+    function goSignUp(){
+        router.push(`/signup`);
+    }
+
+    function goMainPageLogined(){          // login 완료되었을 때 header가 나오도록 구현해야함.
+        router.push(`/`);
+    }
 </script>
 
 <style scoped>

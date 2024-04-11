@@ -1,21 +1,59 @@
 <template>
     <div class="nav-scroller py-1 mb-3 border-bottom">
         <nav class="nav nav-underline justify-content-between">
-            <a class="nav-item nav-link link-body-emphasis" href="#">질문글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">정보글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">여행글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">맛집글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">동호회글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">일상글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">직장글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">구인구직글</a>
-            <a class="nav-item nav-link link-body-emphasis" href="#">중고거래글</a>
+            <div @click="questionPost" class="question-post">질문글</div>
+            <div @click="informationPost" class="information-post">정보글</div>
+            <div @click="tripPost" class="trip-post">여행글</div>
+            <div @click="restaurantPost" class="restaurant-post">맛집글</div>
+            <div @click="hobbyPost" class="hobby-post">동호회글</div>
+            <div @click="lifePost" class="life-post">일상글</div>
+            <div @click="companyPost" class="company-post">직장글</div>
+            <div @click="recruitmentPost" class="recruitment-post">구인구직글</div>
+            <div @click="secondhandtradingPost" class="secondhandtrading-post">중고거래글</div>
         </nav>
     </div>
 </template>
 
 <script setup>
+    import { useRouter } from "vue-router";
 
+    const router = useRouter();
+
+    function questionPost(){
+        router.push('/list/1');
+    }
+
+    function informationPost(){
+        router.push('/list/2');
+    }
+
+    function tripPost(){
+        router.push('/list/3');
+    }
+
+    function restaurantPost(){
+        router.push('/list/4');
+    }
+
+    function hobbyPost(){
+        router.push('/list/5');
+    }
+
+    function lifePost(){
+        router.push('/list/6');
+    }
+
+    function companyPost(){
+        router.push('/list/7');
+    }
+
+    function recruitmentPost(){
+        router.push('/list/8');
+    }
+
+    function secondhandtradingPost(){
+        router.push('/list/9');
+    }
 </script>
 
 <style scoped>

@@ -87,11 +87,11 @@
         </svg>
     </div>
     <div class="container">
-        <Carousel/>
+        <Carousel :banners="banners"/>
         <div class="row">
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/1" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
@@ -124,7 +124,7 @@
             </div>
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/2" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
@@ -157,7 +157,7 @@
             </div>
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/3" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
@@ -190,7 +190,7 @@
             </div>
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/4" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
@@ -223,7 +223,7 @@
             </div>
             <div class="card card-body">
                 <h3 class="category-title">직장글 Best</h3>
-                <a href="#" class="card-link">더보기</a>
+                <a href="/list/5" class="card-link">더보기</a>
                 <table class="table table-hover">
                     <tbody class="table-group-divider">
                         <tr>
@@ -261,6 +261,21 @@
 
 <script setup>
 import Carousel from "@/components/Section/Main/Carousel.vue";
+
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const banners = ref([]);
+
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:8082/bannerImage?_sort=BANNER_ID');
+        banners.value = response.data; // posts 반응형 참조에 데이터 할당
+        console.log(banners.value); // 데이터 확인
+    } catch (error) {
+        console.error("Error fetching posts:", error);
+    }
+});
 </script>
 
 <style scoped>
