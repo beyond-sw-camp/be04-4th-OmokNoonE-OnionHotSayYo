@@ -39,12 +39,6 @@ public class FollowServiceImpl implements FollowService {
 			modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 			Follow follow = modelMapper.map(followDTO, Follow.class);
 			followRepository.save(follow);
-
-			// 팔로우 당한 사람에게 팔로우 알림 전송
-			Member fromMember = memberRepository.findByMemberId(follow.getFromMemberId());
-			String fromMemberNickName = fromMember.getNickname();
-			String notifyMessage = fromMemberNickName + "님이 나를 팔로우 했습니다.";
-			notificationService.send(follow.getToMemberId(), notifyMessage);
 		// }
 	}
 

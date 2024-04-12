@@ -10,4 +10,6 @@ public interface CommentService {
 	void modifyComment(CommentDTO commentDetailDTO);
 	void removeComment(int commentid);
 	List<CommentReplyDTO> viewCommentListByMe(String memberId);
+
+	CommentDTO getCommentById(Integer commentId);
 }
