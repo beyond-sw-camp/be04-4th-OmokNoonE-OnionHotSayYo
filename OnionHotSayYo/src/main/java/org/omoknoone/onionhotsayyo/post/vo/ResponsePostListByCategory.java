@@ -3,7 +3,6 @@ package org.omoknoone.onionhotsayyo.post.vo;
 import lombok.*;
 import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 

@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 @ToString
 @Entity
 @Table(name = "post")
@@ -48,16 +47,19 @@ public class Post {
     private boolean isDeleted = false;  // 초기 삭제 상태는 false 삭제 되지 않음으로 설정
 
     @JoinColumn(name = "category_id")
-    private String categoryId;
+    private Integer categoryId;
 
     @JoinColumn(name = "member_id")
-    private String memberId;
+    private String memberId = "member1";
 
     @Column(name = "image")
     private String image;
 
-    @JoinColumn(name = "location")
-    private String location;
+    @JoinColumn(name = "language")
+    private String language = "KO"; // 초기 상태 한국어로 설정
+
+    @JoinColumn(name = "location_id")
+    private String locationId;
 
     // 조회수 증가
     public void increaseHits() {

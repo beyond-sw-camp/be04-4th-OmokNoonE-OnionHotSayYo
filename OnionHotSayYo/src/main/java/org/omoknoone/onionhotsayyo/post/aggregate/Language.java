@@ -13,5 +13,5 @@ public class Language {
 
     @Id
     @Column(name = "language")
-    private String language;
+    private String language = "KO";
 }

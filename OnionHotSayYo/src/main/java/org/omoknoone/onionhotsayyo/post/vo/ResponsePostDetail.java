@@ -21,8 +21,8 @@ public class ResponsePostDetail {
     private int hits = 0;   // 초기 조회수는 0으로 설정됨
     private LocalDateTime lastModifiedDate;
     private boolean isDeleted = false;  // 초기 삭제 상태는 false 삭제 되지 않음으로 설정
-    private String categoryId;
+    private Integer categoryId;
     private String memberId;
     private String image;
-    private String location;
+    private String locationId;
 }
