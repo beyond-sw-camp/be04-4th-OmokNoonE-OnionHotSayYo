@@ -2,7 +2,7 @@
     <Loading v-if="loadingState" />
     <div v-if="!loadingState">
         <ProfileHeader :memberProps="memberProps" />
-        <ProfileContents :memberId="memberProps.memberId"/>
+        <ProfileContents :memberId="memberProps.memberId" />
     </div>
 
 </template>
@@ -26,7 +26,7 @@ const loadingState = ref(true);
 const router = useRouter();
 
 router.afterEach(() => {
-  window.location.reload();
+    window.location.reload();
 });
 
 provide('memberId', routeMemberId);

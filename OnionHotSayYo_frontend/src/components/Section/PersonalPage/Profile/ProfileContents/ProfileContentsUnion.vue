@@ -16,8 +16,8 @@
 </template>
 
 <script setup>
-import { ref, watchEffect, inject } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { inject } from 'vue';
+import { useRouter } from 'vue-router';
 
 import MyFollow from './MyFollow.vue';
 import MyBookmark from './MyBookmark.vue';
@@ -26,14 +26,8 @@ import MyFollower from './MyFollower.vue';
 import MyLike from './MyLike.vue';
 import MyComment from './MyComment.vue';
 
-const memberId = inject("memberId");
-
 const router = useRouter();
 
-function goReports(memberId) {
-    router.push(`/notfound`);
-    // router.push(`/reports/${memberId}`)
-}
 </script>
 
 <style scoped>

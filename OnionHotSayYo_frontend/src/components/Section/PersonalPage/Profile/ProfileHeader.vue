@@ -100,8 +100,8 @@ watchEffect((newValue, oldValue) => {
 const router = useRouter();
 
 function goMyLetter(memberId) {
-    router.push(`/notfound`);
-    // router.push(`/reports/${memberId}`)
+    // router.push(`/notfound`);
+    router.push(`/letter/${memberId}`)
 }
 
 </script>
