@@ -2,29 +2,32 @@ import axios from 'axios';
 
 // Axios 인스턴스 생성
 const instance = axios.create({
-    baseURL: 'http://localhost:8080',
+    baseURL: `http://localhost:8080`,
+    withCredentials: true
 });
 
 // Request 인터셉터 - 모든 요청에 대해 실행됨
 instance.interceptors.request.use(config => {
     const tokenString = localStorage.getItem('accessToken');
-    console.log(`[REQ interceptor]`);
+    const cookieString = document.cookie;
+    const cookies = cookieString.split('; ');
 
     if (tokenString) {
         const accessToken = JSON.parse(tokenString);
-        console.log(`[REQ interceptor] : ${accessToken}`);
 
         // 현재시간과 만료시간 비교
         if (Date.now() > accessToken.expireTime) {      // 토큰 시간 만료
-            console.warn("토큰 만료!!!");
 
-            // 만료시간이 지나면 삭제
-            localStorage.removeItem('accessToken');
+            // 쿠키에서 refreshTokenId 가져와 Header에 담기
+            cookies.forEach(cookie => {
+                const [cookieName, cookieValue] = cookie.split('=');
+                if(cookieName === "refreshTokenId") {
+                    config.headers.Authorization = `Bearer ${accessToken.accessToken}`;
+                    config.headers.Authorization = cookieValue.trim();
+                }
+            });
 
-            /* TODO. 
-                refresh token 있나 확인 후 있으면 서버에 재발급 요청
-                refresh token 만료된 경우 재로그인 해야 함 
-            */
+            // TODO. refresh token 만료된 경우 재로그인 해야 함 
         } else {
             config.headers.Authorization = `Bearer ${accessToken.accessToken}`;
         }
@@ -35,9 +38,18 @@ instance.interceptors.request.use(config => {
     return Promise.reject(error);
 });
 
+
 // Response 인터셉터 - 모든 응답에 대해 실행됨
-instance.interceptors.response.use(response => {
-    console.log(`[RES interceptor]`);
+instance.interceptors.response.use(async response => {
+
+    if(response.headers["accesstoken"]) {
+        const newAccessToken = response.headers["accesstoken"];
+        localStorage.removeItem("accessToken");
+        saveToken(newAccessToken);
+        response.config.headers = {
+            accesstoken: `${newAccessToken}`
+        };
+    }
     return response;
 }, error => {
     // 토큰 만료 확인 및 처리
@@ -47,5 +59,17 @@ instance.interceptors.response.use(response => {
     }
     return Promise.reject(error);
 });
+
+function saveToken(accessToken) {
+    if (accessToken) {
+        const expireTime = Date.now() + 12 * 60 * 60 * 1000;             // 1 Hour
+        const data = {
+            accessToken: accessToken,
+            expireTime: expireTime
+        };
+
+        localStorage.setItem("accessToken", JSON.stringify(data));
+    }
+}
 
 export default instance;

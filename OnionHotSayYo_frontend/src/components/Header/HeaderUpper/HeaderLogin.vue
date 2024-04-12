@@ -38,7 +38,7 @@
                                     Remember me
                                 </label>
                             </div>
-                            <button class="btn btn-primary w-100 py-2" type="submit" @click="login" >Sign In</button>
+                            <button class="btn btn-primary w-100 py-2" type="submit" @click.prevent="login" >Sign In</button>
                             <div class="col-md-3 text-end">
                                 <div>
                                     <span style="font-size: 12px;">계정이 없으신가요?</span>
@@ -54,9 +54,10 @@
 </template>
 
 <script setup>
-import axios from 'axios';
+// import axios from 'axios';
 import { ref } from 'vue';
-import { useCookies } from 'vue3-cookies';
+import axiosInstance from '@/js/axios-instance';    // Custom Axios
+
 
 const id = ref('');
 const password = ref('');
@@ -68,42 +69,21 @@ async function login() {
         password: password.value
     };
 
-    const url = 'http://localhost:8080/login'; // 로그인 요청 URL
-
     const config = {
         headers: {
             'Content-Type': 'application/json',
-            'Accept': '*/*'
         }
     };
 
     try {
-        axios.defaults.withCredentials = true;
-        const response = await axios.post(url, loginMember, config);
-
-        // 액세스 토큰을 만료시간과 함께 Local Storage에 저장
-        const responseHeaders = response.headers;
-        const accessToken = responseHeaders["accesstoken"];     // accessToken 저장
-        saveToken(accessToken);
+        const response = await axiosInstance.post("/login", loginMember, config);
+        console.log(response);        
 
         /* TODO router 설정 추가 해야함 */
         
     } catch (error) {
         console.error("Error SignUp Post:", error);
         return false;
-    }
-}
-
-function saveToken(accessToken) {
-    if (accessToken) {
-        // const expireTime = Date.now() + 12 * 60 * 60 * 1000;             // 1 Hour
-        const expireTime = Date.now() + 1000;             // 만료전용
-        const data = {
-            accessToken: accessToken,
-            expireTime: expireTime
-        };
-
-        localStorage.setItem("accessToken", JSON.stringify(data));
     }
 }
 
