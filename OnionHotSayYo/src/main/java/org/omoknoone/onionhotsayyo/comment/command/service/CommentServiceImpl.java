@@ -14,14 +14,9 @@ import org.omoknoone.onionhotsayyo.comment.command.dto.CommentReplyDTO;
 import org.omoknoone.onionhotsayyo.comment.command.repository.CommentRepository;
 import org.omoknoone.onionhotsayyo.member.dto.MemberDTO;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;
-import org.omoknoone.onionhotsayyo.notification.command.service.NotificationService;
-import org.omoknoone.onionhotsayyo.post.command.repository.PostRepository;
-import org.omoknoone.onionhotsayyo.post.command.service.PostService;
-import org.omoknoone.onionhotsayyo.post.command.vo.PostDetailVO;
 import org.omoknoone.onionhotsayyo.reply.command.aggregate.Reply;
 import org.omoknoone.onionhotsayyo.reply.command.dto.ReplyDTO;
 import org.omoknoone.onionhotsayyo.reply.command.repository.ReplyRepository;
-import org.omoknoone.onionhotsayyo.reply.command.service.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,30 +25,19 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommentServiceImpl implements CommentService {
 	private final ModelMapper modelMapper;
 	private final CommentRepository commentRepository;
-	// private final ReplyService replyService;
 	private final ReplyRepository replyRepository;
 	private final MemberService memberService;
-	private final NotificationService notificationService;
-	private final PostService postService;
-	private final PostRepository postRepository;
-
 
 	@Autowired
 	public CommentServiceImpl(ModelMapper modelMapper, CommentRepository commentRepository,
-		ReplyRepository replyRepository, MemberService memberService,
-		NotificationService notificationService, PostService postService, PostRepository postRepository) {
+		ReplyRepository replyRepository,
+		MemberService memberService) {
 		this.modelMapper = modelMapper;
 		this.commentRepository = commentRepository;
 		this.replyRepository = replyRepository;
-
-		/* 순환 참조 일어남 */
-        // this.replyService = replyService;
-
-        this.memberService = memberService;
-		this.notificationService = notificationService;
-		this.postService = postService;
-		this.postRepository = postRepository;
+		this.memberService = memberService;
 	}
+
 
 	@Transactional
 	@Override
@@ -62,14 +46,6 @@ public class CommentServiceImpl implements CommentService {
 
 		Comment comment = modelMapper.map(commentDTO, Comment.class);
 		commentRepository.save(comment);
-		System.out.println("[comment] = " + comment);
-
-		// 새 댓글 등록 시 알림
-		// PostDetailVO post = postService.viewPostById(commentDTO.getPostId());
-		PostDetailVO post = postService.viewPostById(comment.getPostId());
-		MemberDTO postAuthor = memberService.getMemberDetailsByMemberId(post.getMemberId());
-		MemberDTO commentAuthor = memberService.getMemberDetailsByMemberId(comment.getMemberId());
-		notificationService.send(postAuthor.getMemberId(), commentAuthor.getNickname() + "님이 내 글에 댓글을 달았습니다: " + comment.getContent());
 	}
 
 	@Transactional
