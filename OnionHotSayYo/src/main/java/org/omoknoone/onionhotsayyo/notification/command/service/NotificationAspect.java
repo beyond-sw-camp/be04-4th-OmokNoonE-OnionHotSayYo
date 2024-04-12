@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.omoknoone.onionhotsayyo.comment.command.dto.CommentDTO;
 import org.omoknoone.onionhotsayyo.comment.command.service.CommentService;
 import org.omoknoone.onionhotsayyo.follow.command.dto.FollowDTO;
+import org.omoknoone.onionhotsayyo.letter.command.dto.LetterDTO;
 import org.omoknoone.onionhotsayyo.member.aggregate.Member;
 import org.omoknoone.onionhotsayyo.member.dto.MemberDTO;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;
@@ -53,6 +54,9 @@ public class NotificationAspect {
 	@Pointcut("execution(* org.omoknoone.onionhotsayyo.follow.command.service.FollowService.followMember(..)) && args(followDTO)")
 	private void followServiceFollowMember(FollowDTO followDTO) {}
 
+	// 쪽지 알림
+	@Pointcut("execution(* org.omoknoone.onionhotsayyo.letter.command.service.LetterService.sendLetter(..)) && args(letterDTO)")
+	private void letterServiceSendLetter(LetterDTO letterDTO) {}
 
 
 
@@ -101,7 +105,7 @@ public class NotificationAspect {
 	// 팔로우 알림
 	@After("followServiceFollowMember(followDTO)")
 	public void afterFollowMember(FollowDTO followDTO) {
-		
+
 		MemberDTO fromMember = memberService.getMemberDetailsByMemberId(followDTO.getFromMemberId());
 		notificationService.send(followDTO.getToMemberId(), fromMember.getNickname() + "님이 나를 팔로우 했습니다.");
 
@@ -109,7 +113,15 @@ public class NotificationAspect {
 
 	}
 
+	// 쪽지 알림
+	@After("letterServiceSendLetter(letterDTO)")
+	public void afterSendLetter(LetterDTO letterDTO) {
 
+		MemberDTO sender = memberService.getMemberDetailsByMemberId(letterDTO.getSendId());
+		notificationService.send(letterDTO.getReceiveId(), sender.getNickname() + "님에게서 새로운 쪽지가 도착했습니다.");
+
+		System.out.println("새 쪽지 알림 전송 됨");
+	}
 
 
 
