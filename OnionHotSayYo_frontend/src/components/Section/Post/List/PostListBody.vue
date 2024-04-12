@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-group-divider" v-if="props.posts">
-                    <tr v-for="post in pagePost" :key="posts.CATEGORY_ID">
+                    <tr v-for="post in currentPagePosts" :key="posts.CATEGORY_ID">
                         <td class="POSTING_ID">{{ post.POSTING_ID }}</td>
                         <td class="TITLE" @click="goDetailPage(post.POSTING_ID)">{{ post.TITLE }}</td>
                         <td class="MEMBER_ID">{{ post.MEMBER_ID }}</td>
@@ -32,42 +32,31 @@
         </div>
         <div id="pagenation-container">
             <ul class="pagination">
-                <!-- <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li> -->
-                <div class="btn-group">
-                    <!-- <button @click="goBack" class="btn-left"><</button> -->
-                    <button @click="goBack" class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </button>
-
-                    
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <button @click="nextPage" class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </button>
-                    <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
-                    <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
-                    <!-- <button @click="nextPage" class="btn-right">></button> -->
-                </div>
+              <!-- 이전 페이지 버튼 -->
+              <li class="page-item" @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <!-- 페이지 버튼 -->
+              <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
+                <a class="page-link" href="#" @click="goToPage(page)">{{ page }}</a>
+            </li>
+              <!-- 다음 페이지 버튼 -->
+              <li class="page-item" @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
             </ul>
-        </div>
+          </div>
     </div>
 </template>
 
 <script setup>
 import { ref, watch, defineProps, computed } from 'vue';
 import { useRouter } from 'vue-router';
+
 const router = useRouter();
 
 const props = defineProps({
@@ -98,53 +87,44 @@ const categoryName = computed(() => {
 });
 console.log(props.posts);
 
-const pagePost = ref([]);
-const index = ref(0);
-const next = ref(10);
+// 한 페이지에 보여질 게시글 수
+const postsPerPage = 10;
 
-watch(props, (newValue, oldValue) => {
-    console.log("총 모집글 수:", props.posts.length);
+// 전체 페이지 수 계산
+const totalPages = computed(() => Math.ceil(props.posts.length / postsPerPage));
 
-    pagePost.value = props.posts.slice(index.value, next.value);
-    console.log(pagePost.value);
+// 현재 페이지 상태 변수
+const currentPage = ref(1);
+
+// 현재 페이지에 해당하는 게시글 목록을 계산하는 계산된 속성
+const currentPagePosts = computed(() => {
+  const startIndex = (currentPage.value - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  return props.posts.slice(startIndex, endIndex);
 });
 
-async function goBack() {
-    if (!(index.value <= 0)) {
-        index.value -= 10;
-        next.value -= 10;
-        await updatePagePost(index.value, next.value);
-        console.log("goBack():", index.value, next.value);
+// 페이지를 변경하는 함수
+function goToPage(pageNumber) {
+    if (pageNumber >= 1 && pageNumber <= totalPages.value) {
+        currentPage.value = pageNumber;
     }
-}
-
-async function nextPage() {
-    const total = props.posts.length;
-    if (!(next.value >= total)) {
-        index.value += 10;
-        next.value += 10;
-        await updatePagePost(index.value, next.value);
-        console.log("nextPage():", index.value, next.value);
-    }
-}
-
-async function updatePagePost(index, next) {
-    console.log("pagePost.value.slice(index, next):", props.posts.slice(index, next));
-    pagePost.value = props.posts.slice(index, next);
 }
 
 function goDetailPage(postId) {
     router.push(`/view/${postId}`)
-}
+};
 
 function goToWrite(){
     router.push(`/posts/creates`)
-}
+};
 
-router.afterEach(() => {
-    window.location.reload();
+router.afterEach((to, next, from) => {
+    if (to.path !== from.path) {
+        window.location.reload();
+    } else {
+        next();
+    }
 });
-
 
 </script>
 
