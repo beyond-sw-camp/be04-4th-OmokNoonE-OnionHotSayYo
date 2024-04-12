@@ -21,13 +21,13 @@
                             <h1 class="h3 mb-3 fw-normal text-center">Please Sign In</h1>
 
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="floatingInput"
-                                    placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
+                                <input type="text" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com" v-model="id" >
+                                <label for="floatingInput">ID</label>
                             </div>
                             <div class="form-floating">
                                 <input type="password" class="form-control" id="floatingPassword"
-                                    placeholder="Password">
+                                    placeholder="Password" v-model="password" >
                                 <label for="floatingPassword">Password</label>
                             </div>
 
@@ -38,7 +38,7 @@
                                     Remember me
                                 </label>
                             </div>
-                            <button class="btn btn-primary w-100 py-2" type="submit">Sign In</button>
+                            <button class="btn btn-primary w-100 py-2" type="submit" @click="login" >Sign In</button>
                             <div class="col-md-3 text-end">
                                 <div>
                                     <span style="font-size: 12px;">계정이 없으신가요?</span>
@@ -54,6 +54,58 @@
 </template>
 
 <script setup>
+import axios from 'axios';
+import { ref } from 'vue';
+import { useCookies } from 'vue3-cookies';
+
+const id = ref('');
+const password = ref('');
+
+async function login() {
+
+    const loginMember = {
+        memberId: id.value,
+        password: password.value
+    };
+
+    const url = 'http://localhost:8080/login'; // 로그인 요청 URL
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': '*/*'
+        }
+    };
+
+    try {
+        axios.defaults.withCredentials = true;
+        const response = await axios.post(url, loginMember, config);
+
+        // 액세스 토큰을 만료시간과 함께 Local Storage에 저장
+        const responseHeaders = response.headers;
+        const accessToken = responseHeaders["accesstoken"];     // accessToken 저장
+        saveToken(accessToken);
+
+        /* TODO router 설정 추가 해야함 */
+        
+    } catch (error) {
+        console.error("Error SignUp Post:", error);
+        return false;
+    }
+}
+
+function saveToken(accessToken) {
+    if (accessToken) {
+        // const expireTime = Date.now() + 12 * 60 * 60 * 1000;             // 1 Hour
+        const expireTime = Date.now() + 1000;             // 만료전용
+        const data = {
+            accessToken: accessToken,
+            expireTime: expireTime
+        };
+
+        localStorage.setItem("accessToken", JSON.stringify(data));
+    }
+}
 
 </script>
 

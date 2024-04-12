@@ -5,9 +5,14 @@ import './assets/checkout.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
+// import router from './router/router.js';
+import axiosInstance from './js/axios-instance';
 
 
 import * as ColorModes from "./assets/js/color-modes.js";
 import * as BundleMin from "./assets/dist/js/bootstrap.bundle.min.js";
 
-createApp(App).mount('#app')
+const app = createApp(App);
+// app.use(router);
+app.config.globalProperties.$axios = axiosInstance;
+app.mount('#app');
