@@ -69,8 +69,6 @@
                                     <option>한국</option>
                                     <option>미국</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                </div>
                             </div>
 
                             <!-- <div class="col-md-4">

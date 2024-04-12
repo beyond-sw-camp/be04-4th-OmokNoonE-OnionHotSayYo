@@ -5,7 +5,7 @@
         <table class="table table-hover">
             <tbody v-if="!loadingState" class="table-group-divider">
                 <tr v-for="post in copyPosts" :key="post">
-                    <td class="col-number" scope="row">1</td>
+                    <td class="col-number" scope="row"> {{ post.postingId }} </td>
                     <td @click="goPostDetailPage(post.postingId)" class="col-title">
                         {{ post.title }}
                     </td>
@@ -59,7 +59,7 @@ const categoryName = computed(() => {
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8081/post?_start=1&_limit=5");
+        const response = await axios.get("http://localhost:8081/post?_start=0&_limit=5");
         loadingState.value = false;
         posts.value = response.data;
         for (let i = 0; i < posts.value.length; i++) {

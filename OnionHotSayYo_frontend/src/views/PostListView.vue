@@ -28,6 +28,7 @@ onMounted(async () => {
         console.error("Error fetching posts:", error);
     }
 });
+
     </script>
 
 <style scoped>
