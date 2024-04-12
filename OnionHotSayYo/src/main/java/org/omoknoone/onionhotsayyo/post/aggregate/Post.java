@@ -59,7 +59,7 @@ public class Post {
     private String language = "KO"; // 초기 상태 한국어로 설정
 
     @JoinColumn(name = "location_id")
-    private String locationId;
+    private Integer locationId;
 
     // 조회수 증가
     public void increaseHits() {
