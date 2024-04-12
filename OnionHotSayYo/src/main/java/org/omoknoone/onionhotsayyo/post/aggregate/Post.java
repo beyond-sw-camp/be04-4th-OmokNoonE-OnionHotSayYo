@@ -1,22 +1,19 @@
-package org.omoknoone.onionhotsayyo.post.command.aggregate;
+package org.omoknoone.onionhotsayyo.post.aggregate;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Entity
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 @ToString
+@Entity
 @Table(name = "post")
 public class Post {
 
@@ -50,16 +47,19 @@ public class Post {
     private boolean isDeleted = false;  // 초기 삭제 상태는 false 삭제 되지 않음으로 설정
 
     @JoinColumn(name = "category_id")
-    private String categoryId;
+    private Integer categoryId;
 
     @JoinColumn(name = "member_id")
-    private String memberId;
+    private String memberId = "member1";
 
     @Column(name = "image")
     private String image;
 
+    @JoinColumn(name = "language")
+    private String language = "KO"; // 초기 상태 한국어로 설정
+
     @JoinColumn(name = "location_id")
-    private String location;
+    private String locationId;
 
     // 조회수 증가
     public void increaseHits() {
@@ -70,8 +70,4 @@ public class Post {
     public void markAsDeleted() {
         this.isDeleted = true;
     }
-
-    public Post() {
-    }
-
 }

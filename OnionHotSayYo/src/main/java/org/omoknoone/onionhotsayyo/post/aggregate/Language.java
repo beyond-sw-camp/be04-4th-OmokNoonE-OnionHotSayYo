@@ -1,4 +1,4 @@
-package org.omoknoone.onionhotsayyo.post.command.aggregate;
+package org.omoknoone.onionhotsayyo.post.aggregate;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,5 +13,5 @@ public class Language {
 
     @Id
     @Column(name = "language")
-    private String language;
+    private String language = "KO";
 }
