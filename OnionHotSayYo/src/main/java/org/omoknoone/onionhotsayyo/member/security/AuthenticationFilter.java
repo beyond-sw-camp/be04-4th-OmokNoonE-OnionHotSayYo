@@ -5,6 +5,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.omoknoone.onionhotsayyo.member.dto.MemberDTO;
@@ -82,9 +83,16 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String refreshTokenId = authService.successLogin(memberId, refreshToken);
 
         response.addHeader("accessToken", accessToken);
-        
-        /* 설명. refreshToken이 아닌 token의 Id를 전달, refreshToken은 서버만 가지고 있음 */
-        response.addHeader("refreshTokenId", refreshTokenId);
         response.addHeader("memberId", memberId);
+
+        /* 설명. refreshToken이 아닌 token의 Id를 전달, refreshToken은 서버만 가지고 있음 */
+        Cookie cookie = new Cookie("refreshTokenId", refreshTokenId);
+        cookie.setMaxAge(604800);        // 7일
+
+        // HttpOnly Cookie 는 추후에 구현
+//        cookie.setHttpOnly(true);
+//        cookie.setPath("/");
+
+        response.addCookie(cookie);
     }
 }
