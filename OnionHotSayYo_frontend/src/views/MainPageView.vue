@@ -86,184 +86,27 @@
             </symbol>
         </svg>
     </div>
+
     <div class="container">
-        <Carousel :banners="banners"/>
-        <div class="row">
-            <div class="card card-body">
-                <h3 class="category-title">직장글 Best</h3>
-                <a href="/list/1" class="card-link">더보기</a>
-                <table class="table table-hover">
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card card-body">
-                <h3 class="category-title">직장글 Best</h3>
-                <a href="/list/2" class="card-link">더보기</a>
-                <table class="table table-hover">
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card card-body">
-                <h3 class="category-title">직장글 Best</h3>
-                <a href="/list/3" class="card-link">더보기</a>
-                <table class="table table-hover">
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card card-body">
-                <h3 class="category-title">직장글 Best</h3>
-                <a href="/list/4" class="card-link">더보기</a>
-                <table class="table table-hover">
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="card card-body">
-                <h3 class="category-title">직장글 Best</h3>
-                <a href="/list/5" class="card-link">더보기</a>
-                <table class="table table-hover">
-                    <tbody class="table-group-divider">
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-number" scope="row">1</td>
-                            <td class="col-title"><a class="col-link" href="https://www.naver.com">단기 알바 구해요</a></td>
-                            <td class="col-date">23-01-22</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <Carousel :banners="banners" />
+        <div class="row container" v-for="categoryId in ['1', '2', '3', '4', '5', '6', '7', '8', '9']" :key="categoryId">
+            <BestPost :categoryId="categoryId"/>
         </div>
+
+        
     </div>
 
 </template>
 
 <script setup>
 import Carousel from "@/components/Section/Main/Carousel.vue";
+import BestPost from "@/components/Section/Main/BestPost.vue";
 
 import { ref, onMounted } from 'vue';
+import { useRouter } from "vue-router";
 import axios from 'axios';
+
+const router = useRouter();
 
 const banners = ref([]);
 
@@ -276,6 +119,7 @@ onMounted(async () => {
         console.error("Error fetching posts:", error);
     }
 });
+
 </script>
 
 <style scoped>
@@ -427,17 +271,24 @@ a {
     text-align: center;
 }
 
-.col-link{
+.col-link {
     text-decoration: none;
     color: black;
 }
 
-[data-bs-theme=dark] .col-link{
+[data-bs-theme=dark] .col-link {
     color: white;
 }
 
 .col-date {
     width: 15%;
     text-align: center;
+}
+
+.col-hits {
+    background-color: red;
+    color: white;
+    border: 1px #777;
+    border-radius: 45%;
 }
 </style>

@@ -25,10 +25,27 @@
                         <td class="HITS">{{ post.HITS }}</td>
                         <td class="LANGUAGE">{{ post.LANGUAGE }}</td>
                         <td class="LOCATION_ID">{{ post.LOCATION_ID }}</td>
-                        <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE }}</td>
+                        <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE.slice(2, 10) }}</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div id="pagenation-container">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -106,7 +123,7 @@ function goDetailPage(postId) {
 }
 
 router.afterEach(() => {
-  window.location.reload();
+    window.location.reload();
 });
 
 
