@@ -29,18 +29,20 @@ public class WebSecurity {
     private final Environment environment;
     private final JwtUtil jwtUtil;
     private final JwtTokenProvider jwtTokenProvider;
+    private final CorsConfig corsConfig;
 
     @Autowired
     public WebSecurity(MemberService memberService, AuthService authService,
                        BCryptPasswordEncoder bCryptPasswordEncoder,
                        Environment environment,
-                       JwtUtil jwtUtil, JwtTokenProvider jwtTokenProvider) {
+                       JwtUtil jwtUtil, JwtTokenProvider jwtTokenProvider, CorsConfig corsConfig) {
         this.memberService = memberService;
         this.authService = authService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.environment = environment;
         this.jwtUtil = jwtUtil;
         this.jwtTokenProvider = jwtTokenProvider;
+        this.corsConfig = corsConfig;
     }
 
     /* 설명. 인가(Authorization)용 메소드 */
@@ -56,6 +58,9 @@ public class WebSecurity {
 
         /* 설명. JWT 로그인 처리를 할 것이므로 csrf는 신경쓸 필요가 없다. */
         http.csrf((csrf) -> csrf.disable());
+
+        http.cors(corsConfig -> corsConfig.getClass());
+
 
         http.authorizeHttpRequests((auth) -> auth
                         .requestMatchers(new AntPathRequestMatcher("/**")).permitAll()
