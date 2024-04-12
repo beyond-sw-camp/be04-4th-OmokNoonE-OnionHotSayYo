@@ -36,21 +36,22 @@
 
                             <div class="col-12">
                                 <label for="id" class="form-label">아이디</label>
-                                <input type="text" class="form-control" id="id"
+                                <input type="text" class="form-control" id="id" v-model="id"
                                     placeholder=" 5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.">
                                 <div class="invalid-feedback"></div>
                             </div>
 
                             <div class="col-12">
                                 <label for="password" class="form-label">비밀번호</label>
-                                <input type="text" class="form-control" id="password"
-                                    placeholder="영어 소문자, 숫자, 특수기호 포함 10글자 이상이어야 합니다.">
+                                <input type="password" class="form-control" id="password" v-model="password"
+                                    placeholder="8 ~ 16자 영문, 숫자, 특수문자를 최소 한가지씩 조합이어야 합니다.">
                                 <div class="invalid-feedback"></div>
                             </div>
 
                             <div class="col-12">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                <input type="email" class="form-control" id="email" v-model="email"
+                                    placeholder="you@example.com">
                                 <div class="invalid-feedback">
                                     Please enter a valid email address for shipping updates.
                                 </div>
@@ -59,15 +60,15 @@
 
                             <div class="col-12">
                                 <label for="nickname" class="form-label">닉네임</label>
-                                <input type="text" class="form-control" id="address2" placeholder="닉네임을 입력하세요.">
+                                <input type="text" class="form-control" id="nickname" v-model="nickname"
+                                    placeholder="닉네임을 입력하세요.">
                             </div>
 
                             <div class="col-md-5">
                                 <label for="country" class="form-label">국가</label>
-                                <select class="form-select" id="country" required>
-                                    <option value="">선택하세요.</option>
-                                    <option>한국</option>
-                                    <option>미국</option>
+                                <select class="form-select" id="country" v-model="selectedNationality">
+                                    <option v-for="nationality in nationalities" :value="nationality"
+                                        :key="nationality.id">{{ nationality["country"] }}</option>
                                 </select>
                                 <div class="invalid-feedback">
                                 </div>
@@ -88,13 +89,13 @@
                         <hr class="my-4">
 
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="save-info">
                             <label class="form-check-label" for="save-info">위 이용약관에 모두 동의합니다.</label>
+                            <input type="checkbox" class="form-check-input" id="save-info" v-model="termsCheck">
                         </div>
 
                         <hr class="my-4">
 
-                        <button class="w-100 btn btn-primary btn-lg" type="submit">회원 가입</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit" @click="signUp">회원 가입</button>
                     </form>
                 </div>
             </div>
@@ -103,6 +104,122 @@
 </template>
 
 <script setup>
+// import {useRouter} from 'vue-router';
+import axios from 'axios';
+import { onMounted, ref } from 'vue';
+
+const selectedNationality = ref('');
+const id = ref('');
+const password = ref('');
+const email = ref('');
+const nickname = ref('');
+const nationalities = ref('[]');
+const termsCheck = ref(false);
+
+/* 국가 목록을 가져온다 */
+onMounted(async () => {
+    try {
+        const response = await axios.get('http://localhost:8080/nationalities/view');
+        nationalities.value = response.data;
+    } catch (error) {
+        console.log(`Error fetching nationalities: ${error}`);
+    }
+});
+
+/* 회원가입 */
+async function signUp() {
+    /* 유효성 검사 */
+    let checkError = [];
+
+    let flag = false;
+
+    if (!checkId(id)) {
+        checkError.push("아이디");
+        flag = true;
+    }
+    if (!checkPassword(password)) {
+        checkError.push("비밀번호");
+        flag = true;
+    }
+    if (!checkEmail(email)) {
+        checkError.push("이메일");
+        flag = true;
+    }
+    if (!checkNickname(nickname)) {
+        checkError.push("닉네임");
+        flag = true;
+    }
+    if (!selectedNationality.value) {
+        checkError.push("국가")
+        flag = true;
+    }
+    if (!termsCheck.value) {
+        checkError.push("약관동의");
+        flag = true;
+    }
+
+    if (flag) {
+        const result = checkError.join(', ');
+        alert(`올바른 회원 정보를 입력해주세요.\n[${result}]\n확인해주세요.`);
+        checkError.length = 0;
+    }
+
+    const nationalityId = nationalities.value.find(
+        item => item.country == selectedNationality.value["country"])?.nationalityId;
+
+    /* 회원가입 요청 */
+    const newMember = {
+        memberId: id.value,
+        nickname: nickname.value,
+        password: password.value,
+        email: email.value,
+        nationalityId: nationalityId
+    };
+
+    const url = 'http://localhost:8080/members/signup'; // 회원가입 요청 URL
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    try {
+        const response = await axios.post(url, newMember, config);
+        console.log(response.data);
+        /* TODO router 설정 추가 해야함 */
+    } catch (error) {
+        console.error("Error SignUp Post:", error);
+    }
+}
+
+// ID
+function checkId(id) {
+    var regExp = /^[a-z]+[a-z0-9-_]{4,19}$/g;
+
+    return regExp.test(id.value);
+}
+
+// Password
+function checkPassword(password) {
+    var regExp = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+
+    return regExp.test(password.value);
+}
+
+// 이메일
+function checkEmail(email) {
+    var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+
+    return regExp.test(email.value);
+}
+
+// 닉네임
+function checkNickname(nickname) {
+    var regExp = /^[0-9a-zA-Zㄱ-힣][0-9a-zA-Zㄱ-힣-_]{1,19}$/g;
+
+    return regExp.test(nickname.value);
+}
 
 </script>
 
