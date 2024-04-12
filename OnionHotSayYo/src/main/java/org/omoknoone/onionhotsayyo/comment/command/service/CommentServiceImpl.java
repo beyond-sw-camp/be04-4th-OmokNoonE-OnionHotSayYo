@@ -3,6 +3,7 @@ package org.omoknoone.onionhotsayyo.comment.command.service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -17,7 +18,9 @@ import org.omoknoone.onionhotsayyo.notification.command.service.NotificationServ
 import org.omoknoone.onionhotsayyo.post.command.repository.PostRepository;
 import org.omoknoone.onionhotsayyo.post.command.service.PostService;
 import org.omoknoone.onionhotsayyo.post.command.vo.PostDetailVO;
+import org.omoknoone.onionhotsayyo.reply.command.aggregate.Reply;
 import org.omoknoone.onionhotsayyo.reply.command.dto.ReplyDTO;
+import org.omoknoone.onionhotsayyo.reply.command.repository.ReplyRepository;
 import org.omoknoone.onionhotsayyo.reply.command.service.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +30,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommentServiceImpl implements CommentService {
 	private final ModelMapper modelMapper;
 	private final CommentRepository commentRepository;
-	private final ReplyService replyService;
+	// private final ReplyService replyService;
+	private final ReplyRepository replyRepository;
 	private final MemberService memberService;
 	private final NotificationService notificationService;
 	private final PostService postService;
@@ -35,11 +39,16 @@ public class CommentServiceImpl implements CommentService {
 
 
 	@Autowired
-	public CommentServiceImpl(ModelMapper modelMapper, CommentRepository commentRepository, ReplyService replyService, MemberService memberService,
+	public CommentServiceImpl(ModelMapper modelMapper, CommentRepository commentRepository,
+		ReplyRepository replyRepository, MemberService memberService,
 		NotificationService notificationService, PostService postService, PostRepository postRepository) {
 		this.modelMapper = modelMapper;
 		this.commentRepository = commentRepository;
-        this.replyService = replyService;
+		this.replyRepository = replyRepository;
+
+		/* 순환 참조 일어남 */
+        // this.replyService = replyService;
+
         this.memberService = memberService;
 		this.notificationService = notificationService;
 		this.postService = postService;
@@ -85,6 +94,12 @@ public class CommentServiceImpl implements CommentService {
 		findcomment.setDeleted(true);
 	}
 
+	public CommentDTO getCommentById(int commentId) {
+		Comment findcomment = commentRepository.findById(commentId)
+			.orElseThrow(() -> new RuntimeException("댓글을 찾을 수 없습니다."));
+		return modelMapper.map(findcomment, CommentDTO.class);
+	}
+
 	@Override
 	public List<CommentReplyDTO> viewCommentListByMe(String memberId) {
 
@@ -93,7 +108,10 @@ public class CommentServiceImpl implements CommentService {
 		List<Comment> commentList = commentRepository.findAllByMemberId(memberId);
 		List<CommentDTO> commentDTOList = modelMapper.map(commentList, new TypeToken<List<CommentDTO>>() {}.getType());
 
-		List<ReplyDTO> replyDTOList = replyService.viewReplyListByMemberId(memberId);
+		// List<ReplyDTO> replyDTOList = replyService.viewReplyListByMemberId(memberId);
+		List<Reply> replyList = replyRepository.findAllByMemberId(memberId);
+		List<ReplyDTO> replyDTOList = modelMapper.map(replyList, new TypeToken<List<ReplyDTO>>() {}.getType());
+
 
 		List<CommentReplyDTO> commentReplyDTOList = new ArrayList<>();
 		for (CommentDTO commentDTO : commentDTOList) {
@@ -119,5 +137,11 @@ public class CommentServiceImpl implements CommentService {
 		}
 
 		return commentReplyDTOList;
+	}
+
+	@Override
+	public CommentDTO getCommentById(Integer commentId) {
+		Comment comment = commentRepository.findById(commentId).orElseThrow(IllegalArgumentException::new);
+		return modelMapper.map(comment, CommentDTO.class);
 	}
 }
