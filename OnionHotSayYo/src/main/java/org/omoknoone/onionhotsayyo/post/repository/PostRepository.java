@@ -9,7 +9,7 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
     // 카테고리 ID에 해당하는 게시물 목록 조회 메소드
-    List<Post> findByCategoryId(String categoryId);
+    List<Post> findByCategoryId(Integer categoryId);
 
     // JPQL
 //    @Query("SELECT new org.omoknoone.onionhotsayyo.post.command.dto.PostWithCategoryNameDTO(p.postId, p.title, p.content, c.categoryName) " +

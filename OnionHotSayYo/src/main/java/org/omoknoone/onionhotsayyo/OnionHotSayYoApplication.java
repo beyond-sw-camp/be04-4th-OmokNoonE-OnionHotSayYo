@@ -14,10 +14,6 @@ public class OnionHotSayYoApplication {
         SpringApplication.run(OnionHotSayYoApplication.class, args);
     }
 
-//    @Bean
-//    public ModelMapper modelMapper() {
-//        return new ModelMapper();
-//    }
     @Bean
     public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();

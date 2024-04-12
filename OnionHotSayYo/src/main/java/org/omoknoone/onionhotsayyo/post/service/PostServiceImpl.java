@@ -1,11 +1,13 @@
 package org.omoknoone.onionhotsayyo.post.service;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.omoknoone.onionhotsayyo.exceptions.PostNotFoundException;
 import org.omoknoone.onionhotsayyo.member.dto.MemberDTO;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;
 import org.omoknoone.onionhotsayyo.post.aggregate.Post;
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
+import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
 import org.omoknoone.onionhotsayyo.post.repository.PostRepository;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
@@ -37,13 +39,13 @@ public class PostServiceImpl implements PostService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<ResponsePostListByCategory> viewPostsByCategory(String categoryId) {
+    public List<PostListByCategoryDTO> viewPostsByCategory(Integer categoryId) {
         log.info("카테고리 ID {}에 해당하는 게시물 목록 조회를 시작합니다.", categoryId);
 
         List<Post> posts = postRepository.findByCategoryId(categoryId);
 
-        List<ResponsePostListByCategory> CategoryPostList = posts.stream()
-                .map(post -> modelMapper.map(post, ResponsePostListByCategory.class))
+        List<PostListByCategoryDTO> CategoryPostList = posts.stream()
+                .map(post -> modelMapper.map(post, PostListByCategoryDTO.class))
                 .collect(Collectors.toList());
         log.info("카테고리 ID {}에 해당하는 게시물 목록 조회를 완료했습니다." +
                 " 조회된 게시물 수: {}", categoryId, CategoryPostList.size());
@@ -69,6 +71,7 @@ public class PostServiceImpl implements PostService {
     public ResponsePostDetail createPost(WritePostDetailDTO writePostDetailDTO) {
         log.info("새 게시물 생성을 시작합니다. 제목: {}", writePostDetailDTO.getTitle());
 
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         Post post = modelMapper.map(writePostDetailDTO, Post.class);
 
         Post newPost = postRepository.save(post);

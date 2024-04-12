@@ -1,6 +1,7 @@
 package org.omoknoone.onionhotsayyo.post.service;
 
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
+import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostListByCategory;
@@ -10,7 +11,7 @@ import java.util.List;
 public interface PostService {
 
     // 카테고리별 게시글 목록 조회
-    List<ResponsePostListByCategory> viewPostsByCategory(String categoryId);
+    List<PostListByCategoryDTO> viewPostsByCategory(Integer categoryId);
 
     // 게시글 상세 조회
     ResponsePostDetail viewPostById(Integer postId);

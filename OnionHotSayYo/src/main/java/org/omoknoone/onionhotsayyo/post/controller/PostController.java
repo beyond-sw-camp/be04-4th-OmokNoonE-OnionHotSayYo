@@ -1,6 +1,7 @@
 package org.omoknoone.onionhotsayyo.post.controller;
 
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
+import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
 import org.omoknoone.onionhotsayyo.post.service.PostService;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
@@ -30,12 +31,15 @@ public class PostController {
 
     // 카테고리별 게시글 목록 조회
     @GetMapping("/list/{categoryId}")
-    public ResponseEntity<List<ResponsePostListByCategory>> viewPostListByCategory(@PathVariable String categoryId) {
+    public ResponseEntity<ResponsePostListByCategory> viewPostListByCategory(@PathVariable Integer categoryId) {
         logger.info("카테고리별 게시글 목록 조회 요청: 카테고리 ID {}", categoryId);
-        List<ResponsePostListByCategory> categoryPosts = postService.viewPostsByCategory(categoryId);
-        logger.info("카테고리 ID {}에 대한 게시글 {}개 발견", categoryId, categoryPosts.size());
 
-        return ResponseEntity.ok(categoryPosts);
+        List<PostListByCategoryDTO> categoryPosts = postService.viewPostsByCategory(categoryId);
+
+        logger.info("카테고리 ID {}에 대한 게시글 {}개 발견", categoryId, categoryPosts.size());
+        ResponsePostListByCategory myPostList = new ResponsePostListByCategory(categoryPosts);
+
+        return ResponseEntity.ok(myPostList);
     }
 
     // 게시글 상세 조회
@@ -55,7 +59,7 @@ public class PostController {
     // 게시글 작성
     @PostMapping("/create")
     public ResponseEntity<ResponsePostDetail> createPost(@RequestBody WritePostDetailDTO writePostDetailDTO) {
-        logger.info("새 게시글 작성 요청: 제목 {}", writePostDetailDTO.getTitle());
+        logger.info("새 게시글 작성 요청: 제목 - {}", writePostDetailDTO.getTitle());
 
         ResponsePostDetail response = postService.createPost(writePostDetailDTO);
         logger.info("게시글 생성 완료: 게시글 ID {}", response.getPostId());
@@ -94,7 +98,9 @@ public class PostController {
     @GetMapping("/list/mypost/{memberId}")
     public ResponseEntity<ResponseMyPostList> viewMyPosts(@PathVariable String memberId) {
         logger.info("나의 게시글 리스트 요청: 맴버 ID {}", memberId);
+
         List<MyPostListDTO> myPosts = postService.viewMyPosts(memberId);
+
         logger.info("나의 게시물 리스트 조회 완료 {}", myPosts);
         ResponseMyPostList myPostList = new ResponseMyPostList(myPosts);
 
