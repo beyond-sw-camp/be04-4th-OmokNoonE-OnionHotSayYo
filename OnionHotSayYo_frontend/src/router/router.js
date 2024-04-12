@@ -37,6 +37,10 @@ const routes = [
     {
         path: '/reportsView',
         component: () => import("../views/ReportsView.vue")
+    },
+    {
+        path: '/posts/creates',
+        component: () => import("../views/AddPostView.vue")
     }
     // 추가 라우트를 여기에 정의할 수 있습니다.
 ];

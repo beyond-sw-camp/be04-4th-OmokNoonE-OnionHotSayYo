@@ -32,7 +32,7 @@
         </div>
         <div id="pagenation-container">
             <ul class="pagination">
-                <li class="page-item">
+                <!-- <li class="page-item">
                     <a class="page-link" href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
@@ -44,7 +44,22 @@
                     <a class="page-link" href="#" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
-                </li>
+                </li> -->
+                <div class="btn-group">
+                    <!-- <button @click="goBack" class="btn-left"><</button> -->
+                    <button @click="goBack" class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </button>
+
+                    
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <button @click="nextPage" class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </button>
+                    <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+                    <!-- <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                    <!-- <button @click="nextPage" class="btn-right">></button> -->
+                </div>
             </ul>
         </div>
     </div>
@@ -122,6 +137,10 @@ function goDetailPage(postId) {
     router.push(`/view/${postId}`)
 }
 
+function goToWrite(){
+    router.push(`/posts/creates`)
+}
+
 router.afterEach(() => {
     window.location.reload();
 });
@@ -130,6 +149,10 @@ router.afterEach(() => {
 </script>
 
 <style scoped>
+.btn-group {
+    margin-left: 0%;
+}
+
 .tooltip {
     position: absolute;
     /* 부모 요소(container)를 기준으로 위치 지정 */
