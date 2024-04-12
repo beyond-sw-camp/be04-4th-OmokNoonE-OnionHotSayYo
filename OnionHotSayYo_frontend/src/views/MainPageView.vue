@@ -89,7 +89,7 @@
 
     <div class="container">
         <Carousel :banners="banners" />
-        <div class="row container" v-for="categoryId in ['1', '2', '3', '4', '5', '6', '7', '8', '9']" :key="categoryId">
+        <div class="row" v-for="categoryId in ['1', '2', '3', '4', '5', '6', '7', '8', '9']" :key="categoryId">
             <BestPost :categoryId="categoryId"/>
         </div>
 

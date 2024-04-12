@@ -27,6 +27,10 @@ const routes = [
         component: () => import("../views/SignUpView.vue")
     },
     {
+        path: '/letter/:memberid',
+        component: () => import("../views/LetterView.vue")
+    },
+    {
         path: '/notfound',
         component: () => import("../views/NotFound.vue")
     },

@@ -124,9 +124,10 @@ watchEffect((newValue, oldValue) => {
 const router = useRouter();
 
 function goMyLetter(memberId) {
-    router.push(`/notfound`);
-    // router.push(`/letters/${memberId}`)
-}
+    // router.push(`/notfound`);
+    router.push(`/letter/${memberId}`)
+    }
+
 
 function goMyReports(memberId) {
     router.push(`/ReportsView`);
