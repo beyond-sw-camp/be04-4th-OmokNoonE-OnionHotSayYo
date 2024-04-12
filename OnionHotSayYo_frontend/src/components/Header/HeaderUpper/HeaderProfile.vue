@@ -36,7 +36,7 @@ import { useRouter } from 'vue-router';
 import { Toast } from 'bootstrap';
 
 const router = useRouter();
-const memberId = 'mem2';
+const memberId = 'member2';
 
 function goMyPage(memberId) {
   router.push(`/mypage/${memberId}`);

@@ -18,7 +18,7 @@ const routePostId = useRoute().params.postid;
 const posts = [];
 
 const PostDetailTopProps = ref({});
-console.log('posttop', PostDetailTopProps.value.POSTING_ID);
+console.log('posttop', PostDetailTopProps.value.POST_ID);
 
 const message = ref('');
 
@@ -32,7 +32,7 @@ onMounted(async () => {
         console.log(routePostId);
 
         for (let i = 0; i < posts.value.length; i++) {
-            if (posts.value[i].POSTING_ID == routePostId) {
+            if (posts.value[i].POST_ID == routePostId) {
                 const postTitle = posts.value[i].TITLE;
                 const postContent = posts.value[i].CONTENT;
                 const postImage = posts.value[i].IMAGE;
