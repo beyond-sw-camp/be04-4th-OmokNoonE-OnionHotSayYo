@@ -1,3 +1,5 @@
+
+
 spring:
   application:
     name: onion-hot-say-yo
@@ -28,4 +30,6 @@ deepl:
 
 #logging:
 #  level:
+server:
+  port: 8888
 #    root: debug
