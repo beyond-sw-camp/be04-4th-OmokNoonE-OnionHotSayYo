@@ -36,7 +36,7 @@ public class PostController {
 
         List<PostListByCategoryDTO> categoryPosts = postService.viewPostsByCategory(categoryId);
 
-        logger.info("카테고리 ID {}에 대한 게시글 {}개 발견", categoryId, categoryPosts.size());
+        logger.info("카테고리 ID {}에 대한 게시글 {}건 발견", categoryId, categoryPosts.size());
         ResponsePostListByCategory myPostList = new ResponsePostListByCategory(categoryPosts);
 
         return ResponseEntity.ok(myPostList);
@@ -97,11 +97,12 @@ public class PostController {
     // 내가 작성한 게시글 목록 조회
     @GetMapping("/list/mypost/{memberId}")
     public ResponseEntity<ResponseMyPostList> viewMyPosts(@PathVariable String memberId) {
-        logger.info("나의 게시글 리스트 요청: 맴버 ID {}", memberId);
+        logger.info("나의 게시글 리스트 요청, 맴버 ID: {}", memberId);
 
         List<MyPostListDTO> myPosts = postService.viewMyPosts(memberId);
+//        logger.info("나의 게시물 리스트 조회 완료 {}", myPosts);
+        logger.info("회원 {}(이)가 작성한 게시글 {}건 발견", memberId, myPosts.size());
 
-        logger.info("나의 게시물 리스트 조회 완료 {}", myPosts);
         ResponseMyPostList myPostList = new ResponseMyPostList(myPosts);
 
         return ResponseEntity.ok(myPostList);

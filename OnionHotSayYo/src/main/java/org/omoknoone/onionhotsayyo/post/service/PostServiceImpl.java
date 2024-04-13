@@ -11,7 +11,6 @@ import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
 import org.omoknoone.onionhotsayyo.post.repository.PostRepository;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
-import org.omoknoone.onionhotsayyo.post.vo.ResponsePostListByCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,7 +113,7 @@ public class PostServiceImpl implements PostService {
         }
 
         List<Post> posts = postRepository.findByMemberId(memberId);
-        log.info("맴버 ID {} 확인 되었습니다.", memberId);
+        log.info("맴버 ID: {} 확인 되었습니다.", memberId);
 
         return posts.stream()
                 .map(post -> modelMapper.map(post, MyPostListDTO.class))
