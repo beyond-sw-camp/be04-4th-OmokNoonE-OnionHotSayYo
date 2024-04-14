@@ -1,4 +1,4 @@
-package org.omoknoone.onionhotsayyo.star.command.aggregate;
+package org.omoknoone.onionhotsayyo.star.aggregate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

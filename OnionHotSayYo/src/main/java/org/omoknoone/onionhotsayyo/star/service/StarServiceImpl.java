@@ -1,11 +1,9 @@
-package org.omoknoone.onionhotsayyo.star.command.service;
-
-import java.util.List;
+package org.omoknoone.onionhotsayyo.star.service;
 
 import org.modelmapper.ModelMapper;
-import org.omoknoone.onionhotsayyo.star.command.aggregate.Star;
-import org.omoknoone.onionhotsayyo.star.command.dto.StarDTO;
-import org.omoknoone.onionhotsayyo.star.command.repository.StarRepository;
+import org.omoknoone.onionhotsayyo.star.aggregate.Star;
+import org.omoknoone.onionhotsayyo.star.dto.StarDTO;
+import org.omoknoone.onionhotsayyo.star.repository.StarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

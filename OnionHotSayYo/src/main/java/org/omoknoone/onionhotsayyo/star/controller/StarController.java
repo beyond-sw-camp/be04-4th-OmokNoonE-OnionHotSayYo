@@ -1,12 +1,9 @@
-package org.omoknoone.onionhotsayyo.star.command.controller;
+package org.omoknoone.onionhotsayyo.star.controller;
 
 import org.modelmapper.ModelMapper;
-import org.omoknoone.onionhotsayyo.star.command.aggregate.Star;
-import org.omoknoone.onionhotsayyo.star.command.dto.StarDTO;
-import org.omoknoone.onionhotsayyo.star.command.service.StarService;
+import org.omoknoone.onionhotsayyo.star.dto.StarDTO;
+import org.omoknoone.onionhotsayyo.star.service.StarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
