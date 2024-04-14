@@ -1,5 +1,6 @@
 package org.omoknoone.onionhotsayyo.post.service;
 
+import org.omoknoone.onionhotsayyo.post.dto.MyBookmarkPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
@@ -28,9 +29,9 @@ public interface PostService {
     // 내가 작성한 게시글 목록 조회
     List<MyPostListDTO> viewMyPosts(String memberId);
 
-//    // 내가 북마크한 게시글 목록 조회
-//    List<Post> viewBookmarkedPosts(Integer userId);
-//
+//     내가 북마크한 게시글 목록 조회
+    List<MyBookmarkPostListDTO> viewBookmarkedPosts(String memberId);
+
 //    // 내가 좋아요한 게시글 목록 조회
 //    List<Post> viewLikedPosts(Integer userId);
 //
