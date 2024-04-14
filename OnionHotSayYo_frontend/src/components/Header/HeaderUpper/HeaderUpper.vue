@@ -11,7 +11,14 @@
                 <SearchBar />
                 <!-- <a class="btn btn-sm btn-outline-secondary sign-up" href="#"><span id="sign-up">Sign up</span></a> -->
                 <!-- <Profile/> -->
-                <HeaderLogin/>
+
+                <!-- 로그인 상태에 따른 컴포넌트 -->
+                <div v-if="needLogin">
+                    <HeaderLogin />
+                </div>
+                <div v-else>
+                    <HeaderLogout />
+                </div>
             </div>
         </div>
     </header>
@@ -21,6 +28,15 @@
 import SearchBar from "./SearchBar.vue";
 import Profile from "./HeaderProfile.vue";
 import HeaderLogin from "./HeaderLogin.vue";
+import HeaderLogout from './HeaderLogout.vue';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+// 로그인 필요 여부 확인
+const needLogin = computed(() => {
+    return store.getters.isNeedLogin;
+})
 </script>
 
 <style scoped>

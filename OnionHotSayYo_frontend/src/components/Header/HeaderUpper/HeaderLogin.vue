@@ -22,12 +22,12 @@
 
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="floatingInput"
-                                    placeholder="name@example.com" v-model="id" >
+                                    placeholder="name@example.com" v-model="id">
                                 <label for="floatingInput">ID</label>
                             </div>
                             <div class="form-floating">
-                                <input type="password" class="form-control" id="floatingPassword"
-                                    placeholder="Password" v-model="password" >
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                                    v-model="password">
                                 <label for="floatingPassword">Password</label>
                             </div>
 
@@ -38,7 +38,7 @@
                                     Remember me
                                 </label>
                             </div>
-                            <button class="btn btn-primary w-100 py-2" type="submit" @click.prevent="login" >Sign In</button>
+                            <button class="btn btn-primary w-100 py-2" type="submit" @click.prevent="login">Sign In</button>
                             <div class="col-md-3 text-end">
                                 <div>
                                     <span style="font-size: 12px;">계정이 없으신가요?</span>
@@ -54,39 +54,58 @@
 </template>
 
 <script setup>
-// import axios from 'axios';
-import { ref } from 'vue';
-import axiosInstance from '@/js/axios-instance';    // Custom Axios
+// import { ref } from 'vue';
+// import axiosInstance from '@/js/axios-instance';    // Custom Axios
 
+
+// const id = ref('');
+// const password = ref('');
+
+// async function login() {
+
+//     const loginMember = {
+//         memberId: id.value,
+//         password: password.value
+//     };
+
+//     const config = {
+//         headers: {
+//             'Content-Type': 'application/json',
+//         }
+//     };
+
+//     try {
+//         const response = await axiosInstance.post("/login", loginMember, config);
+//         console.log(response);        
+
+//         /* TODO router 설정 추가 해야함 */
+
+//     } catch (error) {
+//         console.error("Error SignUp Post:", error);
+//         return false;
+//     }
+// }
+
+import { ref } from 'vue';
+import { useStore } from 'vuex';
 
 const id = ref('');
 const password = ref('');
 
-async function login() {
+const store = useStore();
 
-    const loginMember = {
-        memberId: id.value,
-        password: password.value
-    };
-
-    const config = {
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    };
-
+// 로그인 처리
+const login = async () => {
     try {
-        const response = await axiosInstance.post("/login", loginMember, config);
-        console.log(response);        
-
-        /* TODO router 설정 추가 해야함 */
-        
+        const response = await store.dispatch('auth/login', {
+            memberId: id.value,
+            password: password.value
+        })
+        alert(response);
     } catch (error) {
         console.error("Error SignUp Post:", error);
-        return false;
     }
 }
-
 </script>
 
 <style scoped>
