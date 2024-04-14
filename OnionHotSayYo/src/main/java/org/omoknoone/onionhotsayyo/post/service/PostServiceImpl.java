@@ -2,10 +2,14 @@ package org.omoknoone.onionhotsayyo.post.service;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
+import org.omoknoone.onionhotsayyo.bookmark.aggregate.Bookmark;
+import org.omoknoone.onionhotsayyo.bookmark.dto.BookmarkDTO;
+import org.omoknoone.onionhotsayyo.bookmark.service.BookmarkService;
 import org.omoknoone.onionhotsayyo.exceptions.PostNotFoundException;
 import org.omoknoone.onionhotsayyo.member.dto.MemberDTO;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;
 import org.omoknoone.onionhotsayyo.post.aggregate.Post;
+import org.omoknoone.onionhotsayyo.post.dto.MyBookmarkPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
@@ -28,12 +32,14 @@ public class PostServiceImpl implements PostService {
     private final ModelMapper modelMapper;
     private final PostRepository postRepository;
     private final MemberService memberService;
+    private final BookmarkService bookmarkService;
 
     @Autowired
-    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper, MemberService memberService) {
+    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper, MemberService memberService, BookmarkService bookmarkService) {
         this.postRepository = postRepository;
         this.modelMapper = modelMapper;
         this.memberService = memberService;
+        this.bookmarkService = bookmarkService;
     }
 
     @Transactional(readOnly = true)
@@ -103,7 +109,7 @@ public class PostServiceImpl implements PostService {
         log.info("게시물 ID {}이(가) 성공적으로 삭제되었습니다.", postId);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public List<MyPostListDTO> viewMyPosts(String memberId) {
         MemberDTO member = memberService.getMemberDetailsByMemberId(memberId);
@@ -118,5 +124,34 @@ public class PostServiceImpl implements PostService {
         return posts.stream()
                 .map(post -> modelMapper.map(post, MyPostListDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<MyBookmarkPostListDTO> viewBookmarkedPosts(String memberId) {
+        log.info("회원 ID {}의 북마크한 게시물 목록 조회를 시작합니다.", memberId);
+
+// BookmarkService를 사용하여 북마크된 게시물 목록을 조회
+        List<Bookmark> bookmarks = bookmarkService.findBookmarkSByMemberId(memberId);
+        if (bookmarks.isEmpty()) {
+            log.warn("회원 ID {}에 대한 북마크한 게시물이 없습니다.", memberId);
+            throw new PostNotFoundException("북마크한 게시물이 없습니다.");
+        }
+
+        // 북마크된 게시물의 ID 목록 추출
+        List<Integer> bookmarkedPostIds = bookmarks.stream()
+                .map(Bookmark::getPostId)  // Bookmark 객체에서 postId를 추출
+                .collect(Collectors.toList());
+
+        // 조회된 게시물 ID로 게시물 정보를 조회
+        List<Post> bookmarkedPosts = postRepository.findAllById(bookmarkedPostIds);
+        List<MyBookmarkPostListDTO> bookmarkedPostList = bookmarkedPosts.stream()
+                .map(post -> modelMapper.map(post, MyBookmarkPostListDTO.class))
+                .collect(Collectors.toList());
+
+        log.info("bookmark Service로부터 회원 ID {}에 대한 북마크한 게시물 목록 조회가 완료되었습니다. 조회된 게시물 수: {}"
+                , memberId, bookmarkedPostList.size());
+
+        return bookmarkedPostList;
     }
 }
