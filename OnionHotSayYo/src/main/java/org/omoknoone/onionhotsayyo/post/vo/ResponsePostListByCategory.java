@@ -6,9 +6,9 @@ import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import java.util.List;
 
 
+// 카테고리 별 게시물 목록 응답
 @Getter
 @ToString
-// 카테고리 별 게시물 리스트 응답
 public class ResponsePostListByCategory {
 
     private final List<PostListByCategoryDTO> categoryPosts;

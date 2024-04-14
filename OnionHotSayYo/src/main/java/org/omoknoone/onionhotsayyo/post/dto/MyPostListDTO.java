@@ -5,6 +5,7 @@ import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+// 작성자가 작성한 게시물 리스트 목록 조회 시
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
