@@ -31,3 +31,4 @@ public class OnionHotSayYoApplication {
 
 
 /* 테스트용 주석 2 */
+/* Jenkins 작동 확인을 위한 커밋용 주석 */
