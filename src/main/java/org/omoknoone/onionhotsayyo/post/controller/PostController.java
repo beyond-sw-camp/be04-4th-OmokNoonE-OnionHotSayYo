@@ -72,10 +72,10 @@ public class PostController {
     // 게시글 수정
     @PutMapping("/modify/{postId}")
     public ResponseEntity<ResponsePostDetail> modifyPost(@PathVariable Integer postId,
-                                                         @RequestBody WritePostDetailDTO writePostDetailDTO) {
+        @RequestBody WritePostDetailDTO writePostDetailDTO) {
         logger.info("게시글 수정 요청: 게시글 ID {}", postId);
 
-        ResponsePostDetail  updatedPost = postService.modifyPost(postId, writePostDetailDTO);
+        ResponsePostDetail updatedPost = postService.modifyPost(postId, writePostDetailDTO);
         if (updatedPost == null) {
             logger.error("게시글 ID {}를 찾을 수 없어 수정 불가", postId);
             return ResponseEntity.notFound().build();
@@ -110,7 +110,7 @@ public class PostController {
     }
 
     // 내가 북마크한 게시글 목록 조회
-    @GetMapping("list/mybookmark/{memberId}")
+    @GetMapping("/list/mybookmark/{memberId}")
     public ResponseEntity<ResponseMyBookmarkPostList> viewPostListByBookmark(@PathVariable String memberId) {
         logger.info("나의 북마크된 게시글 리스트 요청, 회원 ID: {}", memberId);
 
@@ -123,5 +123,31 @@ public class PostController {
 
         ResponseMyBookmarkPostList myBookmarkList = new ResponseMyBookmarkPostList(myBookmarkedPosts);
         return ResponseEntity.ok(myBookmarkList);
+    }
+
+    // 상단 검색바 게시글 검색
+    @GetMapping("/search/{title}")
+    public ResponseEntity<ResponseMyPostList> searchPost(
+        @PathVariable String title,
+        @RequestParam(required = false) String language
+    ) {
+
+        if (language == null) {
+            List<MyPostListDTO> searchResultPosts = postService.searchPost(title);
+
+            ResponseMyPostList myPostList = new ResponseMyPostList(searchResultPosts);
+
+            return ResponseEntity.ok(myPostList);
+        }
+
+        else{
+            logger.info("번역 결과 언어: " + language);
+            List<MyPostListDTO> searchResultPosts = postService.searchTranslationPost(title, language);
+
+            ResponseMyPostList myPostList = new ResponseMyPostList(searchResultPosts);
+            logger.info("게시글 발견");
+
+            return ResponseEntity.ok(myPostList);
+        }
     }
 }

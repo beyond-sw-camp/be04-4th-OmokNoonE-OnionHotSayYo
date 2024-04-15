@@ -15,6 +15,7 @@ public class MyPostListDTO {
 
     private Integer postId;
     private String title;
+    private String memberId;
     private LocalDateTime postedDate;
     private int hits;
 }

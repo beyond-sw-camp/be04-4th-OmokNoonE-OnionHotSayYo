@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.omoknoone.onionhotsayyo.post.dto.HeaderSearchInfoDTO;
 import org.omoknoone.onionhotsayyo.translator.aggregate.Translation;
+import org.omoknoone.onionhotsayyo.translator.dto.TranslatedTextDTO;
 import org.omoknoone.onionhotsayyo.translator.dto.TranslationDTO;
 import org.omoknoone.onionhotsayyo.translator.repository.TranslationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,6 +139,52 @@ public class TranslationServiceImpl implements TranslationService {
         return translatedPostList;
     }
 
+    @Override
+    public TranslatedTextDTO translateKeyword(HeaderSearchInfoDTO searchInfo) {
+
+        String translatedText = "[" + searchInfo.getTitle() + "] 번역되지 않음";
+
+        /* API 통신 객체 */
+        RestTemplate restTemplate = new RestTemplate();
+
+        /* header set */
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        String auth = "DeepL-Auth-Key " + environment.getProperty("deepl.api-key");
+        httpHeaders.set("Authorization", auth);
+
+        // API 통신을 위한 Map
+        MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+        body.add("target_lang", searchInfo.getLanguage());
+        body.add("text", searchInfo.getTitle());
+
+        /* message */
+        HttpEntity<?> requestMessage = new HttpEntity<>(body, httpHeaders);
+
+        /* Request */
+        HttpEntity<String> response = restTemplate.postForEntity(
+            BASE_URL + "/translate",
+            requestMessage,
+            String.class);
+
+        /* 응답 결과 저장 */
+        JsonNode rootNode = null;
+
+        try {
+            rootNode = objectMapper.readTree(response.getBody());
+            JsonNode translationsNode = rootNode.get("translations");
+            if(!translationsNode.isEmpty()) {
+
+                translatedText = translationsNode.get(0).get("text").asText();
+            }
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+        return new TranslatedTextDTO(searchInfo.getLanguage(),translatedText);
+    }
+
     /* 번역 요청 들어온 글의 ID를 찾아서 제외 (게시글의 경우에만) */
     private Map<String, List<TranslationDTO>> excludeExistTranslatedPost(List<TranslationDTO> translationDTOList) {
 
@@ -197,5 +245,6 @@ public class TranslationServiceImpl implements TranslationService {
         // 수정된 목록은 repo.save()를 통해 저장
         translationRepository.saveAll(translationList);
     }
+
 
 }

@@ -8,12 +8,15 @@ import org.omoknoone.onionhotsayyo.exceptions.PostNotFoundException;
 import org.omoknoone.onionhotsayyo.member.dto.MemberDTO;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;
 import org.omoknoone.onionhotsayyo.post.aggregate.Post;
+import org.omoknoone.onionhotsayyo.post.dto.HeaderSearchInfoDTO;
 import org.omoknoone.onionhotsayyo.post.dto.MyBookmarkPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
 import org.omoknoone.onionhotsayyo.post.repository.PostRepository;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
+import org.omoknoone.onionhotsayyo.translator.dto.TranslatedTextDTO;
+import org.omoknoone.onionhotsayyo.translator.service.TranslationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +35,16 @@ public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
     private final MemberService memberService;
     private final BookmarkService bookmarkService;
+    private final TranslationService translationService;
 
     @Autowired
-    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper, MemberService memberService, BookmarkService bookmarkService) {
-        this.postRepository = postRepository;
+    public PostServiceImpl(ModelMapper modelMapper, PostRepository postRepository, MemberService memberService,
+        BookmarkService bookmarkService, TranslationService translationService) {
         this.modelMapper = modelMapper;
+        this.postRepository = postRepository;
         this.memberService = memberService;
         this.bookmarkService = bookmarkService;
+        this.translationService = translationService;
     }
 
     @Transactional(readOnly = true)
@@ -153,4 +159,29 @@ public class PostServiceImpl implements PostService {
 
         return bookmarkedPostList;
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<MyPostListDTO> searchPost(String title) {
+
+        List<MyPostListDTO> posts = postRepository.searchPostByTitle(title);
+
+        return posts;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<MyPostListDTO> searchTranslationPost(String title, String language) {
+
+        HeaderSearchInfoDTO searchInfo = new HeaderSearchInfoDTO(title, language);
+
+        // keyword 번역
+        TranslatedTextDTO translatedTitle = translationService.translateKeyword(searchInfo);
+
+        // 번역된 keyword로 post 목록 조회
+        List<MyPostListDTO> posts = postRepository.searchPostByTitle(translatedTitle.getTitle());
+
+        return posts;
+    }
+
 }
