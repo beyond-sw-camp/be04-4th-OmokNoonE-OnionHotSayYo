@@ -8,7 +8,7 @@ public interface HotPostService {
 
     void dailyUpdateHotPosts();
 
-    // 추천글 목록 조회
-    List<HotPostListByCategoryDTO> updateAndFetchHotPosts(String categoryId);
+    // 카테고리별 조회수 상위 5건의 추천글 목록 조회 (자정마다 업데이트)
+    List<HotPostListByCategoryDTO> updateHotPosts(Integer categoryId);
 
 }

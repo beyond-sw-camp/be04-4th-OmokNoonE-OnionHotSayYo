@@ -29,14 +29,14 @@ public class HotPostController {
     }
 
     @GetMapping("/hotlist/{categoryId}")
-    public ResponseEntity<ResponseHotPostListByCategory> viewHotPostList(@PathVariable String categoryId) {
-        log.info("카테고리 ID {}에 대한 인기 게시물 목록 조회 요청", categoryId);
-
-        List<HotPostListByCategoryDTO> hotPosts = hotPostService.updateAndFetchHotPosts(categoryId);
-        log.info("카테고리 ID {}에 대한 인기 게시물 {}건 발견", categoryId, hotPosts.size());
-
-        ResponseHotPostListByCategory hotPostList = new ResponseHotPostListByCategory(hotPosts);
-        return ResponseEntity.ok(hotPostList);
+    public ResponseEntity<ResponseHotPostListByCategory> viewHotPostList(@PathVariable Integer categoryId) {
+        List<HotPostListByCategoryDTO> hotPosts = hotPostService.updateHotPosts(categoryId);
+        if (hotPosts.isEmpty()) {
+            log.warn("카테고리 ID {}에 해당하는 상위 게시물이 없습니다.", categoryId);
+            return ResponseEntity.noContent().build();
+        }
+        ResponseHotPostListByCategory response = new ResponseHotPostListByCategory(hotPosts);
+        log.info("카테고리 ID {}에 대한 추천 게시물 목록 조회 완료", categoryId);
+        return ResponseEntity.ok(response);
     }
-
 }
