@@ -56,6 +56,9 @@
 <script setup>
 import {ref} from 'vue';
 import {useStore} from 'vuex';
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const id = ref('');
 const password = ref('');
@@ -69,8 +72,9 @@ async function login() {
       memberId: id.value,
       password: password.value
     })
+    alert(response);
     /* TODO. router 추가 하고, @click.prevent 수정하기 */
-    console.log(response);
+    await router.push(`/`);
   } catch (error) {
     console.error("Error Login:", error);
   }

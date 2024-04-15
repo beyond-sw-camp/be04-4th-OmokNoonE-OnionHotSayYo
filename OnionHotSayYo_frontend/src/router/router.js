@@ -1,4 +1,6 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {createRouter, createWebHistory} from "vue-router";
+import {useCookies} from "vue3-cookies";
+import store from "@/store";
 
 const routes = [
     {
@@ -48,6 +50,26 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+});
+router.beforeEach((to, from, next) => {
+    const { cookies } = useCookies();
+    const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+    const refreshToken = cookies.get('refreshTokenId');
+
+    if (accessToken) {
+        localStorage.setItem("accessToken", JSON.stringify(accessToken));
+    }
+
+    // refreshToken이 없을 경우 로그인 창 띄우기
+    if (refreshToken === null) {
+        console.warn('need login...');
+        store.commit('needLogin', true);
+    } else {
+        store.commit('needLogin', false);
+        cookies.set('refreshTokenId', refreshToken);
+        return next();
+    }
+    return next('/');
 });
 
 export default router;

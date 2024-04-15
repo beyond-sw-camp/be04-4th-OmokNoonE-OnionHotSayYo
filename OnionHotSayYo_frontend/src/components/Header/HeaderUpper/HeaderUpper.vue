@@ -10,13 +10,12 @@
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <SearchBar />
                 <!-- <a class="btn btn-sm btn-outline-secondary sign-up" href="#"><span id="sign-up">Sign up</span></a> -->
-                <HeaderProfile/>
                 <!-- 로그인 상태에 따른 컴포넌트 -->
                 <div v-if="needLogin">
                     <HeaderLogin />
                 </div>
                 <div v-else>
-                    <HeaderLogout />
+                  <HeaderProfile/>
                 </div>
             </div>
         </div>
@@ -31,7 +30,6 @@ import { useRouter } from "vue-router";
 import SearchBar from "./SearchBar.vue";
 import HeaderProfile from "./HeaderProfile.vue";
 import HeaderLogin from "./HeaderLogin.vue";
-import HeaderLogout from './HeaderLogout.vue';
 
 const router = useRouter();
 const store = useStore();
