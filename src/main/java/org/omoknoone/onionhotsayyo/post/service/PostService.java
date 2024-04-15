@@ -31,9 +31,10 @@ public interface PostService {
 //     내가 북마크한 게시글 목록 조회
     List<MyBookmarkPostListDTO> viewBookmarkedPosts(String memberId);
 
-//    // 내가 좋아요한 게시글 목록 조회
-//    List<Post> viewLikedPosts(Integer userId);
-//
+    // 카테고리별 상위 5개 게시물 조회
+    List<PostListByCategoryDTO> findHotPostsByCategory(String categoryId);
+
+
 //    // 언어별 게시글 (제목+내용) 검색 (상단 검색)
 //    List<Post> searchPostsByLanguageAndText(String language, String text);
 //

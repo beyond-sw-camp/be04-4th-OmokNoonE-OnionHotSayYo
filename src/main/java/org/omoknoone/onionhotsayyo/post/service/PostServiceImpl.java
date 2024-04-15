@@ -17,6 +17,8 @@ import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -152,5 +154,15 @@ public class PostServiceImpl implements PostService {
                 , memberId, bookmarkedPostList.size());
 
         return bookmarkedPostList;
+    }
+
+    @Transactional(readOnly = true)
+    @Scheduled(cron = "0 0 0 * * ?") // 매일 자정에 실행
+    @Override
+    public List<PostListByCategoryDTO> findHotPostsByCategory(String categoryId) {
+        return postRepository.findTopPostsByCategory(categoryId, PageRequest.of(0, 5))
+                .stream()
+                .map(post -> modelMapper.map(post, PostListByCategoryDTO.class))
+                .collect(Collectors.toList());
     }
 }
