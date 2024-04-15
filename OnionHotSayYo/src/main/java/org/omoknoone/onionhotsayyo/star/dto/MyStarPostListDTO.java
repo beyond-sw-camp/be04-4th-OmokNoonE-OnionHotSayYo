@@ -1,0 +1,19 @@
+package org.omoknoone.onionhotsayyo.star.dto;
+
+import lombok.*;
+
+import java.time.LocalDateTime;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+public class MyStarPostListDTO {
+
+    private int starId;
+    private Integer postId;
+    private String title;
+    private LocalDateTime postedDate;
+    private int hits;
+}
