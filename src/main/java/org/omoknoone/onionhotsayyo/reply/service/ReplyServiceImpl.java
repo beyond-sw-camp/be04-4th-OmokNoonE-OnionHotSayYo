@@ -6,8 +6,6 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.modelmapper.convention.MatchingStrategies;
-import org.omoknoone.onionhotsayyo.post.command.service.PostService;
-import org.omoknoone.onionhotsayyo.post.command.vo.PostDetailVO;
 import org.omoknoone.onionhotsayyo.reply.aggregate.Reply;
 import org.omoknoone.onionhotsayyo.reply.dto.ReplyDTO;
 import org.omoknoone.onionhotsayyo.reply.repository.ReplyRepository;

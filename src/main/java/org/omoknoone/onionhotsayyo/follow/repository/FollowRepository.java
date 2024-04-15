@@ -1,9 +1,10 @@
 package org.omoknoone.onionhotsayyo.follow.repository;
 
+import org.omoknoone.onionhotsayyo.follow.aggregate.Follow;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-import org.omoknoone.follow.command.aggregate.Follow;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FollowRepository extends JpaRepository<Follow, Integer> {
 	List<Follow> findAllByFromMemberId(String memberId);

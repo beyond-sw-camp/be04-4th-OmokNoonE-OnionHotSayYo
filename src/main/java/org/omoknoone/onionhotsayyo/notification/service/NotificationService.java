@@ -1,20 +1,18 @@
 package org.omoknoone.onionhotsayyo.notification.service;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Map;
-
 import org.modelmapper.ModelMapper;
 import org.omoknoone.onionhotsayyo.member.aggregate.Member;
 import org.omoknoone.onionhotsayyo.member.repository.MemberRepository;
-import org.omoknoone.onionhotsayyo.notification.repository.EmitterRepository;
 import org.omoknoone.onionhotsayyo.notification.aggregate.Notification;
 import org.omoknoone.onionhotsayyo.notification.dto.NotificationDTO;
+import org.omoknoone.onionhotsayyo.notification.repository.EmitterRepository;
 import org.omoknoone.onionhotsayyo.notification.repository.NotificationRepository;
-import org.omoknoone.onionhotsayyo.post.command.aggregate.Post;
-import org.omoknoone.onionhotsayyo.post.command.repository.PostRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Map;
 
 @Service
 public class NotificationService {

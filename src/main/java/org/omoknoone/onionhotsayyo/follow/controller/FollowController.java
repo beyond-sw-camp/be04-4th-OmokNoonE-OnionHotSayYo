@@ -1,7 +1,7 @@
 package org.omoknoone.onionhotsayyo.follow.controller;
 
 import org.modelmapper.ModelMapper;
-import org.omoknoone.follow.command.aggregate.Follow;
+import org.omoknoone.onionhotsayyo.follow.aggregate.Follow;
 import org.omoknoone.onionhotsayyo.follow.dto.FollowDTO;
 import org.omoknoone.onionhotsayyo.follow.service.FollowService;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;

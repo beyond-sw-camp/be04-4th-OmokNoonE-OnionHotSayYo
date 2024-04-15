@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.omoknoone.follow.command.aggregate.Follow;
+import org.omoknoone.onionhotsayyo.follow.aggregate.Follow;
 import org.omoknoone.onionhotsayyo.follow.repository.FollowRepository;
 import org.omoknoone.onionhotsayyo.follow.dto.FollowDTO;
 import org.omoknoone.onionhotsayyo.member.repository.MemberRepository;
