@@ -1,7 +1,7 @@
 <template>
     <div>
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight">
+            aria-controls="offcanvasRight" @click.prevent="logout">
             <img src="@/assets/image/OnionHotSayYo.png" width="17" height="17">
             LOGOUT
         </button>
@@ -11,7 +11,17 @@
 </template>
 
 <script setup>
+import {useStore} from 'vuex';
 
+const store = useStore();
+async function logout() {
+  try {
+    const response = await store.dispatch('logout')
+    console.log(response)
+  } catch (error) {
+    console.error("Error Logout:", error);
+  }
+}
 </script>
 
 <style scoped>

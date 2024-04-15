@@ -1,37 +1,24 @@
 import { useCookies } from 'vue3-cookies'
 import { createStore } from "vuex";
 const { cookies } = useCookies();
+import axios from '../js/axios-instance.js';
 
-// import axios from '../../plugins/axios';
-
-// export default createStore({
-//   state: {
-//     counter: 10
-//   },
-//   getters: {
-//     time2(state) {
-//       return state.counter * 2;
-//     }
-//   },
-//   mutations: {
-//     setCounter(state, value) {
-//       state.counter = value;
-//     }
-//   }
-// });
 export default createStore({
   namespaced: true,
   state: {
-    needLogin: true,
+    isNeedLogin: true,
+    // isNeedLogin: false,
   },
   mutations: {
     needLogin(state, data) {
-      state.needLogin = data;
+      // state.needLogin = data;
+      state.isNeedLogin = data;
     },
   },
   getters: {
     isNeedLogin(state) {
-      return state.needLogin;
+      // return state.needLogin;
+      return state.isNeedLogin;
     },
   },
   actions: {
@@ -43,15 +30,27 @@ export default createStore({
               'Content-Type': 'application/json',
             }
           };
-          const rs = await this.axios.post('/api/auth/login', params, config);
-          if (rs.data.ok) {
-            const access = rs.data.result.accessToken;
-            const refresh = rs.data.result.refreshToken;
-            cookies.set('accessToken', access, import.meta.env.VITE_ACCESS_TIME);
-            cookies.set('refreshToken', refresh, import.meta.env.VITE_REFRESH_TIME);
+          const response = await axios.post('/login', params, config);
+
+          const status = response.status;
+          if(status === 200){
             commit('needLogin', false);
           }
-          resolve(rs.data.msg);
+          resolve(`로그인 성공 : ${status}`);
+        } catch (err) {
+          console.error(err);
+          reject(err);
+        }
+      })
+    },
+    logout({ commit }, params) { //로그아웃 및 토큰 삭제
+      return new Promise(async (resolve, reject) => {
+        try {
+          /* TODO. 토큰 삭제 처리 */
+          localStorage.removeItem("accessToken");
+          cookies.remove("refreshTokenId");
+          commit('needLogin', true);
+          resolve("로그아웃 성공");
         } catch (err) {
           console.error(err);
           reject(err);
