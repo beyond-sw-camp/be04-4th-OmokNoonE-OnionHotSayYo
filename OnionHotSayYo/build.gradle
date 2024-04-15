@@ -41,7 +41,8 @@ dependencies {
     // https://mvnrepository.com/artifact/org.modelmapper/modelmapper
     implementation 'org.modelmapper:modelmapper:3.1.1'
 
-
+    // AOP
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
 
 }
 tasks.named('test') {
