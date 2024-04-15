@@ -6,21 +6,21 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 
 import { createApp } from 'vue'
 import App from './App.vue'
-import axios from 'axios'
+import store from './store';
+import vueCookie from 'vue3-cookies';
+import axios from './js/axios-instance';
 import router from './router/router.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 
-
 import * as ColorModes from "./assets/js/color-modes.js";
 import * as BundleMin from "./assets/dist/js/bootstrap.bundle.min.js";
 
-
 const app = createApp(App);
-// createApp( { /* options */ } ).use( CKEditor ).mount( /* DOM element */ );
+app.config.globalProperties.axios = axios;
+
 app.use(CKEditor).mount( /* DOM element */ );
-app.config.globalProperties.$axios = axios
+app.use(vueCookie);
+app.use(store);
 app.use(router);
 app.mount('#app');
-
-
