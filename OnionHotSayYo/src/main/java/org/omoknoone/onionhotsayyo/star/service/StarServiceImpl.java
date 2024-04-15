@@ -2,11 +2,14 @@ package org.omoknoone.onionhotsayyo.star.service;
 
 import org.modelmapper.ModelMapper;
 import org.omoknoone.onionhotsayyo.star.aggregate.Star;
+import org.omoknoone.onionhotsayyo.star.dto.MyStarPostListDTO;
 import org.omoknoone.onionhotsayyo.star.dto.StarDTO;
 import org.omoknoone.onionhotsayyo.star.repository.StarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class StarServiceImpl implements StarService{
@@ -36,4 +39,10 @@ public class StarServiceImpl implements StarService{
 		starRepository.delete(star);
 	}
 
+	// 회원이 좋아요를 누른 게시물 목록 조회
+	@Transactional(readOnly = true)
+	@Override
+	public List<MyStarPostListDTO> findLikedPostsByMemberId(String memberId) {
+		return starRepository.findLikedPostsByMemberId(memberId);
+	}
 }

@@ -1,14 +1,14 @@
 package org.omoknoone.onionhotsayyo.star.controller;
 
 import org.modelmapper.ModelMapper;
+import org.omoknoone.onionhotsayyo.star.dto.MyStarPostListDTO;
 import org.omoknoone.onionhotsayyo.star.dto.StarDTO;
 import org.omoknoone.onionhotsayyo.star.service.StarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/stars")
@@ -34,5 +34,15 @@ public class StarController {
 	@DeleteMapping("/remove")
 	public void removeStar (@RequestBody StarDTO starDTO) {
 		starService.removeStar(starDTO);
+	}
+
+	@GetMapping("/list/mystar/{memberId}")
+	public ResponseEntity<List<MyStarPostListDTO>> viewPostListByStar(@PathVariable String memberId) {
+		List<MyStarPostListDTO> myStarredPosts = starService.findLikedPostsByMemberId(memberId);
+		if (myStarredPosts.isEmpty()) {
+			return ResponseEntity.noContent().build();
+		}
+
+		return ResponseEntity.ok(myStarredPosts);
 	}
 }
