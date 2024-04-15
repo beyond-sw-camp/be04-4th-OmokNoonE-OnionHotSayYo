@@ -30,8 +30,6 @@ public class NotificationService {
 	private final EmitterRepository emitterRepository;
 	private final ModelMapper modelMapper;
 
-
-
 	public NotificationService(MemberRepository memberRepository, NotificationRepository notificationRepository,
 		EmitterRepository emitterRepository, ModelMapper modelMapper) {
 		this.memberRepository = memberRepository;
@@ -63,7 +61,6 @@ public class NotificationService {
 				.filter(entry -> lastEventId.compareTo(entry.getKey()) < 0)
 				.forEach(entry -> sendToClient(emitter, entry.getKey(), entry.getValue()));
 		}
-
 		return emitter;
 	}
 
@@ -82,13 +79,13 @@ public class NotificationService {
 		}
 	}
 
-	public void send(String receiverName, String content) {
-		System.out.println("[send] receiverName = " + receiverName);
+	public void send(String receiverName, String content, String url) {
+		// System.out.println("[send] receiverName = " + receiverName);
 		Member receiver = memberRepository.findByMemberId(receiverName);
-		System.out.println("receiver = " + receiver);
+		// System.out.println("receiver = " + receiver);
 
 		// DB에 notification 추가
-		Notification notification = notificationRepository.save(createNotification(receiver, content));
+		Notification notification = notificationRepository.save(createNotification(receiver, content, url));
 		System.out.println("notification = " + notification);
 
 		// String eventCreatedTime = receiverName + "_" + System.currentTimeMillis();
@@ -107,19 +104,13 @@ public class NotificationService {
 		);
 	}
 
-	private Notification createNotification(Member receiver, String content) {
-		// return Notification.builder()
-		// 	.receiver(receiver)
-		// 	.content(content)
-		// 	.review(review)
-		// 	.url("/reviews/" + review.getId())
-		// 	.isRead(false)
-		// 	.build();
+	private Notification createNotification(Member receiver, String content, String url) {
+
 		Notification notification = new Notification();
 		notification.setMemberId(receiver.getMemberId());
 		notification.setChecked(false);
 		notification.setMessage(content);
-		// notification.setUrl();
+		notification.setUrl(url);
 		notification.setEventTime(LocalDateTime.now());
 
 		return notification;
