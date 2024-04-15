@@ -35,11 +35,13 @@ public class FollowServiceImpl implements FollowService {
 	@Override
 	// 사용자가 다른 사용자를 팔로우하는 메소드 followMember
 	public void followMember(FollowDTO followDTO) {
-		// if(!existsByFromMemberIdAndToMemberId(followDTO)) {
+		if(!existsByFromMemberIdAndToMemberId(followDTO)) {
 			modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 			Follow follow = modelMapper.map(followDTO, Follow.class);
 			followRepository.save(follow);
-		// }
+		} else {
+			throw new RuntimeException("이미 팔로우 중입니다.");
+		}
 	}
 
 	@Transactional
