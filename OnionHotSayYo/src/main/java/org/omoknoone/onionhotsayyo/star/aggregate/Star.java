@@ -20,7 +20,7 @@ public class Star {
 
 	@Id
 	@Column(name = "star_id")
-	private int starId;
+	private Integer starId;
 
 	@JoinColumn(name = "post_id")
 	private Integer postId;

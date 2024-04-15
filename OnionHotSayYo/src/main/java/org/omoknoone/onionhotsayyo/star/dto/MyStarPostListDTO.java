@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @ToString
 public class MyStarPostListDTO {
 
-    private int starId;
+    private Integer starId;
     private Integer postId;
     private String title;
     private LocalDateTime postedDate;
