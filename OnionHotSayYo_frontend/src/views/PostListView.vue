@@ -20,10 +20,11 @@
 
 onMounted(async () => {
     try {
-        const response = await axios.get('http://localhost:8081/post?_sort=POSTING_ID');
+        const response = await axios.get(`http://localhost:8888/posts/list/${categoryId}`);
         loadingstate.value = false;
+        console.log(response.status);
         posts.value = response.data; // posts 반응형 참조에 데이터 할당
-        console.log(posts.value); // 데이터 확인
+        console.log('poist', posts.value); // 데이터 확인
     } catch (error) {
         console.error("Error fetching posts:", error);
     }

@@ -8,16 +8,17 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="POSTING_ID" scope="col">번호</th>
+                        <th class="POST_ID" scope="col">번호</th>
                         <th class="TITLE" scope="col">제목</th>
-                        <th class="MEMBER_ID" scope="col">글쓴이</th>
+                        <!-- <th class="MEMBER_ID" scope="col">글쓴이</th> -->
                         <th class="HITS" scope="col">조회</th>
-                        <th class="LANGUAGE" scope="col">좋아요</th>
-                        <th class="LOCATION_ID" scope="col">싫어요</th>
+                        <!-- <th class="LANGUAGE" scope="col">좋아요</th>
+                        <th class="LOCATION_ID" scope="col">싫어요</th> -->
                         <th class="LAST_MODIFIED_DATE" scope="col">날짜</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider" v-if="props.posts">
+
                     <tr v-for="post in currentPagePosts" :key="posts.CATEGORY_ID">
                         <td class="POSTING_ID">{{ post.POSTING_ID }}</td>
                         <td class="TITLE" @click="goDetailPage(post.POSTING_ID)">{{ post.TITLE }}</td>
@@ -26,6 +27,7 @@
                         <td class="LANGUAGE">{{ post.LANGUAGE }}</td>
                         <td class="LOCATION_ID">{{ post.LOCATION_ID }}</td>
                         <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE.slice(2, 10) }}</td>
+
                     </tr>
                 </tbody>
             </table>

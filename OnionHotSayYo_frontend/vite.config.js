@@ -23,6 +23,15 @@ export default defineConfig({
   //     'https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap'
   //   ]
   // },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8888',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
