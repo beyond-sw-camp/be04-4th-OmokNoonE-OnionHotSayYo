@@ -1,22 +1,46 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
     {
         path: '/',
-        alias: ['/main', '/index'],
-        component: () => import("../views/GuestMainView.vue")
+        alias: ['/main', '/index', '/home'],
+        component: () => import("../views/MainPageView.vue")
     },
     {
-        path: '/seekingpost',
-        component: () => import("../views/SeekingPostListView.vue")
+        path: '/mypage/:memberid',
+        component: () => import("../views/MyPageView.vue")
     },
     {
-        path: '/seekingpost/:id',
-        component: () => import("../views/SeekingPostDetailView.vue")
+        path: '/list/:type/:memberid',
+        component: () => import("../views/PersonalListView.vue")
     },
     {
-        path: '/seekingpost/addseekingpost',
-        component: () => import("../views/AddSeekingPostView.vue")
+        path: '/view/:postid',
+        component: () => import("../views/PostDetailView.vue")
+    },
+    {
+        path: '/list/:categoryid',
+        component: () => import("../views/PostListView.vue")
+    },
+    {
+        path: '/signup',
+        component: () => import("../views/SignUpView.vue")
+    },
+    {
+        path: '/letter/:memberid',
+        component: () => import("../views/LetterView.vue")
+    },
+    {
+        path: '/notfound',
+        component: () => import("../views/NotFound.vue")
+    },
+    {
+        path: '/reportsView',
+        component: () => import("../views/ReportsView.vue")
+    },
+    {
+        path: '/posts/creates',
+        component: () => import("../views/AddPostView.vue")
     }
     // 추가 라우트를 여기에 정의할 수 있습니다.
 ];

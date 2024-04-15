@@ -54,38 +54,6 @@
 </template>
 
 <script setup>
-// import { ref } from 'vue';
-// import axiosInstance from '@/js/axios-instance';    // Custom Axios
-
-
-// const id = ref('');
-// const password = ref('');
-
-// async function login() {
-
-//     const loginMember = {
-//         memberId: id.value,
-//         password: password.value
-//     };
-
-//     const config = {
-//         headers: {
-//             'Content-Type': 'application/json',
-//         }
-//     };
-
-//     try {
-//         const response = await axiosInstance.post("/login", loginMember, config);
-//         console.log(response);        
-
-//         /* TODO router 설정 추가 해야함 */
-
-//     } catch (error) {
-//         console.error("Error SignUp Post:", error);
-//         return false;
-//     }
-// }
-
 import {ref} from 'vue';
 import {useStore} from 'vuex';
 

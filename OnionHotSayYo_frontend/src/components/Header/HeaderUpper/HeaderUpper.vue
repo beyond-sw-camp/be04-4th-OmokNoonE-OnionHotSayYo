@@ -2,16 +2,15 @@
     <header class="border-bottom lh-1 py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4">
-                <a class="title" href="https://www.naver.com">
+                <div class="title" @click="goMainPageMain" style="cursor: pointer;">
                     <img class="title-image" src="@/assets/image/OnionHotSayYo.png" width="60" height="50">
-                    <span class="text">OnionHotSayYo</span>
-                </a>
+                    <span  class="text">OnionHotSayYo</span>
+                </div>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
                 <SearchBar />
                 <!-- <a class="btn btn-sm btn-outline-secondary sign-up" href="#"><span id="sign-up">Sign up</span></a> -->
-                <!-- <Profile/> -->
-
+                <HeaderProfile/>
                 <!-- 로그인 상태에 따른 컴포넌트 -->
                 <div v-if="needLogin">
                     <HeaderLogin />
@@ -25,18 +24,25 @@
 </template>
 
 <script setup>
-import SearchBar from "./SearchBar.vue";
-import Profile from "./HeaderProfile.vue";
-import HeaderLogin from "./HeaderLogin.vue";
-import HeaderLogout from './HeaderLogout.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+import { useRouter } from "vue-router";
 
+import SearchBar from "./SearchBar.vue";
+import HeaderProfile from "./HeaderProfile.vue";
+import HeaderLogin from "./HeaderLogin.vue";
+import HeaderLogout from './HeaderLogout.vue';
+
+const router = useRouter();
 const store = useStore();
 // 로그인 필요 여부 확인
 const needLogin = computed(() => {
     return store.getters.isNeedLogin;
 })
+
+function goMainPageMain(){
+        router.push(`/`);
+}    
 </script>
 
 <style scoped>

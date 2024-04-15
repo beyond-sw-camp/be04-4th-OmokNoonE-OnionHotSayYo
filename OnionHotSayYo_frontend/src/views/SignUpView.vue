@@ -70,8 +70,6 @@
                                     <option v-for="nationality in nationalities" :value="nationality"
                                         :key="nationality.id">{{ nationality["country"] }}</option>
                                 </select>
-                                <div class="invalid-feedback">
-                                </div>
                             </div>
 
                             <!-- <div class="col-md-4">
@@ -94,7 +92,6 @@
                         </div>
 
                         <hr class="my-4">
-
                         <button class="w-100 btn btn-primary btn-lg" type="submit" @click="signUp">회원 가입</button>
                     </form>
                 </div>
@@ -104,7 +101,7 @@
 </template>
 
 <script setup>
-// import {useRouter} from 'vue-router';
+import {useRouter} from 'vue-router';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
@@ -221,6 +218,11 @@ function checkNickname(nickname) {
     return regExp.test(nickname.value);
 }
 
+    const router = useRouter();
+
+    function goMainPage(){
+        router.push(`/`);
+    }
 </script>
 
 <style scoped>

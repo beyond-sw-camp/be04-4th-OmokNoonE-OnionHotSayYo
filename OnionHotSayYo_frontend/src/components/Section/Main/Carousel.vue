@@ -1,50 +1,25 @@
 <template>
     <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
         <div class="carousel-indicators">
-
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class=""
-                aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active"
-                aria-current="true"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"
-                class=""></button>
+            <!-- 각각의 아이템에 대한 인디케이터 버튼 -->
+            <button v-for="(banner, index) in banners" 
+                    :key="index" 
+                    type="button" 
+                    :data-bs-target="'#myCarousel'" 
+                    :data-bs-slide-to="index" 
+                    :class="index === 0 ? 'active' : ''" 
+                    :aria-label="'Slide ' + (index + 1)"
+                    :aria-current="index === 0 ? 'true' : ''"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item">
-                <img src="@/assets/banner/sample_img.png" width="100%" height="100%">
-
-                <div class="container">
-                    <div class="carousel-caption text-start">
-                        <h1>Example headline.</h1>
-                        <p class="opacity-75">Some representative placeholder content for the first slide of the
-                            carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item active">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                </svg>
+            <!-- 각각의 아이템에 대한 carousel 내용 -->
+            <div v-for="(banner, index) in banners" 
+                 :key="index" 
+                 :class="'carousel-item' + (index === 0 ? ' active' : '')">
+                <img :src="banner.IMAGE" width="100%" height="100%">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Some representative placeholder content for the second slide of the carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                </svg>
-                <div class="container">
-                    <div class="carousel-caption text-end">
-                        <h1>One more for good measure.</h1>
-                        <p>Some representative placeholder content for the third slide of this carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                        <h1>{{ banner.TITLE }}</h1>
                     </div>
                 </div>
             </div>
@@ -61,6 +36,13 @@
 </template>
 
 <script setup>
+import { defineProps } from 'vue';
+
+    const props = defineProps({
+        banners: Array,
+    })
+    console.log(props);
+
 
 </script>
 
