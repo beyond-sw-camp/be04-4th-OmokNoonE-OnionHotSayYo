@@ -16,7 +16,7 @@ public class Location {
 
     @Id
     @Column(name = "location_id")
-    private String locationId;     // 지역번호
+    private Integer locationId;     // 지역번호
 
     @Column(name = "location")
     private String location;        // 시도명

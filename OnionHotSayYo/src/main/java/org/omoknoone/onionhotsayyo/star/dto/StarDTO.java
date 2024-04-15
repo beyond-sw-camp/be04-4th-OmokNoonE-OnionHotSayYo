@@ -1,4 +1,4 @@
-package org.omoknoone.onionhotsayyo.star.command.dto;
+package org.omoknoone.onionhotsayyo.star.dto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;

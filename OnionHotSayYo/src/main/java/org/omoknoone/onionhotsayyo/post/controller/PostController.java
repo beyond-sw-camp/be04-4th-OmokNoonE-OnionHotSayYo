@@ -1,9 +1,11 @@
 package org.omoknoone.onionhotsayyo.post.controller;
 
+import org.omoknoone.onionhotsayyo.post.dto.MyBookmarkPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
 import org.omoknoone.onionhotsayyo.post.service.PostService;
+import org.omoknoone.onionhotsayyo.post.vo.ResponseMyBookmarkPostList;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
 import org.omoknoone.onionhotsayyo.post.vo.ResponseMyPostList;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostListByCategory;
@@ -31,12 +33,12 @@ public class PostController {
 
     // 카테고리별 게시글 목록 조회
     @GetMapping("/list/{categoryId}")
-    public ResponseEntity<ResponsePostListByCategory> viewPostListByCategory(@PathVariable Integer categoryId) {
+    public ResponseEntity<ResponsePostListByCategory> viewPostList(@PathVariable Integer categoryId) {
         logger.info("카테고리별 게시글 목록 조회 요청: 카테고리 ID {}", categoryId);
 
         List<PostListByCategoryDTO> categoryPosts = postService.viewPostsByCategory(categoryId);
 
-        logger.info("카테고리 ID {}에 대한 게시글 {}개 발견", categoryId, categoryPosts.size());
+        logger.info("카테고리 ID {}에 대한 게시글 {}건 발견", categoryId, categoryPosts.size());
         ResponsePostListByCategory myPostList = new ResponsePostListByCategory(categoryPosts);
 
         return ResponseEntity.ok(myPostList);
@@ -44,7 +46,7 @@ public class PostController {
 
     // 게시글 상세 조회
     @GetMapping("/view/{postId}")
-    public ResponseEntity<ResponsePostDetail> viewPostById(@PathVariable Integer postId) {
+    public ResponseEntity<ResponsePostDetail> viewPost(@PathVariable Integer postId) {
         logger.info("게시글 상세 조회 요청: 게시글 ID {}", postId);
         ResponsePostDetail postDetail = postService.viewPostById(postId);
         if (postDetail == null) {
@@ -96,14 +98,30 @@ public class PostController {
 
     // 내가 작성한 게시글 목록 조회
     @GetMapping("/list/mypost/{memberId}")
-    public ResponseEntity<ResponseMyPostList> viewMyPosts(@PathVariable String memberId) {
-        logger.info("나의 게시글 리스트 요청: 맴버 ID {}", memberId);
+    public ResponseEntity<ResponseMyPostList> viewMyPostListByMe(@PathVariable String memberId) {
+        logger.info("나의 게시글 리스트 요청, 회원 ID: {}", memberId);
 
         List<MyPostListDTO> myPosts = postService.viewMyPosts(memberId);
+        logger.info("회원 {}(이)가 작성한 게시글 {}건 발견", memberId, myPosts.size());
 
-        logger.info("나의 게시물 리스트 조회 완료 {}", myPosts);
         ResponseMyPostList myPostList = new ResponseMyPostList(myPosts);
 
         return ResponseEntity.ok(myPostList);
+    }
+
+    // 내가 북마크한 게시글 목록 조회
+    @GetMapping("list/mybookmark/{memberId}")
+    public ResponseEntity<ResponseMyBookmarkPostList> viewPostListByBookmark(@PathVariable String memberId) {
+        logger.info("나의 북마크된 게시글 리스트 요청, 회원 ID: {}", memberId);
+
+        List<MyBookmarkPostListDTO> myBookmarkedPosts = postService.viewBookmarkedPosts(memberId);
+        if (myBookmarkedPosts.isEmpty()) {
+            logger.info("회원 ID {}에 대한 북마크된 게시글이 없습니다.", memberId);
+            return ResponseEntity.noContent().build();
+        }
+        logger.info("회원 ID {}에 대한 북마크된 게시글 리스트 조회 완료. 조회된 게시글 수 {}건 발견", memberId, myBookmarkedPosts.size());
+
+        ResponseMyBookmarkPostList myBookmarkList = new ResponseMyBookmarkPostList(myBookmarkedPosts);
+        return ResponseEntity.ok(myBookmarkList);
     }
 }

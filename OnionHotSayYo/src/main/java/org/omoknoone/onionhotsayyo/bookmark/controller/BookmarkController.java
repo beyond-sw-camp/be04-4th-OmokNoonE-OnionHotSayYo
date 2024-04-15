@@ -1,7 +1,7 @@
-package org.omoknoone.onionhotsayyo.bookmark.command.controller;
+package org.omoknoone.onionhotsayyo.bookmark.controller;
 
-import org.omoknoone.onionhotsayyo.bookmark.command.dto.BookmarkDTO;
-import org.omoknoone.onionhotsayyo.bookmark.command.service.BookmarkService;
+import org.omoknoone.onionhotsayyo.bookmark.dto.BookmarkDTO;
+import org.omoknoone.onionhotsayyo.bookmark.service.BookmarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-//package org.omoknoone.onionhotsayyo.post.command.service;
+//package org.omoknoone.onionhotsayyo.post.service;
 //
 //import org.junit.jupiter.api.Test;
 //import org.junit.jupiter.api.extension.ExtendWith;

@@ -14,6 +14,6 @@ public class WritePostDetailDTO {
     private String content;
     private String categoryId;
     private String image;
-    private String locationId;
+    private Integer locationId;
 //    private String location;    // Location 엔티티로부터 location을 사용하기 위한 설정
 }

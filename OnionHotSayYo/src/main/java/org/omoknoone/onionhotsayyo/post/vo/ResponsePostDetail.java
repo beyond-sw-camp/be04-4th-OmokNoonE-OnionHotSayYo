@@ -24,5 +24,5 @@ public class ResponsePostDetail {
     private Integer categoryId;
     private String memberId;
     private String image;
-    private String locationId;
+    private Integer locationId;
 }

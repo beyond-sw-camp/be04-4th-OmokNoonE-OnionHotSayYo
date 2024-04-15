@@ -1,18 +1,17 @@
-package org.omoknoone.onionhotsayyo.post.dto;
+package org.omoknoone.onionhotsayyo.star.dto;
 
 import lombok.*;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-// 작성자가 작성한 게시물 리스트 목록 조회 시
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-public class MyPostListDTO {
+public class MyStarPostListDTO {
 
+    private Integer starId;
     private Integer postId;
     private String title;
     private LocalDateTime postedDate;
