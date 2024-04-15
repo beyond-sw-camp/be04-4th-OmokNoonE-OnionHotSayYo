@@ -33,7 +33,7 @@ provide('memberId', routeMemberId);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8080/members");
+        const response = await axios.get("http://localhost:8888/members");
         // const response = await axios.get(`http://localhost:8081/mypage?member_id=${routeMemberId}`);
         loadingState.value = false;
         members.value = response.data;
