@@ -152,5 +152,7 @@ public class PostServiceImpl implements PostService {
                 , memberId, bookmarkedPostList.size());
 
         return bookmarkedPostList;
+
+//        커밋을 위해 위한 메시지 추가
     }
 }
