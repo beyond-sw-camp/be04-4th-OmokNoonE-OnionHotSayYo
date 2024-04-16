@@ -84,7 +84,7 @@ function goDetailList(injectMemberId, type) {
 }
 
 function goPostDetailPage(postid) {
-    router.push(`posts/view/${postid}`);
+    router.push(`/posts/view/${postid}`);
 }
 </script>
 
