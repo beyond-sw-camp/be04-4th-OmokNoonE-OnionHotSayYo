@@ -69,7 +69,7 @@ provide('memberId', routeMemberId);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8080/members");
+        const response = await axios.get("http://localhost:30001/members");
         loadingState.value = false;
         members.value = response.data;
         for (let i = 0; i < members.value.length; i++) {

@@ -22,7 +22,7 @@ onMounted(async () => {
         postId.value = routePostId;
 
         // postId를 사용하여 백엔드에서 데이터 가져오기
-        const response = await axios.get(`http://localhost:8080/posts/view/${postId.value}`);
+        const response = await axios.get(`http://localhost:30001/posts/view/${postId.value}`);
         const postData = response.data; // 받아온 데이터
 
         // PostDetailTopProps에 데이터 할당

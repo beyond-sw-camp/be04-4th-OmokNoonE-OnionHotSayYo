@@ -116,7 +116,7 @@ const termsCheck = ref(false);
 /* 국가 목록을 가져온다 */
 onMounted(async () => {
     try {
-        const response = await axios.get('http://localhost:8080/nationalities/view');
+        const response = await axios.get('http://localhost:30001/nationalities/view');
         nationalities.value = response.data;
     } catch (error) {
         console.log(`Error fetching nationalities: ${error}`);
@@ -173,7 +173,7 @@ async function signUp() {
         nationalityId: nationalityId
     };
 
-    const url = 'http://localhost:8080/members/signup'; // 회원가입 요청 URL
+    const url = 'http://localhost:30001/members/signup'; // 회원가입 요청 URL
 
     const config = {
         headers: {

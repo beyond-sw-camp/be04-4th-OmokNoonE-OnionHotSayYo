@@ -49,7 +49,7 @@ onMounted(async () => {
     try {
         loadingState.value = true;
         console.log('좋아요 통신 시작');
-        const response = await axios.get(`http://localhost:8080/stars/list/mystar/${memberId}`);
+        const response = await axios.get(`http://localhost:30001/stars/list/mystar/${memberId}`);
         console.log('좋아요 상태', response.status)
         stars.value = response.data;
         for (let i = 0; i < stars.value.length; i++) {

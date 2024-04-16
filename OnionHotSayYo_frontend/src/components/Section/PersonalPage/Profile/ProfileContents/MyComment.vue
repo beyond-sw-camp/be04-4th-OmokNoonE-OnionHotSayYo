@@ -48,7 +48,7 @@ const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`http://localhost:8080/list/mycomments/${memberId}?_start=1&_limit=5`);
+        const response = await axios.get(`http://localhost:30001/list/mycomments/${memberId}?_start=1&_limit=5`);
         loadingState.value = false;
         posts.value = response.data;
         for (let i = 0; i < posts.value.length; i++) {
