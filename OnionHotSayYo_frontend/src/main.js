@@ -16,11 +16,18 @@ import 'bootstrap';
 import * as ColorModes from "./assets/js/color-modes.js";
 import * as BundleMin from "./assets/dist/js/bootstrap.bundle.min.js";
 
+
+const EmbedDirective = {
+    mounted(el, binding) {
+        el.innerHTML = `<figure class="media">${binding.value}</figure>`;
+    }
+};
 const app = createApp(App);
 app.config.globalProperties.axios = axios;
 
+
+app.directive('embed', EmbedDirective)
 app.use(CKEditor).mount( /* DOM element */ );
 app.use(vueCookie);
 app.use(store);
-app.use(router);
-app.mount('#app');
+app.use(router).mount('#app');

@@ -8,54 +8,34 @@
 import PostDetailTop from '@/components/Section/Post/Detail/PostDetailTop.vue';
 import PostDetailMiddle from '@/components/Section/Post/Detail/PostDetailMiddle.vue';
 import PostDetailComment from '@/components/Section/Post/Detail/PostDetailComment.vue';
-
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from "vue-router";
 import axios from 'axios';
 
 const routePostId = useRoute().params.postid;
-
-const posts = [];
-
+const postId = ref(null);
 const PostDetailTopProps = ref({});
-console.log('posttop', PostDetailTopProps.value.POST_ID);
-
-const message = ref('');
-
-const router = useRouter();
-
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8081/post");
-        posts.value = response.data;
-        console.log('respones', response.data);
-        console.log(routePostId);
+        // postId 설정
+        postId.value = routePostId;
 
-        for (let i = 0; i < posts.value.length; i++) {
-            if (posts.value[i].POST_ID == routePostId) {
-                const postTitle = posts.value[i].TITLE;
-                const postContent = posts.value[i].CONTENT;
-                const postImage = posts.value[i].IMAGE;
-                const postedDate = posts.value[i].POSTED_DATE;
-                const postHits = posts.value[i].HITS;
-                const postCategoryId = posts.value[i].CATEGORY_ID;
-                const postMemberId = posts.value[i].MEMBER_ID;
-                const postLanguage = posts.value[i].LANGUAGE;
-                const postLastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
+        // postId를 사용하여 백엔드에서 데이터 가져오기
+        const response = await axios.get(`http://localhost:8888/posts/view/${postId.value}`);
+        const postData = response.data; // 받아온 데이터
 
-                PostDetailTopProps.value = {
-                    title: postTitle,
-                    content: postContent,
-                    image: postImage,
-                    postedDate: postedDate,
-                    hits: postHits,
-                    categoryId: postCategoryId,
-                    memberId: postMemberId,
-                    language: postLanguage,
-                    lastModifiedDate: postLastModifiedDate
-                };
-            }
-        }
+        // PostDetailTopProps에 데이터 할당
+        PostDetailTopProps.value = {
+            title: postData.title,
+            content: postData.content,
+            image: postData.image,
+            postedDate: postData.postedDate,
+            hits: postData.hits,
+            categoryId: postData.categoryId,
+            memberId: postData.memberId,
+            language: postData.language,
+            lastModifiedDate: postData.lastModifiedDate
+        };
 
     } catch (error) {
         console.error("Error fetching posts:", error);

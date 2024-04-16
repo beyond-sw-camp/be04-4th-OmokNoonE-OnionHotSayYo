@@ -16,9 +16,10 @@
                 </tr>
                 <tr>
                     <td>
-                        {{ topProps.PostDetailTopProps.content }}</td>
+                        <!-- <div v-embed="topProps.PostDetailTopProps.content"></div> -->
+                        <div v-html="topProps.PostDetailTopProps.content"></div>
+                    </td>
                 </tr>
-
             </table>
         </form>
     </div>
@@ -39,7 +40,7 @@ const topProps = defineProps({
 /* 이미지가 테이블 셀 안에 꽉 차도록 하는 클래스 */
 .full-width {
     width: 100%;
-    height: auto;
+    height:auto;
 }
 
 /* 테이블 스타일링 */
@@ -53,7 +54,7 @@ const topProps = defineProps({
 .tbAdd td {
     border: 1px solid #dee2e6;
     padding: 8px;
-    text-align: center;
+    text-align: left;
 }
 
 .tbAdd th {
@@ -190,8 +191,8 @@ const topProps = defineProps({
     /* 테이블 셀 경계선 스타일 지정 */
     padding: 8px;
     /* 셀 안의 여백 설정 */
-    text-align: center;
-    /* 셀 안의 텍스트 가운데 정렬 */
+    text-align: left;
+   
 }
 
 .tbAdd th {
@@ -199,11 +200,11 @@ const topProps = defineProps({
     /* 테이블 헤더 배경색 설정 */
     font-weight: bold;
     /* 테이블 헤더 텍스트 굵게 설정 */
-    text-align: center;
+    text-align: left;
 }
 
 .tbAdd {
-    align-content: center;
+    align-content: left;
 }
 
 .tbAdd th,
@@ -215,7 +216,8 @@ const topProps = defineProps({
 .tbAdd td {
     padding: 10px 10px;
     box-sizing: border-box;
-    text-align: center;
+    text-align: left;
+    vertical-align: top;
 }
 
 .tbAdd td.txt_cont {
@@ -224,7 +226,7 @@ const topProps = defineProps({
 }
 
 .btnWrap {
-    text-align: center;
+    text-align: left;
     margin: 20 0 0 0;
     border: 1px solid;
     padding: 0 20%;

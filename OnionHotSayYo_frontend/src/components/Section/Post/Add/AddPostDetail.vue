@@ -1,6 +1,6 @@
 <template>
   <div class="add-post">
-    <form action="http://localhost:8081/post.json" method="POST">
+    <form method="POST" @submit.prevent="uploadData">
       <div class="seeking-post-header">
         <div class="seeking-header">
           <div class="text-wrapper">게시글 작성</div>
@@ -11,10 +11,10 @@
       </div>
       <br>
       <div id="app">
-        <Ckeditor :editor="editor" v-model="text" :config="editorConfig"></Ckeditor>
+        <Ckeditor :editor="editor" v-model="editorData" :config="editorConfig"></Ckeditor>
       </div>
       <br>
-      <p><input type="submit" value="전송" @click="goPostList"></p>
+      <p><input type="submit" value="전송"></p>
     </form>
   </div>
 </template>
@@ -38,37 +38,38 @@ import { Image, ImageCaption, ImageStyle, ImageToolbar, ImageUpload, ImageResize
 import { ref, watch } from 'vue';
 import UploadAdapter from '@/UploadAdapter';
 import axios from "axios";
+import { onMounted } from "vue";
 
 const router = useRouter();
 
 
-function goPostList() {
-  router.push(`/list/1`); // 임시로 1로 설정
+let text = ref('');
+const title = ref('');
+const editor = ClassicEditor;
+const editorData = ref('');
+
+const emits = defineEmits(['update:modelValue']);
+
+/**
+ * v-model 값 연결
+ */
+watch(editorData, (newValue, oldValue) => {
+  emits('update:modelValue', newValue);
+  console.log('내용', newValue);
+});
+
+// import Upload Adapter
 
 
-  let text = ref();
-
-  const emits = defineEmits(['update:modelValue']);
-
-  /**
-   * v-model 값 연결
-   */
-  watch(text, (newValue, oldValue) => {
-    emits('update:modelValue', newValue);
-  });
-
-  // import Upload Adapter
-
-
-}
-// Custom Upload Adapter Plugin function
+// 이미지 업로드 어댑터 정의
 function CustomUploadAdapterPlugin(editor) {
   editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
     // Create new object and pass server url
     return new UploadAdapter(loader, '');
   };
 }
-const editor = ClassicEditor;
+
+// const editor = ClassicEditor;
 const editorConfig = {
   extraPlugins: [CustomUploadAdapterPlugin],
   plugins: [
@@ -104,7 +105,6 @@ const editorConfig = {
       'numberedList',
       'bulletedList',
       'alignment',
-      'blockQuote',
       'mediaEmbed',
       'undo',
       'redo',
@@ -125,9 +125,47 @@ const editorConfig = {
   },
 };
 
-function uploadData() {
-    const editorData = editor.getData();
-    console.log('Editor Data:', editorData);
+
+async function uploadData() {
+  console.log(editorData.value);
+  try {
+    // const editorData = editor.getData; 
+        // console.log('editorData', editorData);
+    title.value = document.getElementById('add-post-title').value;
+
+    // 만약 사용자가 제목을 입력하지 않았다면 오류 메시지 출력 후 함수 종료
+    if (!title.value.trim()) {
+      console.error('제목을 입력하세요.');
+      return;
+    }
+
+    console.log('제목', title.value);
+    console.log('내용', editorData.value);
+
+    // FormData 객체 생성
+    const formData = new FormData();
+    formData.append('title', title.value);
+    formData.append('content', editorData.value);
+    formData.append('categoryId', 1);
+    formData.append('image',  CustomUploadAdapterPlugin.value);
+    formData.append('locationId', 31);
+
+    console.log(formData.toString());
+    // axios를 사용하여 서버로 데이터를 전송
+    const response = await axios.post('http://localhost:8888/posts/create', formData);
+
+    console.log('서버:', response.data);
+
+    goPostList();
+
+  } catch (error) {
+    console.error('데이터 업로드 중 오류 발생:', error);
+  }
+}
+
+
+function goPostList() {
+  router.push(`/list/1`); // 임시로 1로 설정
 }
 </script>
 
@@ -142,7 +180,5 @@ function uploadData() {
   max-height: 800px !important;
 }
 
-.registbutton {
-  margin-left: 750px;
-}
+
 </style>

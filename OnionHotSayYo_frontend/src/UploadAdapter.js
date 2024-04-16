@@ -1,8 +1,9 @@
 import axios from 'axios';
+const noConextPathUrl = import.meta.env.VITE_APP_NO_CONTEXT_PATH_URL;
 
 export default class UploadAdapter {
     constructor(loader, url) {
-        this.url = 'http://localhost:8081/post.json';
+        this.url = url;
         this.loader = loader;
         this.loader.file.then((pic) => (this.file = pic));
 
@@ -13,21 +14,20 @@ export default class UploadAdapter {
     upload() {
         return this.loader.file.then((uploadedFile) => {
             return new Promise((resolve, reject) => {
-                const formData = new FormData();
-                formData.append('TITLE', title); 
-                formData.append('CONTENT', content); 
-                formData.append('IMAGE', image); 
-
-                axios.post(this.url, formData)
+                const params = {
+                    upload: uploadedFile,
+                };
+                axios.api
+                    .fetchFileUpload(params)
                     .then((res) => {
-                        const returnUrl = res.data.result.image_url; // Adjust the data structure according to your server response
+                        const returnUrl = res.data.data.url;
                         resolve({
-                            default: returnUrl, // No need to append context path if it's already included in the server response
+                            default: `${noConextPathUrl}${returnUrl}`,
                         });
                     })
                     .catch((error) => {
-                        console.error(error);
-                        reject(error.response ? error.response.data.message : 'Upload failed');
+                        console.log(error);
+                        reject(error.response.data.message);
                     });
             });
         });
