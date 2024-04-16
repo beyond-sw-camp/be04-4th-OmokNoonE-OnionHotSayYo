@@ -62,7 +62,7 @@ public class PostController {
 
     // 게시글 작성
     @PostMapping("/create")
-    public ResponseEntity<ResponsePostDetail> createPost(@RequestBody WritePostDetailDTO writePostDetailDTO) {
+    public ResponseEntity<ResponsePostDetail> createPost(@ModelAttribute WritePostDetailDTO writePostDetailDTO) {
         logger.info("새 게시글 작성 요청: 제목 - {}", writePostDetailDTO.getTitle());
 
         ResponsePostDetail response = postService.createPost(writePostDetailDTO);
