@@ -7,8 +7,8 @@ import CKEditor from '@ckeditor/ckeditor5-vue';
 import { createApp } from 'vue'
 import App from './App.vue'
 import store from './store';
-import vueCookie from 'vue3-cookies';
-import axios from './js/axios-instance';
+import vueCookie, {useCookies} from 'vue3-cookies';
+import $axios from './js/axios-instance';
 import router from './router/router.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
@@ -23,11 +23,13 @@ const EmbedDirective = {
     }
 };
 const app = createApp(App);
-app.config.globalProperties.axios = axios;
+app.config.globalProperties.$axios = $axios;
 
 
 app.directive('embed', EmbedDirective)
 app.use(CKEditor).mount( /* DOM element */ );
 app.use(vueCookie);
+
+app.use(router);
 app.use(store);
-app.use(router).mount('#app');
+app.mount('#app');

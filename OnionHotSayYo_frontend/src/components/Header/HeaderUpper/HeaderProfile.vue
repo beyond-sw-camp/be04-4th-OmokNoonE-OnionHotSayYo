@@ -6,11 +6,12 @@
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">홍길동님 환영합니다.</h5>
+        <h5 id="offcanvasRightLabel">{{ memberId }}님 환영합니다.</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <button class="MyPage" @click="goMyPage(memberId)">MyPage</button>    
-      <button class="LogOut">Log Out</button>   
+      <button class="LogOut"  @click.prevent="logout">Log Out</button>
+      <button class="followTest"  @click.prevent="follow">followTest</button>
       <hr>
       <span class="Notification" @click="showToast()">Notification</span>
       <hr>
@@ -34,9 +35,14 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { Toast } from 'bootstrap';
+import { ref } from "vue";
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+import axios from "axios";
 
+const store = useStore();
+const memberId = store.getters.memberInfo.memberId;
 const router = useRouter();
-const memberId = 'member2';
 
 function goMyPage(memberId) {
   router.push(`/mypage/${memberId}`);
@@ -45,6 +51,31 @@ function goMyPage(memberId) {
 function showToast() {
   const toasts = document.querySelectorAll('.toast');
   toasts.forEach(toast => new Toast(toast).show());
+}
+
+async function logout() {
+  try {
+    const response = await store.dispatch('logout')
+    console.log(response)
+  } catch (error) {
+    console.error("Error Logout:", error);
+  }
+}
+
+async function follow() {
+  const followData = {
+    fromMemberId: "member1",
+    toMemberId: store.getters.memberInfo.memberId
+  };
+
+  const response = await axios.post('http://localhost:8080/follows/follow', followData);
+  console.log(response)
+
+  if (response.status === 201) {
+    console.log('팔로우 요청이 성공적으로 전송되었습니다.');
+  } else {
+    console.error('팔로우 요청 실패:', response.statusText);
+  }
 }
 </script>
 

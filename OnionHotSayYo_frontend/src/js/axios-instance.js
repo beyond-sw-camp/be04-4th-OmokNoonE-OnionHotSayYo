@@ -8,6 +8,8 @@ const instance = axios.create({
 
 // Request 인터셉터 - 모든 요청에 대해 실행됨
 // header에 토큰 담아서 요청 보내기
+// const setup = (store) => {
+// }
 instance.interceptors.request.use(config => {
     const tokenString = localStorage.getItem('accessToken');
     const cookieString = document.cookie;
@@ -28,7 +30,7 @@ instance.interceptors.request.use(config => {
                 }
             });
 
-            // TODO. refresh token 만료된 경우 재로그인 해야 함 
+            // TODO. refresh token 만료된 경우 재로그인 해야 함
         } else {
             config.headers.Authorization = `Bearer ${accessToken.accessToken}`;
         }
