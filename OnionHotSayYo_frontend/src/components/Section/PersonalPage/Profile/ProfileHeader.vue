@@ -2,12 +2,14 @@
     <div class="container card text-left profile-header">
         <div class="row container-fluid">
             <div class="col-sm-4 text-center profile-img-container">
-                <img :src="image" alt="mdo" width="140" height="140" class="rounded-circle profile-img">
+<!-- TODO. member.value 값 가져오기             -->
+<!--                <img :src="member.value.image" alt="mdo" width="140" height="140" class="rounded-circle profile-img">-->
+<!--              이미지 : {{ member.value.image }}-->
             </div>
             <div class="col-sm-8 profile-intro">
-                <h2 class="fw-normal"> {{ nickname }}({{ memberId }})</h2>
+<!--                <h2 class="fw-normal"> {{ member.value.nickname }}({{ member.value.memberId }})</h2>-->
                 <p>
-                <div v-html="profile"></div>
+<!--                <div> 자기소개 :  {{ member.value.profile }}</div>-->
                 </p>
             </div>
             <button class="btn-profile-edit" type="button" data-bs-toggle="modal"
@@ -66,7 +68,7 @@
                 </div>
             </div>
 
-            <div class="btn-profile-edit" @click="goMyReports(memberId)" style="top: 62px">나의 신고목록 »</div>
+<!--            <div class="btn-profile-edit" @click="goMyReports(member.value.memberId)" style="top: 62px">나의 신고목록 »</div>-->
             
             <!-- <div class="modal fade" id="myReports" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -95,33 +97,55 @@
                 </div>
             </div> -->
 
-            <div class="btn-profile-edit" @click="goMyLetter(memberId)" style="top: 95px">쪽지함 »</div>
+<!--            <div class="btn-profile-edit" @click="goMyLetter(member.value.memberId)" style="top: 95px">쪽지함 »</div>-->
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue';
-import { useRouter } from 'vue-router';
+import {onMounted, ref, watchEffect} from 'vue';
+import {useRouter} from 'vue-router';
+import {useStore} from 'vuex';
+import axios from "axios";
 
-const profileHeaderProps = defineProps({
-    memberProps: [{}]
-});
+const store = useStore();
 
-const memberId = ref('');
-const image = ref('');
-const nickname = ref('');
-const profile = ref();
+const member = ref({});
 
-watchEffect((newValue, oldValue) => {
-    memberId.value = profileHeaderProps.memberProps.memberId;
-    image.value = profileHeaderProps.memberProps.image;
-    nickname.value = profileHeaderProps.memberProps.nickname;
-    profile.value = profileHeaderProps.memberProps.profile.replace(/\n/g, '<br>');
-
-});
+const loadingState = ref(true);
 
 const router = useRouter();
+
+router.afterEach(() => {
+  window.location.reload();
+});
+
+// provide('memberId', routeMemberId);
+const memberId = store.state.memberId;
+
+onMounted(async () => {
+  try {
+    /* TODO. memberId 변수로 바꿀 것 */
+    const response = await axios.get(`http://localhost:8080/members/mypage/membertest1`);
+    loadingState.value = false;
+    const result = response.data;
+    console.log(result);
+
+    member.value = {
+      memberId: result.memberId,
+      nickname: result.nickname,
+      image: result.image,
+      profile: result.profile,
+      email: result.email,
+      // signUpDate: result.signUpDate,
+      nationalityId: store.state.language
+    };
+
+  } catch (error) {
+    console.error("Error fetching members:", error);
+  }
+});
+
 
 function goMyLetter(memberId) {
     // router.push(`/notfound`);
