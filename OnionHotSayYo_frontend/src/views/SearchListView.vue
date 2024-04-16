@@ -31,11 +31,11 @@ onMounted(async () => {
     try {
         if (language) {
             console.log('번역 검색')
-            url.value = `http://localhost:8888/posts/search/${searchTitle}?${language}`;
+            url.value = `http://localhost:8080/posts/search/${searchTitle}?${language}`;
         }
         else {
             console.log('기본 검색')
-            url.value = `http://localhost:8888/posts/search/${searchTitle}`;
+            url.value = `http://localhost:8080/posts/search/${searchTitle}`;
         }
         const response = await axios.get(url.value);
         console.log(response.status);

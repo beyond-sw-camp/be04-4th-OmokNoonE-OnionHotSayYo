@@ -26,7 +26,7 @@ onMounted(async () => {
         posts.value = response.data.categoryPosts;
         console.log(posts.value);
         for (let i = 0; i < posts.value.length; i++) {
-            const postingId = 1;
+            const postingId = posts.value[i].postId;
             const title = posts.value[i].title;
             const hits = posts.value[i].hits;
             const postedDate = posts.value[i].postedDate;

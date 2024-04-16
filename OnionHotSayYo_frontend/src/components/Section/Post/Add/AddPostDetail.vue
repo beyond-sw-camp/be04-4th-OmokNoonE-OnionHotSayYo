@@ -152,7 +152,7 @@ async function uploadData() {
 
     console.log(formData.toString());
     // axios를 사용하여 서버로 데이터를 전송
-    const response = await axios.post('http://localhost:8888/posts/create', formData);
+    const response = await axios.post('http://localhost:8080/posts/create', formData);
 
     console.log('서버:', response.data);
 
