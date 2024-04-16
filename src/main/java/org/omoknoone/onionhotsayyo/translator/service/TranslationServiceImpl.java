@@ -54,7 +54,11 @@ public class TranslationServiceImpl implements TranslationService {
         Map<String, List<TranslationDTO>> translationMap = excludeExistTranslatedPost(translationDTOList);
 
         // 이미 번역본이 존재하는 게시글 목록
-        List<TranslationDTO> translatedPostList = translationMap.get("translatedPostList");
+        List<TranslationDTO> translatedPostList = new ArrayList<>();
+        System.out.println("translationMap = " + translationMap.size());
+        if(translationMap.size() == 1) {
+            translatedPostList = translationMap.get("translatedPostList");
+        }
 
         List<TranslationDTO> translateAPIDTO = new ArrayList<>();
 
@@ -133,6 +137,9 @@ public class TranslationServiceImpl implements TranslationService {
                     /* 번역 완료된 글 DB에 저장 */
                     saveTranslatedText(translateAPIDTO);
                     // 이미 있는 번역된 글과 방금 번역한 글 병합
+                    if(translatedPostList == null){
+                        translatedPostList = translateAPIDTO;
+                    }
                     translatedPostList.addAll(translateAPIDTO);
                 }
             } catch (JsonProcessingException e) {
@@ -236,6 +243,7 @@ public class TranslationServiceImpl implements TranslationService {
             return resultMap;
         }
 
+        // resultMap.put("translatedPostList", null);
         resultMap.put("untranslatedPostList", translationDTOList);
 
         return resultMap; // 번역된 게시글이 없으면 모든 게시글을 반환
