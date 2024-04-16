@@ -9,7 +9,7 @@
                     <td @click="goPostDetailPage(post.postingId)" class="col-title">
                         {{ post.title }}
                     </td>
-                    <td class="col-date">{{ post.lastModifiedDate.slice(2, 10) }}</td>
+                    <td class="col-date">{{ post.lastModifiedDate }}</td>
                     <td>
                         <div class="col-hits">{{ post.hits }}</div>
                     </td>
@@ -21,6 +21,7 @@
 
 <script setup>
 import { inject, ref, readonly, onMounted } from 'vue';
+import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
@@ -59,7 +60,7 @@ onMounted(async () => {
                 image: image,
                 hits: hits,
                 isDeleted: isDeleted,
-                lastModifiedDate: lastModifiedDate,
+                lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                 categoryId: categoryId,
                 memberId: memberId,
                 language: language,

@@ -26,8 +26,8 @@ import MyFollower from './MyFollower.vue';
 import MyLike from './MyLike.vue';
 import MyComment from './MyComment.vue';
 
-const router = useRouter();
 
+const router = useRouter();
 </script>
 
 <style scoped>

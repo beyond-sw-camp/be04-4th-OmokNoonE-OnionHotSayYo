@@ -8,7 +8,7 @@
 <script setup>
 import PostListHeader from '@/components/Section/Post/List/PostListHeader.vue'
 import PostListBody from '@/components/Section/Post/List/PostListBody.vue'
-
+import { format } from 'date-fns';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
@@ -40,7 +40,7 @@ onMounted(async () => {
             copyPosts.value[i] = {
                 postingId: postingId,
                 title: title,
-                postedDate: postedDate,
+                postedDate: format(new Date(postedDate[0], postedDate[1] - 1, postedDate[2], postedDate[3], postedDate[4], postedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                 hits: hits,
                 categoryId: categoryId,
                 memberId: memberId

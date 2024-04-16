@@ -9,7 +9,7 @@
                     <td @click="goPostDetailPage(comment.postingId)" class="col-title">
                         {{ comment.title }}
                     </td>
-                    <td class="col-date">{{ comment.lastModifiedDate.slice(2, 10) }}</td>
+                    <td class="col-date">{{ comment.lastModifiedDate }}</td>
                     <td>
                         &nbsp;
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -27,9 +27,14 @@
 </template>
 
 <script setup>
-import { inject, ref, readonly, onMounted } from 'vue';
+import { inject, ref, onMounted } from 'vue';
+import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const memberId = store.getters.memberInfo.memberId;
 
 const injectMemberId = inject("memberId");
 
@@ -43,20 +48,20 @@ const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8081/post?_start=1&_limit=5");
+        const response = await axios.get(`http://localhost:8080/list/mycomments/${memberId}?_start=1&_limit=5`);
         loadingState.value = false;
         posts.value = response.data;
         for (let i = 0; i < posts.value.length; i++) {
-            const postingId = posts.value[i].POST_ID;
-            const title = posts.value[i].TITLE;
-            const content = posts.value[i].CONTENT;
+            const memberId = posts.value[i].memberId;
+            const postingId = posts.value[i].nickname;
+            const content = posts.value[i].content;
             const image = posts.value[i].IMAGE;
-            const isDeleted = posts.value[i].IS_DELETED;
-            const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
-            const categoryId = posts.value[i].CATEGORY_ID;
-            const memberId = posts.value[i].MEMBER_ID;
-            const language = posts.value[i].LANGUAGE;
-            const locationId = posts.value[i].LOCATION_ID;
+            const postedDate = posts.value[i].postedDate;
+            const lastModifiedDate = posts.value[i].lastModifiedDate;
+            const isDeleted = posts.value[i].isDeleted;
+            // const categoryId = posts.value[i].CATEGORY_ID;
+            // const language = posts.value[i].LANGUAGE;
+            // const locationId = posts.value[i].LOCATION_ID;
 
             comments.value[i] = {
                 postingId: postingId,
@@ -64,7 +69,7 @@ onMounted(async () => {
                 content: content,
                 image: image,
                 isDeleted: isDeleted,
-                lastModifiedDate: lastModifiedDate,
+                lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                 categoryId: categoryId,
                 memberId: memberId,
                 language: language,

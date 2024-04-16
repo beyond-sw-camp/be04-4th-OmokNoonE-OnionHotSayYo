@@ -45,6 +45,9 @@ import ReceiveList from '@/components/Section/Letter/ReceiveList.vue';
 import SendList from '@/components/Section/Letter/SendList.vue';
 
 import { provide, ref, onMounted } from 'vue';
+
+import { format } from 'date-fns';
+
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 
@@ -88,7 +91,7 @@ onMounted(async () => {
                     image: image,
                     profile: profile,
                     email: email,
-                    signUpDate: signUpDate,
+                    signUpDate: format(new Date(signUpDate[0], signUpDate[1] - 1, signUpDate[2], signUpDate[3], signUpDate[4], signUpDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                     isWithdraw: isWithdraw,
                     nationalityId: nationalityId
                 };

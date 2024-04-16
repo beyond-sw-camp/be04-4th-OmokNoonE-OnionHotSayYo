@@ -10,6 +10,7 @@ import PostListHeader from '@/components/Section/Post/List/PostListHeader.vue'
 import SearchListBody from '@/components/Section/Post/Search/SearchListBody.vue'
 
 import { ref, onMounted } from 'vue';
+import { format } from 'date-fns';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
@@ -59,7 +60,7 @@ onMounted(async () => {
                 postingId: postingId,
                 title: title,
                 memberId: memberId,
-                postedDate: postedDate,
+                postedDate: format(new Date(postedDate[0], postedDate[1] - 1, postedDate[2], postedDate[3], postedDate[4], postedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                 hits: hits,
                 content: content
                 // categoryId: categoryId

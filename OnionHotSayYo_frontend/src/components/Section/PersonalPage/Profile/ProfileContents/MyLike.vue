@@ -1,15 +1,15 @@
 <template>
     <div class="card card-body">
         <h3 class="category-title">{{ type }}</h3>
-        <div @click="goDetailList(injectMemberId, type)" class="card-link">더보기</div>
+        <div @click="goDetailList(memberId, type)" class="card-link">더보기</div>
         <table class="table table-hover">
             <tbody v-if="!loadingState" class="table-group-divider">
                 <tr v-for="like in likes" :key="like">
-                    <td class="col-number" scope="row">1</td>
-                    <td @click="goPostDetailPage(like.postingId)" class="col-title">
+                    <td class="col-number" scope="row">{{ like.starId }}</td>
+                    <td @click="goPostDetailPage(like.postId)" class="col-title">
                         {{ like.title }}
                     </td>
-                    <td class="col-date">{{ like.lastModifiedDate.slice(2, 10) }}</td>
+                    <td class="col-date">{{ like.postedDate }}</td>
                     <td>
                         &nbsp;
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -28,53 +28,51 @@
 
 <script setup>
 import { inject, ref, readonly, onMounted } from 'vue';
+import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
+import { useStore } from 'vuex';
 
-const injectMemberId = inject("memberId");
+const store = useStore();
+const memberId = store.getters.memberInfo.memberId;
+console.log('좋아요에서의 멤버아이디', memberId);
 
 const type = "좋아요";
 
-const posts = [];
+const stars = [];
 
 const likes = ref([{}]);
 
-const loadingState = ref(true);
+const loadingState = ref(false);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8081/post?_start=1&_limit=5");
-        loadingState.value = false;
-        posts.value = response.data;
-        for (let i = 0; i < posts.value.length; i++) {
-            const postingId = posts.value[i].POST_ID;
-            const title = posts.value[i].TITLE;
-            const content = posts.value[i].CONTENT;
-            const image = posts.value[i].IMAGE;
-            const isDeleted = posts.value[i].IS_DELETED;
-            const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
-            const categoryId = posts.value[i].CATEGORY_ID;
-            const memberId = posts.value[i].MEMBER_ID;
-            const language = posts.value[i].LANGUAGE;
-            const locationId = posts.value[i].LOCATION_ID;
+        loadingState.value = true;
+        console.log('좋아요 통신 시작');
+        const response = await axios.get(`http://localhost:8080/stars/list/mystar/${memberId}`);
+        console.log('좋아요 상태', response.status)
+        stars.value = response.data;
+        for (let i = 0; i < stars.value.length; i++) {
+            const starId = stars.value[i].starId;
+            const postId = stars.value[i].postId;
+            const title = stars.value[i].title;
+            const postedDate = stars.value[i].postedDate;
+            const hits = stars.value[i].hits;
 
             likes.value[i] = {
-                postingId: postingId,
+                starId: starId,
+                postId: postId,
                 title: title,
-                content: content,
-                image: image,
-                isDeleted: isDeleted,
-                lastModifiedDate: lastModifiedDate,
-                categoryId: categoryId,
-                memberId: memberId,
-                language: language,
-                locationId: locationId
+                postedDate: format(new Date(postedDate[0], postedDate[1] - 1, postedDate[2], postedDate[3], postedDate[4], postedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
+                hits: hits
             };
 
         }
     } catch (error) {
-        console.error("Error fetching posts:", error);
+        console.error("Error fetching stars:", error);
     }
+    loadingState.value = false;
+
 });
 
 
@@ -86,7 +84,7 @@ function goDetailList(injectMemberId, type) {
 }
 
 function goPostDetailPage(postid) {
-    router.push(`/view/${postid}`);
+    router.push(`/posts/view/${postid}`);
 }
 </script>
 
