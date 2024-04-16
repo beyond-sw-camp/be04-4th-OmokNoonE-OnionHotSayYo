@@ -1,6 +1,6 @@
 <template>
     <div class="section">
-        <PostListHeader />
+        <PostListHeader :categoryId="categoryId"/>
         <PostListBody :posts="copyPosts" :categoryId="categoryId" />
     </div>
 </template>
@@ -33,7 +33,7 @@ onMounted(async () => {
             const categoryId = posts.value[i].categoryId;
             // const content = posts.value[i].content;
             // const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
-            // const memberId = posts.value[i].MEMBER_ID;
+            const memberId = posts.value[i].memberId;
             // const language = posts.value[i].LANGUAGE;
             // const locationId = posts.value[i].LOCATION_ID;
 
@@ -42,11 +42,11 @@ onMounted(async () => {
                 title: title,
                 postedDate: postedDate,
                 hits: hits,
-                categoryId: categoryId
+                categoryId: categoryId,
+                memberId: memberId
                 // , content: content,
                 // image: image,
                 // isDeleted: isDeleted,
-                // memberId: memberId,
                 // language: language,
                 // locationId: locationId
             };

@@ -106,6 +106,7 @@ input {
 .translate-notification {
     transition: all .4s;
     opacity: 80%;
+    /* TODO 위치조정해야함 */
     transform: translate(-430px, 20px);
 }
 </style>

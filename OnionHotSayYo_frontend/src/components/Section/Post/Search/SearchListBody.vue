@@ -124,7 +124,7 @@ onMounted(async () => {
     try {
         loadingState.value = true;
         // props.posts가 완전히 로드될 때까지 기다립니다.
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 500));
 
         await new Promise(resolve => {
             console.log('length: ' + props.posts.length);
