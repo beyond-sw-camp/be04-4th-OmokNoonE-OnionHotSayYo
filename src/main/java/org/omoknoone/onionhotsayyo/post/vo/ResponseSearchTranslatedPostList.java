@@ -10,11 +10,10 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ResponseSearchTranslatedPostList {
-    private final List<SearchTranslatedPostListDTO> myPosts;
+    private final List<SearchTranslatedPostListDTO> SearchTranslatedPosts;
 
-    public ResponseSearchTranslatedPostList(List<SearchTranslatedPostListDTO> myPosts) {
-        this.myPosts = myPosts;
+    public ResponseSearchTranslatedPostList(List<SearchTranslatedPostListDTO> searchTranslatedPosts) {
+        SearchTranslatedPosts = searchTranslatedPosts;
     }
-
 }
 

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.omoknoone.onionhotsayyo.star.dto.MyStarPostListDTO;
 import org.omoknoone.onionhotsayyo.star.dto.StarDTO;
 import org.omoknoone.onionhotsayyo.star.service.StarService;
+import org.omoknoone.onionhotsayyo.star.vo.ResponseMyStarPostList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,12 +38,15 @@ public class StarController {
 	}
 
 	@GetMapping("/list/mystar/{memberId}")
-	public ResponseEntity<List<MyStarPostListDTO>> viewPostListByStar(@PathVariable String memberId) {
+	public ResponseEntity<ResponseMyStarPostList> viewPostListByStar(@PathVariable String memberId) {
+
 		List<MyStarPostListDTO> myStarredPosts = starService.findLikedPostsByMemberId(memberId);
 		if (myStarredPosts.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		}
 
-		return ResponseEntity.ok(myStarredPosts);
+		ResponseMyStarPostList myStarredList = new ResponseMyStarPostList(myStarredPosts);
+
+		return ResponseEntity.ok(myStarredList);
 	}
 }
