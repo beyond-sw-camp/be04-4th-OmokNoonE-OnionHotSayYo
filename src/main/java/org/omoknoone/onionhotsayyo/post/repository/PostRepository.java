@@ -1,9 +1,11 @@
 package org.omoknoone.onionhotsayyo.post.repository;
 
 import org.omoknoone.onionhotsayyo.post.aggregate.Post;
+import org.omoknoone.onionhotsayyo.post.dto.SearchTranslatedPostListDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,4 +27,12 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     @Query("SELECT p FROM Post p WHERE p.categoryId = :categoryId AND p.isDeleted = false " +
             "AND p.postedDate BETWEEN :start AND :end ORDER BY p.hits DESC")
     List<Post> findTopPostsByCategoryAndDate(Integer categoryId, LocalDateTime start, LocalDateTime end, Pageable pageable);
+
+    @Query("SELECT" + " new org.omoknoone.onionhotsayyo.post.dto.SearchTranslatedPostListDTO" +
+        "(a.postId, a.title, a.memberId, a.postedDate, a.hits, a.content) " +
+        "FROM Post a " +
+        "WHERE a.title LIKE %:title%")
+    List<SearchTranslatedPostListDTO> searchPostByTitle(@Param("title") String title);
+
+
 }
