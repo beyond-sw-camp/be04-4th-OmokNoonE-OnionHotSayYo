@@ -9,7 +9,7 @@
                     <td @click="goPostDetailPage(post.postingId)" class="col-title">
                         {{ post.title }}
                     </td>
-                    <td class="col-date">{{ post.lastModifiedDate.slice(2, 10) }}</td>
+                    <td class="col-date">{{ post.postedDate }}</td>
                     <td>
                         <div class="col-hits">{{ post.hits }}</div>
                     </td>
@@ -59,34 +59,34 @@ const categoryName = computed(() => {
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8081/post?_start=0&_limit=5");
+        const response = await axios.get(`/api/posts/list/${ props.categoryId }`);
         loadingState.value = false;
-        posts.value = response.data;
+        posts.value = response.data.categoryPosts;
+        console.log('axios 요청', props.categoryId , '의 ', posts.value);
         for (let i = 0; i < posts.value.length; i++) {
-            const postingId = posts.value[i].POST_ID;
-            const title = posts.value[i].TITLE;
-            const content = posts.value[i].CONTENT;
-            const image = posts.value[i].IMAGE;
-            const hits = posts.value[i].HITS;
-            const isDeleted = posts.value[i].IS_DELETED;
-            const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
-            const categoryId = posts.value[i].CATEGORY_ID;
-            const memberId = posts.value[i].MEMBER_ID;
-            const language = posts.value[i].LANGUAGE;
-            const locationId = posts.value[i].LOCATION_ID;
+            const postingId = 1;
+            const title = posts.value[i].title;
+            const hits = posts.value[i].hits;
+            const postedDate = posts.value[i].postedDate;
+            const categoryId = posts.value[i].categoryId;
+            // const content = posts.value[i].content;
+            // const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
+            // const memberId = posts.value[i].MEMBER_ID;
+            // const language = posts.value[i].LANGUAGE;
+            // const locationId = posts.value[i].LOCATION_ID;
 
             copyPosts.value[i] = {
                 postingId: postingId,
                 title: title,
-                content: content,
-                image: image,
-                hits: hits,
-                isDeleted: isDeleted,
-                lastModifiedDate: lastModifiedDate,
-                categoryId: categoryId,
-                memberId: memberId,
-                language: language,
-                locationId: locationId
+                postedDate: postedDate,
+                hits: hits
+                // , content: content,
+                // image: image,
+                // isDeleted: isDeleted,
+                // categoryId: categoryId,
+                // memberId: memberId,
+                // language: language,
+                // locationId: locationId
             };
 
         }
