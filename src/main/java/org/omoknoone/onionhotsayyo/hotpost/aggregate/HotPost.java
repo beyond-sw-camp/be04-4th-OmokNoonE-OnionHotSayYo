@@ -19,24 +19,23 @@ public class HotPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "hot_post_id")
+    @Column(name = "hotpost_id")
     private Integer hotPostId;
 
     @Column(name = "is_active")
     private boolean isActive;
 
-    @CreationTimestamp
-    @Column(name = "hot_post_date")
-    private LocalDateTime hotPostDate;
+    @JoinColumn(name = "category_id")
+    private Integer categoryId;
 
     @JoinColumn(name = "post_id")
     private Integer postId;
 
+    @JoinColumn(name = "posted_date")
+    private LocalDateTime postedDate;
+
     @JoinColumn(name = "title")
     private String title;
-
-    @JoinColumn(name = "category_id")
-    private Integer categoryId;
 
     @JoinColumn(name = "hits")
     private int hits;
