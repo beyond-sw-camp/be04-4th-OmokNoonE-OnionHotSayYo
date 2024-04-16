@@ -11,10 +11,11 @@ import java.time.LocalDateTime;
 @ToString
 public class HotPostListByCategoryDTO {
 
+    private Integer categoryId;
     private Integer postId;
     private String title;
-    private int hit;
     private LocalDateTime postedDate;
+    private int hits;
     private boolean isDeleted;
-
+    private boolean isActive;
 }

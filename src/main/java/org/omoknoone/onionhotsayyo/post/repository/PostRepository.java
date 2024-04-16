@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Integer> {
@@ -21,7 +22,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
      *  @param pageable   페이징 처리를 위한 파라미터 (주로 상위 n개의 결과를 제한하기 위해 사용)
      *  @return 조회수 순으로 정렬된 게시물 목록
     * */
-    @Query("SELECT a FROM Post a WHERE a.categoryId = :categoryId AND a.isDeleted = false " +
-            "ORDER BY a.hits DESC")
-    List<Post> findTopPostsByCategory(Integer categoryId, Pageable pageable);
+    @Query("SELECT p FROM Post p WHERE p.categoryId = :categoryId AND p.isDeleted = false " +
+            "AND p.postedDate BETWEEN :start AND :end ORDER BY p.hits DESC")
+    List<Post> findTopPostsByCategoryAndDate(Integer categoryId, LocalDateTime start, LocalDateTime end, Pageable pageable);
 }

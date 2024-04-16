@@ -6,6 +6,8 @@ import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PostService {
@@ -32,9 +34,7 @@ public interface PostService {
     List<MyBookmarkPostListDTO> viewBookmarkedPosts(String memberId);
 
     // 카테고리별 상위 게시물 조회 (조회수 기준, 상위 5개 게시물)
-    List<PostListByCategoryDTO> findTopPostsByCategory(Integer categoryId, int limit);
-
-
+    List<PostListByCategoryDTO> findTopPostsByCategory(Integer categoryId, LocalDate day, int limit);
 //    // 언어별 게시글 (제목+내용) 검색 (상단 검색)
 //    List<Post> searchPostsByLanguageAndText(String language, String text);
 //

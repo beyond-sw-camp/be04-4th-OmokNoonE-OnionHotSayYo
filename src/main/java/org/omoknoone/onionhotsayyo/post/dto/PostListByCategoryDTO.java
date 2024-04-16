@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class PostListByCategoryDTO {
 
     private Integer categoryId;
-    private Integer PostId;
+    private Integer postId;
     private String title;
     private LocalDateTime postedDate;
     private int hits;
@@ -23,7 +23,7 @@ public class PostListByCategoryDTO {
     public PostListByCategoryDTO(Integer categoryId, Integer postId,
                                  String title, LocalDateTime postedDate, int hits, boolean isDeleted) {
         this.categoryId = categoryId;
-        PostId = postId;
+        this.postId = postId;
         this.title = title;
         this.postedDate = postedDate;
         this.hits = hits;

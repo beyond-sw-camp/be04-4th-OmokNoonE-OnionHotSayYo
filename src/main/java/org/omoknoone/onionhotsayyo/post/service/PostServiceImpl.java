@@ -23,6 +23,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -159,10 +161,15 @@ public class PostServiceImpl implements PostService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<PostListByCategoryDTO> findTopPostsByCategory(Integer categoryId, int limit) {
+    public List<PostListByCategoryDTO> findTopPostsByCategory(Integer categoryId, LocalDate day, int limit) {
         log.info("카테고리 ID {} 기준 상위 {}개 게시물 조회 시작", categoryId, limit);
 
-        List<Post> posts = postRepository.findTopPostsByCategory(categoryId, PageRequest.of(0, limit));
+        LocalDateTime startOfDay = day.atStartOfDay();
+        LocalDateTime endOfDay = day.plusDays(1).atStartOfDay().minusSeconds(1);  // 그 날의 끝
+
+        List<Post> posts = postRepository
+                .findTopPostsByCategoryAndDate(categoryId, startOfDay, endOfDay, PageRequest.of(0, limit));
+
         List<PostListByCategoryDTO> topPostsByCategory = posts.stream()
                 .map(post -> modelMapper.map(post, PostListByCategoryDTO.class))
                 .collect(Collectors.toList());
