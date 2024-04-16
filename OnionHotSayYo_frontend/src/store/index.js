@@ -8,17 +8,38 @@ export default createStore({
   state: {
     isNeedLogin: true,
     // isNeedLogin: false,
+    member: {
+      memberId: '',
+      language: '',
+    },
+    tokens: {
+      accessToken: localStorage.getItem('accessToken') || null,
+      refreshTokenId: cookies.get('refreshTokenId') || null
+    }
   },
   mutations: {
     needLogin(state, data) {
       // state.needLogin = data;
       state.isNeedLogin = data;
     },
+    memberInfo(state, member) {
+      state.member.memberId = member.memberId;
+      state.member.language = member.language;
+    },
+    setAccessToken(state, accessToken) {
+      state.accessToken = accessToken;
+    },
+    setRefreshToken(state, refreshToken) {
+      state.refreshToken = refreshToken;
+    },
   },
   getters: {
     isNeedLogin(state) {
       // return state.needLogin;
       return state.isNeedLogin;
+    },
+    memberInfo(state) {
+      return state.member;
     },
   },
   actions: {
@@ -32,11 +53,24 @@ export default createStore({
           };
           const response = await axios.post('/login', params, config);
 
+          const result = response.headers;
+          console.log(result);
+          const loginMember = {
+            memberId: result.get("memberId"),
+            language: result.get("language")
+          }
           const status = response.status;
+
           if(status === 200){
             commit('needLogin', false);
+            commit('memberInfo', loginMember);
+            commit('setAccessToken', result.get("accesstoken"));
+            commit('setRefreshToken', cookies.get("refreshTokenId"));
+            // commit('setAccessToken', )
           }
-          resolve(`로그인 성공 : ${status}`);
+
+          // resolve(`[로그인 성공 ${status}]\n${memberId}\n${language}`);
+          resolve(`[로그인 성공]\n${status}`);
         } catch (err) {
           console.error(err);
           reject(err);
@@ -57,10 +91,10 @@ export default createStore({
         }
       })
     },
-    verifyToken({ commit }) { //라우터 이동 시 토큰 검증
+    /*verifyToken({ commit }) { //라우터 이동 시 토큰 검증
       return new Promise(async (resolve, reject) => {
         try {
-          const rs = await this.axios.post('/api/auth/accessTokenCheck');
+          const rs = await this.$axios.post('/api/auth/accessTokenCheck');
           if (rs.data.ok) {
             resolve(true);
           } else {
@@ -78,7 +112,7 @@ export default createStore({
     refreshToken({ commit }) { //토큰 재발급
       return new Promise(async (resolve, reject) => {
         try {
-          const rs = await this.axios.post('/api/auth/refreshToken');
+          const rs = await this.$axios.post('/api/auth/refreshToken');
           if (rs.data.ok) {
             const access = rs.data.result.accessToken;
             const refresh = rs.data.result.refreshToken;
@@ -96,6 +130,6 @@ export default createStore({
           reject(err);
         }
       })
-    },
+    },*/
   }
 });

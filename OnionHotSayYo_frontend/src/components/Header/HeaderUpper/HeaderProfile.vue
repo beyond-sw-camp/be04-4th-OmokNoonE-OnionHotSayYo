@@ -6,11 +6,11 @@
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">홍길동님 환영합니다.</h5>
+        <h5 id="offcanvasRightLabel">{{ memberId }}님 환영합니다.</h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <button class="MyPage" @click="goMyPage(memberId)">MyPage</button>    
-      <button class="LogOut">Log Out</button>   
+      <button class="LogOut"  @click.prevent="logout">Log Out</button>
       <hr>
       <span class="Notification" @click="showToast()">Notification</span>
       <hr>
@@ -34,9 +34,13 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { Toast } from 'bootstrap';
+import { ref } from "vue";
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
+const store = useStore();
+const memberId = store.state.memberId;
 const router = useRouter();
-const memberId = 'member2';
 
 function goMyPage(memberId) {
   router.push(`/mypage/${memberId}`);
@@ -45,6 +49,15 @@ function goMyPage(memberId) {
 function showToast() {
   const toasts = document.querySelectorAll('.toast');
   toasts.forEach(toast => new Toast(toast).show());
+}
+
+async function logout() {
+  try {
+    const response = await store.dispatch('logout')
+    console.log(response)
+  } catch (error) {
+    console.error("Error Logout:", error);
+  }
 }
 </script>
 
