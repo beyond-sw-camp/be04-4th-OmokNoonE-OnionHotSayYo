@@ -8,25 +8,24 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th class="POST_ID" scope="col">번호</th>
+                        <th class="POSTING_ID" scope="col">번호</th>
                         <th class="TITLE" scope="col">제목</th>
-                        <!-- <th class="MEMBER_ID" scope="col">글쓴이</th> -->
+                        <th class="MEMBER_ID" scope="col">글쓴이</th>
                         <th class="HITS" scope="col">조회</th>
-                        <!-- <th class="LANGUAGE" scope="col">좋아요</th>
-                        <th class="LOCATION_ID" scope="col">싫어요</th> -->
+                        <th class="LANGUAGE" scope="col">좋아요</th>
+                        <th class="LOCATION_ID" scope="col">싫어요</th>
                         <th class="LAST_MODIFIED_DATE" scope="col">날짜</th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider" v-if="props.posts">
-                    <tr v-for="post in pagePost" :key="posts.CATEGORYID">
-                        <td class="POST_ID">{{ post.postId }}</td>
-                        <td class="TITLE" @click="goDetailPage(post.postId)">{{ post.title }}</td>
-                        <!-- <td class="MEMBER_ID">{{ post.MEMBER_ID }}</td> -->
-                        <td class="HITS">{{ post.hits }}</td>
-                        <!-- <td class="LANGUAGE">{{ post.LANGUAGE }}</td>
-                        <td class="LOCATION_ID">{{ post.LOCATION_ID }}</td> -->
-                        <!-- <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE}}</td> -->
-                        <td class="LAST_MODIFIED_DATE">{{ post.postedDate}}</td>
+                    <tr v-for="post in pagePost" :key="posts.CATEGORY_ID">
+                        <td class="POSTING_ID">{{ post.POSTING_ID }}</td>
+                        <td class="TITLE" @click="goDetailPage(post.POSTING_ID)">{{ post.TITLE }}</td>
+                        <td class="MEMBER_ID">{{ post.MEMBER_ID }}</td>
+                        <td class="HITS">{{ post.HITS }}</td>
+                        <td class="LANGUAGE">{{ post.LANGUAGE }}</td>
+                        <td class="LOCATION_ID">{{ post.LOCATION_ID }}</td>
+                        <td class="LAST_MODIFIED_DATE">{{ post.LAST_MODIFIED_DATE }}</td>
                     </tr>
                 </tbody>
             </table>

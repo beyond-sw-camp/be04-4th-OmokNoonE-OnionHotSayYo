@@ -1,36 +1,63 @@
 <template>
     <div class="section">
         <PostListHeader />
-        <PostListBody :posts="posts" :categoryId="categoryId"/>
+        <PostListBody :posts="copyPosts" :categoryId="categoryId" />
     </div>
-    </template>
-    
-    <script setup>
-    import PostListHeader from '@/components/Section/Post/List/PostListHeader.vue'
-    import PostListBody from '@/components/Section/Post/List/PostListBody.vue'
+</template>
 
-    import { ref, onMounted } from 'vue';
-    import { useRoute } from 'vue-router';
-    import axios from 'axios';
-    
-    const categoryId = useRoute().params.categoryid;
+<script setup>
+import PostListHeader from '@/components/Section/Post/List/PostListHeader.vue'
+import PostListBody from '@/components/Section/Post/List/PostListBody.vue'
 
-    const posts = ref([]);
-    const loadingstate = ref(true);
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import axios from 'axios';
+
+const categoryId = useRoute().params.categoryid;
+
+const posts = [];
+const copyPosts = ref([{}]);
+const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`http://localhost:8888/posts/list/${categoryId}`);
-        loadingstate.value = false;
-        console.log(response.status);
-        posts.value = response.data; // posts 반응형 참조에 데이터 할당
-        console.log('poist', posts.value); // 데이터 확인
+        const response = await axios.get(`/api/posts/list/${categoryId}`);
+        loadingState.value = false;
+        posts.value = response.data.categoryPosts;
+        console.log(posts.value);
+        for (let i = 0; i < posts.value.length; i++) {
+            const postingId = 1;
+            const title = posts.value[i].title;
+            const hits = posts.value[i].hits;
+            const postedDate = posts.value[i].postedDate;
+            const categoryId = posts.value[i].categoryId;
+            // const content = posts.value[i].content;
+            // const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
+            // const memberId = posts.value[i].MEMBER_ID;
+            // const language = posts.value[i].LANGUAGE;
+            // const locationId = posts.value[i].LOCATION_ID;
+
+            copyPosts.value[i] = {
+                postingId: postingId,
+                title: title,
+                postedDate: postedDate,
+                hits: hits,
+                categoryId: categoryId
+                // , content: content,
+                // image: image,
+                // isDeleted: isDeleted,
+                // memberId: memberId,
+                // language: language,
+                // locationId: locationId
+            };
+        }
+
     } catch (error) {
         console.error("Error fetching posts:", error);
     }
 });
 
-    </script>
+</script>
 
 <style scoped>
 .tooltip {
@@ -71,7 +98,7 @@ onMounted(async () => {
     margin-top: 40px;
 }
 
-.list-header{
+.list-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -79,7 +106,7 @@ onMounted(async () => {
     border-bottom: 1px solid #ccc;
 }
 
-.btn-light{
+.btn-light {
     border: 1px solid #ccc;
     margin-right: 10px;
 }
