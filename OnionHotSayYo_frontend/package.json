@@ -29,6 +29,7 @@
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "fortawesome": "^0.0.1-security",
+    "store": "^2.0.12",
     "vue": "^3.4.21",
     "vue-router": "^4.0.13",
     "vue3-cookies": "^1.0.6",

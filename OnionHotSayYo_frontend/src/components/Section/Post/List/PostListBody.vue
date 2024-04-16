@@ -11,6 +11,7 @@
                         <th class="POSTING_ID" scope="col">번호</th>
                         <th class="TITLE" scope="col">제목</th>
                         <th class="MEMBER_ID" scope="col">글쓴이</th>
+
                         <th class="HITS" scope="col">조회</th>
                         <!-- <th class="LANGUAGE" scope="col">좋아요</th>
                         <th class="LOCATION_ID" scope="col">싫어요</th> -->
@@ -32,30 +33,32 @@
         </div>
         <div id="pagenation-container">
             <ul class="pagination">
-              <!-- 이전 페이지 버튼 -->
-              <li class="page-item" @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <!-- 페이지 버튼 -->
-              <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
-                <a class="page-link" href="#" @click="goToPage(page)">{{ page }}</a>
-            </li>
-              <!-- 다음 페이지 버튼 -->
-              <li class="page-item" @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
+                <!-- 이전 페이지 버튼 -->
+                <li class="page-item" @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <!-- 페이지 버튼 -->
+                <li class="page-item" v-for="page in totalPages" :key="page"
+                    :class="{ 'active': page === currentPage }">
+                    <a class="page-link" href="#" @click="goToPage(page)">{{ page }}</a>
+                </li>
+                <!-- 다음 페이지 버튼 -->
+                <li class="page-item" @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
             </ul>
-          </div>
+        </div>
     </div>
 </template>
 
 <script setup>
-import { ref, watch, defineProps, computed } from 'vue';
+import { ref, defineProps, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 
 const router = useRouter();
 
@@ -65,56 +68,69 @@ const props = defineProps({
 })
 
 const categoryName = computed(() => {
-    if (props.categoryId === '1') {
-        return '질문글';
-    } else if (props.categoryId === '2') {
-        return '정보글';
-    } else if (props.categoryId === '3') {
-        return '여행글';
-    } else if (props.categoryId === '4') {
-        return '맛집글';
-    } else if (props.categoryId === '5') {
-        return '동호회글';
-    } else if (props.categoryId === '6') {
-        return '일상글';
-    } else if (props.categoryId === '7') {
-        return '직장글';
-    } else if (props.categoryId === '8') {
-        return '구인구직글';
-    } else {
-        return '중고거래글';
+    switch (props.categoryId) {
+        case '1':
+            return '질문글';
+        case '2':
+            return '정보글';
+        case '3':
+            return '여행글';
+        case '4':
+            return '맛집글';
+        case '5':
+            return '동호회글';
+        case '6':
+            return '일상글';
+        case '7':
+            return '직장글';
+        case '8':
+            return '구인구직글';
+        default:
+            return '중고거래글';
     }
 });
-console.log(props.posts);
 
 // 한 페이지에 보여질 게시글 수
 const postsPerPage = 10;
 
-// 전체 페이지 수 계산
-const totalPages = computed(() => Math.ceil(props.posts.length / postsPerPage));
-
 // 현재 페이지 상태 변수
 const currentPage = ref(1);
 
-// 현재 페이지에 해당하는 게시글 목록을 계산하는 계산된 속성
-const currentPagePosts = computed(() => {
-  const startIndex = (currentPage.value - 1) * postsPerPage;
-  const endIndex = startIndex + postsPerPage;
-  return props.posts.slice(startIndex, endIndex);
-});
+// 총 페이지 수 계산
+const totalPages = computed(() => Math.ceil(props.posts.length / postsPerPage));
+
+// 현재 페이지에 해당하는 게시글 목록을 가져오는 함수
+async function fetchPageData(pageNumber) {
+  try {
+    const response = await axios.post('http://localhost:8888/translators/translate', {
+      page: pageNumber,
+      fields: ['POSTING_ID', 'TITLE', 'CONTENT', 'LANGUAGE']
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching page data:', error);
+    return [];
+  }
+}
+
+
+// 현재 페이지에 해당하는 게시글 목록을 저장하는 변수
+const currentPagePosts = ref([]);
 
 // 페이지를 변경하는 함수
-function goToPage(pageNumber) {
-    if (pageNumber >= 1 && pageNumber <= totalPages.value) {
-        currentPage.value = pageNumber;
-    }
+async function goToPage(pageNumber) {
+  if (pageNumber >= 1 && pageNumber <= totalPages.value) {
+    currentPage.value = pageNumber;
+    // 해당 페이지에 필요한 데이터를 가져옴
+    currentPagePosts.value = await fetchPageData(pageNumber);
+  }
 }
 
 function goDetailPage(postId) {
     router.push(`/view/${postId}`)
 };
 
-function goToWrite(){
+function goToWrite() {
     router.push(`/posts/creates`)
 };
 
@@ -125,7 +141,6 @@ router.afterEach((to, next, from) => {
         next();
     }
 });
-
 </script>
 
 <style scoped>

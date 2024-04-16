@@ -17,7 +17,7 @@ const routes = [
         component: () => import("../views/PersonalListView.vue")
     },
     {
-        path: '/view/:postid',
+        path: '/posts/view/:postid',
         component: () => import("../views/PostDetailView.vue")
     },
     {
