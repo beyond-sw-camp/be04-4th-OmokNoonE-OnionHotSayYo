@@ -9,7 +9,7 @@
                     <td @click="goPostDetailPage(post.postingId)" class="col-title">
                         {{ post.title }}
                     </td>
-                    <td class="col-date">{{ post.postedDate }}</td>
+                    <td class="col-date">{{ post.postedDate }}</td> <!-- 변경된 부분 -->
                     <td>
                         <div class="col-hits">{{ post.hits }}</div>
                     </td>
@@ -22,6 +22,7 @@
 <script setup>
 import { inject, ref, defineProps, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { format } from 'date-fns';
 import axios from 'axios';
 
 
@@ -59,10 +60,10 @@ const categoryName = computed(() => {
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`/api/posts/list/${ props.categoryId }`);
+        const response = await axios.get(`/api/posts/list/${props.categoryId}`);
         loadingState.value = false;
         posts.value = response.data.categoryPosts;
-        console.log('axios 요청', props.categoryId , '의 ', posts.value);
+        console.log('axios 요청', props.categoryId, '의 ', posts.value);
         for (let i = 0; i < posts.value.length; i++) {
             const postingId = 1;
             const title = posts.value[i].title;
@@ -78,12 +79,12 @@ onMounted(async () => {
             copyPosts.value[i] = {
                 postingId: postingId,
                 title: title,
-                postedDate: postedDate,
-                hits: hits
+                hits: hits,
+                postedDate: format(new Date(postedDate[0], postedDate[1] - 1, postedDate[2], postedDate[3], postedDate[4], postedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
+                categoryId: categoryId
                 // , content: content,
                 // image: image,
                 // isDeleted: isDeleted,
-                // categoryId: categoryId,
                 // memberId: memberId,
                 // language: language,
                 // locationId: locationId
@@ -95,8 +96,6 @@ onMounted(async () => {
     }
 });
 
-
-
 const router = useRouter();
 
 function goCategoryList(categoryId) {
@@ -106,6 +105,7 @@ function goCategoryList(categoryId) {
 function goPostDetailPage(postid) {
     router.push(`/view/${postid}`);
 }
+
 </script>
 
 <style scoped>
