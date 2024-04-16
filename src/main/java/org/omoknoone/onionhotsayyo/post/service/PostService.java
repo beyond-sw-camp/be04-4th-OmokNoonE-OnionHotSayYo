@@ -4,6 +4,7 @@ import org.omoknoone.onionhotsayyo.post.aggregate.Post;
 import org.omoknoone.onionhotsayyo.post.dto.MyBookmarkPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
+import org.omoknoone.onionhotsayyo.post.dto.SearchTranslatedPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
 
@@ -36,10 +37,10 @@ public interface PostService {
     //    List<Post> viewLikedPosts(Integer userId);
 
     // 게시글 (제목) 검색 (상단 검색)
-    List<MyPostListDTO> searchPost(String title);
+    List<SearchTranslatedPostListDTO> searchPost(String title);
 
     // 게시글 번역 (제목) 검색 (상단 검색)
-    List<MyPostListDTO> searchTranslationPost(String title, String language);
+    List<SearchTranslatedPostListDTO> searchTranslationPost(String title, String language);
 
     //
     //    // 카테고리 내 조건 검색

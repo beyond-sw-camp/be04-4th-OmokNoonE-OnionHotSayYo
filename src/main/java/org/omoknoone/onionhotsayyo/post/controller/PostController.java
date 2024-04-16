@@ -1,5 +1,6 @@
 package org.omoknoone.onionhotsayyo.post.controller;
 
+import org.omoknoone.onionhotsayyo.post.dto.SearchTranslatedPostListDTO;
 import org.omoknoone.onionhotsayyo.post.service.PostService;
 import org.omoknoone.onionhotsayyo.post.dto.MyBookmarkPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
@@ -9,6 +10,7 @@ import org.omoknoone.onionhotsayyo.post.vo.ResponseMyBookmarkPostList;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
 import org.omoknoone.onionhotsayyo.post.vo.ResponseMyPostList;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostListByCategory;
+import org.omoknoone.onionhotsayyo.post.vo.ResponseSearchTranslatedPostList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -127,24 +129,25 @@ public class PostController {
 
     // 상단 검색바 게시글 검색
     @GetMapping("/search/{title}")
-    public ResponseEntity<ResponseMyPostList> searchPost(
+    public ResponseEntity<ResponseSearchTranslatedPostList> searchPost(
         @PathVariable String title,
         @RequestParam(required = false) String language
     ) {
 
         if (language == null) {
-            List<MyPostListDTO> searchResultPosts = postService.searchPost(title);
-
-            ResponseMyPostList myPostList = new ResponseMyPostList(searchResultPosts);
-
+            logger.info("기본 검색");
+            List<SearchTranslatedPostListDTO> searchResultPosts = postService.searchPost(title);
+            ResponseSearchTranslatedPostList myPostList = new ResponseSearchTranslatedPostList(searchResultPosts);
+            logger.info("게시글 발견");
+            logger.info(myPostList.toString());
             return ResponseEntity.ok(myPostList);
         }
 
         else{
             logger.info("번역 결과 언어: " + language);
-            List<MyPostListDTO> searchResultPosts = postService.searchTranslationPost(title, language);
+            List<SearchTranslatedPostListDTO> searchResultPosts = postService.searchTranslationPost(title, language);
 
-            ResponseMyPostList myPostList = new ResponseMyPostList(searchResultPosts);
+            ResponseSearchTranslatedPostList myPostList = new ResponseSearchTranslatedPostList(searchResultPosts);
             logger.info("게시글 발견");
 
             return ResponseEntity.ok(myPostList);

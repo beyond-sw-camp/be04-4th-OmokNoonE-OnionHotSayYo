@@ -12,6 +12,7 @@ import org.omoknoone.onionhotsayyo.post.dto.HeaderSearchInfoDTO;
 import org.omoknoone.onionhotsayyo.post.dto.MyBookmarkPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.MyPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.PostListByCategoryDTO;
+import org.omoknoone.onionhotsayyo.post.dto.SearchTranslatedPostListDTO;
 import org.omoknoone.onionhotsayyo.post.dto.WritePostDetailDTO;
 import org.omoknoone.onionhotsayyo.post.repository.PostRepository;
 import org.omoknoone.onionhotsayyo.post.vo.ResponsePostDetail;
@@ -162,16 +163,16 @@ public class PostServiceImpl implements PostService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<MyPostListDTO> searchPost(String title) {
+    public List<SearchTranslatedPostListDTO> searchPost(String title) {
 
-        List<MyPostListDTO> posts = postRepository.searchPostByTitle(title);
+        List<SearchTranslatedPostListDTO> posts = postRepository.searchPostByTitle(title);
 
         return posts;
     }
 
     @Transactional(readOnly = true)
     @Override
-    public List<MyPostListDTO> searchTranslationPost(String title, String language) {
+    public List<SearchTranslatedPostListDTO> searchTranslationPost(String title, String language) {
 
         HeaderSearchInfoDTO searchInfo = new HeaderSearchInfoDTO(title, language);
 
@@ -179,7 +180,7 @@ public class PostServiceImpl implements PostService {
         TranslatedTextDTO translatedTitle = translationService.translateKeyword(searchInfo);
 
         // 번역된 keyword로 post 목록 조회
-        List<MyPostListDTO> posts = postRepository.searchPostByTitle(translatedTitle.getTitle());
+        List<SearchTranslatedPostListDTO> posts = postRepository.searchPostByTitle(translatedTitle.getTitle());
 
         return posts;
     }
