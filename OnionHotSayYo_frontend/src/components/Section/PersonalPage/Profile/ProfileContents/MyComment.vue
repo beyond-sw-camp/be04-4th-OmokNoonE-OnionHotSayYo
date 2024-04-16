@@ -9,7 +9,7 @@
                     <td @click="goPostDetailPage(comment.postingId)" class="col-title">
                         {{ comment.title }}
                     </td>
-                    <td class="col-date">{{ comment.lastModifiedDate.slice(2, 10) }}</td>
+                    <td class="col-date">{{ comment.lastModifiedDate }}</td>
                     <td>
                         &nbsp;
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -27,7 +27,8 @@
 </template>
 
 <script setup>
-import { inject, ref, readonly, onMounted } from 'vue';
+import { inject, ref, onMounted } from 'vue';
+import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
@@ -64,7 +65,7 @@ onMounted(async () => {
                 content: content,
                 image: image,
                 isDeleted: isDeleted,
-                lastModifiedDate: lastModifiedDate,
+                lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                 categoryId: categoryId,
                 memberId: memberId,
                 language: language,

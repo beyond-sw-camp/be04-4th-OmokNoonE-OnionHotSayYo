@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { inject, ref, defineProps, computed, onMounted } from 'vue';
+import { ref, defineProps, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { format } from 'date-fns';
 import axios from 'axios';

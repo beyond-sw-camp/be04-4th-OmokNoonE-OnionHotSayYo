@@ -29,6 +29,7 @@
 
 <script setup>
 import { inject, ref, readonly, onMounted } from 'vue';
+import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
@@ -65,7 +66,7 @@ onMounted(async () => {
                 image: image,
                 profile: profile,
                 email: email,
-                signUpDate: signUpDate,
+                signUpDate: format(new Date(signUpDate[0], signUpDate[1] - 1, signUpDate[2], signUpDate[3], signUpDate[4], signUpDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                 isWithdraw: isWithdraw,
                 nationalityId: nationalityId
             };
