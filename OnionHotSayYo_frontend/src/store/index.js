@@ -66,11 +66,9 @@ export default createStore({
             commit('memberInfo', loginMember);
             commit('setAccessToken', result.get("accesstoken"));
             commit('setRefreshToken', cookies.get("refreshTokenId"));
-            // commit('setAccessToken', )
           }
 
-          // resolve(`[로그인 성공 ${status}]\n${memberId}\n${language}`);
-          resolve(`[로그인 성공]\n${status}`);
+          resolve(status);
         } catch (err) {
           console.error(err);
           reject(err);
