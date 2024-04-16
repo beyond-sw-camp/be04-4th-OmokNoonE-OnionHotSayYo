@@ -31,18 +31,6 @@ public class HotPost {
     @JoinColumn(name = "post_id")
     private Integer postId;
 
-    @JoinColumn(name = "posted_date")
-    private LocalDateTime postedDate;
-
-    @JoinColumn(name = "title")
-    private String title;
-
-    @JoinColumn(name = "hits")
-    private int hits;
-
-    @JoinColumn(name = "is_deleted")
-    private boolean isDeleted;
-
     // 상태 변경 메소드
     public void activate() {
         this.isActive = true;

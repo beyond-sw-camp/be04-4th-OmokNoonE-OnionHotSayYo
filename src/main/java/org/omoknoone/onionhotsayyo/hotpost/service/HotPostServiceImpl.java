@@ -33,14 +33,14 @@ public class HotPostServiceImpl implements HotPostService {
         this.postService = postService;
     }
 
-
     /* 필기. 카테고리별 조회 수 상위 5건의 메소드 구현 */
-//    @Scheduled(cron = "*/10 * * * * *")  // 매 10초마다 실행
-    @Scheduled(cron = "0 0 0 * * ?") // 매일 자정 실행
+//    @Scheduled(cron = "0 0 0 * * ?") // 매일 자정 실행
+    @Scheduled(cron = "0 */10 * * * *")  // 매 10분마다 실행
     @Transactional
     @Override
     public void dailyUpdateHotPosts() {
-        LocalDate yesterday = LocalDate.now().minusDays(1); // 어제 날짜 계산
+//        LocalDate yesterday = LocalDate.now().minusDays(1); // 어제 날짜 계산
+        LocalDate yesterday = LocalDate.now(); // 현재 날짜 계산
         log.info("일일 추천 게시물 업데이트 시작");
 
         Integer[] categoryIds = {1, 2, 3, 4, 5, 6, 7, 8, 9};  //카테고리 ID가 1~9까지 있음
@@ -85,7 +85,8 @@ public class HotPostServiceImpl implements HotPostService {
     public List<HotPostListByCategoryDTO> getHotPostsByCategory(Integer categoryId, LocalDate day) {
         log.info("카테고리 ID {}에 대한 활성화된 추천 게시물 목록 조회를 시작합니다.", categoryId);
 
-        List<HotPost> hotPosts = hotPostRepository.findAllByCategoryIdAndIsActive(categoryId, true);
+//        List<HotPost> hotPosts = hotPostRepository.findAllByCategoryIdAndIsActive(categoryId, true);
+        List<HotPostListByCategoryDTO> hotPosts = hotPostRepository.findHotPostsDetailsByCategory(categoryId);
 
         if (hotPosts.isEmpty()) {
             log.warn("카테고리 ID {}에 활성화된 추천 게시물이 없습니다.", categoryId);
@@ -93,8 +94,9 @@ public class HotPostServiceImpl implements HotPostService {
             log.info("카테고리 ID {}에 대한 추천 게시물 목록 조회가 완료되었습니다. 게시물 수: {}", categoryId, hotPosts.size());
         }
 
-        return hotPosts.stream()
-                .map(hotPost -> modelMapper.map(hotPost, HotPostListByCategoryDTO.class))
-                .collect(Collectors.toList());
+//        return hotPosts.stream()
+//                .map(hotPost -> modelMapper.map(hotPost, HotPostListByCategoryDTO.class))
+//                .collect(Collectors.toList());
+        return hotPosts;
     }
 }

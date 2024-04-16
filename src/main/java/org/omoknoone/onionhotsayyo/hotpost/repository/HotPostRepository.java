@@ -19,5 +19,13 @@ public interface HotPostRepository extends JpaRepository<HotPost, Integer> {
     @Query("UPDATE HotPost h SET h.isActive = false WHERE h.categoryId = :categoryId")
     void deactivateHotPostsByCategory(Integer categoryId);
 
-    List<HotPost> findAllByCategoryIdAndIsActive(Integer categoryId, boolean isActive);
+//    List<HotPost> findAllByCategoryIdAndIsActive(Integer categoryId, boolean isActive);
+
+    @Query("SELECT new org.omoknoone.onionhotsayyo.hotpost.dto.HotPostListByCategoryDTO(" +
+            "hp.categoryId, hp.postId, p.title, p.postedDate, p.hits, p.isDeleted, hp.isActive) " +
+            "FROM HotPost hp JOIN Post p ON hp.postId = p.postId " +
+            "WHERE hp.categoryId = :categoryId AND hp.isActive = true")
+    List<HotPostListByCategoryDTO> findHotPostsDetailsByCategory(@Param("categoryId") Integer categoryId);
+
 }
+
