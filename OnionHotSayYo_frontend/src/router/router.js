@@ -25,6 +25,11 @@ const routes = [
         component: () => import("../views/PostListView.vue")
     },
     {
+        path: '/search/:title&:language?',
+        // alias: ['/search/:title&:language'],
+        component: () => import("../views/SearchListView.vue")
+    },
+    {
         path: '/signup',
         component: () => import("../views/SignUpView.vue")
     },

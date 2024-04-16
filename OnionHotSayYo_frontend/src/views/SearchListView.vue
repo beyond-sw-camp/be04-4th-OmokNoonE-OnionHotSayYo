@@ -1,50 +1,68 @@
 <template>
     <div class="section">
-        <PostListHeader :categoryId="categoryId"/>
-        <PostListBody :posts="copyPosts" :categoryId="categoryId" />
+        <PostListHeader />
+        <SearchListBody :posts="copyPosts" :language="language" :searchTitle="searchTitle" />
     </div>
 </template>
 
 <script setup>
 import PostListHeader from '@/components/Section/Post/List/PostListHeader.vue'
-import PostListBody from '@/components/Section/Post/List/PostListBody.vue'
+import SearchListBody from '@/components/Section/Post/Search/SearchListBody.vue'
 
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
-const categoryId = useRoute().params.categoryid;
 
-const posts = [];
+const searchTitle = useRoute().params.title;
+
+const language = useRoute().params.language || null;
+
+const posts = ref([]);
 const copyPosts = ref([{}]);
+const url = ref('');
+
+
+console.log('copyPosts', copyPosts);
+
 const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`/api/posts/list/${categoryId}`);
+        if (language) {
+            console.log('번역 검색')
+            url.value = `http://localhost:8888/posts/search/${searchTitle}?${language}`;
+        }
+        else {
+            console.log('기본 검색')
+            url.value = `http://localhost:8888/posts/search/${searchTitle}`;
+        }
+        const response = await axios.get(url.value);
+        console.log(response.status);
         loadingState.value = false;
-        posts.value = response.data.categoryPosts;
-        console.log(posts.value);
+        posts.value = response.data.myPosts;
+        console.log('부모 post', posts.value);
+        // console.log(posts.value);
         for (let i = 0; i < posts.value.length; i++) {
-            const postingId = 1;
+            const postingId = posts.value[i].postId;
             const title = posts.value[i].title;
-            const hits = posts.value[i].hits;
-            const postedDate = posts.value[i].postedDate;
-            const categoryId = posts.value[i].categoryId;
-            // const content = posts.value[i].content;
-            // const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
             const memberId = posts.value[i].memberId;
+            const postedDate = posts.value[i].postedDate;
+            const hits = posts.value[i].hits;
+            const content = posts.value[i].content;
+            // const categoryId = posts.value[i].categoryId;
+            // const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
             // const language = posts.value[i].LANGUAGE;
             // const locationId = posts.value[i].LOCATION_ID;
 
             copyPosts.value[i] = {
                 postingId: postingId,
                 title: title,
+                memberId: memberId,
                 postedDate: postedDate,
                 hits: hits,
-                categoryId: categoryId,
-                memberId: memberId
-                // , content: content,
+                content: content
+                // categoryId: categoryId
                 // image: image,
                 // isDeleted: isDeleted,
                 // language: language,
@@ -55,6 +73,9 @@ onMounted(async () => {
     } catch (error) {
         console.error("Error fetching posts:", error);
     }
+
+
+
 });
 
 </script>

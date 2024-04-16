@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { inject, ref, readonly, onMounted, computed } from 'vue';
+import { inject, ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
