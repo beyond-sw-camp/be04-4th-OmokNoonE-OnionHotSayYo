@@ -3,6 +3,7 @@ package org.omoknoone.onionhotsayyo.member.security;
 import jakarta.servlet.Filter;
 import org.omoknoone.onionhotsayyo.member.service.AuthService;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;
+import org.omoknoone.onionhotsayyo.nationality.service.NationalityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +24,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class WebSecurity {
 
     private final MemberService memberService;
+    private final NationalityService nationalityService;
     private final AuthService authService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final Environment environment;
@@ -31,11 +33,12 @@ public class WebSecurity {
     private final CorsConfig corsConfig;
 
     @Autowired
-    public WebSecurity(MemberService memberService, AuthService authService,
+    public WebSecurity(MemberService memberService, NationalityService nationalityService, AuthService authService,
                        BCryptPasswordEncoder bCryptPasswordEncoder,
                        Environment environment,
                        JwtUtil jwtUtil, JwtTokenProvider jwtTokenProvider, CorsConfig corsConfig) {
         this.memberService = memberService;
+        this.nationalityService = nationalityService;
         this.authService = authService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.environment = environment;
@@ -82,7 +85,7 @@ public class WebSecurity {
 
     /* 설명. 인증(Authentication)용 메소드 */
     private Filter getAuthenticationFilter(AuthenticationManager authenticationManager) {
-        return new AuthenticationFilter(authenticationManager, memberService, authService, environment, jwtTokenProvider);
+        return new AuthenticationFilter(authenticationManager, memberService, nationalityService, authService, environment, jwtTokenProvider);
     }
 
 }

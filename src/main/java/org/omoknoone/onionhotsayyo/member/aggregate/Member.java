@@ -24,11 +24,12 @@ public class Member {
     @Column
     private String profile;
     @Column
+    private String image;
+    @Column
     @CreationTimestamp
     private String signUpDate;
     @Column(name = "IS_WITHDRAW")
     private boolean isWithdraw;
-
     @Column(name = "nationality_id")
     private String nationalityId;
 
