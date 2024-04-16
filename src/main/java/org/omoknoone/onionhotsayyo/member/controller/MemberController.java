@@ -79,6 +79,23 @@ public class MemberController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @GetMapping("/mypage/{memberId}")
+    public ResponseEntity<ResponseMessage> mypage(@PathVariable String memberId) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+        ResponseMember responseMember = modelMapper.map(memberService.getMemberDetailsByMemberId(memberId), ResponseMember.class);
+
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("result", responseMember);
+
+        return ResponseEntity
+                .ok()
+                .headers(headers)
+                .body(new ResponseMessage(200, "마이페이지 로딩 성공", responseMap));
+    }
+
     @GetMapping("/health_check")
     public String healthCheck() {
         return "Good";

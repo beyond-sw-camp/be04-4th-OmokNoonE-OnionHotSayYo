@@ -12,6 +12,7 @@ import org.omoknoone.onionhotsayyo.member.dto.MemberDTO;
 import org.omoknoone.onionhotsayyo.member.service.AuthService;
 import org.omoknoone.onionhotsayyo.member.service.MemberService;
 import org.omoknoone.onionhotsayyo.member.vo.RequestLogin;
+import org.omoknoone.onionhotsayyo.nationality.service.NationalityService;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,13 +27,15 @@ import java.util.ArrayList;
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final MemberService memberService;
+    private final NationalityService nationalityService;
     private final AuthService authService;
     private final Environment environment;
     private final JwtTokenProvider jwtTokenProvider;
 
-    public AuthenticationFilter(AuthenticationManager authenticationManager, MemberService memberService, AuthService authService, Environment environment, JwtTokenProvider jwtTokenProvider) {
+    public AuthenticationFilter(AuthenticationManager authenticationManager, MemberService memberService, NationalityService nationalityService, AuthService authService, Environment environment, JwtTokenProvider jwtTokenProvider) {
         super(authenticationManager);
         this.memberService = memberService;
+        this.nationalityService = nationalityService;
         this.authService = authService;
         this.environment = environment;
         this.jwtTokenProvider = jwtTokenProvider;
@@ -68,6 +71,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         /* 설명. DB를 다녀와 사용자의 고유 아이디(memberId)를 가져올 예정(Principal 객체(Authentication)에는 없는 값이므로) */
         MemberDTO memberDetails = memberService.getMemberDetailsByMemberId(id);
         String memberId = memberDetails.getMemberId();
+        String language = nationalityService.viewLanguage(memberDetails.getNationalityId());
 //        String roleName = memberDetails.getRoleName();
 
         Claims claims = Jwts.claims().setSubject(memberId);
@@ -84,6 +88,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
         response.addHeader("accessToken", accessToken);
         response.addHeader("memberId", memberId);
+        response.addHeader("language", language);
 
         /* 설명. refreshToken이 아닌 token의 Id를 전달, refreshToken은 서버만 가지고 있음 */
         Cookie cookie = new Cookie("refreshTokenId", refreshTokenId);
