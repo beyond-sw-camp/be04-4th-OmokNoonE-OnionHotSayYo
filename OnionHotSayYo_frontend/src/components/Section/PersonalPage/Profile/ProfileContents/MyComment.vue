@@ -31,6 +31,10 @@ import { inject, ref, onMounted } from 'vue';
 import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const memberId = store.getters.memberInfo.memberId;
 
 const injectMemberId = inject("memberId");
 
@@ -44,20 +48,20 @@ const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8081/post?_start=1&_limit=5");
+        const response = await axios.get(`http://localhost:8080/list/mycomments/${memberId}?_start=1&_limit=5`);
         loadingState.value = false;
         posts.value = response.data;
         for (let i = 0; i < posts.value.length; i++) {
-            const postingId = posts.value[i].POST_ID;
-            const title = posts.value[i].TITLE;
-            const content = posts.value[i].CONTENT;
+            const memberId = posts.value[i].memberId;
+            const postingId = posts.value[i].nickname;
+            const content = posts.value[i].content;
             const image = posts.value[i].IMAGE;
-            const isDeleted = posts.value[i].IS_DELETED;
-            const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
-            const categoryId = posts.value[i].CATEGORY_ID;
-            const memberId = posts.value[i].MEMBER_ID;
-            const language = posts.value[i].LANGUAGE;
-            const locationId = posts.value[i].LOCATION_ID;
+            const postedDate = posts.value[i].postedDate;
+            const lastModifiedDate = posts.value[i].lastModifiedDate;
+            const isDeleted = posts.value[i].isDeleted;
+            // const categoryId = posts.value[i].CATEGORY_ID;
+            // const language = posts.value[i].LANGUAGE;
+            // const locationId = posts.value[i].LOCATION_ID;
 
             comments.value[i] = {
                 postingId: postingId,

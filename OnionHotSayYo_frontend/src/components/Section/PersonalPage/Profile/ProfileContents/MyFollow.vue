@@ -32,6 +32,10 @@ import { inject, ref, readonly, onMounted } from 'vue';
 import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const memberId = store.getters.memberInfo.memberId;
 
 const injectMemberId = inject("memberId");
 

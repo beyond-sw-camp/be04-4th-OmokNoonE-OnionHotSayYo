@@ -1,11 +1,12 @@
 <template>
-<!--    <Loading v-if="loadingState" />-->
-<!--    <div v-if="!loadingState">-->
-<!--        <ProfileHeader :memberProps="memberProps" />-->
-<!--        <ProfileContents :memberId="memberProps.memberId" />-->
-<!--    </div>-->
+    <!--    <Loading v-if="loadingState" />-->
+    <!--    <div v-if="!loadingState">-->
+    <!--        <ProfileHeader :memberProps="memberProps" />-->
+    <!--        <ProfileContents :memberId="memberProps.memberId" />-->
+    <!--    </div>-->
     <ProfileHeader />
-<!--    <ProfileContents />-->
+    <ProfileContents />
+    <!-- <ProfileContents /> -->
 
 </template>
 
