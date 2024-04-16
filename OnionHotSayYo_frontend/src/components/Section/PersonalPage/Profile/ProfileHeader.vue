@@ -126,7 +126,7 @@ const memberId = store.state.memberId;
 onMounted(async () => {
   try {
     /* TODO. memberId 변수로 바꿀 것 */
-    const response = await axios.get(`http://localhost:8080/members/mypage/membertest1`);
+    const response = await axios.get(`http://localhost:30001/members/mypage/membertest1`);
     loadingState.value = false;
     const result = response.data;
     console.log(result);

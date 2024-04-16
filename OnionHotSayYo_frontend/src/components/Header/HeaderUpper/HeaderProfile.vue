@@ -68,7 +68,7 @@ async function follow() {
     toMemberId: store.getters.memberInfo.memberId
   };
 
-  const response = await axios.post('http://localhost:8080/follows/follow', followData);
+  const response = await axios.post('http://localhost:30001/follows/follow', followData);
   console.log(response)
 
   if (response.status === 201) {
