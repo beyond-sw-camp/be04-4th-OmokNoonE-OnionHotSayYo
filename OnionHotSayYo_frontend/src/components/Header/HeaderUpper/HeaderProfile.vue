@@ -11,6 +11,7 @@
       </div>
       <button class="MyPage" @click="goMyPage(memberId)">MyPage</button>    
       <button class="LogOut"  @click.prevent="logout">Log Out</button>
+      <button class="followTest"  @click.prevent="follow">followTest</button>
       <hr>
       <span class="Notification" @click="showToast()">Notification</span>
       <hr>
@@ -37,9 +38,10 @@ import { Toast } from 'bootstrap';
 import { ref } from "vue";
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+import axios from "axios";
 
 const store = useStore();
-const memberId = store.state.memberId;
+const memberId = store.getters.memberInfo.memberId;
 const router = useRouter();
 
 function goMyPage(memberId) {
@@ -57,6 +59,22 @@ async function logout() {
     console.log(response)
   } catch (error) {
     console.error("Error Logout:", error);
+  }
+}
+
+async function follow() {
+  const followData = {
+    fromMemberId: "member1",
+    toMemberId: store.getters.memberInfo.memberId
+  };
+
+  const response = await axios.post('http://localhost:8080/follows/follow', followData);
+  console.log(response)
+
+  if (response.status === 201) {
+    console.log('팔로우 요청이 성공적으로 전송되었습니다.');
+  } else {
+    console.error('팔로우 요청 실패:', response.statusText);
   }
 }
 </script>

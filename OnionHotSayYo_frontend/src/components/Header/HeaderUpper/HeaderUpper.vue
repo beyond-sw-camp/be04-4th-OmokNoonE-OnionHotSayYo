@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import {computed} from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from "vue-router";
 
@@ -40,7 +40,7 @@ const needLogin = computed(() => {
 
 function goMainPageMain(){
         router.push(`/`);
-}    
+}
 </script>
 
 <style scoped>

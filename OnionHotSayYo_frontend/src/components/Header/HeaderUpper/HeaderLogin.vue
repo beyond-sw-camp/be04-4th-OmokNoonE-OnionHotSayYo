@@ -56,7 +56,8 @@
 <script setup>
 import {ref} from 'vue';
 import {useStore} from 'vuex';
-import { useRouter } from "vue-router";
+import {useRouter} from "vue-router";
+import axios from "axios";
 
 const router = useRouter();
 
@@ -67,13 +68,53 @@ const store = useStore();
 
 // 로그인 처리
 async function login() {
+  async function connectSSE(memberId) {
+    const eventSource = new EventSource(`http://localhost:8080/notifications/subscribe?memberName=${memberId}`);
+
+    eventSource.addEventListener("sse", async function (event) {
+      const data = JSON.parse(event.data);
+
+      // 브라우저 알림
+      const showNotification = () => {
+        const notification = new Notification("🔔OnionHotSayYo", {
+          body: data.message
+        });
+
+        setTimeout(() => {
+          notification.close();
+        }, 10 * 1000);
+
+        notification.addEventListener('click', () => {
+          window.open(data.url, '_blank');
+        });
+      };
+
+      // 브라우저 알림 허용 권한
+      let granted = false;
+
+      if (Notification.permission === 'granted') {
+        granted = true;
+      } else if (Notification.permission !== 'denied') {
+        let permission = await Notification.requestPermission();
+        granted = permission === 'granted';
+      }
+
+      // 알림 보여주기
+      if (granted) {
+        showNotification();
+      }
+    });
+  }
+
   try {
     const response = await store.dispatch('login', {
       memberId: id.value,
       password: password.value
     })
-    alert(response);
-    /* TODO. router 추가 하고, @click.prevent 수정하기 */
+
+    /* SSE 연결 (알림 기능) */
+    await connectSSE(id.value);
+
     await router.push(`/`);
   } catch (error) {
     console.error("Error Login:", error);
