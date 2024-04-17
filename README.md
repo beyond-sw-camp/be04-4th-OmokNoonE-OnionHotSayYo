@@ -1,4 +1,4 @@
-# OnionHotSayYo, 한국 생활 정보와 커뮤니티를 한눈에!
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/324fd290-cabd-43fd-906a-08f712c27b08)# OnionHotSayYo, 한국 생활 정보와 커뮤니티를 한눈에!
 ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3080ca9c-37dc-4734-b13a-a168ca033705)
 
 > "Discover Korea Together: Connect, Share, and Thrive!"
@@ -60,6 +60,13 @@
 <summary><b>API 명세서</b></summary>
 
 [API 명세서](https://docs.google.com/spreadsheets/d/1t3bgnUeZIgcqyb5Rk_3qfDUV-yV0Xv4NktnJHBFlYrk/edit?usp=sharing)
+
+</details>
+
+<details>
+<summary><b>시스템 아키텍처</b></summary>
+
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/33e0d533-42cb-4d4b-b32b-233da53c256c)
 
 </details>
 
