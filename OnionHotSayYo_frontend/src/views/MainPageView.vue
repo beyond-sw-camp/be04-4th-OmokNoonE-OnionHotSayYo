@@ -108,17 +108,45 @@ import axios from 'axios';
 
 const router = useRouter();
 
-const banners = ref([]);
+const banners = ref(
+    [
+        {
+            BANNER_ID : 1,
+            TITLE : "신대방삼거리역 초밥집 OPEN",
+            IMAGE: "https://picsum.photos/200/300"
+        },
+        {
+            BANNER_ID : 2,
+            TITLE : "신대방삼거리역 순대국밥집 OPEN",
+            IMAGE: "https://picsum.photos/200/300"
+        },
+        {
+            BANNER_ID : 3,
+            TITLE : "신대방삼거리역 런닝 동호회 회원 모집!",
+            IMAGE: "https://picsum.photos/200/300"
+        },
+        {
+            BANNER_ID : 4,
+            TITLE : "신대방삼거리역 카페 OPEN",
+            IMAGE: "https://picsum.photos/200/300"
+        }, 
+        {
+            BANNER_ID : 5,
+            TITLE : "신대방삼거리역 CU편의점 직원 모집",
+            IMAGE: "https://picsum.photos/200/300"
+        }
+]
+);
 
-onMounted(async () => {
-    try {
-        const response = await axios.get('http://localhost:8082/bannerImage?_sort=BANNER_ID');
-        banners.value = response.data; // posts 반응형 참조에 데이터 할당
-        console.log(banners.value); // 데이터 확인
-    } catch (error) {
-        console.error("Error fetching posts:", error);
-    }
-});
+// onMounted(async () => {
+//     try {
+//         const response = await axios.get('http://localhost:8082/bannerImage?_sort=BANNER_ID');
+//         banners.value = response.data; // posts 반응형 참조에 데이터 할당
+//         console.log(banners.value); // 데이터 확인
+//     } catch (error) {
+//         console.error("Error fetching posts:", error);
+//     }
+// });
 
 </script>
 
