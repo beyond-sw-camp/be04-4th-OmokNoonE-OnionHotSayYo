@@ -29,7 +29,7 @@ const posts = [];
 
 const copyPosts = ref([{}]);
 
-const loadingState = ref(true);
+const loadingState = ref(false);
 
 const props = defineProps({
     categoryId: String
@@ -59,23 +59,26 @@ const categoryName = computed(() => {
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`/api/posts/list/${ props.categoryId }`);
-        loadingState.value = false;
-        posts.value = response.data.categoryPosts;
+        // const response = await axios.get(`/api/posts/list/${ props.categoryId }`);
+        // console.log(props.categoryId);
+        loadingState.value = true;
+        const response = await axios.get(`/api/posts/hotlist/${ props.categoryId }`);
+        posts.value = response.data.hotCategoryPosts;
         console.log('axios 요청', props.categoryId , '의 ', posts.value);
         for (let i = 0; i < posts.value.length; i++) {
-            const postingId = 1;
-            const title = posts.value[i].title;
-            const hits = posts.value[i].hits;
-            const postedDate = posts.value[i].postedDate;
             const categoryId = posts.value[i].categoryId;
+            const postingId = posts.value[i].postId;
+            const title = posts.value[i].title;
+            const postedDate = posts.value[i].postedDate;
+            const hits = posts.value[i].hits;
             // const content = posts.value[i].content;
             // const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
             // const memberId = posts.value[i].MEMBER_ID;
             // const language = posts.value[i].LANGUAGE;
             // const locationId = posts.value[i].LOCATION_ID;
-
+            
             copyPosts.value[i] = {
+                categoryId: categoryId,
                 postingId: postingId,
                 title: title,
                 postedDate: postedDate,
@@ -83,16 +86,16 @@ onMounted(async () => {
                 // , content: content,
                 // image: image,
                 // isDeleted: isDeleted,
-                // categoryId: categoryId,
                 // memberId: memberId,
                 // language: language,
                 // locationId: locationId
             };
-
+            
         }
     } catch (error) {
         console.error("Error fetching posts:", error);
     }
+    loadingState.value = false;
 });
 
 
