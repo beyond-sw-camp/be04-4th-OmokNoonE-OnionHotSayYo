@@ -35,17 +35,23 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { Toast } from 'bootstrap';
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 import axios from "axios";
 
 const store = useStore();
-const memberId = store.getters.memberInfo.memberId;
+const memberId = ref('');
+// const memberId = store.getters.memberInfo.memberId;
 const router = useRouter();
 
+onMounted(async () => {
+  await store.dispatch('fetchMemberId');
+  memberId.value = store.getters.memberInfo.memberId;
+});
+
 function goMyPage(memberId) {
-  router.push(`/mypage/${memberId}`);
+  router.push(`/mypage/${memberId.value}`);
 }
 
 function showToast() {
@@ -68,7 +74,7 @@ async function follow() {
     toMemberId: store.getters.memberInfo.memberId
   };
 
-  const response = await axios.post('http://localhost:8080/follows/follow', followData);
+  const response = await axios.post('http://localhost:30001/follows/follow', followData);
   console.log(response)
 
   if (response.status === 201) {

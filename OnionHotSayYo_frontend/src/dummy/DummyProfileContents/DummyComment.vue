@@ -3,14 +3,14 @@
         <h3 class="category-title">{{ type }}</h3>
         <div @click="goDetailList(injectMemberId, type)" class="card-link">더보기</div>
         <table class="table table-hover">
-            <tbody v-if="!loadingState" class="table-group-divider">
+            <tbody class="table-group-divider">
                 <tr v-for="comment in comments" :key="comment">
-                    <td class="col-number" scope="row">1</td>
+                    <td class="col-number" scope="row">{{ comment.postingId }}</td>
                     <td @click="goPostDetailPage(comment.postingId)" class="col-title">
                         {{ comment.title }}
                     </td>
                     <td class="col-date">{{ comment.lastModifiedDate }}</td>
-                    <td>
+                    <td @click="disappear(comment)">
                         &nbsp;
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-x-circle col-close" viewBox="0 0 16 16">
@@ -42,45 +42,34 @@ const type = "댓글";
 
 const posts = [];
 
-const comments = ref([{}]);
-
-const loadingState = ref(true);
-
-onMounted(async () => {
-    try {
-        const response = await axios.get(`http://localhost:30001/list/mycomments/${memberId}?_start=1&_limit=5`);
-        loadingState.value = false;
-        posts.value = response.data;
-        for (let i = 0; i < posts.value.length; i++) {
-            const memberId = posts.value[i].memberId;
-            const postingId = posts.value[i].nickname;
-            const content = posts.value[i].content;
-            const image = posts.value[i].IMAGE;
-            const postedDate = posts.value[i].postedDate;
-            const lastModifiedDate = posts.value[i].lastModifiedDate;
-            const isDeleted = posts.value[i].isDeleted;
-            // const categoryId = posts.value[i].CATEGORY_ID;
-            // const language = posts.value[i].LANGUAGE;
-            // const locationId = posts.value[i].LOCATION_ID;
-
-            comments.value[i] = {
-                postingId: postingId,
-                title: title,
-                content: content,
-                image: image,
-                isDeleted: isDeleted,
-                lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
-                categoryId: categoryId,
-                memberId: memberId,
-                language: language,
-                locationId: locationId
-            };
-
-        }
-    } catch (error) {
-        console.error("Error fetching posts:", error);
+const comments = ref([
+    {
+        postingId: 1,
+        title: "감사합니다. 선생님 많은 도움이 되었습니다.",
+        lastModifiedDate: "2024-01-21"
+    },
+    {
+        postingId: 2,
+        title: "ㅋㅋㅋㅋㅋㅋㅋㅋ",
+        lastModifiedDate: "2024-01-28"
+    },
+    {
+        postingId: 3,
+        title: "댓글 어떻게 삭제하나요? ㅠㅠ",
+        lastModifiedDate: "2024-02-22"
+    },
+    {
+        postingId: 4,
+        title: "정말 좋은 정보! 좋아요 드립니다!",
+        lastModifiedDate: "2024-02-24"
+    },
+    {
+        postingId: 5,
+        title: "나도 줘잉",
+        lastModifiedDate: "2024-03-22"
     }
-});
+]);
+const loadingState = ref(true);
 
 
 
@@ -92,6 +81,13 @@ function goDetailList(injectMemberId, type) {
 
 function goPostDetailPage(postid) {
     router.push(`/view/${postid}`);
+}
+
+function disappear(comment) {
+    const index = comments.value.indexOf(comment);
+    if (index !== -1) {
+        comments.value.splice(index, 1);
+    }
 }
 </script>
 

@@ -9,7 +9,7 @@
                     <td @click="goPostDetailPage(post.postingId)" class="col-title">
                         {{ post.title }}
                     </td>
-                    <td class="col-date">{{ post.postedDate }}</td>
+                    <td class="col-date">{{ post.postedDate }}</td> <!-- 변경된 부분 -->
                     <td>
                         <div class="col-hits">{{ post.hits }}</div>
                     </td>
@@ -20,8 +20,9 @@
 </template>
 
 <script setup>
-import { inject, ref, defineProps, computed, onMounted } from 'vue';
+import { ref, defineProps, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import { format } from 'date-fns';
 import axios from 'axios';
 
 
@@ -59,8 +60,6 @@ const categoryName = computed(() => {
 
 onMounted(async () => {
     try {
-        // const response = await axios.get(`/api/posts/list/${ props.categoryId }`);
-        // console.log(props.categoryId);
         loadingState.value = true;
         const response = await axios.get(`/api/posts/hotlist/${ props.categoryId }`);
         posts.value = response.data.hotCategoryPosts;
@@ -81,8 +80,9 @@ onMounted(async () => {
                 categoryId: categoryId,
                 postingId: postingId,
                 title: title,
-                postedDate: postedDate,
-                hits: hits
+                hits: hits,
+                postedDate: format(new Date(postedDate[0], postedDate[1] - 1, postedDate[2], postedDate[3], postedDate[4], postedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
+                categoryId: categoryId
                 // , content: content,
                 // image: image,
                 // isDeleted: isDeleted,
@@ -98,8 +98,6 @@ onMounted(async () => {
     loadingState.value = false;
 });
 
-
-
 const router = useRouter();
 
 function goCategoryList(categoryId) {
@@ -109,6 +107,7 @@ function goCategoryList(categoryId) {
 function goPostDetailPage(postid) {
     router.push(`/view/${postid}`);
 }
+
 </script>
 
 <style scoped>

@@ -82,7 +82,7 @@ async function fetchPageData(pageNumber) {
             content: post.content
         }));
 
-        const response = await axios.post('http://localhost:8080/translators/translate', data);
+        const response = await axios.post('http://localhost:30001/translators/translate', data);
         return response.data;
     } catch (error) {
         console.error('Error fetching page data:', error);
@@ -156,7 +156,7 @@ onMounted(async () => {
         console.log('가공된 데이터:', data);
 
         if (props.language) {
-            const response = await axios.post('http://localhost:8080/translators/translate', data);
+            const response = await axios.post('http://localhost:30001/translators/translate', data);
             console.log(response.status);
             currentPagePosts.value = response.data;
             console.log(currentPagePosts.value);

@@ -3,22 +3,15 @@
         <h3 class="category-title">{{ type }}</h3>
         <div @click="goDetailList(injectMemberId, type)" class="card-link">더보기</div>
         <table class="table table-hover">
-            <tbody v-if="!loadingState" class="table-group-divider">
-                <tr v-for="comment in comments" :key="comment">
-                    <td class="col-number" scope="row">1</td>
-                    <td @click="goPostDetailPage(comment.postingId)" class="col-title">
-                        {{ comment.title }}
+            <tbody class="table-group-divider">
+                <tr v-for="(post, index) in copyPosts" :key="post">
+                    <td class="col-number" scope="row">{{ index + 1 }}</td>
+                    <td @click="goPostDetailPage(post.postingId)" class="col-title">
+                        {{ post.title }}
                     </td>
-                    <td class="col-date">{{ comment.lastModifiedDate }}</td>
+                    <td class="col-date">{{ post.lastModifiedDate }}</td>
                     <td>
-                        &nbsp;
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-x-circle col-close" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                            <path
-                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                        </svg>
-                        &nbsp;
+                        <div class="col-hits">{{ post.hits }}</div>
                     </td>
                 </tr>
             </tbody>
@@ -27,47 +20,76 @@
 </template>
 
 <script setup>
-import { inject, ref, onMounted } from 'vue';
+import { inject, ref, readonly, onMounted } from 'vue';
 import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
-import { useStore } from 'vuex';
-
-const store = useStore();
-const memberId = store.getters.memberInfo.memberId;
 
 const injectMemberId = inject("memberId");
 
-const type = "댓글";
+const type = "작성글";
 
 const posts = [];
 
-const comments = ref([{}]);
+const copyPosts = ref([
+    {
+        postingId: 1,
+        title: "신대방 삼거리 맛집 추천",
+        hits: 22,
+        lastModifiedDate: "2024-01-24"
+    },
+    {
+        postingId: 2,
+        title: "구인구직, 당신도 할 수 있다!",
+        hits: 252,
+        lastModifiedDate: "2024-01-25"
+    },
+    {
+        postingId: 3,
+        title: "어제 다녀온 한강 후기",
+        hits: 624,
+        lastModifiedDate: "2024-02-21"
+    },
+    {
+        postingId: 4,
+        title: "라꾸라꾸 팝니다",
+        hits: 44,
+        lastModifiedDate: "2024-02-22"
+    },
+    {
+        postingId: 5,
+        title: "산악회 모집합니다.",
+        hits: 42,
+        lastModifiedDate: "2024-03-24"
+    }
+]);
 
 const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`http://localhost:30001/list/mycomments/${memberId}?_start=1&_limit=5`);
+        const response = await axios.get("http://localhost:30001/post?_start=1&_limit=5");
         loadingState.value = false;
         posts.value = response.data;
         for (let i = 0; i < posts.value.length; i++) {
-            const memberId = posts.value[i].memberId;
-            const postingId = posts.value[i].nickname;
-            const content = posts.value[i].content;
+            const postingId = posts.value[i].POST_ID;
+            const title = posts.value[i].TITLE;
+            const content = posts.value[i].CONTENT;
             const image = posts.value[i].IMAGE;
-            const postedDate = posts.value[i].postedDate;
-            const lastModifiedDate = posts.value[i].lastModifiedDate;
-            const isDeleted = posts.value[i].isDeleted;
-            // const categoryId = posts.value[i].CATEGORY_ID;
-            // const language = posts.value[i].LANGUAGE;
-            // const locationId = posts.value[i].LOCATION_ID;
+            const hits = posts.value[i].HITS;
+            const isDeleted = posts.value[i].IS_DELETED;
+            const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
+            const categoryId = posts.value[i].CATEGORY_ID;
+            const memberId = posts.value[i].MEMBER_ID;
+            const language = posts.value[i].LANGUAGE;
+            const locationId = posts.value[i].LOCATION_ID;
 
-            comments.value[i] = {
+            copyPosts.value[i] = {
                 postingId: postingId,
                 title: title,
                 content: content,
                 image: image,
+                hits: hits,
                 isDeleted: isDeleted,
                 lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                 categoryId: categoryId,
@@ -92,6 +114,13 @@ function goDetailList(injectMemberId, type) {
 
 function goPostDetailPage(postid) {
     router.push(`/view/${postid}`);
+}
+
+function disappear(bookmark) {
+    const index = bookmarks.value.indexOf(bookmark);
+    if (index !== -1) {
+        bookmarks.value.splice(index, 1);
+    }
 }
 </script>
 
@@ -178,9 +207,7 @@ function goPostDetailPage(postid) {
 }
 
 .col-hits {
-    background-color: red;
-    color: white;
+    color: red;
     border: 1px #777;
-    border-radius: 45%;
 }
 </style>

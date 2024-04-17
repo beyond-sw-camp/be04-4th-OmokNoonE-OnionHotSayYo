@@ -29,8 +29,13 @@
 
 <script setup>
 import { inject, ref, readonly, onMounted } from 'vue';
+import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const memberId = store.getters.memberInfo.memberId;
 
 const injectMemberId = inject("memberId");
 
@@ -44,7 +49,7 @@ const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get("http://localhost:8080/members");
+        const response = await axios.get("http://localhost:30001/members");
         loadingState.value = false;
         members.value = response.data;
         for (let i = 0; i < members.value.length; i++) {
@@ -65,7 +70,7 @@ onMounted(async () => {
                 image: image,
                 profile: profile,
                 email: email,
-                signUpDate: signUpDate,
+                signUpDate: format(new Date(signUpDate[0], signUpDate[1] - 1, signUpDate[2], signUpDate[3], signUpDate[4], signUpDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                 isWithdraw: isWithdraw,
                 nationalityId: nationalityId
             };

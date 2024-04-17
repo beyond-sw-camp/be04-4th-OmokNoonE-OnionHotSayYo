@@ -2,14 +2,14 @@
 <div class="row justify-content-center">
         <div class="container text-center profile-details">
             <div class="col">
-                <MyFollow/>
-                <MyBookmark/>
-                <MyPost/>
+                <DummyFollow/>
+                <DummyBookmark/>
+                <DummyPost/>
             </div>
             <div class="col">
-                <MyFollower/>
-                <MyLike/>
-                <MyComment/>
+                <DummyFollower/>
+                <DummyLike/>
+                <DummyComment/>
             </div>
         </div>
     </div>
@@ -19,12 +19,13 @@
 import { inject } from 'vue';
 import { useRouter } from 'vue-router';
 
-import MyFollow from './MyFollow.vue';
-import MyBookmark from './MyBookmark.vue';
-import MyPost from './MyPost.vue';
-import MyFollower from './MyFollower.vue';
-import MyLike from './MyLike.vue';
-import MyComment from './MyComment.vue';
+import DummyFollow from './DummyFollow.vue';
+import DummyBookmark from './DummyBookmark.vue';
+import DummyPost from './DummyPost.vue';
+import DummyFollower from './DummyFollower.vue';
+import DummyLike from './DummyLike.vue';
+import DummyComment from './DummyComment.vue';
+
 
 
 const router = useRouter();
