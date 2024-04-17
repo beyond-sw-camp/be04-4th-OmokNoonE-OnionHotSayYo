@@ -1,0 +1,115 @@
+{
+    "letters": [
+        {
+            "LETTER_ID" : 1,
+            "MESSAGE" : "안녕하세용 뚱이에용",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 0,
+            "SEND_ID" : "mem1",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone1",
+            "RECEIVE_ID" : "mem2",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone2"
+
+        }, {
+            "LETTER_ID" : 2,
+            "MESSAGE" : "안녕하세용 뚱이에용\n 2번쨰 ㅏㄹㅇ목 읽음 하하하 반갑습니다",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 1,
+            "SEND_ID" : "mem3",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone3",
+            "RECEIVE_ID" : "mem2",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone2"
+        }, {
+            "LETTER_ID" : 3,
+            "MESSAGE" : "안녕하세용 뚱이에용\n 하하하 반갑습니다33333",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 1,
+            "SEND_ID" : "mem4",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone4",
+            "RECEIVE_ID" : "mem2",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone2"
+        }, {
+            "LETTER_ID" : 4,
+            "MESSAGE" : "안녕하세용 뚱이에용\n 하하하 반갑습니다",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 0,
+            "SEND_ID" : "mem5",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone5",
+            "RECEIVE_ID" : "mem2",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone2"
+        }, {
+            "LETTER_ID" : 5,
+            "MESSAGE" : "안녕하세용 뚱이에용",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 0,
+            "SEND_ID" : "mem4",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone4",
+            "RECEIVE_ID" : "mem2",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone2"
+        }, {
+            "LETTER_ID" : 6,
+            "MESSAGE" : "안녕하세용 뚱이에용",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 0,
+            "SEND_ID" : "mem2",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone2",
+            "RECEIVE_ID" : "mem1",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone1"
+        }, {
+            "LETTER_ID" : 7,
+            "MESSAGE" : "안녕하세용 뚱이에용 \n 하하하 반갑습니다",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 0,
+            "SEND_ID" : "mem2",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone2",
+            "RECEIVE_ID" : "mem3",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone3"
+        }, {
+            "LETTER_ID" : 8,
+            "MESSAGE" : "안녕하세용 뚱이에용",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 0,
+            "SEND_ID" : "mem2",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone2",
+            "RECEIVE_ID" : "mem4",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone4"
+        }, {
+            "LETTER_ID" : 9,
+            "MESSAGE" : "안녕하세용 뚱이에용",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 1,
+            "SEND_ID" : "mem2",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone2",
+            "RECEIVE_ID" : "mem3",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone3"
+        },{
+            "LETTER_ID" : 10,
+            "MESSAGE" : "안녕하세용 뚱이에용",
+            "EVENTTIME" : "2024-03-06 15:10:19",
+            "IS_CHECKED" : 0,
+            "SEND_ID" : "mem2",
+            "SENDER_IMAGE" : "https://picsum.photos/100",
+            "SENDER_NICKNAME" : "omoknoone2",
+            "RECEIVE_ID" : "mem5",
+            "RECEIVER_IMAGE" : "https://picsum.photos/100",
+            "RECEIVER_NICKNAME" : "omoknoone5"
+        }
+]}
