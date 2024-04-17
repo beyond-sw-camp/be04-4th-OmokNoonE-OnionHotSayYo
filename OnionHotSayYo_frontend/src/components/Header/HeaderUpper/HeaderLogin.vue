@@ -1,7 +1,7 @@
 <template>
   <div>
     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight">
+      aria-controls="offcanvasRight">
       <img src="@/assets/image/OnionHotSayYo.png" width="17" height="17">
       LOGIN
     </button>
@@ -9,31 +9,27 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div class="offcanvas-header">
         <h5 id="offcanvasRightLabel">서비스를 이용하시려면 로그인하세요.</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <form>
         <div class="container">
           <div class="row justify-content-center align-items-center">
             <div class="col-md-9">
-              <img class="mb-4 mx-auto d-block" src="@/assets/image/OnionHotSayYo.png" alt="" width="72"
-                   height="57">
+              <img class="mb-4 mx-auto d-block" src="@/assets/image/OnionHotSayYo.png" alt="" width="72" height="57">
               <h1 class="h3 mb-3 fw-normal text-center">Please Sign In</h1>
 
               <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInput"
-                       placeholder="name@example.com" v-model="id">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" v-model="id">
                 <label for="floatingInput">ID</label>
               </div>
               <div class="form-floating">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                       v-model="password">
+                  v-model="password">
                 <label for="floatingPassword">Password</label>
               </div>
 
               <div class="form-check text-start my-3">
-                <input class="form-check-input" type="checkbox" value="remember-me"
-                       id="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                   Remember me
                 </label>
@@ -42,7 +38,7 @@
               <div class="col-md-3 text-end">
                 <div>
                   <span style="font-size: 12px;">계정이 없으신가요?</span>
-                  <button class="sign-up-btn" type="button">회원가입</button>
+                  <button class="sign-up-btn" type="button" @click="goSignUp">회원가입</button>
                 </div>
               </div>
             </div>
@@ -54,9 +50,9 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
-import {useStore} from 'vuex';
-import {useRouter} from "vue-router";
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from "vue-router";
 import axios from "axios";
 
 const router = useRouter();
@@ -65,6 +61,10 @@ const id = ref('');
 const password = ref('');
 
 const store = useStore();
+
+function goSignUp() {
+  router.replace(`/signup`);
+}
 
 // 로그인 처리
 async function login() {
@@ -119,7 +119,9 @@ async function login() {
   } catch (error) {
     console.error("Error Login:", error);
   }
+
 }
+
 </script>
 
 <style scoped>

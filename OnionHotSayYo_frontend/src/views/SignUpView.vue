@@ -92,7 +92,7 @@
                         </div>
 
                         <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit" @click="signUp">회원 가입</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit" @click="goMainPage">회원 가입</button>
                     </form>
                 </div>
             </div>
@@ -223,6 +223,7 @@ function checkNickname(nickname) {
     function goMainPage(){
         router.push(`/`);
     }
+
 </script>
 
 <style scoped>
