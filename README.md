@@ -49,6 +49,20 @@
 
 
 ## 문서
+
+### 시스템 아키텍처
+
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/33e0d533-42cb-4d4b-b32b-233da53c256c)
+
+1. 개발자가 로컬 환경에서 코드를 작성 및 테스트한 후 , 변경사항을 github로 push
+2. github는 변경 사항에 push 되면 webhook이 이벤트를 감지하고 해당 이벤트를 처리하기 위해서 HTTP 요청
+3. webhook에서 HTTP요청을 하게 되면 JENKINS를 통해 Gradle을 사용하여 소스코드를 빌드하고 실행이 가능한 jar 파일로 생성
+4. 빌드된 jar 파일은 dockerfile를 사용하여 Docker image로 pakaging.  
+5. Docker는 image를 DockerHub로 push 
+6. 쿠버네티스 클러스터는 Docker image를 가져와서 배포하고 백엔드와 프론트엔드는 각각의 파드로 배포됨
+7. ubuntu 서버에서 MariaDb를 관리하고 backend와 연동하여 데이터를 저장하고 관리함
+8. 사용자가 요청한 번역 작업은 DeepL API로 전송되어 처리되며, 번역된 결과가 반환됨
+
 <details>
 <summary><b>프로젝트 문서</b></summary>
 
@@ -61,21 +75,6 @@
 
 [API 명세서](https://docs.google.com/spreadsheets/d/1t3bgnUeZIgcqyb5Rk_3qfDUV-yV0Xv4NktnJHBFlYrk/edit?usp=sharing)
 
-</details>
-
-<details>
-<summary><b>시스템 아키텍처</b></summary>
-
-![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/33e0d533-42cb-4d4b-b32b-233da53c256c)
-
-1. 개발자가 로컬 환경에서 코드를 작성 및 테스트한 후 , 변경사항을 github로 push
-2. github는 변경 사항에 push 되면 webhook이 이벤트를 감지하고 해당 이벤트를 처리하기 위해서 HTTP 요청
-3. webhook에서 HTTP요청을 하게 되면 JENKINS를 통해 Gradle을 사용하여 소스코드를 빌드하고 실행이 가능한 jar 파일로 생성
-4. 빌드된 jar 파일은 dockerfile를 사용하여 Docker image로 pakaging.  
-5. Docker는 image를 DockerHub로 push 
-6. 쿠버네티스 클러스터는 Docker image를 가져와서 배포하고 백엔드와 프론트엔드는 각각의 파드로 배포됨
-7. ubuntu 서버에서 MariaDb를 관리하고 backend와 연동하여 데이터를 저장하고 관리함
-8. 사용자가 요청한 번역 작업은 DeepL API로 전송되어 처리되며, 번역된 결과가 반환됨
 </details>
 
 ## 🤔 회고
