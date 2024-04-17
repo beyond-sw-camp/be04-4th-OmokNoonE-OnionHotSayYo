@@ -1,0 +1,28 @@
+{
+    "bannerImage": [
+        {
+            "BANNER_ID" : 1,
+            "TITLE" : "신대방삼거리역 초밥집 OPEN",
+            "IMAGE": "https://picsum.photos/200/300"
+        },
+        {
+            "BANNER_ID" : 2,
+            "TITLE" : "신대방삼거리역 순대국밥집 OPEN",
+            "IMAGE": "https://picsum.photos/200/300"
+        },
+        {
+            "BANNER_ID" : 3,
+            "TITLE" : "신대방삼거리역 런닝 동호회 회원 모집!",
+            "IMAGE": "https://picsum.photos/200/300"
+        },
+        {
+            "BANNER_ID" : 4,
+            "TITLE" : "신대방삼거리역 카페 OPEN",
+            "IMAGE": "https://picsum.photos/200/300"
+        }, 
+        {
+            "BANNER_ID" : 5,
+            "TITLE" : "신대방삼거리역 CU편의점 직원 모집",
+            "IMAGE": "https://picsum.photos/200/300"
+        }
+]}
