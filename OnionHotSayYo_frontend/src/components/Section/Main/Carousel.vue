@@ -19,7 +19,7 @@
                 <img :src="banner.IMAGE" width="100%" height="100%">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>{{ banner.TITLE }}</h1>
+                        <h2 style="background-color: white; padding: 5px; color: black">{{ banner.TITLE }}</h2>
                     </div>
                 </div>
             </div>
