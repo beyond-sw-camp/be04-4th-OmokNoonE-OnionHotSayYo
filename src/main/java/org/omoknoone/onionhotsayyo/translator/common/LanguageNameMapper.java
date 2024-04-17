@@ -21,7 +21,7 @@ public class LanguageNameMapper {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(
-                new File("src/main/java/org/omoknoone/onionhotsayyo/translator/data/languages.json"));
+                new File("src/main/resources/languages.json"));
 
             if (rootNode.isArray()) {
                 Iterator<JsonNode> elements = rootNode.elements();
