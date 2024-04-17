@@ -11,7 +11,7 @@
       </div>
       <button class="MyPage" @click="goMyPage(memberId)">MyPage</button>    
       <button class="LogOut"  @click.prevent="logout">Log Out</button>
-      <button class="followTest"  @click.prevent="follow">followTest</button>
+      <button class="followTest"  @click.prevent="follow">Follow Test</button>
       <hr>
       <span class="Notification" @click="showToast()">Notification</span>
       <hr>
@@ -19,12 +19,12 @@
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" style="margin-left: 25px ">
           <div class="toast-header">
             <img src="@/assets/image/github.png" class="rounded me-2" style="width: 50px; height: 50px;">
-            <strong class="me-auto">mem02</strong>
-            <small class="text-body-secondary">2 seconds ago</small>
+            <strong class="me-auto">member1</strong>
+            <small class="text-body-secondary">1 minute ago</small>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
           <div class="toast-body">
-            회원님의 게시글에 답글을 달았습니다.
+            오목눈이님이 나를 팔로우 했습니다.
           </div>
         </div>
       </div>
