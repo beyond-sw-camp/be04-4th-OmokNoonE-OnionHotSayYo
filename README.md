@@ -1,4 +1,5 @@
 # OnionHotSayYo, 한국 생활 정보와 커뮤니티를 한눈에!
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3080ca9c-37dc-4734-b13a-a168ca033705)
 
 > "Discover Korea Together: Connect, Share, and Thrive!"
 
@@ -48,16 +49,11 @@
 <h3 align="center">
   
 ## 커뮤니티 관리자를 소개합니다
-- 팀원 : **최종찬**
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/CJC0512)
-- 팀원 : **이재원**
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jlee38266)
-- 팀원 : **장민석**
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/ms1011)
-- 팀원 : **조예린**
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/orlzlL)
-- 팀원 : **지현근**
-[<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jihyeongeun)
+
+| <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/2422d185-a933-4468-a67f-aade75ec8c7f" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%9D%B4%EC%9E%AC%EC%9B%90.png?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%9E%A5%EB%AF%BC%EC%84%9D.png?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%A1%B0%EC%98%88%EB%A6%B0.jpg?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%A7%80%ED%98%84%EA%B7%BC.png?raw=true" height=150/> |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|                            최종찬                            |                            이재원                            |                            장민석                            |                            조예린                            |                            지현근                            |
+| [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/CJC0512) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jlee38266) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/ms1011) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/orlzlL) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jihyeongeun) |
 
 ## 🤔 회고
 
