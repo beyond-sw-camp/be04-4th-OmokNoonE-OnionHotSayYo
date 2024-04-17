@@ -61,7 +61,7 @@ const categoryName = computed(() => {
 onMounted(async () => {
     try {
         loadingState.value = true;
-        const response = await axios.get(`/api/posts/hotlist/${ props.categoryId }`);
+        const response = await axios.get(`http://localhost:30001/posts/hotlist/${ props.categoryId }`);
         posts.value = response.data.hotCategoryPosts;
         console.log('axios 요청', props.categoryId , '의 ', posts.value);
         for (let i = 0; i < posts.value.length; i++) {

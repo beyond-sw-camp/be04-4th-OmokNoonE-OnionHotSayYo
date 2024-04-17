@@ -21,7 +21,7 @@ const loadingState = ref(true);
 
 onMounted(async () => {
     try {
-        const response = await axios.get(`/api/posts/list/${categoryId}`);
+        const response = await axios.get(`http://localhost:30001/posts/list/${categoryId}`);
         loadingState.value = false;
         posts.value = response.data.categoryPosts;
         console.log(posts.value);
