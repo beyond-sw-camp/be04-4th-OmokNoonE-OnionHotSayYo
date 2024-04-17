@@ -1,4 +1,4 @@
-# 한국 생활 정보와 커뮤니티를 한눈에!
+# OnionHotSayYo, 한국 생활 정보와 커뮤니티를 한눈에!
 ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3080ca9c-37dc-4734-b13a-a168ca033705)
 
 > "Discover Korea Together: Connect, Share, and Thrive!"
@@ -9,20 +9,14 @@
 
 또한 OnionHotSayYo를 통해 한국인들을 쉽게 외국인들에게 한국의 흥미로운 정보와 홍보를 할 수 기회를 얻을 수 있습니다.
 
-## Frontend
-<h3 align="center">기술 스택</h3>
-
-<h3 align="center">
+## 기술 스택
+### Frontend
 
 ![Vue 3](https://img.shields.io/badge/Vue_3-4FC08D.svg?&logo=vue.js&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?&logo=javascript&logoColor=black)
 
-<h3></h3>
 
-## Backend
-<h3 align="center">기술 스택</h3>
-
-<h3 align="center">
+### Backend
   
 ![Java](https://img.shields.io/badge/Java-17-007396.svg?&logo=java&color=red)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3-6DB33F.svg?&logo=spring-boot&color=lightgreen)
@@ -36,15 +30,13 @@
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545.svg?&logo=mariadb)
 ![Redis](https://img.shields.io/badge/Redis-DC382D.svg?&logo=redis&logoColor=white)
 
-</h3>
 
-## DevOps
-<h3 align="center">
+### DevOps
 
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939.svg?&logo=jenkins&color=lightgrey)
 ![Docker](https://img.shields.io/badge/Docker-2496ED.svg?&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5.svg?&logo=kubernetes&logoColor=white)
-![Jasypt](https://img.shields.io/badge/Jasypt-FF6F61.svg?&logoColor=white)
+
 
 <h3 align="center">
   
@@ -54,6 +46,22 @@
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |                            최종찬                            |                            이재원                            |                            장민석                            |                            조예린                            |                            지현근                            |
 | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/CJC0512) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jlee38266) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/ms1011) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/orlzlL) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jihyeongeun) |
+
+
+## 문서
+<details>
+<summary><b>프로젝트 문서</b></summary>
+
+[프로젝트 문서](https://docs.google.com/spreadsheets/d/1Tz1QGNb5venJ7MRaIhWzXk0fvpHP7naOqcR9NRx-4H4/edit?usp=sharing)
+
+</details>
+
+<details>
+<summary><b>API 명세서</b></summary>
+
+[API 명세서](https://docs.google.com/spreadsheets/d/1t3bgnUeZIgcqyb5Rk_3qfDUV-yV0Xv4NktnJHBFlYrk/edit?usp=sharing)
+
+</details>
 
 ## 🤔 회고
 
