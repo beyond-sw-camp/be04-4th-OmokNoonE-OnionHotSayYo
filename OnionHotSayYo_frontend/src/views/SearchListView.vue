@@ -39,9 +39,9 @@ onMounted(async () => {
             url.value = `http://localhost:30001/posts/search/${searchTitle}`;
         }
         const response = await axios.get(url.value);
-        console.log(response.status);
+        console.log(response);
         loadingState.value = false;
-        posts.value = response.data.myPosts;
+        posts.value = response.data.searchTranslatedPosts;
         console.log('부모 post', posts.value);
         // console.log(posts.value);
         for (let i = 0; i < posts.value.length; i++) {
