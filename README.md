@@ -1,9 +1,9 @@
-# 한국 생활 정보와 커뮤니티를 한눈에!
+# 📢 한국 생활 정보와 커뮤니티를 한눈에!
 > "Discover Korea Together: Connect, Share, and Thrive!"
 ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3080ca9c-37dc-4734-b13a-a168ca033705)
 
 > [!NOTE]
-<a href="https://github.com/orgs/OmokNoonE/repositories">issue, PR 등의 로그 확인을 위한 레포지토리 경로</a>
+🔗 <a href="https://github.com/orgs/OmokNoonE/repositories">issue, PR 등의 로그 확인을 위한 레포지토리 경로</a>
 
 
 
@@ -13,7 +13,7 @@
 
 또한 OnionHotSayYo를 통해 한국인들을 쉽게 외국인들에게 한국의 흥미로운 정보와 홍보를 할 수 기회를 얻을 수 있습니다.
 
-## 기술 스택
+## 💡 기술 스택
 ### Frontend
 
 ![Vue 3](https://img.shields.io/badge/Vue_3-4FC08D.svg?&logo=vue.js&logoColor=white)
@@ -44,7 +44,7 @@
 
 <h3 align="center">
   
-## 커뮤니티 관리자를 소개합니다
+## 👋 커뮤니티 관리자를 소개합니다
 
 | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/2422d185-a933-4468-a67f-aade75ec8c7f" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%9D%B4%EC%9E%AC%EC%9B%90.png?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%9E%A5%EB%AF%BC%EC%84%9D.jpg?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%A1%B0%EC%98%88%EB%A6%B0.jpg?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%A7%80%ED%98%84%EA%B7%BC.png?raw=true" height=150/> |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -52,7 +52,7 @@
 | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/CJC0512) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jlee38266) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/ms1011) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/orlzlL) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jihyeongeun) |
 
 
-## 문서
+## 📃 문서
 
 ### 시스템 아키텍처
 
@@ -69,11 +69,11 @@
 
 ### 프로젝트 문서
 
-  [프로젝트 문서](https://docs.google.com/spreadsheets/d/1Tz1QGNb5venJ7MRaIhWzXk0fvpHP7naOqcR9NRx-4H4/edit?usp=sharing)
+  🔗 [프로젝트 문서](https://docs.google.com/spreadsheets/d/1Tz1QGNb5venJ7MRaIhWzXk0fvpHP7naOqcR9NRx-4H4/edit?usp=sharing)
 
 ### API 명세서
 
-  [API 명세서](https://docs.google.com/spreadsheets/d/1t3bgnUeZIgcqyb5Rk_3qfDUV-yV0Xv4NktnJHBFlYrk/edit?usp=sharing)
+  🔗 [API 명세서](https://docs.google.com/spreadsheets/d/1t3bgnUeZIgcqyb5Rk_3qfDUV-yV0Xv4NktnJHBFlYrk/edit?usp=sharing)
 
 
 ## 🤔 회고
