@@ -28,13 +28,12 @@
 ![Spring Data JPA](https://img.shields.io/badge/Spring_Data_JPA-6DB33F.svg?&logo=spring-data-JPA)
 ![Hibernate](https://img.shields.io/badge/Hibernate-59666C.svg?&logo=hibernate)
 ![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F.svg?&logo=spring-security&logoColor=white)
-![JWT](https://img.shields.io/badge/JWT.io-000000.svg?&logo=json-web-tokens&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000.svg?&logo=json-web-token&logoColor=white)
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?&logo=gradle)
 ![JUnit5](https://img.shields.io/badge/JUnit5-25A162.svg?&logo=junit5&logoColor=white&color=green)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420.svg?&logo=ubuntu&logoColor=white)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545.svg?&logo=mariadb)
 ![Redis](https://img.shields.io/badge/Redis-DC382D.svg?&logo=redis&logoColor=white)
-
 
 </h3>
 
