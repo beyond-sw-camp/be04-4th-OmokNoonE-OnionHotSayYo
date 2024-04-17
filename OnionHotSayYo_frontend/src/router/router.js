@@ -58,6 +58,10 @@ const routes = [
     {
         path: '/posts/creates',
         component: () => import("../views/AddPostView.vue")
+    },
+    {
+        path: '/signup',
+        component: () => import("../views/SignUpView.vue")
     }
     // 추가 라우트를 여기에 정의할 수 있습니다.
 ];
@@ -66,25 +70,28 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 });
-// router.beforeEach((to, from, next) => {
-//     const { cookies } = useCookies();
-//     const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-//     const refreshToken = cookies.get('refreshTokenId');
+
+router.beforeEach((to, from, next) => {
+    const { cookies } = useCookies();
+    const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+    const refreshToken = cookies.get('refreshTokenId');
+
 
 //     if (accessToken) {
 //         localStorage.setItem("accessToken", JSON.stringify(accessToken));
 //     }
 
-//     // refreshToken이 없을 경우 로그인 창 띄우기
-//     if (refreshToken === null) {
-//         console.warn('need login...');
-//         store.commit('needLogin', true);
-//     } else {
-//         store.commit('needLogin', false);
-//         cookies.set('refreshTokenId', refreshToken);
-//         return next();
-//     }
-//     return next('/');
-// });
+
+    // refreshToken이 없을 경우 로그인 창 띄우기
+    if (refreshToken === null) {
+        console.warn('need login...');
+        store.commit('needLogin', true);
+    } else {
+        store.commit('needLogin', false);
+        cookies.set('refreshTokenId', refreshToken);
+    }
+    next(); // 권한 체크를 수행하지 않고 다음 단계로 진행
+});
+
 
 export default router;
