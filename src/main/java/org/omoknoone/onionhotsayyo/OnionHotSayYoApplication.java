@@ -1,5 +1,6 @@
 package org.omoknoone.onionhotsayyo;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @SpringBootApplication
 @EnableAspectJAutoProxy
 @EnableScheduling
+@EnableEncryptableProperties
 public class OnionHotSayYoApplication {
 
     public static void main(String[] args) {
@@ -30,5 +32,3 @@ public class OnionHotSayYoApplication {
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){ return new BCryptPasswordEncoder();}
 }
-
-

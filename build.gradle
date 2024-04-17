@@ -44,7 +44,11 @@ dependencies {
     // AOP
     implementation 'org.springframework.boot:spring-boot-starter-aop'
 
+    // Jasypt
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
 }
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+System.getProperty("jasypt.encryptor.password")
