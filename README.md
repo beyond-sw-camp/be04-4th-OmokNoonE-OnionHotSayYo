@@ -11,10 +11,43 @@
 ## Frontend
 <h3 align="center">기술 스택</h3>
 
+<h3 align="center">
+
+![Vue 3](https://img.shields.io/badge/Vue_3-4FC08D.svg?&logo=vue.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?&logo=javascript&logoColor=black)
+
+<h3></h3>
+
 ## Backend
 <h3 align="center">기술 스택</h3>
-![Java](https://img.shields.io/badge/java-17-007396.svg)
 
+<h3 align="center">
+  
+![Java](https://img.shields.io/badge/Java-17-007396.svg?&logo=java&color=red)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3-6DB33F.svg?&logo=spring-boot&color=lightgreen)
+![Spring Data JPA](https://img.shields.io/badge/Spring_Data_JPA-6DB33F.svg?&logo=spring-data-JPA)
+![Hibernate](https://img.shields.io/badge/Hibernate-59666C.svg?&logo=hibernate)
+![Spring Security](https://img.shields.io/badge/Spring_Security-6DB33F.svg?&logo=spring-security&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT.io-000000.svg?&logo=json-web-tokens&logoColor=white)
+![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?&logo=gradle)
+![JUnit5](https://img.shields.io/badge/JUnit5-25A162.svg?&logo=junit5&logoColor=white&color=green)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420.svg?&logo=ubuntu&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-003545.svg?&logo=mariadb)
+![Redis](https://img.shields.io/badge/Redis-DC382D.svg?&logo=redis&logoColor=white)
+
+
+</h3>
+
+## DevOps
+<h3 align="center">
+
+![Jenkins](https://img.shields.io/badge/Jenkins-D24939.svg?&logo=jenkins&color=lightgrey)
+![Docker](https://img.shields.io/badge/Docker-2496ED.svg?&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5.svg?&logo=kubernetes&logoColor=white)
+
+
+<h3 align="center">
+  
 ## 커뮤니티 관리자를 소개합니다
 - 팀원 : **최종찬**
 [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/CJC0512)
