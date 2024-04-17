@@ -3,14 +3,14 @@
         <h3 class="category-title">{{ type }}</h3>
         <div @click="goDetailList(injectMemberId, type)" class="card-link">더보기</div>
         <table class="table table-hover">
-            <tbody v-if="!loadingState" class="table-group-divider">
-                <tr v-for="comment in comments" :key="comment">
-                    <td class="col-number" scope="row">1</td>
-                    <td @click="goPostDetailPage(comment.postingId)" class="col-title">
-                        {{ comment.title }}
+            <tbody class="table-group-divider">
+                <tr v-for="like in likes" :key="like">
+                    <td class="col-number" scope="row">{{ like.starId }}</td>
+                    <td @click="goPostDetailPage(like.postId)" class="col-title">
+                        {{ like.title }}
                     </td>
-                    <td class="col-date">{{ comment.lastModifiedDate }}</td>
-                    <td>
+                    <td class="col-date">{{ like.postedDate }}</td>
+                    <td @click="disappear(like)">
                         &nbsp;
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-x-circle col-close" viewBox="0 0 16 16">
@@ -27,61 +27,52 @@
 </template>
 
 <script setup>
-import { inject, ref, onMounted } from 'vue';
+import { inject, ref, readonly, onMounted } from 'vue';
 import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 import { useStore } from 'vuex';
 
-const store = useStore();
-const memberId = store.getters.memberInfo.memberId;
-
 const injectMemberId = inject("memberId");
 
-const type = "댓글";
 
-const posts = [];
+const type = "좋아요";
 
-const comments = ref([{}]);
+const stars = [];
 
-const loadingState = ref(true);
-
-onMounted(async () => {
-    try {
-        const response = await axios.get(`http://localhost:30001/list/mycomments/${memberId}?_start=1&_limit=5`);
-        loadingState.value = false;
-        posts.value = response.data;
-        for (let i = 0; i < posts.value.length; i++) {
-            const memberId = posts.value[i].memberId;
-            const postingId = posts.value[i].nickname;
-            const content = posts.value[i].content;
-            const image = posts.value[i].IMAGE;
-            const postedDate = posts.value[i].postedDate;
-            const lastModifiedDate = posts.value[i].lastModifiedDate;
-            const isDeleted = posts.value[i].isDeleted;
-            // const categoryId = posts.value[i].CATEGORY_ID;
-            // const language = posts.value[i].LANGUAGE;
-            // const locationId = posts.value[i].LOCATION_ID;
-
-            comments.value[i] = {
-                postingId: postingId,
-                title: title,
-                content: content,
-                image: image,
-                isDeleted: isDeleted,
-                lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
-                categoryId: categoryId,
-                memberId: memberId,
-                language: language,
-                locationId: locationId
-            };
-
-        }
-    } catch (error) {
-        console.error("Error fetching posts:", error);
+const likes = ref([
+    {
+        postId: 1,
+        starId: 1,
+        title: "좋아요 어떻게 하나요",
+        postedDate: "2024-01-24"
+    },
+    {
+        postId: 2,
+        starId: 2,
+        title: "좋아요, 나도 눌러줘!",
+        postedDate: "2024-01-25"
+    },
+    {
+        postId: 3,
+        starId: 3,
+        title: "How to cancel likes?",
+        postedDate: "2024-02-15"
+    },
+    {
+        postId: 4,
+        starId: 4,
+        title: "좋아요 취소는 마이 페이지에서",
+        postedDate: "2024-02-17"
+    },
+    {
+        postId: 5,
+        starId: 5,
+        title: "좋아요도 클릭하면?",
+        postedDate: "2024-03-14"
     }
-});
-
+]);
+const loadingState = ref(false);
 
 
 const router = useRouter();
@@ -91,7 +82,14 @@ function goDetailList(injectMemberId, type) {
 }
 
 function goPostDetailPage(postid) {
-    router.push(`/view/${postid}`);
+    router.push(`/posts/view/${postid}`);
+}
+
+function disappear(like) {
+    const index = likes.value.indexOf(like);
+    if (index !== -1) {
+        likes.value.splice(index, 1);
+    }
 }
 </script>
 

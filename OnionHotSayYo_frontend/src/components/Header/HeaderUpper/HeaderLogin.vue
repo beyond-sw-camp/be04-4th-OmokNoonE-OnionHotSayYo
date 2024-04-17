@@ -69,7 +69,7 @@ function goSignUp() {
 // 로그인 처리
 async function login() {
   async function connectSSE(memberId) {
-    const eventSource = new EventSource(`http://localhost:8080/notifications/subscribe?memberName=${memberId}`);
+    const eventSource = new EventSource(`http://localhost:30001/notifications/subscribe?memberName=${memberId}`);
 
     eventSource.addEventListener("sse", async function (event) {
       const data = JSON.parse(event.data);

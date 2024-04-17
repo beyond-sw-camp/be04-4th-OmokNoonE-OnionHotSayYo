@@ -3,14 +3,15 @@
         <h3 class="category-title">{{ type }}</h3>
         <div @click="goDetailList(injectMemberId, type)" class="card-link">더보기</div>
         <table class="table table-hover">
-            <tbody v-if="!loadingState" class="table-group-divider">
-                <tr v-for="comment in comments" :key="comment">
-                    <td class="col-number" scope="row">1</td>
-                    <td @click="goPostDetailPage(comment.postingId)" class="col-title">
-                        {{ comment.title }}
+            <tbody class="table-group-divider">
+                <tr v-for="(follow, index) in follows" :key="index">
+                    <td class="col-number" scope="row">{{ index + 1 }}</td>
+                    <td @click="goMemberPage(follow.memberId)" class="col-title">
+                        <img :src="follow.image" width="25" height="25" class="col-img rounded-circle" alt="profile 사진">
+                        <div>&nbsp; {{ follow.nickname }}</div>
+                        <div>&nbsp; ({{ follow.memberId }})</div>
                     </td>
-                    <td class="col-date">{{ comment.lastModifiedDate }}</td>
-                    <td>
+                    <td @click="disappear(follow)">
                         &nbsp;
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-x-circle col-close" viewBox="0 0 16 16">
@@ -27,62 +28,47 @@
 </template>
 
 <script setup>
-import { inject, ref, onMounted } from 'vue';
+import { inject, ref, readonly, onMounted } from 'vue';
 import { format } from 'date-fns';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
-import { useStore } from 'vuex';
-
-const store = useStore();
-const memberId = store.getters.memberInfo.memberId;
+import Iot from "@/assets/image/1ot.png"
+import p2 from "@/assets/svg/파2조.svg"
+import CodingJo from "@/assets/svg/삼시세끼.svg"
+import HighFives from "@/assets/svg/HighFives.svg"
+import CINEBUS from "@/assets/svg/CINEBUS.svg"
 
 const injectMemberId = inject("memberId");
 
-const type = "댓글";
+const type = "팔로우";
 
-const posts = [];
+const members = [];
 
-const comments = ref([{}]);
+const follows = ref([
+    {
+        memberId: "1ot",
+        nickname: "일오티",
+        image: Iot
+    },{
+        memberId: "pi3dot14159two",
+        nickname: "3.141592(π)",
+        image: p2
+    },{
+        memberId: "ThreeMealsADay",
+        nickname: "삼시세끼",
+        image: CodingJo
+    },{
+        memberId: "HighFives",
+        nickname: "하이파이브즈",
+        image: HighFives
+    },{
+        memberId: "CINEBUS",
+        nickname: "시네버스",
+        image: CINEBUS
+    }
+]);
 
 const loadingState = ref(true);
-
-onMounted(async () => {
-    try {
-        const response = await axios.get(`http://localhost:30001/list/mycomments/${memberId}?_start=1&_limit=5`);
-        loadingState.value = false;
-        posts.value = response.data;
-        for (let i = 0; i < posts.value.length; i++) {
-            const memberId = posts.value[i].memberId;
-            const postingId = posts.value[i].nickname;
-            const content = posts.value[i].content;
-            const image = posts.value[i].IMAGE;
-            const postedDate = posts.value[i].postedDate;
-            const lastModifiedDate = posts.value[i].lastModifiedDate;
-            const isDeleted = posts.value[i].isDeleted;
-            // const categoryId = posts.value[i].CATEGORY_ID;
-            // const language = posts.value[i].LANGUAGE;
-            // const locationId = posts.value[i].LOCATION_ID;
-
-            comments.value[i] = {
-                postingId: postingId,
-                title: title,
-                content: content,
-                image: image,
-                isDeleted: isDeleted,
-                lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
-                categoryId: categoryId,
-                memberId: memberId,
-                language: language,
-                locationId: locationId
-            };
-
-        }
-    } catch (error) {
-        console.error("Error fetching posts:", error);
-    }
-});
-
-
 
 const router = useRouter();
 
@@ -90,8 +76,15 @@ function goDetailList(injectMemberId, type) {
     router.push(`/list/${type}/${injectMemberId}`);
 }
 
-function goPostDetailPage(postid) {
-    router.push(`/view/${postid}`);
+function goMemberPage(memberid) {
+    router.push(`/mypage/${memberid}`);
+}
+
+function disappear(follow) {
+    const index = follows.value.indexOf(follow);
+    if (index !== -1) {
+        follows.value.splice(index, 1);
+    }
 }
 </script>
 

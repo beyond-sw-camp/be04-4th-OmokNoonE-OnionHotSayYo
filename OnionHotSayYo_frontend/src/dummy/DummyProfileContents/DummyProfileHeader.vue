@@ -2,14 +2,19 @@
     <div class="container card text-left profile-header">
         <div class="row container-fluid">
             <div class="col-sm-4 text-center profile-img-container">
-<!-- TODO. member.value 값 가져오기             -->
-<!--                <img :src="member.value.image" alt="mdo" width="140" height="140" class="rounded-circle profile-img">-->
-<!--              이미지 : {{ member.value.image }}-->
+                <img src="@/assets/image/OmokNoonEProfile.jpg" alt="프로필 이미지" width="140" height="140"
+                    class="rounded-circle profile-img">
             </div>
             <div class="col-sm-8 profile-intro">
-<!--                <h2 class="fw-normal"> {{ member.value.nickname }}({{ member.value.memberId }})</h2>-->
+                <h2 class="fw-normal"> 오목눈이(OmokNoonE)</h2>
                 <p>
-<!--                <div> 자기소개 :  {{ member.value.profile }}</div>-->
+                <div>
+                    안녕하세요! 오목 오목, 오목눈이입니다!! <br>
+                    이곳은 테스트 페이지입니다. 확인해주세요! <br>
+                    <br>
+                    Github: https://github.com/OmokNoonE <br>
+                    Notion: https://www.notion.so/4-5-436274409e674f44b183b8475ec51df5
+                </div>
                 </p>
             </div>
             <button class="btn-profile-edit" type="button" data-bs-toggle="modal"
@@ -27,19 +32,19 @@
                             <form>
                                 <div class="col-12">
                                     <label for="password" class="form-label">비밀번호</label>
-                                    <input type="text" class="form-control" id="before_password"
+                                    <input type="password"  class="form-control" id="before_password"
                                         placeholder="영어 소문자, 숫자, 특수기호 포함 10글자 이상이어야 합니다.">
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="col-12">
                                     <label for="password" class="form-label">변경 비밀번호</label>
-                                    <input type="text" class="form-control" id="change_password"
+                                    <input type="password" class="form-control" id="change_password"
                                         placeholder="영어 소문자, 숫자, 특수기호 포함 10글자 이상이어야 합니다.">
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="col-12">
                                     <label for="password" class="form-label">변경 이메일</label>
-                                    <input type="text" class="form-control" id="change_email"
+                                    <input type="email" class="form-control" id="change_email"
                                         placeholder="변경할 이메일을 입력하세요.">
                                     <div class="invalid-feedback"></div>
                                 </div>
@@ -68,9 +73,9 @@
                 </div>
             </div>
 
-<!--            <div class="btn-profile-edit" @click="goMyReports(member.value.memberId)" style="top: 62px">나의 신고목록 »</div>-->
-            
-            <!-- <div class="modal fade" id="myReports" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="btn-profile-edit" @click="goMyReports(memberId)" style="top: 62px">나의 신고목록 »</div>
+
+            <div class="modal fade" id="myReports" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -95,62 +100,37 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
-<!--            <div class="btn-profile-edit" @click="goMyLetter(member.value.memberId)" style="top: 95px">쪽지함 »</div>-->
+            <div class="btn-profile-edit" @click="goMyLetter(memberId)" style="top: 95px">쪽지함 »</div>
         </div>
     </div>
 </template>
 
 <script setup>
-import {onMounted, ref, watchEffect} from 'vue';
-import {useRouter} from 'vue-router';
-import {useStore} from 'vuex';
+import { onMounted, ref, watchEffect } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 import axios from "axios";
 
 const store = useStore();
 
-const member = ref({});
 
 const loadingState = ref(true);
 
 const router = useRouter();
 
 router.afterEach(() => {
-  window.location.reload();
+    window.location.reload();
 });
 
-// provide('memberId', routeMemberId);
-const memberId = store.state.memberId;
-
-onMounted(async () => {
-  try {
-    /* TODO. memberId 변수로 바꿀 것 */
-    const response = await axios.get(`http://localhost:30001/members/mypage/membertest1`);
-    loadingState.value = false;
-    const result = response.data;
-    console.log(result);
-
-    member.value = {
-      memberId: result.memberId,
-      nickname: result.nickname,
-      image: result.image,
-      profile: result.profile,
-      email: result.email,
-      // signUpDate: result.signUpDate,
-      nationalityId: store.state.language
-    };
-
-  } catch (error) {
-    console.error("Error fetching members:", error);
-  }
-});
+const memberId = "member1";
 
 
 function goMyLetter(memberId) {
     // router.push(`/notfound`);
     router.push(`/letter/${memberId}`)
-    }
+}
 
 
 function goMyReports(memberId) {

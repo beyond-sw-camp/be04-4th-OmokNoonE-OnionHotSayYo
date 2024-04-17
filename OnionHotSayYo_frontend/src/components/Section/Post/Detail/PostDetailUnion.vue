@@ -9,6 +9,7 @@ import PostDetailTop from '@/components/Section/Post/Detail/PostDetailTop.vue';
 import PostDetailMiddle from '@/components/Section/Post/Detail/PostDetailMiddle.vue';
 import PostDetailComment from '@/components/Section/Post/Detail/PostDetailComment.vue';
 import { ref, onMounted } from 'vue';
+import { format } from 'date-fns';
 import { useRoute, useRouter } from "vue-router";
 import axios from 'axios';
 
@@ -21,7 +22,7 @@ onMounted(async () => {
         postId.value = routePostId;
 
         // postId를 사용하여 백엔드에서 데이터 가져오기
-        const response = await axios.get(`http://localhost:8080/posts/view/${postId.value}`);
+        const response = await axios.get(`http://localhost:30001/posts/view/${postId.value}`);
         const postData = response.data; // 받아온 데이터
 
         // PostDetailTopProps에 데이터 할당
@@ -29,7 +30,7 @@ onMounted(async () => {
             title: postData.title,
             content: postData.content,
             image: postData.image,
-            postedDate: postData.postedDate,
+            postedDate: format(new Date(postData.postedDate[0], postData.postedDate[1] - 1, postData.postedDate[2], postData.postedDate[3], postData.postedDate[4], postData.postedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
             hits: postData.hits,
             categoryId: postData.categoryId,
             memberId: postData.memberId,

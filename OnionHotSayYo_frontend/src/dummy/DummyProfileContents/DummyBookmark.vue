@@ -3,14 +3,14 @@
         <h3 class="category-title">{{ type }}</h3>
         <div @click="goDetailList(injectMemberId, type)" class="card-link">더보기</div>
         <table class="table table-hover">
-            <tbody v-if="!loadingState" class="table-group-divider">
+            <tbody class="table-group-divider">
                 <tr v-for="bookmark in bookmarks" :key="bookmark">
-                    <td class="col-number" scope="row">1</td>
+                    <td class="col-number" scope="row">{{ bookmark.postingId }}</td>
                     <td @click="goPostDetailPage(bookmark.postingId)" class="col-title">
                         {{ bookmark.title }}
                     </td>
                     <td class="col-date">{{ bookmark.lastModifiedDate }}</td>
-                    <td>
+                    <td @click="disappear(bookmark)">
                         &nbsp;
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-bookmark-dash col-close" viewBox="0 0 16 16">
@@ -38,47 +38,35 @@ const type = "북마크";
 
 const posts = [];
 
-const bookmarks = ref([{}]);
+const bookmarks = ref([
+    {
+        postingId: 1,
+        title: "북마크 어떻게 하나요",
+        lastModifiedDate: "2024-01-24"
+    },
+    {
+        postingId: 2,
+        title: "북마크, 당신도 할 수 있다!",
+        lastModifiedDate: "2024-01-25"
+    },
+    {
+        postingId: 3,
+        title: "How to cancel bookmarks?",
+        lastModifiedDate: "2024-02-21"
+    },
+    {
+        postingId: 4,
+        title: "북마크 취소 모르는 사람 들어와라",
+        lastModifiedDate: "2024-02-22"
+    },
+    {
+        postingId: 5,
+        title: "클릭하면 없어지는 거 앎?",
+        lastModifiedDate: "2024-03-24"
+    }
+]);
 
 const loadingState = ref(true);
-
-onMounted(async () => {
-    try {
-        const response = await axios.get("http://localhost:30001/post?_start=1&_limit=5");
-        loadingState.value = false;
-        posts.value = response.data;
-        for (let i = 0; i < posts.value.length; i++) {
-            const postingId = posts.value[i].POST_ID;
-            const title = posts.value[i].TITLE;
-            const content = posts.value[i].CONTENT;
-            const image = posts.value[i].IMAGE;
-            const isDeleted = posts.value[i].IS_DELETED;
-            const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
-            const categoryId = posts.value[i].CATEGORY_ID;
-            const memberId = posts.value[i].MEMBER_ID;
-            const language = posts.value[i].LANGUAGE;
-            const locationId = posts.value[i].LOCATION_ID;
-
-            bookmarks.value[i] = {
-                postingId: postingId,
-                title: title,
-                content: content,
-                image: image,
-                isDeleted: isDeleted,
-                lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
-                categoryId: categoryId,
-                memberId: memberId,
-                language: language,
-                locationId: locationId
-            };
-
-        }
-    } catch (error) {
-        console.error("Error fetching posts:", error);
-    }
-});
-
-
 
 const router = useRouter();
 
@@ -88,6 +76,13 @@ function goDetailList(injectMemberId, type) {
 
 function goPostDetailPage(postid) {
     router.push(`/view/${postid}`);
+}
+
+function disappear(bookmark) {
+    const index = bookmarks.value.indexOf(bookmark);
+    if (index !== -1) {
+        bookmarks.value.splice(index, 1);
+    }
 }
 </script>
 

@@ -41,8 +41,8 @@
 </template>
 
 <script setup>
-import ReceiveList from '@/components/Section/Letter/ReceiveList.vue';
-import SendList from '@/components/Section/Letter/SendList.vue';
+import ReceiveList from '@/dummy/Letter/DummyReceiveList.vue';
+import SendList from '@/dummy/Letter/DummySendList.vue';
 
 import { provide, ref, onMounted } from 'vue';
 
@@ -66,42 +66,6 @@ router.afterEach(() => {
 });
 
 provide('memberId', routeMemberId);
-
-onMounted(async () => {
-    try {
-        const response = await axios.get("http://localhost:30001/members");
-        loadingState.value = false;
-        members.value = response.data;
-        for (let i = 0; i < members.value.length; i++) {
-            if (members.value[i].MEMBER_ID == routeMemberId) {
-                const memberId = members.value[i].MEMBER_ID;
-                const password = members.value[i].PASSWORD;
-                const nickname = members.value[i].NICKNAME;
-                const image = members.value[i].IMAGE;
-                const profile = members.value[i].PROFILE;
-                const email = members.value[i].EMAIL;
-                const signUpDate = members.value[i].SIGN_UP_DATE;
-                const isWithdraw = members.value[i].IS_WITHDRAW;
-                const nationalityId = members.value[i].NATIONALITY_ID;
-
-                memberProps.value = {
-                    memberId: memberId,
-                    password: password,
-                    nickname: nickname,
-                    image: image,
-                    profile: profile,
-                    email: email,
-                    signUpDate: format(new Date(signUpDate[0], signUpDate[1] - 1, signUpDate[2], signUpDate[3], signUpDate[4], signUpDate[5]), 'yyyy-MM-dd HH:mm:ss'),
-                    isWithdraw: isWithdraw,
-                    nationalityId: nationalityId
-                };
-            }
-        }
-    } catch (error) {
-        console.error("Error fetching members:", error);
-    }
-});
-
 
 </script>
 

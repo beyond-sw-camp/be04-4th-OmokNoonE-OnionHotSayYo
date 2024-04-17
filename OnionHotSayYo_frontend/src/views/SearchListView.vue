@@ -10,6 +10,7 @@ import PostListHeader from '@/components/Section/Post/List/PostListHeader.vue'
 import SearchListBody from '@/components/Section/Post/Search/SearchListBody.vue'
 
 import { ref, onMounted } from 'vue';
+import { format } from 'date-fns';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
@@ -31,11 +32,11 @@ onMounted(async () => {
     try {
         if (language) {
             console.log('번역 검색')
-            url.value = `http://localhost:8080/posts/search/${searchTitle}?${language}`;
+            url.value = `http://localhost:30001/posts/search/${searchTitle}?${language}`;
         }
         else {
             console.log('기본 검색')
-            url.value = `http://localhost:8080/posts/search/${searchTitle}`;
+            url.value = `http://localhost:30001/posts/search/${searchTitle}`;
         }
         const response = await axios.get(url.value);
         console.log(response.status);
@@ -59,7 +60,7 @@ onMounted(async () => {
                 postingId: postingId,
                 title: title,
                 memberId: memberId,
-                postedDate: postedDate,
+                postedDate: format(new Date(postedDate[0], postedDate[1] - 1, postedDate[2], postedDate[3], postedDate[4], postedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
                 hits: hits,
                 content: content
                 // categoryId: categoryId
