@@ -1,4 +1,4 @@
-![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/324fd290-cabd-43fd-906a-08f712c27b08)# OnionHotSayYo, 한국 생활 정보와 커뮤니티를 한눈에!
+# OnionHotSayYo, 한국 생활 정보와 커뮤니티를 한눈에!
 ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3080ca9c-37dc-4734-b13a-a168ca033705)
 
 > "Discover Korea Together: Connect, Share, and Thrive!"
