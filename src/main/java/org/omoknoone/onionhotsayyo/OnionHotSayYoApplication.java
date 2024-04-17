@@ -32,3 +32,5 @@ public class OnionHotSayYoApplication {
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){ return new BCryptPasswordEncoder();}
 }
+
+/* 주석 */
