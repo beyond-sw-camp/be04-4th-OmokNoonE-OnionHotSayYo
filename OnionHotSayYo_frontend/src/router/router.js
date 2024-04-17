@@ -8,9 +8,14 @@ const routes = [
         alias: ['/main', '/index', '/home'],
         component: () => import("../views/MainPageView.vue")
     },
+    // {
+    //     path: '/mypage/:memberid',
+    //     component: () => import("../views/MyPageView.vue")
+    // },  
+    // 더미 마이 페이지
     {
         path: '/mypage/:memberid',
-        component: () => import("../views/MyPageView.vue")
+        component: () => import("../dummy/MyPageViewDummy.vue")
     },
     {
         path: '/list/:type/:memberid',
@@ -33,9 +38,14 @@ const routes = [
         path: '/signup',
         component: () => import("../views/SignUpView.vue")
     },
+    // {
+    //     path: '/letter/:memberid',
+    //     component: () => import("../views/LetterView.vue")
+    // },
+    // 더미 쪽지함
     {
         path: '/letter/:memberid',
-        component: () => import("../views/LetterView.vue")
+        component: () => import("../dummy/LetterViewDummy.vue")
     },
     {
         path: '/notfound',
@@ -56,25 +66,25 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 });
-router.beforeEach((to, from, next) => {
-    const { cookies } = useCookies();
-    const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-    const refreshToken = cookies.get('refreshTokenId');
+// router.beforeEach((to, from, next) => {
+//     const { cookies } = useCookies();
+//     const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+//     const refreshToken = cookies.get('refreshTokenId');
 
-    if (accessToken) {
-        localStorage.setItem("accessToken", JSON.stringify(accessToken));
-    }
+//     if (accessToken) {
+//         localStorage.setItem("accessToken", JSON.stringify(accessToken));
+//     }
 
-    // refreshToken이 없을 경우 로그인 창 띄우기
-    if (refreshToken === null) {
-        console.warn('need login...');
-        store.commit('needLogin', true);
-    } else {
-        store.commit('needLogin', false);
-        cookies.set('refreshTokenId', refreshToken);
-        return next();
-    }
-    return next('/');
-});
+//     // refreshToken이 없을 경우 로그인 창 띄우기
+//     if (refreshToken === null) {
+//         console.warn('need login...');
+//         store.commit('needLogin', true);
+//     } else {
+//         store.commit('needLogin', false);
+//         cookies.set('refreshTokenId', refreshToken);
+//         return next();
+//     }
+//     return next('/');
+// });
 
 export default router;
