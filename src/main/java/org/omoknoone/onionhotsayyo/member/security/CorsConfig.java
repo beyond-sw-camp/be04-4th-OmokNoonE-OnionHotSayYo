@@ -20,7 +20,7 @@ public class CorsConfig {
         config.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:30000"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         config.setAllowedHeaders(List.of("*"));
-        config.setExposedHeaders(List.of("accessToken", "memberId"));
+        config.setExposedHeaders(List.of("accessToken", "memberId", "language"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

@@ -7,10 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy
+@EnableScheduling
 @EnableEncryptableProperties
 public class OnionHotSayYoApplication {
 
@@ -30,7 +32,3 @@ public class OnionHotSayYoApplication {
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){ return new BCryptPasswordEncoder();}
 }
-
-
-/* 테스트용 주석 2 */
-/* Jenkins 작동 확인을 위한 커밋용 주석 */

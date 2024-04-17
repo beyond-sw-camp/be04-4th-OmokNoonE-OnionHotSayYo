@@ -32,4 +32,12 @@ public class NationalityServiceImpl implements NationalityService {
         List<Nationality> nationalityList = nationalityRepository.findAll();
         return modelMapper.map(nationalityList, new TypeToken<List<NationalityDTO>>() {}.getType());
     }
+
+    @Override
+    public String viewLanguage(String nationalityId) {
+
+        Nationality nationality = nationalityRepository.findById(nationalityId).orElseThrow(IllegalArgumentException::new);
+
+        return nationality.getLanguage();
+    }
 }

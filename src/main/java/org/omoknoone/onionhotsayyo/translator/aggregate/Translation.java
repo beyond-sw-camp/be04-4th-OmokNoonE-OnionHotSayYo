@@ -16,7 +16,7 @@ public class Translation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int translationId;
     @Column
-    private int postId;
+    private Integer postId;
     @Column
     private String title;
     @Column

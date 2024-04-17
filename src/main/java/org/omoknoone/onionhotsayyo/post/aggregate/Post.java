@@ -56,7 +56,7 @@ public class Post {
     private String image;
 
     @JoinColumn(name = "language")
-    private String language = "KO"; // 초기 상태 한국어로 설정
+    private String language = "Korean"; // 초기 상태 한국어로 설정
 
     @JoinColumn(name = "location_id")
     private Integer locationId;
