@@ -92,7 +92,7 @@
                         </div>
 
                         <hr class="my-4">
-                        <button class="w-100 btn btn-primary btn-lg" type="submit" @click="goMainPage">회원 가입</button>
+                        <button class="w-100 btn btn-primary btn-lg" type="submit" @click.prevent="goMainPage">회원 가입</button>
                     </form>
                 </div>
             </div>
@@ -101,7 +101,7 @@
 </template>
 
 <script setup>
-import {useRouter} from 'vue-router';
+import { useRouter } from 'vue-router';
 import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
@@ -218,11 +218,11 @@ function checkNickname(nickname) {
     return regExp.test(nickname.value);
 }
 
-    const router = useRouter();
+const router = useRouter();
 
-    function goMainPage(){
-        router.push(`/`);
-    }
+function goMainPage() {
+    router.push(`/home`);
+}
 
 </script>
 

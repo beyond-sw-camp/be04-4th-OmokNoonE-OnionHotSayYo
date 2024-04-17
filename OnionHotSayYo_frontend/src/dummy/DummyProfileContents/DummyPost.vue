@@ -66,43 +66,43 @@ const copyPosts = ref([
 
 const loadingState = ref(true);
 
-onMounted(async () => {
-    try {
-        const response = await axios.get("http://localhost:30001/post?_start=1&_limit=5");
-        loadingState.value = false;
-        posts.value = response.data;
-        for (let i = 0; i < posts.value.length; i++) {
-            const postingId = posts.value[i].POST_ID;
-            const title = posts.value[i].TITLE;
-            const content = posts.value[i].CONTENT;
-            const image = posts.value[i].IMAGE;
-            const hits = posts.value[i].HITS;
-            const isDeleted = posts.value[i].IS_DELETED;
-            const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
-            const categoryId = posts.value[i].CATEGORY_ID;
-            const memberId = posts.value[i].MEMBER_ID;
-            const language = posts.value[i].LANGUAGE;
-            const locationId = posts.value[i].LOCATION_ID;
+// onMounted(async () => {
+//     try {
+//         const response = await axios.get("http://localhost:30001/post?_start=1&_limit=5");
+//         loadingState.value = false;
+//         posts.value = response.data;
+//         for (let i = 0; i < posts.value.length; i++) {
+//             const postingId = posts.value[i].POST_ID;
+//             const title = posts.value[i].TITLE;
+//             const content = posts.value[i].CONTENT;
+//             const image = posts.value[i].IMAGE;
+//             const hits = posts.value[i].HITS;
+//             const isDeleted = posts.value[i].IS_DELETED;
+//             const lastModifiedDate = posts.value[i].LAST_MODIFIED_DATE;
+//             const categoryId = posts.value[i].CATEGORY_ID;
+//             const memberId = posts.value[i].MEMBER_ID;
+//             const language = posts.value[i].LANGUAGE;
+//             const locationId = posts.value[i].LOCATION_ID;
 
-            copyPosts.value[i] = {
-                postingId: postingId,
-                title: title,
-                content: content,
-                image: image,
-                hits: hits,
-                isDeleted: isDeleted,
-                lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
-                categoryId: categoryId,
-                memberId: memberId,
-                language: language,
-                locationId: locationId
-            };
+//             copyPosts.value[i] = {
+//                 postingId: postingId,
+//                 title: title,
+//                 content: content,
+//                 image: image,
+//                 hits: hits,
+//                 isDeleted: isDeleted,
+//                 lastModifiedDate: format(new Date(lastmodifiedDate[0], lastmodifiedDate[1] - 1, lastmodifiedDate[2], lastmodifiedDate[3], lastmodifiedDate[4], lastmodifiedDate[5]), 'yyyy-MM-dd HH:mm:ss'),
+//                 categoryId: categoryId,
+//                 memberId: memberId,
+//                 language: language,
+//                 locationId: locationId
+//             };
 
-        }
-    } catch (error) {
-        console.error("Error fetching posts:", error);
-    }
-});
+//         }
+//     } catch (error) {
+//         console.error("Error fetching posts:", error);
+//     }
+// });
 
 
 
@@ -113,7 +113,7 @@ function goDetailList(injectMemberId, type) {
 }
 
 function goPostDetailPage(postid) {
-    router.push(`/view/${postid}`);
+    router.push(`/posts/view/${postid}`);
 }
 
 function disappear(bookmark) {

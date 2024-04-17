@@ -80,7 +80,7 @@ function goDetailList(injectMemberId, type) {
 }
 
 function goPostDetailPage(postid) {
-    router.push(`/view/${postid}`);
+    router.push(`/posts/view/${postid}`);
 }
 
 function disappear(comment) {
