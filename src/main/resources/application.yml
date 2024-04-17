@@ -17,6 +17,10 @@ spring:
     properties:
       hibernate:
         '[format_sql]': true
+  data:
+    redis:
+      host: 192.168.0.5
+      port: 6379
 
 token:
   access-expiration-time: 43200000          # 12H
