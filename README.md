@@ -338,7 +338,7 @@ pipeline {
 2. 배포
 
 > [!NOTE]
-> 스크립트를 통해 실행하려면 아래 매니페스트 파일들을 하나의 폴더에서 관리
+> 스크립트를 통해 실행하려면 아래 매니페스트 파일들을 <a href="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/tree/main/infra">하나의 폴더</a>에서 관리
 
 - Spring boot deployments & services
 
