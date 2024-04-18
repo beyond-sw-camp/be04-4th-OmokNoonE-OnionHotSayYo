@@ -180,9 +180,9 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock'
 ```
 
+<br>
+<br>
 
-<br>
-<br>
 ⚠️ 젠킨스 빌드 중  `docker: not found` 오류가 발생할 경우
 
 ```
