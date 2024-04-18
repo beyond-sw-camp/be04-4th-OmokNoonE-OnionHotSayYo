@@ -475,6 +475,7 @@ kubectl rollout restart deployments boot001dep
 
 
 <br>
+
 - vueupdate.sh
 
 ```
@@ -502,9 +503,15 @@ kubectl rollout restart deployments vue001dep
 > 추후 해당 과정을 ArgoCD를 통해 도커 허브 이미지의 변경을 감지하고 Kubernetes 클러스터 내의 애플리케이션을 자동으로 업데이트하도록 고도화 예정
 
 
+---
+- Redis Pods<br>
+Refresh Token 관리를 위해 Redies를 Kubernetes pods로서 배포함
+<br>
+<a href="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/infra/redis-pod.yml">redis-pod.yml</a><br>
+<a href="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/infra/redis-svc.yml">redis-svc.yml</a><br>
+<a href="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/infra/redis-configmap.yml">redis-configmap.yml</a><br>
 
-
-
+<br>
 
 ## 🤔 회고
 
