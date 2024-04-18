@@ -12,7 +12,7 @@
 
 외국인에게 필요한 정보와 경험을 얻는 것은 생각보다 어려운 일입니다. OnionHotSayYo는 외국인으로서 한국에 거주하거나 방문하는 모든 이들이 자신의 경험을 공유하고 소통할 수 있는 공간을 제공하기 위해 만들어졌습니다.
 
-또한 OnionHotSayYo를 통해 한국인들을 쉽게 외국인들에게 한국의 흥미로운 정보와 홍보를 할 수 기회를 얻을 수 있습니다.
+또한 OnionHotSayYo를 통해 한국인들 또한 외국인들에게 한국의 흥미로운 정보 제공과 홍보 그리고 소통의 기회를 얻을 수 있습니다.
 
 <br>
 
@@ -31,7 +31,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?&logo=javascript&logoColor=black)
 ![HTML](https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?logo=bootstrap&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap_5-563D7C?logo=bootstrap&logoColor=white)
 
 ### Backend
 
@@ -57,7 +57,7 @@
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5.svg?&logo=kubernetes&logoColor=white)
 ![Jasypt](https://img.shields.io/badge/Jasypt-0045B9?logo=Jasypt&logoColor=white)
 
-## DDD
+## 🎨 DDD
 
 ### Context Map
 
