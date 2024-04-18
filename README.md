@@ -110,9 +110,6 @@ COPY build/libs/*.jar app.jar
 ARG JASYPT_KEY
 ENV JASYPT_KEY=$JASYPT_KEY
 
-# 실행 중에 환경 변수 값을 출력
-CMD echo "JASYPT_KEY value is: $JASYPT_KEY"
-
 ENTRYPOINT ["java", "-jar", "app.jar", "--jasypt.encryptor.password=${JASYPT_KEY}"]
 ```
 
@@ -224,7 +221,8 @@ sh get-docker.sh
 
 <br>
 <br>
-- [ngrok](https://ngrok.com/download)을 사용하여 Webhook 연결
+- <a href="https://ngrok.com/download">ngrok</a>으로 port를 개방하여 Webhook 연결
+
 
 ```
 ngrok http 8080
