@@ -420,7 +420,7 @@ spec:
 
 
 <br>
-<br>
+
 - 스크립트 파일(onion.sh)을 생성해 경로 설정 후 실행
 
 ```
@@ -457,7 +457,7 @@ kubectl rollout restart deployments boot001dep
 젠킨스를 통해 dockerhub image가 자동으로 업데이트 되므로 deployments restart
 
 
-
+<br>
 - vueupdate.sh
 
 ```
