@@ -14,13 +14,24 @@
 
 또한 OnionHotSayYo를 통해 한국인들을 쉽게 외국인들에게 한국의 흥미로운 정보와 홍보를 할 수 기회를 얻을 수 있습니다.
 
+<br>
+
+## 👋 커뮤니티 관리자를 소개합니다
+
+| <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%9D%B4%EC%9E%AC%EC%9B%90.png?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%9E%A5%EB%AF%BC%EC%84%9D.jpg?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%A1%B0%EC%98%88%EB%A6%B0.jpg?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%A7%80%ED%98%84%EA%B7%BC.png?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/2422d185-a933-4468-a67f-aade75ec8c7f" height=150/> |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|                            이재원                            |                            장민석                            |                            조예린                            |                            지현근                            |                            최종찬                            |
+| [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jlee38266) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/ms1011) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/orlzlL) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jihyeongeun) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/CJC0512) |
+
 ## 💡 기술 스택
 
 ### Frontend
 
 ![Vue 3](https://img.shields.io/badge/Vue_3-4FC08D.svg?&logo=vue.js&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?&logo=javascript&logoColor=black)
-
+![HTML](https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?logo=bootstrap&logoColor=white)
 
 ### Backend
 
@@ -32,6 +43,8 @@
 ![JWT](https://img.shields.io/badge/JWT-000000.svg?&logo=json-web-token&logoColor=white)
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?&logo=gradle)
 ![JUnit5](https://img.shields.io/badge/JUnit5-25A162.svg?&logo=junit5&logoColor=white&color=green)
+
+### DB
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420.svg?&logo=ubuntu&logoColor=white)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545.svg?&logo=mariadb)
 ![Redis](https://img.shields.io/badge/Redis-DC382D.svg?&logo=redis&logoColor=white)
@@ -42,17 +55,23 @@
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939.svg?&logo=jenkins&color=lightgrey)
 ![Docker](https://img.shields.io/badge/Docker-2496ED.svg?&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5.svg?&logo=kubernetes&logoColor=white)
+![Jasypt](https://img.shields.io/badge/Jasypt-0045B9?logo=Jasypt&logoColor=white)
+
+## DDD
+
+### Context Map
+
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/fdd719e4-1f1d-4b22-ac22-c0dfb44b8d3a)
+
+### 논리 모델링
+
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/956073b9-360d-46a5-8a1a-a23c85767da8)
 
 
-<h3 align="center">
+### 물리 모델링
 
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/b8d63a32-03ee-4967-9a29-f7b30ba3244e)
 
-## 👋 커뮤니티 관리자를 소개합니다
-
-| <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/2422d185-a933-4468-a67f-aade75ec8c7f" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%9D%B4%EC%9E%AC%EC%9B%90.png?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%9E%A5%EB%AF%BC%EC%84%9D.jpg?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%A1%B0%EC%98%88%EB%A6%B0.jpg?raw=true" height=150/> | <img src="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/contributors/%EC%A7%80%ED%98%84%EA%B7%BC.png?raw=true" height=150/> |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                            최종찬                            |                            이재원                            |                            장민석                            |                            조예린                            |                            지현근                            |
-| [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/CJC0512) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jlee38266) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/ms1011) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/orlzlL) | [<img src="https://img.shields.io/badge/Github-Link-181717?logo=Github">](https://github.com/jihyeongeun) |
 
 
 ## 📃 문서
