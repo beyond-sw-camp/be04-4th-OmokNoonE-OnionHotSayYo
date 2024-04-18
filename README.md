@@ -438,7 +438,7 @@ spec:
 
 <br>
 
-- 스크립트 파일(onion.sh) 실행
+- 스크립트 파일(<a href="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/infra/onion.sh">onion.sh</a>) 실행
 
 ```
 # 디렉토리 경로 설정
@@ -476,7 +476,7 @@ kubectl rollout restart deployments boot001dep
 
 <br>
 
-- vueupdate.sh
+- <a href="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/infra/vueupdate.sh">vueupdate.sh</a>
 
 ```
 VUE_DIR=../frontend/OnionHotSayYo_frontend      # frontend 디렉토리 경로
