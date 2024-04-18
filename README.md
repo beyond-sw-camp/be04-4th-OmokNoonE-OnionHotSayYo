@@ -56,8 +56,7 @@
 
 ### 시스템 아키텍처
 
-![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/33e0d533-42cb-4d4b-b32b-233da53c256c)
-
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/SystemArchitecture.png)
   1. 개발자가 로컬 환경에서 코드를 작성 및 테스트한 후 , 변경사항을 github로 push
   2. github는 변경 사항에 push 되면 webhook이 이벤트를 감지하고 해당 이벤트를 처리하기 위해서 HTTP 요청
   3. webhook에서 HTTP요청을 하게 되면 JENKINS를 통해 Gradle을 사용하여 소스코드를 빌드하고 실행이 가능한 jar 파일로 생성
