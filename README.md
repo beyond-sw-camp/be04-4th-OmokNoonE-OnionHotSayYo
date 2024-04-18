@@ -59,7 +59,7 @@
 
 ### 시스템 아키텍처
 
-![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/SystemArchitecture.png)
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/onionhotsayyo_system-architecture.png)
 
     1. 개발자가 로컬 환경에서 코드를 작성 및 테스트한 후 , 변경사항을 github로 push
     2. github는 변경 사항에 push 되면 webhook이 이벤트를 감지하고 해당 이벤트를 처리하기 위해서 HTTP 요청
