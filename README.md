@@ -480,7 +480,7 @@ kubectl rollout restart deployments boot001dep
 
 ```
 VUE_DIR=../frontend/OnionHotSayYo_frontend      # frontend 디렉토리 경로
-PASSWORD='0000'                                                         # sudo password
+PASSWORD='0000'                                 # sudo password
 
 # vue project build
 cd $VUE_DIR
@@ -491,20 +491,18 @@ echo $PASSWORD | sudo -S docker push orlzll/onion-front2
 kubectl rollout restart deployments vue001dep
 ```
 
-```
-./vueupdate.sh
-```
 
 빌드 -> 도커 허브에 이미지 업로드 -> 재시작됨
 
 
+<br>
 
 > [!NOTE]
 > 추후 해당 과정을 ArgoCD를 통해 도커 허브 이미지의 변경을 감지하고 Kubernetes 클러스터 내의 애플리케이션을 자동으로 업데이트하도록 고도화 예정
 
 
 ---
-- Redis Pods<br>
+Redis Pods<br>
 Refresh Token 관리를 위해 Redies를 Kubernetes pods로서 배포함
 <br>
 <a href="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/infra/redis-pod.yml">redis-pod.yml</a><br>
