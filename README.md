@@ -73,6 +73,9 @@
 ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/b8d63a32-03ee-4967-9a29-f7b30ba3244e)
 
 
+## DDL
+
+<a href="https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/DB/DDL.sql">OnionHotSayYo_DDL</a>
 
 ## 📃 문서
 
