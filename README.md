@@ -438,13 +438,13 @@ spec:
 
 <br>
 
-- 스크립트 파일(onion.sh)을 생성해 경로 설정 후 실행
+- 스크립트 파일(onion.sh) 실행
 
 ```
 # 디렉토리 경로 설정
-KUBE_DIR=/Users/orlzll/Documents/onion-kube                          # manifest (deployments, services .yml) 파일들 경로
-VUE_DIR=/Users/orlzll/Documents/onion-front/OnionHotSayYo_frontend   # frontend 디렉토리 경로
-PASSWORD='0000'                                                      # sudo password
+KUBE_DIR=../../infra
+VUE_DIR=../frontend/OnionHotSayYo_frontend          # frontend 디렉토리 경로
+PASSWORD='0000'                                                         # sudo password
 
 # vue project build
 cd $VUE_DIR
@@ -478,7 +478,7 @@ kubectl rollout restart deployments boot001dep
 - vueupdate.sh
 
 ```
-VUE_DIR=/Users/orlzll/Documents/onion-front/OnionHotSayYo_frontend      # frontend 디렉토리 경로
+VUE_DIR=../frontend/OnionHotSayYo_frontend      # frontend 디렉토리 경로
 PASSWORD='0000'                                                         # sudo password
 
 # vue project build
