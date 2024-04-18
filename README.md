@@ -94,7 +94,8 @@
 | Jenkins    | 2.453  |
 
 
-
+<br>
+<br>
 1. 빌드
 
 **[ Dockerfile ]**
@@ -117,7 +118,8 @@ ENTRYPOINT ["java", "-jar", "app.jar", "--jasypt.encryptor.password=${JASYPT_KEY
 
 🔑 jasypt복호화 패스워드(JASYPT_KEY)는 Jenkins Credentials를 통해 관리하며, 실행 시 환경 변수로서 입력되어 실행됨.
 
-
+<br>
+<br>
 
 - Vue Dockerfile
 
@@ -133,7 +135,7 @@ RUN npm install
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
 ```
 
-
+<br>
 
 - Jenkins Dockerfile
 
@@ -153,7 +155,7 @@ RUN apt-get update && \
     ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 
-
+<br>
 
 - Jenkins docker-compose.yml
 
@@ -182,7 +184,8 @@ services:
 ```
 
 
-
+<br>
+<br>
 ⚠️ 젠킨스 빌드 중  `docker: not found` 오류가 발생할 경우
 
 ```
@@ -191,10 +194,11 @@ curl -fsSL https://get.docker.com -o get-docker.sh : docker 설치
 sh get-docker.sh
 ```
 
-
+<br>
 
 ---
 
+<br>
 
 
 **[ Github Webhook & Jenkins를 이용한 Pipeline 구축 ]**
@@ -209,15 +213,17 @@ sh get-docker.sh
 ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/jenkins/jenkins1.png)
 
 
-
+<br>
+<br>
 - Github
 
-Repository Settings에 접근하여 Deploy keys에 public key 등록
+  Repository Settings에 접근하여 Deploy keys에 public key 등록
 
 ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/jenkins/jenkins2.png)
 
 
-
+<br>
+<br>
 - [ngrok](https://ngrok.com/download)을 사용하여 Webhook 연결
 
 ```
@@ -229,15 +235,18 @@ ngrok http 8080
 
 
 
-
-Jenkins Tools에서 Java(OpenJDK 17) , Gradle(8.7) 설정
+<br>
+<br>
+- Jenkins Tools에서 Java(OpenJDK 17) , Gradle(8.7) 설정
 
 ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/blob/main/README_IMAGE/jenkins/jenkins4.png)
 
 
-
-새로운 Item -> Pipeline 생성 -> Build Triggers -> Github hook trigger for GITScm polling 체크
-
+<br>
+<br>
+- 새로운 Item -> Pipeline 생성 -> Build Triggers -> Github hook trigger for GITScm polling 체크
+<br>
+<br>
 
 
 - Jenkins Pipeline Script
@@ -307,7 +316,8 @@ pipeline {
 🔨 최초로 pipeline 구축 후에는 ▶️`지금 빌드` 실행
 
 
-
+<br>
+<br>
 2. 배포
 
 > [!NOTE]
@@ -357,7 +367,7 @@ spec:
 ```
 
 
-
+<br>
 - Vue deployments, Services
 
 ```
@@ -409,7 +419,8 @@ spec:
 ---
 
 
-
+<br>
+<br>
 - 스크립트 파일(onion.sh)을 생성해 경로 설정 후 실행
 
 ```
@@ -433,7 +444,8 @@ kubectl apply -f boot001dep.yml && kubectl apply -f boot001ser.yml
 > 현재 frontend project는 Jenkins를 통한 build 자동화가 되어 있지 않으므로 이 과정에서 build 및 docker hub로 image push 하도록 설정함
 
 
-
+<br>
+<br>
 [ 이미지 변경 시 디플로이먼트 업데이트 ]
 
 - 백엔드
