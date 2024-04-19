@@ -60,8 +60,7 @@
 <br>
 
 ## 🎨 DDD
-  🔗 [DDD](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/wiki/%F0%9F%8E%A8DDD)
-
+  🔗 [DDD](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/wiki/%F0%9F%8E%A8-DDD)
 <br>
 
 ## 🗃️ DDL
