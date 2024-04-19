@@ -81,8 +81,7 @@
 
 
 ### 빌드 및 배포 문서
- 🔗 [빌드 및 배포 문서](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/wiki/CI%EF%BC%8FCD)
-
+ 🔗 [빌드 및 배포 문서](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/wiki/%F0%9F%9B%A0%EF%B8%8F-CI%EF%BC%8FCD)
 
 <br>
 
