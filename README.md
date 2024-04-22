@@ -1,4 +1,4 @@
-# 📢 한국 생활 정보와 커뮤니티를 한눈에!
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/24bab6b3-812e-489d-9158-4d3478caee25)# 📢 한국 생활 정보와 커뮤니티를 한눈에!
 
 > "Discover Korea Together: Connect, Share, and Thrive!"
 > ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3080ca9c-37dc-4734-b13a-a168ca033705)
@@ -82,6 +82,114 @@
 
 ### 빌드 및 배포 문서
  🔗 [빌드 및 배포 문서](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/wiki/%F0%9F%9B%A0%EF%B8%8F-CI%EF%BC%8FCD)
+
+<br>
+
+## 화면 구성
+
+<details>
+  <summary>화면 구성 이미지 보기</summary>
+
+  <br>
+  <details>
+    <summary>회원 가입</summary>
+    
+  ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/a3bf4525-e69c-43b1-91cc-66942599dee2)
+  
+  </details>
+
+  <br>
+  <details>
+    <summary>메인 화면 (로그인 전/후)</summary>
+
+
+  - 로그인 전
+  ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3bd0b9f3-4f55-46c5-bf4c-3b1f79200d80)
+
+  - 로그인 후
+  ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/b735f5bc-e463-4d0d-817a-86cd09b3f872)
+
+  
+  </details>
+
+  <br>
+  <details>
+    <summary>오프캔버스 (프로필 버튼 클릭 시)</summary>
+
+  - 로그인 전
+  ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/f8b93842-a70f-46c8-a49e-98850da16cf3)
+
+
+  - 로그인 후
+   ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/21f4901a-e594-459b-aced-1b08f2264c3c)
+
+  </details>
+
+  <br>
+  <details>
+    <summary>번역 검색</summary>
+    
+  - 헤더 검색
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/d2b224e8-b330-445b-ae85-8fa980879fc3)
+
+  - 헤더 번역 검색 결과  
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/78d0f2ce-66ac-4a76-be04-c2a3ff579ff4)
+
+  - 검색 설정(지역)
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/67bc0f85-344c-46a7-b6f1-c73509f66bfb)
+
+  - 검색 설정(언어)
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/6e6b7095-b622-4128-8232-a3761e581298)
+
+  - 검색 설정(타입)
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/9f7b5ffe-7237-495c-b18d-80c3644c9523)
+
+    
+  </details>
+
+  <br>
+  <details>
+    <summary>게시글</summary>
+
+  - 카테고리별 게시글 목록
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/624e0264-165e-4846-9ff0-71244a357ac8)
+
+  - 게시글 작성
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3135b0b5-8f45-4c3a-828d-eee70ba66e8c)
+
+  </details>
+
+  <br>
+  <details>
+    <summary>개인 페이지</summary>
+
+  - 마이 페이지
+  ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/ece00e01-a88a-44c9-bcf8-f3c8f46374d8)
+
+  - 개인 정보 수정
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/eb3569fc-7408-4006-ab01-2e29441efa23)
+
+  - 신고 목록
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/0a013f6f-89e3-4f80-80fb-a76d2d94bca8)
+
+  - 쪽지함
+  ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/2b1e53f6-abfa-4e9f-9a36-e18c9d0c7e04)
+
+  - 쪽지 작성
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/df5927cf-8386-44cd-8659-6f0eab7a7313)
+
+  - 개인 목록(게시글 유형)
+  ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/59408ddd-b028-455c-9d97-17e94910525e)
+
+  - 개인 목록(회원 유형)
+    ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/d8f78351-8465-4293-a0cb-4aba93040f06)
+
+
+  </details>
+  
+
+</details>
+
 
 <br>
 
