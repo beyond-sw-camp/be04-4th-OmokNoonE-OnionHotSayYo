@@ -157,6 +157,12 @@
   - 게시글 작성
     ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3135b0b5-8f45-4c3a-828d-eee70ba66e8c)
 
+  - 게시글 상세보기(본문)
+  ![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/3b65abbe-d997-4c25-8d13-a4b16df4e58d)
+
+  - 게시글 상세보기(댓글)
+![image](https://github.com/beyond-sw-camp/be04-4th-OmokNoonE-OnionHotSayYo/assets/118791747/5c4b0a10-9f84-456d-bd7f-6e1464522abe)
+
   </details>
 
   <br>
