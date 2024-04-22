@@ -134,7 +134,9 @@
 
 <br>
 
-#### 빌드
+<details> <summary> 빌드 문서 </summary> 
+ 
+ #### 빌드
 
 **[ Dockerfile ]**
 
@@ -354,7 +356,9 @@ pipeline {
 
 
 <br>
-<br>
+</details>
+
+<details> <summary> 배포 문서 </summary>
 
 ### 배포
 
@@ -534,6 +538,9 @@ Refresh Token 관리를 위해 Redies를 Kubernetes pods로서 배포함
 
 <br>
 
+
+
+</details>
 
 <br>
 
